@@ -1,0 +1,18 @@
+nav {
+  width: 100vw;
+  background-color: rgba(2, 2, 2, 1);
+
+  ul {
+    display: flex;
+    justify-content: end;
+    list-style: none;
+
+    .home {
+      margin-right: auto;
+    }
+
+    li {
+      margin: 2rem 1rem;
+    }
+  }
+}
