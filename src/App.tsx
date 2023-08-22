@@ -1,4 +1,3 @@
-import './App.css';
 import { Navbar } from './Components/NavBar/Navbar';
 import { HomePage } from './Routes/HomePage/HomePage';
 import { Merchandise } from './Routes/Merchandise';
@@ -11,6 +10,8 @@ import {
   createBrowserRouter,
   createRoutesFromElements
 } from 'react-router-dom';
+import './App.scss';
+import { Signup } from './Routes/Login/Signup';
 
 function App() {
   const Root = () => {
@@ -27,6 +28,7 @@ function App() {
         <Route index element={<HomePage />} />
         <Route path="merchandise" element={<Merchandise />} />
         <Route path="login" element={<Login />} />
+        <Route path="signup" element={<Signup />} />
       </Route>
     )
   );

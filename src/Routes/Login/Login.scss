@@ -1,0 +1,10 @@
+.user-details-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: grey;
+
+  form {
+    width: 60vw;
+  }
+}
