@@ -23,6 +23,7 @@ export const Signup: React.FC = () => {
             placeholder="Enter Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
           />
           <Form.Label>Password</Form.Label>
           <Form.Control
@@ -30,6 +31,7 @@ export const Signup: React.FC = () => {
             placeholder="Enter Password"
             value={password}
             onChange={(e) => setPassowrd(e.target.value)}
+            required
           />
           <Form.Label>Confirm Password</Form.Label>
           <Form.Control
@@ -37,6 +39,7 @@ export const Signup: React.FC = () => {
             placeholder="Enter Password"
             value={confirmedPassword}
             onChange={(e) => setConfirmedPassword(e.target.value)}
+            required
           />
         </Form.Group>
         <Button type="submit" onClick={handleSubmit}>

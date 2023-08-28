@@ -1,6 +1,6 @@
 import { Navbar } from './Components/NavBar/Navbar';
 import { HomePage } from './Routes/HomePage/HomePage';
-import { Merchandise } from './Routes/Merchandise';
+import { Merchandise } from './Routes/Merchandise/Merchandise';
 import { Login } from './Routes/Login/Login';
 import ErrorPage from './Routes/ErrorPage/ErrorPage';
 import {

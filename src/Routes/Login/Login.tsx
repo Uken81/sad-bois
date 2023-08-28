@@ -29,6 +29,7 @@ export const Login: React.FC = () => {
           <Form.Control
             type="Password"
             placeholder="Enter Password"
+            value={password}
             onChange={(e) => setPassowrd(e.target.value)}
             required
           />

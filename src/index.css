@@ -1,9 +1,11 @@
 * {
   margin: 0;
+  /* padding: 0; */
 }
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 0.5rem;
   line-height: 1.5;
   font-weight: 400;
 
@@ -29,10 +31,11 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
+  /* display: flex; */
   /* place-items: center; */
   min-width: 320px;
   min-height: 100vh;
+  /* background-color: #1a1a1a; */
 }
 
 h1 {
