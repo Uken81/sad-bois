@@ -1,0 +1,22 @@
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .featured {
+    margin: 10% 0;
+    height: 500px;
+    width: 500px;
+
+    .card-img {
+      max-height: 500px;
+    }
+  }
+
+  .products {
+    .product {
+      width: 250px;
+    }
+  }
+}
