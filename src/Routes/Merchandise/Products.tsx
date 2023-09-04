@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
 import { Card, ListGroup } from 'react-bootstrap';
+import { useLoaderData } from 'react-router';
 
 type Category = 'clothing' | 'sticker' | 'coffee-mug' | 'misc';
 
-interface Product {
+export interface Product {
   //could add available countries, member exclusive
   id: string;
   category: Category;
@@ -11,29 +12,22 @@ interface Product {
   subtitle: string;
   price: number;
   applyMemberDiscount: boolean;
-  image?: string;
+  img: string;
 }
 
 export const Products: React.FC = () => {
-  const [products, setProducts] = useState<Product[]>([]);
-
-  useEffect(() => {
-    fetch('http://localhost:2001/products')
-      .then((response) => response.json())
-      .then((data) => {
-        setProducts(data);
-        console.log('products-data', data);
-      })
-      .catch((error) => {
-        console.log('fetch failed: ', error);
-      });
-  }, []);
+  const products: Product[] = useLoaderData() as Product[];
+  // const loaderData = useLoaderData();
+  // const products: Product[] = loaderData as Product[];
+  console.log('products: ', products[0].img);
+  console.log('products: ', products);
 
   return (
     <ListGroup>
       {products.map((product) => (
-        <ListGroup.Item key={product.id}>
+        <ListGroup.Item key={product.id} style={{ width: '250px' }}>
           <Card>
+            <Card.Img variant="top" src={`../../../Assets/Products/${product.img}`} />
             <Card.Body>
               <Card.Title>{product.title}</Card.Title>
               <Card.Title>{product.subtitle}</Card.Title>

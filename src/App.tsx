@@ -12,6 +12,7 @@ import {
 } from 'react-router-dom';
 import './App.scss';
 import { Signup } from './Routes/Login/Signup';
+import { ProductsLoader } from './Routes/Merchandise/productsLoader';
 
 function App() {
   const Root = () => {
@@ -26,7 +27,7 @@ function App() {
     createRoutesFromElements(
       <Route path="/" element={<Root />} errorElement={<ErrorPage />}>
         <Route index element={<HomePage />} />
-        <Route path="merchandise" element={<Merchandise />} />
+        <Route path="merchandise" element={<Merchandise />} loader={ProductsLoader} />
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<Signup />} />
       </Route>
