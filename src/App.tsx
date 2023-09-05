@@ -1,8 +1,8 @@
 import { Navbar } from './Components/NavBar/Navbar';
-import { HomePage } from './Routes/HomePage/HomePage';
-import { Merchandise } from './Routes/Merchandise/Merchandise';
-import { Login } from './Routes/Login/Login';
-import ErrorPage from './Routes/ErrorPage/ErrorPage';
+import { HomePage } from './Pages/HomePage/HomePage';
+import { Merchandise } from './Pages/Merchandise/Merchandise';
+import { Login } from './Pages/Login/Login';
+import ErrorPage from './Pages/ErrorPage/ErrorPage';
 import {
   Outlet,
   Route,
@@ -11,8 +11,10 @@ import {
   createRoutesFromElements
 } from 'react-router-dom';
 import './App.scss';
-import { Signup } from './Routes/Login/Signup';
-import { ProductsLoader } from './Routes/Merchandise/productsLoader';
+import { Signup } from './Pages/Login/Signup';
+import { ProductsLoader } from './Pages/Merchandise/productsLoader';
+import { OrderProduct } from './Pages/ProductOrders/ProductOrders';
+import { itemLoader } from './Pages/ProductOrders/itemLoader';
 
 function App() {
   const Root = () => {
@@ -28,6 +30,7 @@ function App() {
       <Route path="/" element={<Root />} errorElement={<ErrorPage />}>
         <Route index element={<HomePage />} />
         <Route path="merchandise" element={<Merchandise />} loader={ProductsLoader} />
+        <Route path="order-product/:id" element={<OrderProduct />} loader={() => itemLoader('1')} />
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<Signup />} />
       </Route>

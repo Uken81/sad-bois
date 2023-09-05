@@ -1,12 +1,12 @@
-// import { useEffect, useState } from 'react';
 import { Card, Col, ListGroup, Row } from 'react-bootstrap';
-import { useLoaderData } from 'react-router';
+import { useLoaderData, useNavigate } from 'react-router';
 import { MerchandiseData } from './productsLoader';
 import './merchandise.scss';
 
 export const Products: React.FC = () => {
   const loaderData = useLoaderData() as MerchandiseData;
   const products = loaderData.regular;
+  const navigate = useNavigate();
   console.log('products: ', products);
 
   return (
@@ -14,7 +14,7 @@ export const Products: React.FC = () => {
       {products.map((product) => (
         <Col key={product.id} xs={12} sm={6} md={4} lg={4}>
           <ListGroup.Item className="product">
-            <Card>
+            <Card onClick={() => navigate(`/order-product/${product.id}`)}>
               <Card.Img variant="top" src={`../../../Assets/Products/${product.img}`} />
               <Card.Body>
                 <Card.Title>{product.title}</Card.Title>

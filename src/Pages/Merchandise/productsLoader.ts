@@ -28,10 +28,11 @@ export interface MerchandiseData {
   featured: Product[];
 }
 
-export const ProductsLoader: () => Promise<{ regular: Product; featured: Product }> = async () => {
+export const ProductsLoader = async (): Promise<MerchandiseData> => {
   const [regular, featured] = await Promise.all([
     fetch('http://localhost:2001/products').then((res) => res.json()),
     fetch('http://localhost:2001/products/featured').then((res) => res.json())
+    // fetch(`http://localhost:2001/products/byId?id=${id}`).then((res) => res.json())
   ]).catch((error) => {
     console.log('Error: ', error);
     throw error;
