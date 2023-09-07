@@ -11,7 +11,7 @@ import {
   createRoutesFromElements
 } from 'react-router-dom';
 import './App.scss';
-import { Signup } from './Pages/Login/Signup';
+import { Register } from './Pages/Login/Register';
 import { ProductsLoader } from './Pages/Merchandise/productsLoader';
 import { OrderProduct } from './Pages/ProductOrders/ProductOrders';
 import { itemLoader } from './Pages/ProductOrders/itemLoader';
@@ -30,9 +30,9 @@ function App() {
       <Route path="/" element={<Root />} errorElement={<ErrorPage />}>
         <Route index element={<HomePage />} />
         <Route path="merchandise" element={<Merchandise />} loader={ProductsLoader} />
-        <Route path="order-product/:id" element={<OrderProduct />} loader={() => itemLoader('1')} />
+        <Route path="order-product/:id" element={<OrderProduct />} loader={itemLoader} />
         <Route path="login" element={<Login />} />
-        <Route path="signup" element={<Signup />} />
+        <Route path="register" element={<Register />} />
       </Route>
     )
   );

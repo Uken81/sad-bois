@@ -39,7 +39,7 @@ export const Login: React.FC = () => {
         </Button>
       </Form>
       <div>
-        <Link to="/signup">Register</Link>
+        <Link to="/register">Register</Link>
       </div>
     </div>
   );
