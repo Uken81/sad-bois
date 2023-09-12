@@ -1,10 +1,28 @@
-.user-details-form {
+form {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   background-color: grey;
+  width: 100vw;
+  font-size: 2.5rem;
 
-  form {
-    width: 60vw;
+  .input-fields {
+    display: flex;
+    flex-direction: column;
+    // background-color: grey;
+    width: 40vw;
+
+    .input-label {
+      margin-right: auto;
+    }
+    .text-input {
+      margin: 1.5rem 0;
+      border: solid 2px whitesmoke;
+      // height: 3rem;
+    }
+  }
+  button {
+    margin-right: auto;
   }
 }

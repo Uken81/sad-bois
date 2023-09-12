@@ -1,105 +1,84 @@
-import { Button, Form } from 'react-bootstrap';
-import { useState } from 'react';
+import { Button } from 'react-bootstrap';
 import './Login.scss';
+import { useNavigate } from 'react-router';
+
+import * as Yup from 'yup';
+import { Form, Formik } from 'formik';
+import { TextInput } from '../../Components/Inputs/TextInput';
+
+interface FormValues {
+  email: string;
+  username: string;
+  password: string;
+  confirmPassword: string;
+}
 
 export const Register: React.FC = () => {
-  const [email, setEmail] = useState('');
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmedPassword, setConfirmedPassword] = useState('');
+  const navigate = useNavigate();
 
-  // const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
-  //   e.preventDefault();
-  //   console.log('email', email, 'password', password, 'confirmedPassword', confirmedPassword);
-  // };
+  const initialValues = { email: '', username: '', password: '', confirmPassword: '' };
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault(); // Prevent the default form submission behavior
+  const validationSchema = Yup.object({
+    email: Yup.string().email('Invalid email address').required('Required'),
+    username: Yup.string()
+      .min(2, 'Must be 2 characters or more')
+      .max(15, 'Must be 15 characters or less')
+      .required('Required'),
+    password: Yup.string()
+      .min(5, 'Must be at least 5 characters')
+      .max(200, 'Must be 200 characters or less')
+      .required('Required'),
+    confirmPassword: Yup.string()
+      .oneOf([Yup.ref('password')], 'Passwords must match')
+      .max(200, 'Must be 200 characters or less')
+      .required('Required')
+  });
 
-  //   // Here, you can send the form data to your backend using a fetch or axios request
-  //   fetch('http://localhost:2001/auth/register', {
-  //     method: 'POST',
-  //     body: JSON.stringify({ email, username, password, confirmedPassword }),
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     }
-  //   })
-  //     .then((response) => {
-  //       // Handle the response from the backend
-  //       if (response.status === 200) {
-  //         // Registration successful, you can redirect or show a success message
-  //       } else {
-  //         // Registration failed, handle errors
-  //       }
-  //     })
-  //     .catch((error) => {
-  //       // Handle network errors
-  //       console.log('form error ', error);
-  //     });
-  // };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    try {
-      const response = await fetch('/test', email.length);
-
-      if (response.ok) {
-        console.log('Data sent successfully');
-      } else {
-        console.error('Error sending data');
+  const handleSubmit = (values: FormValues) => {
+    const requestOptions: RequestInit = {
+      method: 'POST',
+      body: JSON.stringify(values),
+      headers: {
+        'Content-Type': 'application/json'
       }
-    } catch (error) {
-      console.error('Network error:', error);
-    }
+    };
+
+    fetch('http://localhost:2001/auth/register', requestOptions)
+      .then((response) => {
+        if (!response.ok) {
+          console.log('res1: ', response);
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log('data: ', data);
+        navigate('/');
+      })
+      .catch((err) => {
+        console.log('err: ', err);
+      });
   };
 
   return (
-    <div className="user-details-form">
-      <h1>Signup</h1>
-      <Form action="/auth/register" method="POST">
-        <Form.Group controlId="signup">
-          <Form.Label>Email Adress</Form.Label>
-          <Form.Control
-            type="email"
-            placeholder="Enter Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            name="email"
-            required
-          />
-          <Form.Label>Username</Form.Label>
-          <Form.Control
-            type="username"
-            placeholder="Enter User Name"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            name="username"
-            required
-          />
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            type="Password"
-            placeholder="Enter Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            name="password"
-            required
-          />
-          <Form.Label>Confirm Password</Form.Label>
-          <Form.Control
-            type="Password"
-            placeholder="Enter Password"
-            value={confirmedPassword}
-            onChange={(e) => setConfirmedPassword(e.target.value)}
-            required
-          />
-        </Form.Group>
-        {/* <Button type="submit">Submit</Button> */}
-        <Button type="submit" onClick={handleSubmit}>
-          Submit
-        </Button>
+    <Formik
+      initialValues={initialValues}
+      validationSchema={validationSchema}
+      onSubmit={(values, { setSubmitting }) => {
+        handleSubmit(values);
+        setSubmitting(false);
+      }}>
+      <Form>
+        <div className="input-fields">
+          <TextInput name="email" type="email" label="Email" />
+          <TextInput name="username" type="text" label="Username" />
+          <TextInput name="password" type="password" label="Password" />
+          <TextInput name="confirmPassword" type="password" label="Confirm Password" />
+          <Button type="submit" size="lg" variant="warning">
+            Submit
+          </Button>
+        </div>
       </Form>
-    </div>
+    </Formik>
   );
 };
