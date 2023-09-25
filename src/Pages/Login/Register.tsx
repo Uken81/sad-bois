@@ -1,10 +1,10 @@
-import { Button } from 'react-bootstrap';
-import './Login.scss';
 import { useNavigate } from 'react-router';
 
 import * as Yup from 'yup';
 import { Form, Formik } from 'formik';
-import { TextInput } from '../../Components/Inputs/TextInput';
+import { TextInput } from '../../Components/Forms/Inputs/TextInput';
+import { SubmitButton } from '../../Components/Forms/SubmitButton';
+import './Login.scss';
 
 interface FormValues {
   email: string;
@@ -34,7 +34,7 @@ export const Register: React.FC = () => {
       .required('Required')
   });
 
-  const handleSubmit = (values: FormValues) => {
+  const handleSubmit = (values: FormValues, setSubmitting: (isSubmitting: boolean) => void) => {
     const requestOptions: RequestInit = {
       method: 'POST',
       body: JSON.stringify(values),
@@ -53,10 +53,11 @@ export const Register: React.FC = () => {
       })
       .then((data) => {
         console.log('data: ', data);
+        setSubmitting(false);
         navigate('/');
       })
       .catch((err) => {
-        console.log('err: ', err);
+        console.log('error: ', err);
       });
   };
 
@@ -65,20 +66,19 @@ export const Register: React.FC = () => {
       initialValues={initialValues}
       validationSchema={validationSchema}
       onSubmit={(values, { setSubmitting }) => {
-        handleSubmit(values);
-        setSubmitting(false);
+        handleSubmit(values, setSubmitting);
       }}>
-      <Form>
-        <div className="input-fields">
-          <TextInput name="email" type="email" label="Email" />
-          <TextInput name="username" type="text" label="Username" />
-          <TextInput name="password" type="password" label="Password" />
-          <TextInput name="confirmPassword" type="password" label="Confirm Password" />
-          <Button type="submit" size="lg" variant="warning">
-            Submit
-          </Button>
-        </div>
-      </Form>
+      {(formik) => (
+        <Form>
+          <div className="input-fields">
+            <TextInput name="email" type="email" label="Email" />
+            <TextInput name="username" type="text" label="Username" />
+            <TextInput name="password" type="password" label="Password" />
+            <TextInput name="confirmPassword" type="password" label="Confirm Password" />
+            <SubmitButton isSubmitting={formik.isSubmitting} />
+          </div>
+        </Form>
+      )}
     </Formik>
   );
 };

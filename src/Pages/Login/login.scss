@@ -21,6 +21,10 @@ form {
       border: solid 2px whitesmoke;
       // height: 3rem;
     }
+
+    .text-input-error {
+      border: 1px solid red;
+    }
   }
   button {
     margin-right: auto;
