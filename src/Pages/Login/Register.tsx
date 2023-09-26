@@ -6,17 +6,17 @@ import { TextInput } from '../../Components/Forms/Inputs/TextInput';
 import { SubmitButton } from '../../Components/Forms/SubmitButton';
 import './Login.scss';
 
-interface FormValues {
+interface RegisterFormValues {
   email: string;
   username: string;
   password: string;
-  confirmPassword: string;
+  confirmedPassword: string;
 }
 
 export const Register: React.FC = () => {
   const navigate = useNavigate();
 
-  const initialValues = { email: '', username: '', password: '', confirmPassword: '' };
+  const initialValues = { email: '', username: '', password: '', confirmedPassword: '' };
 
   const validationSchema = Yup.object({
     email: Yup.string().email('Invalid email address').required('Required'),
@@ -28,13 +28,17 @@ export const Register: React.FC = () => {
       .min(5, 'Must be at least 5 characters')
       .max(200, 'Must be 200 characters or less')
       .required('Required'),
-    confirmPassword: Yup.string()
+    confirmedPassword: Yup.string()
       .oneOf([Yup.ref('password')], 'Passwords must match')
       .max(200, 'Must be 200 characters or less')
       .required('Required')
   });
 
-  const handleSubmit = (values: FormValues, setSubmitting: (isSubmitting: boolean) => void) => {
+  const handleSubmit = (
+    values: RegisterFormValues,
+    setSubmitting: (isSubmitting: boolean) => void
+  ) => {
+    console.log('values', values);
     const requestOptions: RequestInit = {
       method: 'POST',
       body: JSON.stringify(values),
@@ -74,7 +78,7 @@ export const Register: React.FC = () => {
             <TextInput name="email" type="email" label="Email" />
             <TextInput name="username" type="text" label="Username" />
             <TextInput name="password" type="password" label="Password" />
-            <TextInput name="confirmPassword" type="password" label="Confirm Password" />
+            <TextInput name="confirmedPassword" type="password" label="Confirm Password" />
             <SubmitButton isSubmitting={formik.isSubmitting} />
           </div>
         </Form>

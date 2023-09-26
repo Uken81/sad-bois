@@ -1,4 +1,4 @@
-import { useLoaderData, useParams } from 'react-router';
+import { useLoaderData } from 'react-router';
 import { Card } from 'react-bootstrap';
 import { Product } from '../Merchandise/productsLoader';
 
