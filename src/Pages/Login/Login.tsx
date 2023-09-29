@@ -1,11 +1,11 @@
 import { useNavigate } from 'react-router';
-
 import * as Yup from 'yup';
 import { Form, Formik } from 'formik';
-import { TextInput } from '../../Components/Forms/Inputs/TextInput';
+import { FormError, TextInput } from '../../Components/Forms/Inputs/TextInput';
 import { SubmitButton } from '../../Components/Forms/SubmitButton';
-import './Login.scss';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import './Login.scss';
 
 interface LoginFormValues {
   email: string;
@@ -14,8 +14,10 @@ interface LoginFormValues {
 
 export const Login: React.FC = () => {
   const navigate = useNavigate();
+  const [error, setError] = useState<FormError | undefined>(undefined);
 
-  const initialValues = { email: '', password: '' };
+  //Todo: Change these inital values to test user when about to publish.
+  const initialValues = { email: 'brendanhurd@gmail.com', password: '12345' };
 
   const validationSchema = Yup.object({
     email: Yup.string().email('Invalid email address').required('Required'),
@@ -35,20 +37,27 @@ export const Login: React.FC = () => {
       body: JSON.stringify(values),
       headers: {
         'Content-Type': 'application/json'
-      }
+      },
+      credentials: 'include'
     };
 
     fetch('http://localhost:2001/auth/login', requestOptions)
       .then((response) => {
         if (!response.ok) {
           console.log('res1: ', response);
-          //shouldnt below break flow??
           throw new Error('Network response was not ok');
         }
         return response.json();
       })
       .then((data) => {
         console.log('data: ', data);
+        if (!data.success) {
+          console.log('!success');
+          setError({ type: data.type, message: data.message });
+          setSubmitting(false);
+          return;
+        }
+        console.log('login success!@!');
         setSubmitting(false);
         navigate('/');
       })
@@ -56,6 +65,9 @@ export const Login: React.FC = () => {
         console.log('error: ', err);
       });
   };
+
+  const isEmailError = error && error.type === 'email';
+  const isPasswordError = error && error.type === 'password';
 
   return (
     <>
@@ -68,8 +80,18 @@ export const Login: React.FC = () => {
         {(formik) => (
           <Form>
             <div className="input-fields">
-              <TextInput name="email" type="email" label="Email" />
-              <TextInput name="password" type="password" label="Password" />
+              <TextInput
+                name="email"
+                type="email"
+                label="Email"
+                error={isEmailError ? error.message : undefined}
+              />
+              <TextInput
+                name="password"
+                type="password"
+                label="Password"
+                error={isPasswordError ? error.message : undefined}
+              />
               <SubmitButton isSubmitting={formik.isSubmitting} />
             </div>
           </Form>

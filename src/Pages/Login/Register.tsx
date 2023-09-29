@@ -2,9 +2,10 @@ import { useNavigate } from 'react-router';
 
 import * as Yup from 'yup';
 import { Form, Formik } from 'formik';
-import { TextInput } from '../../Components/Forms/Inputs/TextInput';
+import { FormError, TextInput } from '../../Components/Forms/Inputs/TextInput';
 import { SubmitButton } from '../../Components/Forms/SubmitButton';
 import './Login.scss';
+import { useState } from 'react';
 
 interface RegisterFormValues {
   email: string;
@@ -15,6 +16,7 @@ interface RegisterFormValues {
 
 export const Register: React.FC = () => {
   const navigate = useNavigate();
+  const [error, setError] = useState<FormError | undefined>(undefined);
 
   const initialValues = { email: '', username: '', password: '', confirmedPassword: '' };
 
@@ -44,7 +46,8 @@ export const Register: React.FC = () => {
       body: JSON.stringify(values),
       headers: {
         'Content-Type': 'application/json'
-      }
+      },
+      credentials: 'include'
     };
 
     fetch('http://localhost:2001/auth/register', requestOptions)
@@ -55,8 +58,14 @@ export const Register: React.FC = () => {
         }
         return response.json();
       })
+      //should I create interface for data?
       .then((data) => {
         console.log('data: ', data);
+        if (!data.success) {
+          setError({ type: data.type, message: data.message });
+          setSubmitting(false);
+          return;
+        }
         setSubmitting(false);
         navigate('/');
       })
@@ -64,6 +73,9 @@ export const Register: React.FC = () => {
         console.log('error: ', err);
       });
   };
+
+  const isEmailError = error && error.type === 'email';
+  const isPasswordError = error && error.type === 'password';
 
   return (
     <Formik
@@ -75,10 +87,25 @@ export const Register: React.FC = () => {
       {(formik) => (
         <Form>
           <div className="input-fields">
-            <TextInput name="email" type="email" label="Email" />
-            <TextInput name="username" type="text" label="Username" />
-            <TextInput name="password" type="password" label="Password" />
-            <TextInput name="confirmedPassword" type="password" label="Confirm Password" />
+            <TextInput
+              name="email"
+              type="email"
+              label="Email"
+              error={isEmailError ? error.message : undefined}
+            />
+            <TextInput name="username" type="text" label="Username" error={undefined} />
+            <TextInput
+              name="password"
+              type="password"
+              label="Password"
+              error={isPasswordError ? error.message : undefined}
+            />
+            <TextInput
+              name="confirmedPassword"
+              type="password"
+              label="Confirm Password"
+              error={isPasswordError ? error.message : undefined}
+            />
             <SubmitButton isSubmitting={formik.isSubmitting} />
           </div>
         </Form>

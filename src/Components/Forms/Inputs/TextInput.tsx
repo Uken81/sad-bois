@@ -5,10 +5,16 @@ interface ICustomFieldProps {
   name: string;
   type: string;
   placeholder?: string;
+  error?: string | null;
   id?: string;
 }
 
-const ErrorText: React.FC<{ error: string | undefined; touched: boolean }> = ({
+export interface FormError {
+  type: 'email' | 'password';
+  message: string;
+}
+
+const ErrorText: React.FC<{ error?: string | undefined; touched: boolean }> = ({
   error,
   touched
 }) => {
@@ -23,10 +29,14 @@ const ErrorText: React.FC<{ error: string | undefined; touched: boolean }> = ({
   );
 };
 
-export const TextInput: React.FC<ICustomFieldProps> = ({ label, ...props }) => {
+export const TextInput: React.FC<ICustomFieldProps & { error: string | undefined }> = ({
+  label,
+  error,
+  ...props
+}) => {
   const [field, meta] = useField(props);
 
-  const errorClass = meta.touched && meta.error ? '-error' : '';
+  const errorClass = (meta.touched && meta.error) || error ? '-error' : '';
 
   return (
     <>
@@ -40,7 +50,7 @@ export const TextInput: React.FC<ICustomFieldProps> = ({ label, ...props }) => {
         type={props.type}
         placeholder={props.placeholder}
       />
-      <ErrorText error={meta.error} touched={meta.touched} />
+      <ErrorText error={meta.error || error} touched={meta.touched} />
     </>
   );
 };
