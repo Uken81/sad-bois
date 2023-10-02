@@ -6,6 +6,8 @@ import { SubmitButton } from '../../Components/Forms/SubmitButton';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import './Login.scss';
+import { Button } from 'react-bootstrap';
+import { validateUser } from '../../Utils/auth';
 
 interface LoginFormValues {
   email: string;
@@ -98,6 +100,7 @@ export const Login: React.FC = () => {
         )}
       </Formik>
       <Link to="/register">Register</Link>
+      <Button onClick={validateUser}>Validate</Button>
     </>
   );
 };
