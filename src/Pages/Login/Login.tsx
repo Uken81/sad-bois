@@ -4,10 +4,11 @@ import { Form, Formik } from 'formik';
 import { FormError, TextInput } from '../../Components/Forms/Inputs/TextInput';
 import { SubmitButton } from '../../Components/Forms/SubmitButton';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import './Login.scss';
 import { Button } from 'react-bootstrap';
 import { validateUser } from '../../Utils/auth';
+import { UserContext } from '../../context';
 
 interface LoginFormValues {
   email: string;
@@ -16,8 +17,9 @@ interface LoginFormValues {
 
 export const Login: React.FC = () => {
   const navigate = useNavigate();
+  const userContext = useContext(UserContext);
+  const setUser = userContext?.setUser;
   const [error, setError] = useState<FormError | undefined>(undefined);
-
   //Todo: Change these inital values to test user when about to publish.
   const initialValues = { email: 'brendanhurd@gmail.com', password: '12345' };
 
@@ -29,7 +31,7 @@ export const Login: React.FC = () => {
       .required('Required')
   });
 
-  const handleSubmit = (
+  const handleSubmit = async (
     values: LoginFormValues,
     setSubmitting: (isSubmitting: boolean) => void
   ) => {
@@ -60,6 +62,11 @@ export const Login: React.FC = () => {
           return;
         }
         console.log('login success!@!');
+        // const userData = await validateUser();
+
+        if (setUser) {
+          setUser(data.user);
+        }
         setSubmitting(false);
         navigate('/');
       })
@@ -67,6 +74,60 @@ export const Login: React.FC = () => {
         console.log('error: ', err);
       });
   };
+
+  // const handleSubmit = async (
+  //   values: LoginFormValues,
+  //   setSubmitting: (isSubmitting: boolean) => void
+  // ) => {
+  //   console.log('values', values);
+  //   const requestOptions: RequestInit = {
+  //     method: 'POST',
+  //     body: JSON.stringify(values),
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     },
+  //     credentials: 'include'
+  //   };
+
+  //   try {
+  //     const response = await fetch('http://localhost:2001/auth/login', requestOptions);
+
+  //     if (!response.ok) {
+  //       console.log('res1: ', response);
+  //       throw new Error('Network response was not ok');
+  //     }
+
+  //     const data = await response.json();
+
+  //     console.log('data: ', data);
+
+  //     if (!data.success) {
+  //       console.log('!success');
+  //       setError({ type: data.type, message: data.message });
+  //       setSubmitting(false);
+  //       return;
+  //     }
+
+  //     console.log('login success!@!');
+
+  //     try {
+  //       const userData = await validateUser();
+  //       console.log('userData: ', userData);
+
+  //       if (setUser && userData !== undefined) {
+  //         setUser(userData);
+  //       }
+
+  //       setSubmitting(false);
+  //       navigate('/');
+  //     } catch (error) {
+  //       console.error('Error:', error);
+  //       // Handle any errors that occurred during the validation or user update process
+  //     }
+  //   } catch (err) {
+  //     console.log('error: ', err);
+  //   }
+  // };
 
   const isEmailError = error && error.type === 'email';
   const isPasswordError = error && error.type === 'password';

@@ -15,8 +15,19 @@ import { Register } from './Pages/Login/Register';
 import { ProductsLoader } from './Pages/Merchandise/productsLoader';
 import { OrderProduct } from './Pages/ProductOrders/ProductOrders';
 import { itemLoader } from './Pages/ProductOrders/itemLoader';
+import { useMemo, useState } from 'react';
+import { User, UserContext } from './context';
 
 function App() {
+  const [user, setUser] = useState<User | null>(null);
+  const userValue = useMemo(
+    () => ({
+      user,
+      setUser
+    }),
+    [user, setUser]
+  );
+
   const Root = () => {
     return (
       <>
@@ -39,7 +50,9 @@ function App() {
 
   return (
     <>
-      <RouterProvider router={router} />
+      <UserContext.Provider value={userValue}>
+        <RouterProvider router={router} />
+      </UserContext.Provider>
     </>
   );
 }
