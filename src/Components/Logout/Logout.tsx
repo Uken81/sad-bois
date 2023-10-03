@@ -3,6 +3,7 @@ import './logout.scss';
 import { useContext } from 'react';
 import { UserContext } from '../../context';
 import { useNavigate } from 'react-router';
+import { Link } from 'react-router-dom';
 
 export const Logout: React.FC<{ username: string }> = ({ username }) => {
   const userContext = useContext(UserContext);
@@ -32,7 +33,9 @@ export const Logout: React.FC<{ username: string }> = ({ username }) => {
   };
   return (
     <div className="logout" onClick={handleClick}>
-      <p className="username">{username}</p>
+      <Link to={'/profile'}>
+        <p className="username">{username}</p>
+      </Link>
       <HiOutlineLogout style={{ marginBottom: 'auto' }} />
     </div>
   );

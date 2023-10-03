@@ -1,5 +1,4 @@
 export const validateUser = async () => {
-  let userData;
   const requestOptions: RequestInit = {
     method: 'GET',
     credentials: 'include'
@@ -16,9 +15,8 @@ export const validateUser = async () => {
       console.log('userData: ', data);
       if (data.isValidated) {
         console.log('user is validated');
+        return true;
         // return data;
-        userData = data;
       }
     });
-  return userData;
 };

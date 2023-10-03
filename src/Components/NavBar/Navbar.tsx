@@ -21,6 +21,9 @@ export const Navbar: React.FC = () => {
         <li>
           <Link to="/merchandise">Swag</Link>
         </li>
+        <li>
+          <Link to="/private">PP</Link>
+        </li>
         <li>{user ? <Logout username={user?.username} /> : <Link to="/login">Log In</Link>}</li>
       </ul>
     </nav>
