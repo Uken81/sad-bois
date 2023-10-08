@@ -16,10 +16,10 @@ interface LoginFormValues {
 }
 
 export const Login: React.FC = () => {
-  const navigate = useNavigate();
-  const userContext = useContext(UserContext);
-  const setUser = userContext?.setUser;
+  const { setUser } = useContext(UserContext) as UserContext;
   const [error, setError] = useState<FormError | undefined>(undefined);
+  const navigate = useNavigate();
+
   //Todo: Change these inital values to test user when about to publish.
   const initialValues = { email: 'brendanhurd@gmail.com', password: '12345' };
 

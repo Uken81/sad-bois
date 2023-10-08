@@ -16,20 +16,18 @@ import { Register } from './Pages/Login/Register';
 import { ProductsLoader } from './Pages/Merchandise/productsLoader';
 import { OrderProduct } from './Pages/ProductOrders/ProductOrders';
 import { itemLoader } from './Pages/ProductOrders/itemLoader';
-import { useMemo, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import { User, UserContext } from './context';
 import { ProfilePage } from './Pages/ProfilePage/ProfilePage';
 import { validateUser } from './Utils/validateUser';
 
+interface ChildrenProps {
+  children: ReactNode;
+}
+
 function App() {
   const [user, setUser] = useState<User | null>(null);
-  const userValue = useMemo(
-    () => ({
-      user,
-      setUser
-    }),
-    [user, setUser]
-  );
+  const [isValidated, setIsValidated] = useState<boolean>(false);
 
   const Root = () => {
     return (
@@ -40,22 +38,17 @@ function App() {
     );
   };
 
-  // function PrivateOutlet() {
-  //   const auth = true;
-  //   return auth ? <Outlet /> : <Navigate to="/login" />;
-  // }
-  const test = async () => {
-    const auth = await validateUser();
-    console.log('auth1', auth);
-
-    return auth;
-  };
-  const PrivateRoute = ({ children }) => {
-    const move = true;
-    const auth = test();
-    console.log('auth2', auth);
-    return move ? <>{children}</> : <Navigate to="/login" />;
-    // return auth ? <>{children}</> : <Navigate to="/login" />;
+  const PrivateRoute: React.FC<ChildrenProps> = ({ children }) => {
+    useEffect(() => {
+      async function checkAuth() {
+        const auth = await validateUser();
+        setIsValidated(auth);
+      }
+      console.log('validateUser');
+      checkAuth();
+    }, []);
+    console.log('auth', isValidated);
+    return isValidated ? <>{children}</> : <Navigate to="/login" />;
   };
 
   const router = createBrowserRouter(
@@ -75,16 +68,13 @@ function App() {
             </PrivateRoute>
           }
         />
-        {/* <Route path="/private-outlet" element={<PrivateOutlet />}>
-          <Route element={<ProfilePage />} />
-        </Route> */}
       </Route>
     )
   );
 
   return (
     <>
-      <UserContext.Provider value={userValue}>
+      <UserContext.Provider value={{ user, setUser }}>
         <RouterProvider router={router} />
       </UserContext.Provider>
     </>

@@ -7,9 +7,9 @@ export interface User {
   password: string;
 }
 
-export interface UserContextInterface {
+export interface UserContext {
   user: User | null;
   setUser: React.Dispatch<React.SetStateAction<User | null>>;
 }
 
-export const UserContext = createContext<UserContextInterface | null>(null);
+export const UserContext = createContext<UserContext | null>(null);
