@@ -13,8 +13,7 @@ import {
 } from 'react-router-dom';
 import './App.scss';
 import { Register } from './Pages/Login/Register';
-import { productsLoader } from './Pages/Merchandise/productsLoader';
-import { itemLoader } from './Pages/Merchandise/ProductOrders/itemLoader';
+import { productsLoader } from './Pages/Merchandise/merchandiseLoader';
 import { ReactNode, useEffect, useState } from 'react';
 import { User, UserContext } from './context';
 import { ProfilePage } from './Pages/ProfilePage/ProfilePage';
@@ -23,7 +22,8 @@ import { NewsPage } from './Pages/News/NewsPage';
 import { newsLoader } from './Pages/News/newsLoader';
 import { NewsArticle } from './Pages/News/NewsArticle';
 import { articleLoader } from './Pages/News/articleLoader';
-import { ProductItem } from './Pages/Merchandise/ProductOrders/ProductOrders';
+import { productLoader } from './Pages/Merchandise/ProductOrders/productLoader';
+import { OrderProduct } from './Pages/Merchandise/ProductOrders/OrderProduct';
 
 interface ChildrenProps {
   children: ReactNode;
@@ -62,7 +62,7 @@ function App() {
         <Route path="news" element={<NewsPage />} loader={newsLoader} />
         <Route path="news/:id" element={<NewsArticle />} loader={articleLoader} />
         <Route path="merchandise" element={<Merchandise />} loader={productsLoader} />
-        <Route path="order-product/:id" element={<ProductItem />} loader={itemLoader} />
+        <Route path="order-product/:id" element={<OrderProduct />} loader={productLoader} />
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
         <Route path="profile" element={<ProfilePage />} />

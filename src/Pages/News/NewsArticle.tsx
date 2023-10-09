@@ -1,5 +1,5 @@
 import { useLoaderData } from 'react-router';
-import { Article } from './NewsPage';
+import { Article } from './newsLoader';
 
 export const NewsArticle = () => {
   const loaderData = useLoaderData() as Article;

@@ -1,10 +1,10 @@
 import { useLoaderData, useNavigate } from 'react-router';
-import { MerchandiseData } from './productsLoader';
+import { Merchandise } from './merchandiseLoader';
 import { Card, Carousel } from 'react-bootstrap';
 import './merchandise.scss';
 
 export const Featured: React.FC = () => {
-  const loaderData = useLoaderData() as MerchandiseData;
+  const loaderData = useLoaderData() as Merchandise;
   const featured = loaderData.featured;
   const navigate = useNavigate();
 

@@ -2,14 +2,7 @@ import { Card, Col, ListGroup, Row } from 'react-bootstrap';
 import { useLoaderData } from 'react-router';
 import { Link } from 'react-router-dom';
 import { capitaliseWords } from '../../Utils/capitaliseWords';
-
-export interface Article {
-  id: string;
-  img: string;
-  date: string;
-  title: string;
-  text: string;
-}
+import { Article } from './newsLoader';
 
 export const NewsPage = () => {
   const news = useLoaderData() as Article[];
