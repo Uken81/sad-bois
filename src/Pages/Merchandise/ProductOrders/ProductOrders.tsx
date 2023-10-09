@@ -1,10 +1,10 @@
 import { useLoaderData } from 'react-router';
 import { Card } from 'react-bootstrap';
-import { Product } from '../Merchandise/productsLoader';
+import { Product } from '../productsLoader';
 
 import './productOrders.scss';
 
-export const OrderProduct: React.FC = () => {
+export const ProductItem: React.FC = () => {
   const loaderData = useLoaderData() as Product[];
   const product: Product = loaderData[0];
 

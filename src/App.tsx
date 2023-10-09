@@ -13,13 +13,17 @@ import {
 } from 'react-router-dom';
 import './App.scss';
 import { Register } from './Pages/Login/Register';
-import { ProductsLoader } from './Pages/Merchandise/productsLoader';
-import { OrderProduct } from './Pages/ProductOrders/ProductOrders';
-import { itemLoader } from './Pages/ProductOrders/itemLoader';
+import { productsLoader } from './Pages/Merchandise/productsLoader';
+import { itemLoader } from './Pages/Merchandise/ProductOrders/itemLoader';
 import { ReactNode, useEffect, useState } from 'react';
 import { User, UserContext } from './context';
 import { ProfilePage } from './Pages/ProfilePage/ProfilePage';
 import { validateUser } from './Utils/validateUser';
+import { NewsPage } from './Pages/News/NewsPage';
+import { newsLoader } from './Pages/News/newsLoader';
+import { NewsArticle } from './Pages/News/NewsArticle';
+import { articleLoader } from './Pages/News/articleLoader';
+import { ProductItem } from './Pages/Merchandise/ProductOrders/ProductOrders';
 
 interface ChildrenProps {
   children: ReactNode;
@@ -55,8 +59,10 @@ function App() {
     createRoutesFromElements(
       <Route path="/" element={<Root />} errorElement={<ErrorPage />}>
         <Route index element={<HomePage />} />
-        <Route path="merchandise" element={<Merchandise />} loader={ProductsLoader} />
-        <Route path="order-product/:id" element={<OrderProduct />} loader={itemLoader} />
+        <Route path="news" element={<NewsPage />} loader={newsLoader} />
+        <Route path="news/:id" element={<NewsArticle />} loader={articleLoader} />
+        <Route path="merchandise" element={<Merchandise />} loader={productsLoader} />
+        <Route path="order-product/:id" element={<ProductItem />} loader={itemLoader} />
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
         <Route path="profile" element={<ProfilePage />} />

@@ -16,7 +16,7 @@ export const Navbar: React.FC = () => {
           <Link to="/">Sad Bois</Link>
         </li>
         <li>
-          <Link to="/test">The Band</Link>
+          <Link to="/news">News</Link>
         </li>
         <li>
           <Link to="/merchandise">Swag</Link>
