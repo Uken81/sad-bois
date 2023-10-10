@@ -25,10 +25,6 @@ import { articleLoader } from './Pages/News/articleLoader';
 import { productLoader } from './Pages/Merchandise/ProductOrders/productLoader';
 import { OrderProduct } from './Pages/Merchandise/ProductOrders/OrderProduct';
 
-interface ChildrenProps {
-  children: ReactNode;
-}
-
 function App() {
   const [user, setUser] = useState<User | null>(null);
   const [isValidated, setIsValidated] = useState<boolean>(false);
@@ -42,7 +38,7 @@ function App() {
     );
   };
 
-  const PrivateRoute: React.FC<ChildrenProps> = ({ children }) => {
+  const PrivateRoute: React.FC<{ children: ReactNode }> = ({ children }) => {
     useEffect(() => {
       async function checkAuth() {
         const auth = await validateUser();
@@ -52,7 +48,7 @@ function App() {
       checkAuth();
     }, []);
     console.log('auth', isValidated);
-    return isValidated ? <>{children}</> : <Navigate to="/login" />;
+    return isValidated ? <>{children}</> : <Navigate to={'/login'} />;
   };
 
   const router = createBrowserRouter(
@@ -62,12 +58,18 @@ function App() {
         <Route path="news" element={<NewsPage />} loader={newsLoader} />
         <Route path="news/:id" element={<NewsArticle />} loader={articleLoader} />
         <Route path="merchandise" element={<Merchandise />} loader={productsLoader} />
-        <Route path="order-product/:id" element={<OrderProduct />} loader={productLoader} />
+        <Route
+          path="order-product/:id"
+          loader={productLoader}
+          element={
+            <PrivateRoute>
+              <OrderProduct />
+            </PrivateRoute>
+          }></Route>
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
-        <Route path="profile" element={<ProfilePage />} />
         <Route
-          path="/private"
+          path="/profile"
           element={
             <PrivateRoute>
               <ProfilePage />
