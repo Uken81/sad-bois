@@ -47,15 +47,14 @@ function App() {
       console.log('validateUser');
       checkAuth();
     }, []);
-    console.log('auth', isValidated);
     return isValidated ? <>{children}</> : <Navigate to={'/login'} />;
   };
 
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<Root />} errorElement={<ErrorPage />}>
-        <Route index element={<HomePage />} />
-        <Route path="news" element={<NewsPage />} loader={newsLoader} />
+        <Route index element={<HomePage />} loader={newsLoader} />
+        <Route path="news" element={<NewsPage onlyLatest={false} />} loader={newsLoader} />
         <Route path="news/:id" element={<NewsArticle />} loader={articleLoader} />
         <Route path="merchandise" element={<Merchandise />} loader={productsLoader} />
         <Route
