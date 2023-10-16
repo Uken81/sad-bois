@@ -24,9 +24,9 @@ import { NewsArticle } from './Pages/News/NewsArticle';
 import { articleLoader } from './Pages/News/DataLoaders/articleLoader';
 import { productLoader } from './Pages/Merchandise/ProductOrders/productLoader';
 import { OrderProduct } from './Pages/Merchandise/ProductOrders/OrderProduct';
-import { latestNewsLoader } from './Pages/News/DataLoaders/latestNewsLoader';
 import { TourInfo } from './Pages/Tour/TourInfo';
 import { tourLoader } from './Pages/Tour/tourLoader';
+import { homepageLoader } from './Pages/HomePage/homepageLoader';
 
 function App() {
   const [user, setUser] = useState<User | null>(null);
@@ -56,7 +56,7 @@ function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<Root />} errorElement={<ErrorPage />}>
-        <Route index element={<HomePage />} loader={latestNewsLoader} />
+        <Route index element={<HomePage />} loader={homepageLoader} />
         <Route path="news" element={<NewsPage />} loader={newsLoader} />
         <Route path="news/:id" element={<NewsArticle />} loader={articleLoader} />
         <Route path="tour" element={<TourInfo />} loader={tourLoader} />

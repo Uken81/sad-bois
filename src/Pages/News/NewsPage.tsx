@@ -4,10 +4,11 @@ import { Link } from 'react-router-dom';
 import { capitaliseWords } from '../../Utils/capitaliseWords';
 import { Article } from './DataLoaders/newsLoader';
 import { format } from 'date-fns';
+import { HomepageLoader } from '../HomePage/homepageLoader';
 
 export const NewsPage: React.FC<{ latest?: Article[] }> = ({ latest }) => {
-  const loaderData = useLoaderData() as Article[];
-  const regular = loaderData;
+  const loaderData = useLoaderData() as HomepageLoader;
+  const regular = loaderData.latestNews;
   const articles = latest || regular;
 
   return (
