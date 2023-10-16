@@ -1,5 +1,5 @@
 import { useLoaderData } from 'react-router';
-import { Article } from './newsLoader';
+import { Article } from './DataLoaders/newsLoader';
 import { format } from 'date-fns';
 import { useState } from 'react';
 import { HiOutlineShare } from 'react-icons/hi2';
@@ -9,7 +9,7 @@ export const NewsArticle = () => {
   const [showOptions, setShowOptions] = useState(false);
   const loaderData = useLoaderData() as Article;
   const { id, date, title, text } = loaderData;
-  // const formattedDate = format(date, 'MM/dd/yyyy');
+  const formattedDate = format(new Date(date), 'dd/MM/yyyy');
 
   //todo: Change link value when website is published
   const link = `http://localhost:5173/news/${id}`;
@@ -20,7 +20,9 @@ export const NewsArticle = () => {
       <div>
         <h1>{title}</h1>
         <div className="date">
-          <p>{/* NEWS | <span>{formattedDate}</span> */}</p>
+          <p>
+            NEWS | <span>{formattedDate}</span>
+          </p>
         </div>
         <div>
           <HiOutlineShare onClick={() => setShowOptions(!showOptions)} />

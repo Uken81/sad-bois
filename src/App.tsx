@@ -19,16 +19,17 @@ import { User, UserContext } from './context';
 import { ProfilePage } from './Pages/ProfilePage/ProfilePage';
 import { validateUser } from './Utils/validateUser';
 import { NewsPage } from './Pages/News/NewsPage';
-import { newsLoader } from './Pages/News/newsLoader';
+import { newsLoader } from './Pages/News/DataLoaders/newsLoader';
 import { NewsArticle } from './Pages/News/NewsArticle';
-import { articleLoader } from './Pages/News/articleLoader';
+import { articleLoader } from './Pages/News/DataLoaders/articleLoader';
 import { productLoader } from './Pages/Merchandise/ProductOrders/productLoader';
 import { OrderProduct } from './Pages/Merchandise/ProductOrders/OrderProduct';
+import { latestNewsLoader } from './Pages/News/DataLoaders/latestNewsLoader';
 
 function App() {
   const [user, setUser] = useState<User | null>(null);
   const [isValidated, setIsValidated] = useState<boolean>(false);
-
+  console.log('app');
   const Root = () => {
     return (
       <>
@@ -53,8 +54,8 @@ function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<Root />} errorElement={<ErrorPage />}>
-        <Route index element={<HomePage />} loader={newsLoader} />
-        <Route path="news" element={<NewsPage onlyLatest={false} />} loader={newsLoader} />
+        <Route index element={<HomePage />} loader={latestNewsLoader} />
+        <Route path="news" element={<NewsPage />} loader={newsLoader} />
         <Route path="news/:id" element={<NewsArticle />} loader={articleLoader} />
         <Route path="merchandise" element={<Merchandise />} loader={productsLoader} />
         <Route
