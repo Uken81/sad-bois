@@ -25,6 +25,8 @@ import { articleLoader } from './Pages/News/DataLoaders/articleLoader';
 import { productLoader } from './Pages/Merchandise/ProductOrders/productLoader';
 import { OrderProduct } from './Pages/Merchandise/ProductOrders/OrderProduct';
 import { latestNewsLoader } from './Pages/News/DataLoaders/latestNewsLoader';
+import { TourInfo } from './Pages/Tour/TourInfo';
+import { tourLoader } from './Pages/Tour/tourLoader';
 
 function App() {
   const [user, setUser] = useState<User | null>(null);
@@ -57,6 +59,7 @@ function App() {
         <Route index element={<HomePage />} loader={latestNewsLoader} />
         <Route path="news" element={<NewsPage />} loader={newsLoader} />
         <Route path="news/:id" element={<NewsArticle />} loader={articleLoader} />
+        <Route path="tour" element={<TourInfo />} loader={tourLoader} />
         <Route path="merchandise" element={<Merchandise />} loader={productsLoader} />
         <Route
           path="order-product/:id"
