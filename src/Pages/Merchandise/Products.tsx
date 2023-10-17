@@ -2,11 +2,12 @@ import { Card, Col, ListGroup, Row } from 'react-bootstrap';
 import { useLoaderData, useNavigate } from 'react-router';
 import { Merchandise } from './merchandiseLoader';
 import './merchandise.scss';
-import { ProductCategories } from './Categories';
+import { useContext } from 'react';
+import { CategoryContext, CategoryContextType } from '../../context';
 
-export const Products: React.FC<{ selectedCategory: ProductCategories }> = ({
-  selectedCategory
-}) => {
+export const Products: React.FC = () => {
+  const { selectedCategory } = useContext(CategoryContext) as CategoryContextType;
+  console.log('selectedCat', selectedCategory);
   const loaderData = useLoaderData() as Merchandise;
   const merchandise = loaderData.regular;
   const displayedProducts =
@@ -22,7 +23,7 @@ export const Products: React.FC<{ selectedCategory: ProductCategories }> = ({
         return (
           <Col key={id} xs={12} sm={6} md={4} lg={4}>
             <ListGroup.Item className="item">
-              <Card onClick={() => navigate(`/order-product/${id}`)}>
+              <Card onClick={() => navigate(`/merchandise/order-product/${id}`)}>
                 <Card.Img variant="top" src={`../../../Assets/Products/${img}`} />
                 <Card.Body>
                   <Card.Title>{title}</Card.Title>

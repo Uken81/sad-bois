@@ -15,7 +15,7 @@ import './App.scss';
 import { Register } from './Pages/Login/Register';
 import { productsLoader } from './Pages/Merchandise/merchandiseLoader';
 import { ReactNode, useEffect, useState } from 'react';
-import { User, UserContext } from './context';
+import { CategoryContext, ProductCategories, User, UserContext } from './context';
 import { ProfilePage } from './Pages/ProfilePage/ProfilePage';
 import { validateUser } from './Utils/validateUser';
 import { NewsPage } from './Pages/News/NewsPage';
@@ -27,16 +27,30 @@ import { OrderProduct } from './Pages/Merchandise/ProductOrders/OrderProduct';
 import { TourInfo } from './Pages/Tour/TourInfo';
 import { tourLoader } from './Pages/Tour/tourLoader';
 import { homepageLoader } from './Pages/HomePage/homepageLoaders';
+import { Categories } from './Pages/Merchandise/Categories';
 
 function App() {
   const [user, setUser] = useState<User | null>(null);
   const [isValidated, setIsValidated] = useState<boolean>(false);
-  console.log('app');
+
   const Root = () => {
     return (
       <>
         <Navbar />
         <Outlet />
+      </>
+    );
+  };
+
+  const Store = () => {
+    const [selectedCategory, setSelectedCategory] = useState<ProductCategories>('all');
+
+    return (
+      <>
+        <CategoryContext.Provider value={{ selectedCategory, setSelectedCategory }}>
+          <Categories />
+          <Outlet />
+        </CategoryContext.Provider>
       </>
     );
   };
@@ -60,8 +74,10 @@ function App() {
         <Route path="news" element={<NewsPage />} loader={newsLoader} />
         <Route path="news/:id" element={<NewsArticle />} loader={articleLoader} />
         <Route path="tour" element={<TourInfo />} loader={tourLoader} />
-        <Route path="merchandise" element={<Merchandise />} loader={productsLoader} />
-        <Route path="order-product/:id" element={<OrderProduct />} loader={productLoader} />
+        <Route path="merchandise" element={<Store />}>
+          <Route index element={<Merchandise />} loader={productsLoader} />
+          <Route path="order-product/:id" element={<OrderProduct />} loader={productLoader} />
+        </Route>
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
         <Route

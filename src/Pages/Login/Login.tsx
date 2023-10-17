@@ -8,7 +8,7 @@ import { useContext, useState } from 'react';
 import './Login.scss';
 import { Button } from 'react-bootstrap';
 import { validateUser } from '../../Utils/validateUser';
-import { UserContext } from '../../context';
+import { UserContext, UserContextType } from '../../context';
 
 interface LoginFormValues {
   email: string;
@@ -16,7 +16,7 @@ interface LoginFormValues {
 }
 
 export const Login: React.FC = () => {
-  const { setUser } = useContext(UserContext) as UserContext;
+  const { setUser } = useContext(UserContext) as UserContextType;
   const [error, setError] = useState<FormError | undefined>(undefined);
   const navigate = useNavigate();
 
