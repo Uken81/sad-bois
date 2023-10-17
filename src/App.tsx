@@ -61,14 +61,7 @@ function App() {
         <Route path="news/:id" element={<NewsArticle />} loader={articleLoader} />
         <Route path="tour" element={<TourInfo />} loader={tourLoader} />
         <Route path="merchandise" element={<Merchandise />} loader={productsLoader} />
-        <Route
-          path="order-product/:id"
-          loader={productLoader}
-          element={
-            <PrivateRoute>
-              <OrderProduct />
-            </PrivateRoute>
-          }></Route>
+        <Route path="order-product/:id" element={<OrderProduct />} loader={productLoader} />
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
         <Route

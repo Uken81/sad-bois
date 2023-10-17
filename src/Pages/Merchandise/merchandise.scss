@@ -16,7 +16,11 @@ main {
 
   .products {
     .product {
-      width: 250px;
+      // width: 250px;
+    }
+
+    .item {
+      min-width: 250px;
     }
   }
 }
