@@ -1,11 +1,13 @@
 import { Table } from 'react-bootstrap';
 import { useLoaderData } from 'react-router';
-import { Tour } from './tourLoader';
+import { Tour } from './DataLoaders/tourLoader';
 import { format } from 'date-fns';
 
-export const TourInfo: React.FC = () => {
-  const shows = useLoaderData() as Tour[];
-  console.log('loaderT', shows);
+export const TourInfo: React.FC<{ latest?: Tour[] }> = ({ latest }) => {
+  const loaderData = useLoaderData() as Tour[];
+  const all = loaderData;
+  const shows = latest || all;
+
   return (
     <main>
       <h1>UPCOMING SHOWS</h1>

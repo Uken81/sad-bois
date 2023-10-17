@@ -25,7 +25,7 @@ import { articleLoader } from './Pages/News/DataLoaders/articleLoader';
 import { productLoader } from './Pages/Merchandise/ProductOrders/productLoader';
 import { OrderProduct } from './Pages/Merchandise/ProductOrders/OrderProduct';
 import { TourInfo } from './Pages/Tour/TourInfo';
-import { tourLoader } from './Pages/Tour/tourLoader';
+import { tourLoader } from './Pages/Tour/DataLoaders/tourLoader';
 import { homepageLoader } from './Pages/HomePage/homepageLoader';
 
 function App() {

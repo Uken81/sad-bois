@@ -1,15 +1,16 @@
 import { latestNewsLoader } from '../News/DataLoaders/latestNewsLoader';
 import { Article } from '../News/DataLoaders/newsLoader';
-import { Tour, tourLoader } from '../Tour/tourLoader';
+import { latestShowLoader } from '../Tour/DataLoaders/latestShowLoader';
+import { Tour } from '../Tour/DataLoaders/tourLoader';
 
 export interface HomepageLoader {
-  latestNews: Article[];
-  tour: Tour[];
+  latestNewsData: Article[];
+  latestShowsData: Tour[];
 }
 
 export const homepageLoader = async () => {
   const latestNewsData = await latestNewsLoader();
-  const tourData = await tourLoader();
+  const latestShowsData = await latestShowLoader();
 
-  return { latestNewsData, tourData };
+  return { latestNewsData, latestShowsData };
 };
