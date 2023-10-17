@@ -1,6 +1,6 @@
 import { Table } from 'react-bootstrap';
 import { useLoaderData } from 'react-router';
-import { Tour } from './DataLoaders/tourLoader';
+import { Tour } from './tourLoader';
 import { format } from 'date-fns';
 
 export const TourInfo: React.FC<{ latest?: Tour[] }> = ({ latest }) => {
@@ -11,7 +11,6 @@ export const TourInfo: React.FC<{ latest?: Tour[] }> = ({ latest }) => {
   return (
     <main>
       <h1>UPCOMING SHOWS</h1>
-
       <Table variant="dark" hover>
         <thead>
           <tr>

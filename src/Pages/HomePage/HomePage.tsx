@@ -1,26 +1,25 @@
-import { useLoaderData, useNavigate } from 'react-router';
+import { useLoaderData } from 'react-router';
 import { NewsPage } from '../News/NewsPage';
 import { Banner } from './Banner';
 import './homePage.scss';
-import { HomepageLoader } from './homepageLoader';
+import { HomepageLoader } from './homepageLoaders';
 import { TourInfo } from '../Tour/TourInfo';
+import { SeeAllLink } from './SeeAllLink';
 
 export const HomePage: React.FC = () => {
   const homepageLoader = useLoaderData() as HomepageLoader;
-  console.log('HPL', homepageLoader);
   const latestNews = homepageLoader.latestNewsData;
   const latestShows = homepageLoader.latestShowsData;
-  const navigate = useNavigate();
 
   return (
     <main>
       <Banner />
       <section>
-        <span onClick={() => navigate('/news')}>SEE ALL NEWS</span>
+        <SeeAllLink to="/news" text="SEE ALL NEWS" />
         <NewsPage latest={latestNews} />
       </section>
       <section>
-        <span onClick={() => navigate('/tour')}>SEE ALL SHOWS</span>
+        <SeeAllLink to="/tour" text="SEE ALL SHOWS" />
         <TourInfo latest={latestShows} />
       </section>
     </main>
