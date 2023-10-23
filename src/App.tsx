@@ -23,7 +23,7 @@ import { newsLoader } from './Pages/News/DataLoaders/newsLoader';
 import { NewsArticle } from './Pages/News/NewsArticle';
 import { articleLoader } from './Pages/News/DataLoaders/articleLoader';
 import { productLoader } from './Pages/Merchandise/ProductOrders/productLoader';
-import { OrderProduct } from './Pages/Merchandise/ProductOrders/OrderProduct';
+import { AddToCart, OrderProduct } from './Pages/Merchandise/ProductOrders/AddToCart';
 import { TourInfo } from './Pages/Tour/TourInfo';
 import { tourLoader } from './Pages/Tour/tourLoader';
 import { homepageLoader } from './Pages/HomePage/homepageLoaders';
@@ -76,7 +76,7 @@ function App() {
         <Route path="tour" element={<TourInfo />} loader={tourLoader} />
         <Route path="merchandise" element={<Store />}>
           <Route index element={<Merchandise />} loader={productsLoader} />
-          <Route path="order-product/:id" element={<OrderProduct />} loader={productLoader} />
+          <Route path="order-product/:id" element={<AddToCart />} loader={productLoader} />
         </Route>
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
