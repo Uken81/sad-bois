@@ -23,7 +23,7 @@ import { newsLoader } from './Pages/News/DataLoaders/newsLoader';
 import { NewsArticle } from './Pages/News/NewsArticle';
 import { articleLoader } from './Pages/News/DataLoaders/articleLoader';
 import { productLoader } from './Pages/Merchandise/ProductOrders/productLoader';
-import { AddToCart, OrderProduct } from './Pages/Merchandise/ProductOrders/AddToCart';
+import { AddToCart } from './Pages/Merchandise/ProductOrders/AddToCart';
 import { TourInfo } from './Pages/Tour/TourInfo';
 import { tourLoader } from './Pages/Tour/tourLoader';
 import { homepageLoader } from './Pages/HomePage/homepageLoaders';

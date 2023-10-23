@@ -1,28 +1,39 @@
 import { Dispatch } from 'react';
 import { Dropdown, DropdownButton } from 'react-bootstrap';
-import { ProductOrder } from './AddToCart';
 export type Size = 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl';
 
 export const SizeDropdown: React.FC<{
-  setProductOrder: Dispatch<React.SetStateAction<ProductOrder>>;
-  selectedSize: string;
-}> = ({ setProductOrder, selectedSize }) => {
-  const size = selectedSize.toUpperCase();
+  setSize: Dispatch<React.SetStateAction<Size | undefined>>;
+  size: string | undefined;
+  display: boolean;
+}> = ({ setSize, size, display }) => {
+  const title = size ? size.toUpperCase() : '-';
+
   function isSize(eventKey: string): eventKey is Size {
     return ['xs', 's', 'm', 'l', 'xl', 'xxl'].includes(eventKey);
   }
 
   const handleSelect = (eventKey: string | null) => {
     if (eventKey && isSize(eventKey)) {
-      setProductOrder((prev) => ({
-        ...prev,
-        size: eventKey
-      }));
+      setSize(eventKey);
     }
   };
+  //   const handleSelect = (eventKey: string | null) => {
+  //     if (eventKey && isSize(eventKey)) {
+  //       setSize(eventKey);
+  //     }
+  //   };
+  //   const handleSelect = (eventKey: string | null) => {
+  //     if (eventKey && isSize(eventKey)) {
+  //       setProductOrder((prev) => ({
+  //         ...prev,
+  //         size: eventKey
+  //       }));
+  //     }
+  //   };
 
-  return (
-    <DropdownButton id="dropdown-item-button" title={size} onSelect={handleSelect}>
+  return display ? (
+    <DropdownButton id="dropdown-item-button" title={title} onSelect={handleSelect}>
       <Dropdown.Item eventKey="xs">XS</Dropdown.Item>
       <Dropdown.Item eventKey="s">S</Dropdown.Item>
       <Dropdown.Item eventKey="m">M</Dropdown.Item>
@@ -30,5 +41,5 @@ export const SizeDropdown: React.FC<{
       <Dropdown.Item eventKey="xl">XL</Dropdown.Item>
       <Dropdown.Item eventKey="xxl">XXL</Dropdown.Item>
     </DropdownButton>
-  );
+  ) : null;
 };
