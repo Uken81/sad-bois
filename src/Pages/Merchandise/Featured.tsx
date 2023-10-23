@@ -12,7 +12,9 @@ export const Featured: React.FC = () => {
   return (
     <Carousel className="featured" slide>
       {featured.map((product) => (
-        <Carousel.Item key={product.id} onClick={() => navigate(`/order-product/${product.id}`)}>
+        <Carousel.Item
+          key={product.id}
+          onClick={() => navigate(`/merchandise/add-to-cart/${product.id}`)}>
           <Card>
             <Card.Img
               className="card-img"

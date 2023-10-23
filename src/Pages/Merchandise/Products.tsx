@@ -23,7 +23,7 @@ export const Products: React.FC = () => {
         return (
           <Col key={id} xs={12} sm={6} md={4} lg={4}>
             <ListGroup.Item className="item">
-              <Card onClick={() => navigate(`/merchandise/order-product/${id}`)}>
+              <Card onClick={() => navigate(`/merchandise/add-to-cart/${id}`)}>
                 <Card.Img variant="top" src={`../../../Assets/Products/${img}`} />
                 <Card.Body>
                   <Card.Title>{title}</Card.Title>

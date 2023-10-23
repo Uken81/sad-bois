@@ -1,4 +1,5 @@
 import React, { Dispatch, SetStateAction, createContext } from 'react';
+import { ProductOrder } from './Pages/Merchandise/ProductOrders/AddToCart';
 
 //UserContext
 export interface User {
@@ -24,3 +25,15 @@ export interface CategoryContextType {
 }
 
 export const CategoryContext = createContext<CategoryContextType | null>(null);
+
+//CartContext
+export interface CartContextType {
+  cart: CartType | undefined;
+  setCart: React.Dispatch<React.SetStateAction<CartType | undefined>>;
+}
+export interface CartType {
+  items: ProductOrder[];
+  subtotal: number;
+}
+
+export const CartContext = createContext<CartContextType | undefined>(undefined);

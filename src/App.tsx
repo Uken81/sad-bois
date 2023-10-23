@@ -15,7 +15,14 @@ import './App.scss';
 import { Register } from './Pages/Login/Register';
 import { productsLoader } from './Pages/Merchandise/merchandiseLoader';
 import { ReactNode, useEffect, useState } from 'react';
-import { CategoryContext, ProductCategories, User, UserContext } from './context';
+import {
+  CartContext,
+  CartType,
+  CategoryContext,
+  ProductCategories,
+  User,
+  UserContext
+} from './context';
 import { ProfilePage } from './Pages/ProfilePage/ProfilePage';
 import { validateUser } from './Utils/validateUser';
 import { NewsPage } from './Pages/News/NewsPage';
@@ -32,6 +39,7 @@ import { Categories } from './Pages/Merchandise/Categories';
 function App() {
   const [user, setUser] = useState<User | null>(null);
   const [isValidated, setIsValidated] = useState<boolean>(false);
+  const [cart, setCart] = useState<CartType | undefined>(undefined);
 
   const Root = () => {
     return (
@@ -76,7 +84,7 @@ function App() {
         <Route path="tour" element={<TourInfo />} loader={tourLoader} />
         <Route path="merchandise" element={<Store />}>
           <Route index element={<Merchandise />} loader={productsLoader} />
-          <Route path="order-product/:id" element={<AddToCart />} loader={productLoader} />
+          <Route path="add-to-cart/:id" element={<AddToCart />} loader={productLoader} />
         </Route>
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
@@ -95,7 +103,9 @@ function App() {
   return (
     <>
       <UserContext.Provider value={{ user, setUser }}>
-        <RouterProvider router={router} />
+        <CartContext.Provider value={{ cart, setCart }}>
+          <RouterProvider router={router} />
+        </CartContext.Provider>
       </UserContext.Provider>
     </>
   );
