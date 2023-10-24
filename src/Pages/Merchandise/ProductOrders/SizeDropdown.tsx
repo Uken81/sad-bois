@@ -18,19 +18,6 @@ export const SizeDropdown: React.FC<{
       setSize(eventKey);
     }
   };
-  //   const handleSelect = (eventKey: string | null) => {
-  //     if (eventKey && isSize(eventKey)) {
-  //       setSize(eventKey);
-  //     }
-  //   };
-  //   const handleSelect = (eventKey: string | null) => {
-  //     if (eventKey && isSize(eventKey)) {
-  //       setProductOrder((prev) => ({
-  //         ...prev,
-  //         size: eventKey
-  //       }));
-  //     }
-  //   };
 
   return display ? (
     <DropdownButton id="dropdown-item-button" title={title} onSelect={handleSelect}>

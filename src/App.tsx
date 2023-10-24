@@ -35,6 +35,8 @@ import { TourInfo } from './Pages/Tour/TourInfo';
 import { tourLoader } from './Pages/Tour/tourLoader';
 import { homepageLoader } from './Pages/HomePage/homepageLoaders';
 import { Categories } from './Pages/Merchandise/Categories';
+import { Cart } from './Pages/Merchandise/ProductOrders/Cart';
+import { Test } from './Pages/Test';
 
 function App() {
   const [user, setUser] = useState<User | null>(null);
@@ -80,12 +82,14 @@ function App() {
       <Route path="/" element={<Root />} errorElement={<ErrorPage />}>
         <Route index element={<HomePage />} loader={homepageLoader} />
         <Route path="news" element={<NewsPage />} loader={newsLoader} />
+        <Route path="test" element={<Test />} />
         <Route path="news/:id" element={<NewsArticle />} loader={articleLoader} />
         <Route path="tour" element={<TourInfo />} loader={tourLoader} />
         <Route path="merchandise" element={<Store />}>
           <Route index element={<Merchandise />} loader={productsLoader} />
           <Route path="add-to-cart/:id" element={<AddToCart />} loader={productLoader} />
         </Route>
+        <Route path="cart" element={<Cart />} />
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
         <Route

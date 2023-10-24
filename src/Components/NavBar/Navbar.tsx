@@ -13,6 +13,9 @@ export const Navbar: React.FC = () => {
     <nav>
       <ul>
         <li className="home">
+          <Link to="/test">test</Link>
+        </li>
+        <li className="home">
           <Link to="/">Sad Bois</Link>
         </li>
         <li>

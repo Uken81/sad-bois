@@ -6,34 +6,42 @@ import { Size, SizeDropdown } from './SizeDropdown';
 import { Quantity } from './Quantity';
 import { Button } from 'react-bootstrap';
 import { CartContext, CartContextType } from '../../../context';
+import shortid from 'shortid';
 
 export interface ProductOrder {
-  id: string;
+  orderId: string;
+  productId: string;
+  name: string;
   size?: Size | undefined;
+  price: number;
   //Todo: Add color?
   quantity: number;
   cost: number;
 }
 
-// export interface Cart {
-//   items: ProductOrder[];
-//   subtotal: number;
-// }
-
 export const AddToCart: React.FC = () => {
   const loaderData = useLoaderData() as Product;
   const { id, img, title, subtitle, price, category } = loaderData;
   const { cart, setCart } = useContext(CartContext) as CartContextType;
-  // const [cart, setCart] = useState<Cart | undefined>(undefined);
   const [size, setSize] = useState<Size | undefined>(undefined);
   const [quantity, setQuantity] = useState(1);
-  const [orderAdded, setOrderAdded] = useState(false);
+  const [orderAdded, setOrderAdded] = useState<boolean>(false);
+  const [isTrue, setIsTrue] = useState(false);
   const navigate = useNavigate();
 
   const displayDropdown = category === 'clothing';
 
-  const handleSubmit = () => {
-    const newOrder: ProductOrder = { id, size, quantity, cost: price * quantity };
+  const addOrder = async () => {
+    const orderId = shortid.generate();
+    const newOrder: ProductOrder = {
+      orderId,
+      productId: id,
+      name: title,
+      size,
+      quantity,
+      price,
+      cost: price * quantity
+    };
 
     setCart((prevCart) => {
       if (!prevCart) {
@@ -50,8 +58,18 @@ export const AddToCart: React.FC = () => {
         subtotal: prevCart.subtotal + price * quantity
       };
     });
+  };
 
+  const handleSubmit = () => {
     setOrderAdded(true);
+
+    // await tru();
+    addOrder();
+    // setOrderAdded(true);
+
+    //try seperating into a function
+
+    console.log('set');
   };
 
   useEffect(() => {
@@ -59,7 +77,8 @@ export const AddToCart: React.FC = () => {
       console.log('no cart');
       return;
     }
-
+    // setIsTrue(true);
+    // addOrder();
     const cartData = JSON.stringify(cart);
     localStorage.setItem('cart', cartData);
 
@@ -67,16 +86,25 @@ export const AddToCart: React.FC = () => {
   }, [cart]);
 
   useEffect(() => {
-    console.log('size', size);
-    console.log('quantity', quantity);
+    // console.log('size', size);
+    // console.log('quantity', quantity);
+    console.log('orderAdded', orderAdded);
     console.log('cart', cart);
-  }, [quantity, size, cart]);
+  }, [quantity, size, cart, orderAdded]);
 
-  const button = orderAdded ? (
-    <Button onClick={() => navigate('/')}>VIEW CART</Button>
-  ) : (
-    <Button onClick={handleSubmit}>ADD TO CART</Button>
-  );
+  useEffect(() => {
+    console.log('AddToCart mounted');
+
+    return () => {
+      console.log('AddToCart unmounted');
+    };
+  }, []);
+
+  // const button = orderAdded ? (
+  //   <Button onClick={() => navigate('/cart')}>VIEW CART</Button>
+  // ) : (
+
+  // );
 
   return (
     <div>
@@ -93,7 +121,15 @@ export const AddToCart: React.FC = () => {
         <SizeDropdown setSize={setSize} size={size} display={displayDropdown} />
         <Quantity setQuantity={setQuantity} />
       </div>
-      <div>{button}</div>
+
+      <div>
+        {orderAdded ? (
+          <Button onClick={() => navigate('/cart')}>VIEW CART</Button>
+        ) : (
+          <Button onClick={handleSubmit}>ADD TO CART</Button>
+        )}
+      </div>
+      <Button onClick={() => navigate('/cart')}>VIEW CART</Button>
     </div>
   );
 };
