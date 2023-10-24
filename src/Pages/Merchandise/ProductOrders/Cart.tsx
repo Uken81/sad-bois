@@ -16,9 +16,8 @@ export const Cart = () => {
   const [subtotal] = useState(cart?.subtotal || 0);
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
-  //   const [hasAgreed, setHasAgreed] = useState(false);
   let hasAgreed = false;
-  console.log('carty', cart?.items);
+
   useEffect(() => {
     console.log('AddToCart mounted');
 
@@ -36,22 +35,21 @@ export const Cart = () => {
       subtotal: prev?.subtotal || 0
     }));
   };
+
   const proceedToCheckout = () => {
     if (!hasAgreed) {
       setShowModal(true);
-      //   return;
-    } else {
-      navigate('/checkout');
+      return;
     }
+
+    navigate('/checkout');
   };
 
   useEffect(() => {
     console.log('sub', subtotal);
     console.log('show', showModal);
   });
-  const con = () => {
-    console.log('agg', hasAgreed);
-  };
+
   const formattedSubtotal = currencyFormatter.format(subtotal);
 
   return (
@@ -106,12 +104,10 @@ export const Cart = () => {
         <Button onClick={() => navigate('/merchandise')}>CONTINUE SHOPPING</Button>
       </div>
       <div>
-        {/* <Form.Check onChange={() => () => setHasAgreed(!hasAgreed)} aria-label="terms" /> */}
         <Form.Check onChange={() => (hasAgreed = !hasAgreed)} aria-label="terms" />
         <p>By making this purchase I agree to the terms and conditions.</p>
       </div>
       <Button onClick={proceedToCheckout}>CHECKOUT</Button>
-      <Button onClick={con}>con</Button>
     </div>
   );
 };
