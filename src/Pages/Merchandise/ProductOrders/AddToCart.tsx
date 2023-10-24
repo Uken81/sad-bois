@@ -26,7 +26,6 @@ export const AddToCart: React.FC = () => {
   const [size, setSize] = useState<Size | undefined>(undefined);
   const [quantity, setQuantity] = useState(1);
   const [orderAdded, setOrderAdded] = useState<boolean>(false);
-  const [isTrue, setIsTrue] = useState(false);
   const navigate = useNavigate();
 
   const displayDropdown = category === 'clothing';
@@ -77,8 +76,7 @@ export const AddToCart: React.FC = () => {
       console.log('no cart');
       return;
     }
-    // setIsTrue(true);
-    // addOrder();
+
     const cartData = JSON.stringify(cart);
     localStorage.setItem('cart', cartData);
 
@@ -88,7 +86,7 @@ export const AddToCart: React.FC = () => {
   useEffect(() => {
     // console.log('size', size);
     // console.log('quantity', quantity);
-    console.log('orderAdded', orderAdded);
+    // console.log('orderAdded', orderAdded);
     console.log('cart', cart);
   }, [quantity, size, cart, orderAdded]);
 
@@ -99,13 +97,7 @@ export const AddToCart: React.FC = () => {
       console.log('AddToCart unmounted');
     };
   }, []);
-
-  // const button = orderAdded ? (
-  //   <Button onClick={() => navigate('/cart')}>VIEW CART</Button>
-  // ) : (
-
-  // );
-
+  console.log('orderAdded', orderAdded);
   return (
     <div>
       <div>
