@@ -15,14 +15,7 @@ import './App.scss';
 import { Register } from './Pages/Login/Register';
 import { productsLoader } from './Pages/Merchandise/merchandiseLoader';
 import { ReactNode, useEffect, useState } from 'react';
-import {
-  CartContext,
-  CartType,
-  CategoryContext,
-  ProductCategories,
-  User,
-  UserContext
-} from './context';
+import { CategoryContext, ProductCategories, User, UserContext } from './context';
 import { ProfilePage } from './Pages/ProfilePage/ProfilePage';
 import { validateUser } from './Utils/validateUser';
 import { NewsPage } from './Pages/News/NewsPage';
@@ -36,12 +29,12 @@ import { tourLoader } from './Pages/Tour/tourLoader';
 import { homepageLoader } from './Pages/HomePage/homepageLoaders';
 import { Categories } from './Pages/Merchandise/Categories';
 import { Cart } from './Pages/Merchandise/ProductOrders/Cart';
-import { Test } from './Pages/Test';
+import { CheckoutDetails } from './Pages/Merchandise/ProductOrders/CheckoutDetails';
+import { CartContextProvider } from './Context/CartContext';
 
 function App() {
   const [user, setUser] = useState<User | null>(null);
   const [isValidated, setIsValidated] = useState<boolean>(false);
-  const [cart, setCart] = useState<CartType | undefined>(undefined);
 
   const Root = () => {
     return (
@@ -65,6 +58,15 @@ function App() {
     );
   };
 
+  const Checkout = () => {
+    return (
+      <>
+        <Navbar />
+        <Outlet />
+      </>
+    );
+  };
+
   const PrivateRoute: React.FC<{ children: ReactNode }> = ({ children }) => {
     useEffect(() => {
       async function checkAuth() {
@@ -82,14 +84,16 @@ function App() {
       <Route path="/" element={<Root />} errorElement={<ErrorPage />}>
         <Route index element={<HomePage />} loader={homepageLoader} />
         <Route path="news" element={<NewsPage />} loader={newsLoader} />
-        <Route path="test" element={<Test />} />
         <Route path="news/:id" element={<NewsArticle />} loader={articleLoader} />
         <Route path="tour" element={<TourInfo />} loader={tourLoader} />
         <Route path="merchandise" element={<Store />}>
           <Route index element={<Merchandise />} loader={productsLoader} />
           <Route path="add-to-cart/:id" element={<AddToCart />} loader={productLoader} />
+          <Route path="cart" element={<Cart />} />
         </Route>
-        <Route path="cart" element={<Cart />} />
+        <Route path="checkout" element={<Checkout />}>
+          <Route path="details" element={<CheckoutDetails />} />
+        </Route>
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
         <Route
@@ -107,9 +111,9 @@ function App() {
   return (
     <>
       <UserContext.Provider value={{ user, setUser }}>
-        <CartContext.Provider value={{ cart, setCart }}>
+        <CartContextProvider>
           <RouterProvider router={router} />
-        </CartContext.Provider>
+        </CartContextProvider>
       </UserContext.Provider>
     </>
   );

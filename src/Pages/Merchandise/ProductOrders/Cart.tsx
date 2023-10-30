@@ -1,30 +1,15 @@
 import { useContext, useEffect, useState } from 'react';
-import { CartContext, CartContextType } from '../../../context';
-import { ProductOrder } from './AddToCart';
 import { Button, Form, Modal } from 'react-bootstrap';
 import { useNavigate } from 'react-router';
 import { currencyFormatter } from '../../../Utils/formatCurency';
-
-export interface CartType {
-  items: ProductOrder[];
-  subtotal: number;
-}
+import { CartContext, CartContextType } from '../../../Context/CartContext';
 
 export const Cart = () => {
   const { cart, setCart } = useContext(CartContext) as CartContextType;
-  const [cartItems, setCartItems] = useState(cart?.items);
-  const [subtotal] = useState(cart?.subtotal || 0);
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
+  const formattedSubtotal = currencyFormatter.format(cart?.subtotal ?? 0);
   let hasAgreed = false;
-
-  useEffect(() => {
-    console.log('AddToCart mounted');
-
-    return () => {
-      console.log('AddToCart unmounted');
-    };
-  }, []);
 
   const removeOrder = (id: string) => {
     const filteredArr = cart?.items?.filter((item) => item.orderId !== id) || [];
@@ -42,19 +27,33 @@ export const Cart = () => {
       return;
     }
 
-    navigate('/checkout');
+    navigate('/checkout/details');
+  };
+
+  const getLocalCart = () => {
+    const localCart = localStorage.getItem('cart');
+    if (localCart) {
+      console.log('setCart');
+      setCart(JSON.parse(localCart));
+    }
   };
 
   useEffect(() => {
-    console.log('sub', subtotal);
-    console.log('show', showModal);
-  });
+    if (cart) {
+      return;
+    }
+    getLocalCart();
+  }, []);
 
-  const formattedSubtotal = currencyFormatter.format(subtotal);
+  useEffect(() => {
+    console.log('sub', cart?.subtotal);
+    // console.log('show', showModal);
+    console.log('cartInCart', cart);
+  });
 
   return (
     <div>
-      {cartItems?.map((item) => {
+      {cart?.items?.map((item) => {
         const { orderId, name, size, quantity, price, cost } = item;
         const formattedPrice = currencyFormatter.format(price);
         const formattedCost = currencyFormatter.format(cost);

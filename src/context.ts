@@ -1,5 +1,4 @@
 import React, { Dispatch, SetStateAction, createContext } from 'react';
-import { CartType } from './Pages/Merchandise/ProductOrders/Cart';
 
 //UserContext
 export interface User {
@@ -25,12 +24,3 @@ export interface CategoryContextType {
 }
 
 export const CategoryContext = createContext<CategoryContextType | null>(null);
-
-//CartContext
-
-export interface CartContextType {
-  cart: CartType | undefined;
-  setCart: React.Dispatch<React.SetStateAction<CartType | undefined>>;
-}
-
-export const CartContext = createContext<CartContextType | undefined>(undefined);
