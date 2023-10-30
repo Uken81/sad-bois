@@ -31,6 +31,8 @@ import { Categories } from './Pages/Merchandise/Categories';
 import { Cart } from './Pages/Merchandise/ProductOrders/Cart';
 import { CheckoutDetails } from './Pages/Merchandise/ProductOrders/CheckoutDetails';
 import { CartContextProvider } from './Context/CartContext';
+import { OrderSummary } from './Pages/Merchandise/ProductOrders/OrderSummary';
+import './Pages/Merchandise/ProductOrders/checkout.scss';
 
 function App() {
   const [user, setUser] = useState<User | null>(null);
@@ -60,10 +62,10 @@ function App() {
 
   const Checkout = () => {
     return (
-      <>
-        <Navbar />
+      <div className="checkout">
         <Outlet />
-      </>
+        <OrderSummary />
+      </div>
     );
   };
 

@@ -2,6 +2,7 @@ import { Formik, Form, Field } from 'formik';
 import { CustomFieldInput, CustomInput } from '../../../Components/Forms/Inputs/CustomInput';
 import { SubmitButton } from '../../../Components/Forms/SubmitButton';
 import { useNavigate } from 'react-router';
+import './checkout.scss';
 //change this to current form
 interface LoginFormValues {
   email: string;
@@ -32,7 +33,7 @@ export const CheckoutDetails = () => {
   };
 
   return (
-    <div className="container mt-5">
+    <main>
       <h4>Contact</h4>
       <Formik
         initialValues={{
@@ -82,6 +83,6 @@ export const CheckoutDetails = () => {
           </Form>
         )}
       </Formik>
-    </div>
+    </main>
   );
 };

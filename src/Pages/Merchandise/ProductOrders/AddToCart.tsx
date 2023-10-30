@@ -13,6 +13,7 @@ export interface ProductOrder {
   orderId: string;
   productId: string;
   name: string;
+  img: string;
   size?: Size | undefined;
   price: number;
   //Todo: Add color?
@@ -38,6 +39,7 @@ export const AddToCart: React.FC = () => {
       orderId,
       productId: id,
       name: subtitle,
+      img,
       size,
       quantity,
       price,
