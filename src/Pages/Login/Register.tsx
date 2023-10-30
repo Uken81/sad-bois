@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router';
 
 import * as Yup from 'yup';
 import { Form, Formik } from 'formik';
-import { FormError, TextInput } from '../../Components/Forms/Inputs/TextInput';
+import { CustomInput, FormError } from '../../Components/Forms/Inputs/CustomInput';
 import { SubmitButton } from '../../Components/Forms/SubmitButton';
 import './Login.scss';
 import { useState } from 'react';
@@ -87,20 +87,20 @@ export const Register: React.FC = () => {
       {(formik) => (
         <Form>
           <div className="input-fields">
-            <TextInput
+            <CustomInput
               name="email"
               type="email"
               label="Email"
               error={isEmailError ? error.message : undefined}
             />
-            <TextInput name="username" type="text" label="Username" error={undefined} />
-            <TextInput
+            <CustomInput name="username" type="text" label="Username" error={undefined} />
+            <CustomInput
               name="password"
               type="password"
               label="Password"
               error={isPasswordError ? error.message : undefined}
             />
-            <TextInput
+            <CustomInput
               name="confirmedPassword"
               type="password"
               label="Confirm Password"

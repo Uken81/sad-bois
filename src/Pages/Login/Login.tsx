@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router';
 import * as Yup from 'yup';
 import { Form, Formik } from 'formik';
-import { FormError, TextInput } from '../../Components/Forms/Inputs/TextInput';
+import { CustomInput, FormError } from '../../Components/Forms/Inputs/CustomInput';
 import { SubmitButton } from '../../Components/Forms/SubmitButton';
 import { Link } from 'react-router-dom';
 import { useContext, useState } from 'react';
@@ -89,13 +89,13 @@ export const Login: React.FC = () => {
         {(formik) => (
           <Form>
             <div className="input-fields">
-              <TextInput
+              <CustomInput
                 name="email"
                 type="email"
                 label="Email"
                 error={isEmailError ? error.message : undefined}
               />
-              <TextInput
+              <CustomInput
                 name="password"
                 type="password"
                 label="Password"
