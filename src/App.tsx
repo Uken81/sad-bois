@@ -32,7 +32,9 @@ import { Cart } from './Pages/Merchandise/ProductOrders/Cart';
 import { CheckoutDetails } from './Pages/Merchandise/Checkout/CheckoutDetails';
 import { CartContextProvider } from './Context/CartContext';
 import { OrderSummary } from './Pages/Merchandise/Checkout/OrderSummary';
-import './Pages/Merchandise/ProductOrders/checkout.scss';
+import './Pages/Merchandise/Checkout/checkout.scss';
+import { Shipping } from './Pages/Merchandise/Checkout/Shipping';
+import { CustomerContextProvider } from './Context/CustomerContext';
 
 function App() {
   const [user, setUser] = useState<User | null>(null);
@@ -95,6 +97,7 @@ function App() {
         </Route>
         <Route path="checkout" element={<Checkout />}>
           <Route path="details" element={<CheckoutDetails />} />
+          <Route path="shipping" element={<Shipping />} />
         </Route>
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
@@ -114,7 +117,9 @@ function App() {
     <>
       <UserContext.Provider value={{ user, setUser }}>
         <CartContextProvider>
-          <RouterProvider router={router} />
+          <CustomerContextProvider>
+            <RouterProvider router={router} />
+          </CustomerContextProvider>
         </CartContextProvider>
       </UserContext.Provider>
     </>

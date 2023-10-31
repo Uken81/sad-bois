@@ -1,9 +1,21 @@
 .checkout {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  // justify-content: center;
   main {
+    display: flex;
+    flex-direction: column;
     width: 60%;
+
+    form {
+      // display: flex;
+      // flex-direction: column;
+
+      button {
+        //what is pushing this to left??
+        margin-right: 0%;
+      }
+    }
   }
 
   aside {

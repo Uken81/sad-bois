@@ -1,15 +1,23 @@
 import { Formik, Form } from 'formik';
 import { CustomInput } from '../../../Components/Forms/Inputs/CustomInput';
 import { SubmitButton } from '../../../Components/Forms/SubmitButton';
-// import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router';
 import './checkout.scss';
-//change this to current form
-interface LoginFormValues {
+import { useContext, useEffect } from 'react';
+import {
+  CustomerContext,
+  CustomerContextType,
+  CustomerType
+} from '../../../Context/CustomerContext';
+import shortid from 'shortid';
+
+interface DetailsFormType {
+  id: string;
   email: string;
   emailoffers: boolean;
-  country: string;
   firstname: string;
   lastname: string;
+  country: string;
   address: string;
   apartment: string;
   suburb: string;
@@ -18,20 +26,27 @@ interface LoginFormValues {
 }
 
 export const CheckoutDetails = () => {
-  // const navigate = useNavigate();
+  const { customer, setCustomer } = useContext(CustomerContext) as CustomerContextType;
+  const navigate = useNavigate();
   //Todo: Create more countries and states or use library if possible.
   const countries = ['Australia', 'USA'];
   const states = ['VIC', 'NSW'];
 
   const handleSubmit = (
-    values: LoginFormValues,
+    // values: LoginFormValues,
+    values: DetailsFormType,
     setSubmitting: (isSubmitting: boolean) => void
   ) => {
     //Todo: Create customer and send to db.
-    // navigate('/shipping');
-    console.log('values', values);
-  };
+    const customerId = shortid.generate();
 
+    setCustomer({ ...values, id: customerId });
+    // navigate('/checkout/shipping');
+    // console.log('values', values);
+  };
+  useEffect(() => {
+    console.log('customerDeets', customer);
+  }, [customer]);
   //Todo: Add validation schema.
   return (
     <main>
