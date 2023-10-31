@@ -29,9 +29,9 @@ import { tourLoader } from './Pages/Tour/tourLoader';
 import { homepageLoader } from './Pages/HomePage/homepageLoaders';
 import { Categories } from './Pages/Merchandise/Categories';
 import { Cart } from './Pages/Merchandise/ProductOrders/Cart';
-import { CheckoutDetails } from './Pages/Merchandise/ProductOrders/CheckoutDetails';
+import { CheckoutDetails } from './Pages/Merchandise/Checkout/CheckoutDetails';
 import { CartContextProvider } from './Context/CartContext';
-import { OrderSummary } from './Pages/Merchandise/ProductOrders/OrderSummary';
+import { OrderSummary } from './Pages/Merchandise/Checkout/OrderSummary';
 import './Pages/Merchandise/ProductOrders/checkout.scss';
 
 function App() {
