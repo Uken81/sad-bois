@@ -1,6 +1,10 @@
 import { CartType } from '../../../Context/CartContext';
 
-export const createOrUpdateLocalCart = (cart: CartType) => {
+export const createOrUpdateLocalCart = (cart: CartType | undefined) => {
+  if (!cart) {
+    console.log('Passed undefined cart to CreateOrUpdateLocalCart.');
+    return;
+  }
   const cartData = JSON.stringify(cart);
   localStorage.setItem('cart', cartData);
 

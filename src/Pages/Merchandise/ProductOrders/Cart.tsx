@@ -3,15 +3,24 @@ import { Button, Form, Modal } from 'react-bootstrap';
 import { useNavigate } from 'react-router';
 import { currencyFormatter } from '../../../Utils/formatCurency';
 import { CartContext, CartContextType } from '../../../Context/CartContext';
+import { useRefreshCart } from '../../../Hooks/useRefreshCart';
 
 export const Cart = () => {
   const { cart, setCart } = useContext(CartContext) as CartContextType;
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
+  const refreshCart = useRefreshCart();
   const formattedSubtotal = currencyFormatter.format(cart?.subtotal ?? 0);
   let hasAgreed = false;
 
-  const removeOrder = (id: string) => {
+  useEffect(() => {
+    if (!cart) {
+      refreshCart();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const removeItems = (id: string) => {
     const filteredArr = cart?.items?.filter((item) => item.orderId !== id) || [];
 
     setCart((prev) => ({
@@ -29,21 +38,6 @@ export const Cart = () => {
 
     navigate('/checkout/details');
   };
-
-  const getLocalCart = () => {
-    const localCart = localStorage.getItem('cart');
-    if (localCart) {
-      console.log('setCart');
-      setCart(JSON.parse(localCart));
-    }
-  };
-
-  useEffect(() => {
-    if (cart) {
-      return;
-    }
-    getLocalCart();
-  }, []);
 
   useEffect(() => {
     console.log('sub', cart?.subtotal);
@@ -66,7 +60,7 @@ export const Cart = () => {
             <div>
               {name}
               {size}
-              <span onClick={() => removeOrder(orderId)}>Remove</span>
+              <span onClick={() => removeItems(orderId)}>Remove</span>
             </div>
             <div>
               {formattedPrice}

@@ -1,13 +1,14 @@
 import { useLoaderData, useNavigate } from 'react-router';
 import { Product } from '../merchandiseLoader';
 import './productOrders.scss';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import { Size, SizeDropdown } from './SizeDropdown';
 import { Quantity } from './Quantity';
 import { Button } from 'react-bootstrap';
 import shortid from 'shortid';
 import { CartContext, CartContextType } from '../../../Context/CartContext';
 import { createOrUpdateLocalCart } from './createOrUpdateLocalCart';
+import { useEffectAfterMount } from '../../../Hooks/useEffectAfterMount';
 
 export interface ProductOrder {
   orderId: string;
@@ -66,11 +67,7 @@ export const AddToCart: React.FC = () => {
     addProduct();
   };
 
-  useEffect(() => {
-    if (!cart) {
-      return;
-    }
-
+  useEffectAfterMount(() => {
     createOrUpdateLocalCart(cart);
   }, [cart]);
 
@@ -95,6 +92,7 @@ export const AddToCart: React.FC = () => {
         {!newAdded && <Button onClick={handleSubmit}>ADD TO CART</Button>}
       </div>
       <Button onClick={() => navigate('/merchandise/cart')}>VIEW CART</Button>
+      {newAdded && <p>Item added to cart</p>}
     </div>
   );
 };

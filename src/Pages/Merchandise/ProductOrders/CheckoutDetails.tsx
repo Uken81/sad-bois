@@ -1,7 +1,7 @@
-import { Formik, Form, Field } from 'formik';
-import { CustomFieldInput, CustomInput } from '../../../Components/Forms/Inputs/CustomInput';
+import { Formik, Form } from 'formik';
+import { CustomInput } from '../../../Components/Forms/Inputs/CustomInput';
 import { SubmitButton } from '../../../Components/Forms/SubmitButton';
-import { useNavigate } from 'react-router';
+// import { useNavigate } from 'react-router';
 import './checkout.scss';
 //change this to current form
 interface LoginFormValues {
@@ -18,8 +18,8 @@ interface LoginFormValues {
 }
 
 export const CheckoutDetails = () => {
-  const navigate = useNavigate();
-  //Todo: Create more countries and states.
+  // const navigate = useNavigate();
+  //Todo: Create more countries and states or use library if possible.
   const countries = ['Australia', 'USA'];
   const states = ['VIC', 'NSW'];
 
@@ -27,11 +27,12 @@ export const CheckoutDetails = () => {
     values: LoginFormValues,
     setSubmitting: (isSubmitting: boolean) => void
   ) => {
-    //create customer and send to db.
+    //Todo: Create customer and send to db.
     // navigate('/shipping');
     console.log('values', values);
   };
 
+  //Todo: Add validation schema.
   return (
     <main>
       <h4>Contact</h4>

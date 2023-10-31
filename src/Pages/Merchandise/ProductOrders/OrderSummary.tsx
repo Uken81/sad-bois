@@ -1,32 +1,25 @@
 import { useContext, useEffect } from 'react';
 import { CartContext, CartContextType } from '../../../Context/CartContext';
 import { currencyFormatter } from '../../../Utils/formatCurency';
-import { createOrUpdateLocalCart } from './createOrUpdateLocalCart';
+import { useRefreshCart } from '../../../Hooks/useRefreshCart';
 
 export const OrderSummary: React.FC = () => {
-  const { cart, setCart } = useContext(CartContext) as CartContextType;
+  const { cart } = useContext(CartContext) as CartContextType;
   const cartItems = cart?.items;
+  const refreshCart = useRefreshCart();
   console.log('cartItems', cartItems);
 
-  //this is used in Cart.tsx too, make reusable?
-  const getLocalCart = () => {
-    const localCart = localStorage.getItem('cart');
-    if (localCart) {
-      console.log('setCart');
-      setCart(JSON.parse(localCart));
-    }
-  };
   useEffect(() => {
-    if (cart) {
-      return;
+    if (!cart) {
+      refreshCart();
     }
-    getLocalCart();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <aside>
       {cartItems?.map((item) => {
-        const { orderId, img, name, size, quantity, price, cost } = item;
+        const { orderId, img, name, size, quantity, cost } = item;
         const formattedCost = currencyFormatter.format(cost);
 
         return (
