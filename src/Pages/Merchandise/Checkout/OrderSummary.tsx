@@ -36,7 +36,21 @@ export const OrderSummary: React.FC = () => {
           </div>
         );
       })}
-      <h2>{}</h2>
+      <h2>Discount Code Goes Here</h2>
+      <div>
+        <h3>Subtotal</h3>
+        <p>{cart?.subtotal}</p>
+      </div>
+      <div className="extra-costs">
+        <h3>Shipping</h3>
+        <p>SHIPPING COST GOES HERE</p>
+        <h3>GST</h3>
+        <p>GST PRICE GOES HERE</p>
+      </div>
+      <div className="total" style={{ marginTop: '20px' }}>
+        <h3>Total</h3>
+        <p>TOTAL PRICE GOES HERE</p>
+      </div>
     </aside>
   );
 };
