@@ -65,8 +65,10 @@ function App() {
   const Checkout = () => {
     return (
       <div className="checkout">
-        <Outlet />
-        <OrderSummary />
+        <CustomerContextProvider>
+          <Outlet />
+          <OrderSummary />
+        </CustomerContextProvider>
       </div>
     );
   };
@@ -117,9 +119,7 @@ function App() {
     <>
       <UserContext.Provider value={{ user, setUser }}>
         <CartContextProvider>
-          <CustomerContextProvider>
-            <RouterProvider router={router} />
-          </CustomerContextProvider>
+          <RouterProvider router={router} />
         </CartContextProvider>
       </UserContext.Provider>
     </>

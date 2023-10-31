@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { Button, Form, Modal } from 'react-bootstrap';
 import { useNavigate } from 'react-router';
-import { currencyFormatter } from '../../../Utils/formatCurency';
+import { currencyFormatter } from '../../../Utils/currencyFormatter';
 import { CartContext, CartContextType } from '../../../Context/CartContext';
 import { useRefreshCart } from '../../../Hooks/useRefreshCart';
 

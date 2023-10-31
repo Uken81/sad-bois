@@ -4,15 +4,10 @@ import { SubmitButton } from '../../../Components/Forms/SubmitButton';
 import { useNavigate } from 'react-router';
 import './checkout.scss';
 import { useContext, useEffect } from 'react';
-import {
-  CustomerContext,
-  CustomerContextType,
-  CustomerType
-} from '../../../Context/CustomerContext';
+import { CustomerContext, CustomerContextType } from '../../../Context/CustomerContext';
 import shortid from 'shortid';
 
 interface DetailsFormType {
-  id: string;
   email: string;
   emailoffers: boolean;
   firstname: string;
@@ -33,15 +28,14 @@ export const CheckoutDetails = () => {
   const states = ['VIC', 'NSW'];
 
   const handleSubmit = (
-    // values: LoginFormValues,
     values: DetailsFormType,
     setSubmitting: (isSubmitting: boolean) => void
   ) => {
-    //Todo: Create customer and send to db.
+    //Todo:send customer to local storage? and db.
     const customerId = shortid.generate();
 
     setCustomer({ ...values, id: customerId });
-    // navigate('/checkout/shipping');
+    navigate('/checkout/shipping');
     // console.log('values', values);
   };
   useEffect(() => {

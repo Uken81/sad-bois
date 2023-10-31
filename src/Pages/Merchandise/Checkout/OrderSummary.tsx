@@ -1,6 +1,6 @@
 import { useContext, useEffect } from 'react';
 import { CartContext, CartContextType } from '../../../Context/CartContext';
-import { currencyFormatter } from '../../../Utils/formatCurency';
+import { currencyFormatter } from '../../../Utils/currencyFormatter';
 import { useRefreshCart } from '../../../Hooks/useRefreshCart';
 
 export const OrderSummary: React.FC = () => {
@@ -23,7 +23,7 @@ export const OrderSummary: React.FC = () => {
         const formattedCost = currencyFormatter.format(cost);
 
         return (
-          <div key={orderId} className="orders-list">
+          <div key={orderId} className="orders-list" style={{ border: '1px solid red' }}>
             <div className="product-img">
               {quantity}
               <h4>{img}</h4>
