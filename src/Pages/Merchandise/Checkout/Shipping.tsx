@@ -1,13 +1,22 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import { CustomerContext, CustomerContextType } from '../../../Context/CustomerContext';
 import { useNavigate } from 'react-router';
 import { currencyFormatter } from '../../../Utils/currencyFormatter';
 import { Button } from 'react-bootstrap';
 
+export interface ShippingOptionsType {
+  type: string;
+  name: string;
+  price: number;
+}
+
 export const Shipping: React.FC = () => {
-  const { customer } = useContext(CustomerContext) as CustomerContextType;
+  const { customer, setCustomer } = useContext(CustomerContext) as CustomerContextType;
   const navigate = useNavigate();
-  const [selectedShipping, setSelectedShipping] = useState('');
+
+  useEffect(() => {
+    console.log('customeShipping', customer?.selectedShipping);
+  }, [customer]);
 
   if (!customer) {
     //Change this to use Routers error page??
@@ -23,7 +32,7 @@ export const Shipping: React.FC = () => {
     </p>
   );
 
-  const shippingOptions = [
+  const shippingOptions: ShippingOptionsType[] = [
     {
       type: 'domestic/standard',
       name: 'standard domestic shipping',
@@ -35,6 +44,14 @@ export const Shipping: React.FC = () => {
       price: 15.99
     }
   ];
+
+  const updateCustomerWithShipping = (option: ShippingOptionsType) => {
+    const newCustomerData = {
+      ...customer,
+      selectedShipping: option
+    };
+    setCustomer(newCustomerData);
+  };
 
   return (
     <div>
@@ -55,7 +72,8 @@ export const Shipping: React.FC = () => {
           const formattedPrice = currencyFormatter.format(option.price);
           return (
             <div
-              onClick={() => setSelectedShipping(option.type)}
+              key={option.type}
+              onClick={() => updateCustomerWithShipping(option)}
               style={{ border: 'solid 1px red', marginTop: '10px' }}>
               <p>{option.name}</p>
               <p>{formattedPrice}</p>

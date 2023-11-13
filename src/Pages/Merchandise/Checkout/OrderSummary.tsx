@@ -1,13 +1,16 @@
 import { useContext, useEffect } from 'react';
-import { CartContext, CartContextType } from '../../../Context/CartContext';
+import { CartContext, CartContextType, CartType } from '../../../Context/CartContext';
 import { currencyFormatter } from '../../../Utils/currencyFormatter';
 import { useRefreshCart } from '../../../Hooks/useRefreshCart';
+import { CustomerContext, CustomerContextType } from '../../../Context/CustomerContext';
+import { ShippingOptionsType } from './Shipping';
 
 export const OrderSummary: React.FC = () => {
   const { cart } = useContext(CartContext) as CartContextType;
+  const { customer } = useContext(CustomerContext) as CustomerContextType;
   const cartItems = cart?.items;
+  const shipping = customer?.selectedShipping;
   const refreshCart = useRefreshCart();
-  console.log('cartItems', cartItems);
 
   useEffect(() => {
     if (!cart) {
@@ -15,6 +18,41 @@ export const OrderSummary: React.FC = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const calculateTax = () => {
+    if (cart?.subtotal && shipping?.price) {
+      const total = cart.subtotal + shipping.price;
+
+      const tax = total * 0.1;
+      return tax;
+    }
+  };
+  const tax = calculateTax();
+
+  const calculateOrderTotal = (cart?: CartType, shipping?: ShippingOptionsType, tax?: number) => {
+    if (cart?.subtotal === undefined) {
+      throw new Error('Cart subtotal is undefined');
+    }
+    if (shipping?.price === undefined) {
+      throw new Error('Shipping price is undefined');
+    }
+    if (tax === undefined) {
+      throw new Error('Tax is undefined');
+    }
+
+    return cart.subtotal + shipping.price + tax;
+  };
+
+  let orderTotal;
+  try {
+    const total = calculateOrderTotal(cart, shipping, tax);
+    orderTotal = currencyFormatter.format(total);
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(error.message);
+      //todo: display error message to user. Handle error!
+    }
+  }
 
   return (
     <aside>
@@ -43,13 +81,13 @@ export const OrderSummary: React.FC = () => {
       </div>
       <div className="extra-costs">
         <h3>Shipping</h3>
-        <p>SHIPPING COST GOES HERE</p>
+        <p>{shipping?.price}</p>
         <h3>GST</h3>
-        <p>GST PRICE GOES HERE</p>
+        <p>{tax}</p>
       </div>
       <div className="total" style={{ marginTop: '20px' }}>
         <h3>Total</h3>
-        <p>TOTAL PRICE GOES HERE</p>
+        <p>{orderTotal}</p>
       </div>
     </aside>
   );

@@ -35,6 +35,7 @@ import { OrderSummary } from './Pages/Merchandise/Checkout/OrderSummary';
 import './Pages/Merchandise/Checkout/checkout.scss';
 import { Shipping } from './Pages/Merchandise/Checkout/Shipping';
 import { CustomerContextProvider } from './Context/CustomerContext';
+import { Payment } from './Pages/Merchandise/Checkout/Payment';
 
 function App() {
   const [user, setUser] = useState<User | null>(null);
@@ -100,6 +101,7 @@ function App() {
         <Route path="checkout" element={<Checkout />}>
           <Route path="details" element={<CheckoutDetails />} />
           <Route path="shipping" element={<Shipping />} />
+          <Route path="payment" element={<Payment />} />
         </Route>
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />

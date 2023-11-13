@@ -1,4 +1,5 @@
 import { Dispatch, ReactNode, SetStateAction, createContext, useState } from 'react';
+import { ShippingOptionsType } from '../Pages/Merchandise/Checkout/Shipping';
 
 export interface CustomerType {
   id: string;
@@ -12,6 +13,7 @@ export interface CustomerType {
   suburb: string;
   state: string;
   postcode: string;
+  selectedShipping?: ShippingOptionsType;
 }
 
 export interface CustomerContextType {
