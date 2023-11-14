@@ -1,15 +1,20 @@
-import { useContext, useEffect } from 'react';
-import { CartContext, CartContextType, CartType } from '../../../Context/CartContext';
-import { currencyFormatter } from '../../../Utils/currencyFormatter';
+import { useContext, useEffect, useState } from 'react';
+import { CartContext, CartContextType } from '../../../Context/CartContext';
 import { useRefreshCart } from '../../../Hooks/useRefreshCart';
-import { CustomerContext, CustomerContextType } from '../../../Context/CustomerContext';
-import { ShippingOptionsType } from './Shipping';
+import { ShippingOptionsType } from './shippingOptions';
+import { calculateTax } from './CostCalculators/calculateTax';
+import { calculateOrderTotal } from './CostCalculators/CalculateOrderTotal';
+import { formatCurrency } from '../../../Utils/currencyFormatter';
 
-export const OrderSummary: React.FC = () => {
+export const OrderSummary: React.FC<{ selectedShipping: ShippingOptionsType }> = ({
+  selectedShipping
+}) => {
   const { cart } = useContext(CartContext) as CartContextType;
-  const { customer } = useContext(CustomerContext) as CustomerContextType;
+  const [orderTotal, setOrderTotal] = useState<string | undefined>(undefined);
+  const [tax, setTax] = useState<number | undefined>(undefined);
+  const formattedTax = formatCurrency(tax);
+  console.log('render');
   const cartItems = cart?.items;
-  const shipping = customer?.selectedShipping;
   const refreshCart = useRefreshCart();
 
   useEffect(() => {
@@ -19,46 +24,25 @@ export const OrderSummary: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const calculateTax = () => {
-    if (cart?.subtotal && shipping?.price) {
-      const total = cart.subtotal + shipping.price;
+  useEffect(() => {
+    const tax = calculateTax(cart, selectedShipping);
+    setTax(tax);
+  }, [cart, selectedShipping]);
 
-      const tax = total * 0.1;
-      return tax;
+  useEffect(() => {
+    if (tax !== undefined) {
+      const orderDetails = { cart, selectedShipping, tax };
+      const total = calculateOrderTotal(orderDetails);
+      const formattedTotal = formatCurrency(total);
+      setOrderTotal(formattedTotal);
     }
-  };
-  const tax = calculateTax();
-
-  const calculateOrderTotal = (cart?: CartType, shipping?: ShippingOptionsType, tax?: number) => {
-    if (cart?.subtotal === undefined) {
-      throw new Error('Cart subtotal is undefined');
-    }
-    if (shipping?.price === undefined) {
-      throw new Error('Shipping price is undefined');
-    }
-    if (tax === undefined) {
-      throw new Error('Tax is undefined');
-    }
-
-    return cart.subtotal + shipping.price + tax;
-  };
-
-  let orderTotal;
-  try {
-    const total = calculateOrderTotal(cart, shipping, tax);
-    orderTotal = currencyFormatter.format(total);
-  } catch (error) {
-    if (error instanceof Error) {
-      console.error(error.message);
-      //todo: display error message to user. Handle error!
-    }
-  }
+  }, [cart, selectedShipping, tax]);
 
   return (
     <aside>
       {cartItems?.map((item) => {
         const { orderId, img, name, size, quantity, cost } = item;
-        const formattedCost = currencyFormatter.format(cost);
+        const formattedCost = formatCurrency(cost);
 
         return (
           <div key={orderId} className="orders-list" style={{ border: '1px solid red' }}>
@@ -81,13 +65,13 @@ export const OrderSummary: React.FC = () => {
       </div>
       <div className="extra-costs">
         <h3>Shipping</h3>
-        <p>{shipping?.price}</p>
+        <p>{selectedShipping?.price}</p>
         <h3>GST</h3>
-        <p>{tax}</p>
+        <p>{formattedTax ? formattedTax : 'Calculating...'}</p>
       </div>
       <div className="total" style={{ marginTop: '20px' }}>
         <h3>Total</h3>
-        <p>{orderTotal}</p>
+        <p>{orderTotal ? orderTotal : 'Calculating...'}</p>
       </div>
     </aside>
   );

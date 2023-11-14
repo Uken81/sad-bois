@@ -14,7 +14,7 @@ import {
 import './App.scss';
 import { Register } from './Pages/Login/Register';
 import { productsLoader } from './Pages/Merchandise/merchandiseLoader';
-import { ReactNode, useEffect, useState } from 'react';
+import { Dispatch, ReactNode, SetStateAction, useEffect, useState } from 'react';
 import { CategoryContext, ProductCategories, User, UserContext } from './context';
 import { ProfilePage } from './Pages/ProfilePage/ProfilePage';
 import { validateUser } from './Utils/validateUser';
@@ -36,6 +36,11 @@ import './Pages/Merchandise/Checkout/checkout.scss';
 import { Shipping } from './Pages/Merchandise/Checkout/Shipping';
 import { CustomerContextProvider } from './Context/CustomerContext';
 import { Payment } from './Pages/Merchandise/Checkout/Payment';
+import { ShippingOptionsType, shippingOptions } from './Pages/Merchandise/Checkout/shippingOptions';
+export interface CheckoutContextType {
+  selectedShipping: ShippingOptionsType;
+  setSelectedShipping: Dispatch<SetStateAction<ShippingOptionsType>>;
+}
 
 function App() {
   const [user, setUser] = useState<User | null>(null);
@@ -51,6 +56,7 @@ function App() {
   };
 
   const Store = () => {
+    //use react router context instead???
     const [selectedCategory, setSelectedCategory] = useState<ProductCategories>('all');
 
     return (
@@ -64,11 +70,17 @@ function App() {
   };
 
   const Checkout = () => {
+    //this is awesome do this more!!!
+    //convert customer context to router context???
+    const [selectedShipping, setSelectedShipping] = useState<ShippingOptionsType>(
+      shippingOptions[0]
+    );
+    console.log('sss', selectedShipping);
     return (
       <div className="checkout">
         <CustomerContextProvider>
-          <Outlet />
-          <OrderSummary />
+          <Outlet context={{ selectedShipping, setSelectedShipping }} />
+          <OrderSummary selectedShipping={selectedShipping} />
         </CustomerContextProvider>
       </div>
     );
@@ -91,17 +103,19 @@ function App() {
       <Route path="/" element={<Root />} errorElement={<ErrorPage />}>
         <Route index element={<HomePage />} loader={homepageLoader} />
         <Route path="news" element={<NewsPage />} loader={newsLoader} />
+        {/*should these both be same path??*/}
         <Route path="news/:id" element={<NewsArticle />} loader={articleLoader} />
         <Route path="tour" element={<TourInfo />} loader={tourLoader} />
         <Route path="merchandise" element={<Store />}>
           <Route index element={<Merchandise />} loader={productsLoader} />
           <Route path="add-to-cart/:id" element={<AddToCart />} loader={productLoader} />
+          {/* Todo: change below path to viewCart*/}
           <Route path="cart" element={<Cart />} />
         </Route>
         <Route path="checkout" element={<Checkout />}>
           <Route path="details" element={<CheckoutDetails />} />
           <Route path="shipping" element={<Shipping />} />
-          <Route path="payment" element={<Payment />} />
+          <Route path="payment/:shippingMethod" element={<Payment />} />
         </Route>
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />

@@ -1,17 +1,15 @@
 import { useContext, useEffect } from 'react';
 import { CustomerContext, CustomerContextType } from '../../../Context/CustomerContext';
-import { useNavigate } from 'react-router';
-import { currencyFormatter } from '../../../Utils/currencyFormatter';
+import { useNavigate, useOutletContext } from 'react-router';
 import { Button } from 'react-bootstrap';
+import { shippingOptions } from './shippingOptions';
+import { CheckoutContextType } from '../../../App';
+import { formatCurrency } from '../../../Utils/currencyFormatter';
 
-export interface ShippingOptionsType {
-  type: string;
-  name: string;
-  price: number;
-}
-
-export const Shipping: React.FC = () => {
-  const { customer, setCustomer } = useContext(CustomerContext) as CustomerContextType;
+export const Shipping = () => {
+  const { customer } = useContext(CustomerContext) as CustomerContextType;
+  const { selectedShipping, setSelectedShipping } = useOutletContext() as CheckoutContextType;
+  console.log('ship', selectedShipping);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -32,27 +30,6 @@ export const Shipping: React.FC = () => {
     </p>
   );
 
-  const shippingOptions: ShippingOptionsType[] = [
-    {
-      type: 'domestic/standard',
-      name: 'standard domestic shipping',
-      price: 10.99
-    },
-    {
-      type: 'domestic/express',
-      name: 'express domestic shipping',
-      price: 15.99
-    }
-  ];
-
-  const updateCustomerWithShipping = (option: ShippingOptionsType) => {
-    const newCustomerData = {
-      ...customer,
-      selectedShipping: option
-    };
-    setCustomer(newCustomerData);
-  };
-
   return (
     <div>
       <div className="shipping-details" style={{ border: 'solid 2px black' }}>
@@ -69,11 +46,11 @@ export const Shipping: React.FC = () => {
       </div>
       <div className="shipping-options" style={{ border: 'solid 2px black', marginTop: '50px' }}>
         {shippingOptions.map((option) => {
-          const formattedPrice = currencyFormatter.format(option.price);
+          const formattedPrice = formatCurrency(option.price);
           return (
             <div
               key={option.type}
-              onClick={() => updateCustomerWithShipping(option)}
+              onClick={() => setSelectedShipping(option)}
               style={{ border: 'solid 1px red', marginTop: '10px' }}>
               <p>{option.name}</p>
               <p>{formattedPrice}</p>
@@ -81,7 +58,9 @@ export const Shipping: React.FC = () => {
           );
         })}
       </div>
-      <Button onClick={() => navigate('/checkout/payment')}>Continue to Payment</Button>
+      <Button onClick={() => navigate(`/checkout/payment/${selectedShipping}`)}>
+        Continue to Payment
+      </Button>
     </div>
   );
 };

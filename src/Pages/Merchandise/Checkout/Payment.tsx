@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { CustomerContext, CustomerContextType } from '../../../Context/CustomerContext';
-import { useNavigate } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 
 export const Payment: React.FC = () => {
   const { customer } = useContext(CustomerContext) as CustomerContextType;

@@ -6,6 +6,7 @@ import './checkout.scss';
 import { useContext, useEffect } from 'react';
 import { CustomerContext, CustomerContextType } from '../../../Context/CustomerContext';
 import shortid from 'shortid';
+import { OrderContext, OrderContextType } from '../../../Context/OrderContext';
 
 interface DetailsFormType {
   email: string;
@@ -22,6 +23,7 @@ interface DetailsFormType {
 
 export const CheckoutDetails = () => {
   const { customer, setCustomer } = useContext(CustomerContext) as CustomerContextType;
+
   const navigate = useNavigate();
   //Todo: Create more countries and states or use library if possible.
   const countries = ['Australia', 'USA'];
@@ -35,6 +37,7 @@ export const CheckoutDetails = () => {
     const customerId = shortid.generate();
 
     setCustomer({ ...values, id: customerId });
+
     navigate('/checkout/shipping');
     // console.log('values', values);
   };

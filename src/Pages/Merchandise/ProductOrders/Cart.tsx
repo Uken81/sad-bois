@@ -1,16 +1,16 @@
 import { useContext, useEffect, useState } from 'react';
 import { Button, Form, Modal } from 'react-bootstrap';
 import { useNavigate } from 'react-router';
-import { currencyFormatter } from '../../../Utils/currencyFormatter';
 import { CartContext, CartContextType } from '../../../Context/CartContext';
 import { useRefreshCart } from '../../../Hooks/useRefreshCart';
+import { formatCurrency } from '../../../Utils/currencyFormatter';
 
 export const Cart = () => {
   const { cart, setCart } = useContext(CartContext) as CartContextType;
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
   const refreshCart = useRefreshCart();
-  const formattedSubtotal = currencyFormatter.format(cart?.subtotal ?? 0);
+  const formattedSubtotal = formatCurrency(cart?.subtotal ?? 0);
   let hasAgreed = false;
 
   useEffect(() => {
@@ -49,8 +49,8 @@ export const Cart = () => {
     <div>
       {cart?.items?.map((item) => {
         const { orderId, name, size, quantity, price, cost } = item;
-        const formattedPrice = currencyFormatter.format(price);
-        const formattedCost = currencyFormatter.format(cost);
+        const formattedPrice = formatCurrency(price);
+        const formattedCost = formatCurrency(cost);
 
         return (
           <div key={orderId}>
