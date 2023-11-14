@@ -6,7 +6,9 @@ import './checkout.scss';
 import { useContext, useEffect } from 'react';
 import { CustomerContext, CustomerContextType } from '../../../Context/CustomerContext';
 import shortid from 'shortid';
-import { OrderContext, OrderContextType } from '../../../Context/OrderContext';
+import { saveOrUpdateLocalStorage } from '../../../Utils/createOrUpdateLocalCart';
+import { useEffectAfterMount } from '../../../Hooks/useEffectAfterMount';
+import { useRefreshCustomer } from '../../../Hooks/useRefreshCustomer';
 
 interface DetailsFormType {
   email: string;
@@ -23,25 +25,33 @@ interface DetailsFormType {
 
 export const CheckoutDetails = () => {
   const { customer, setCustomer } = useContext(CustomerContext) as CustomerContextType;
-
+  const refreshCustomer = useRefreshCustomer();
   const navigate = useNavigate();
   //Todo: Create more countries and states or use library if possible.
   const countries = ['Australia', 'USA'];
   const states = ['VIC', 'NSW'];
 
+  useEffect(() => {
+    if (!customer) {
+      refreshCustomer();
+    }
+  });
+
   const handleSubmit = (
     values: DetailsFormType,
     setSubmitting: (isSubmitting: boolean) => void
   ) => {
-    //Todo:send customer to local storage? and db.
+    //should this be set only at db??
     const customerId = shortid.generate();
 
     setCustomer({ ...values, id: customerId });
-
     navigate('/checkout/shipping');
-    // console.log('values', values);
   };
-  useEffect(() => {
+
+  useEffectAfterMount(() => {
+    if (customer) {
+      saveOrUpdateLocalStorage('customer', customer);
+    }
     console.log('customerDeets', customer);
   }, [customer]);
   //Todo: Add validation schema.
@@ -50,16 +60,16 @@ export const CheckoutDetails = () => {
       <h4>Contact</h4>
       <Formik
         initialValues={{
-          email: '',
-          emailoffers: false,
-          country: 'Australia',
-          firstname: '',
-          lastname: '',
-          address: '',
-          apartment: '',
-          suburb: '',
-          state: 'VIC',
-          postcode: ''
+          email: customer?.email ?? '',
+          emailoffers: customer?.emailoffers ?? false,
+          country: customer?.country ?? 'Australia',
+          firstname: customer?.firstname ?? '',
+          lastname: customer?.lastname ?? '',
+          address: customer?.address ?? '',
+          apartment: customer?.apartment ?? '',
+          suburb: customer?.suburb ?? '',
+          state: customer?.state ?? 'VIC',
+          postcode: customer?.postcode ?? ''
         }}
         onSubmit={(values, { setSubmitting }) => {
           handleSubmit(values, setSubmitting);

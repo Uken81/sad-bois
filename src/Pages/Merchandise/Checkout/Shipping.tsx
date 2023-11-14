@@ -13,7 +13,7 @@ export const Shipping = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log('customeShipping', customer?.selectedShipping);
+    console.log('customeShipping', customer);
   }, [customer]);
 
   if (!customer) {

@@ -7,8 +7,8 @@ import { Quantity } from './Quantity';
 import { Button } from 'react-bootstrap';
 import shortid from 'shortid';
 import { CartContext, CartContextType } from '../../../Context/CartContext';
-import { createOrUpdateLocalCart } from './createOrUpdateLocalCart';
 import { useEffectAfterMount } from '../../../Hooks/useEffectAfterMount';
+import { saveOrUpdateLocalStorage } from '../../../Utils/createOrUpdateLocalCart';
 
 export interface ProductOrder {
   orderId: string;
@@ -68,7 +68,9 @@ export const AddToCart: React.FC = () => {
   };
 
   useEffectAfterMount(() => {
-    createOrUpdateLocalCart(cart);
+    if (!cart) {
+      saveOrUpdateLocalStorage('cart', cart);
+    }
   }, [cart]);
 
   return (
