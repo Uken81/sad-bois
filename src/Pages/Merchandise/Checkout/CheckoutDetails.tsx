@@ -6,9 +6,8 @@ import './checkout.scss';
 import { useContext, useEffect } from 'react';
 import { CustomerContext, CustomerContextType } from '../../../Context/CustomerContext';
 import shortid from 'shortid';
-import { saveOrUpdateLocalStorage } from '../../../Utils/createOrUpdateLocalCart';
-import { useEffectAfterMount } from '../../../Hooks/useEffectAfterMount';
-import { useRefreshCustomer } from '../../../Hooks/useRefreshCustomer';
+import { useRepopulateCustomer } from '../../../Hooks/useRepopulateCustomer';
+import { saveOrUpdateSessionStorage } from '../../../Utils/saveOrUpdateSessionStorage';
 
 interface DetailsFormType {
   email: string;
@@ -25,7 +24,7 @@ interface DetailsFormType {
 
 export const CheckoutDetails = () => {
   const { customer, setCustomer } = useContext(CustomerContext) as CustomerContextType;
-  const refreshCustomer = useRefreshCustomer();
+  const refreshCustomer = useRepopulateCustomer();
   const navigate = useNavigate();
   //Todo: Create more countries and states or use library if possible.
   const countries = ['Australia', 'USA'];
@@ -35,9 +34,9 @@ export const CheckoutDetails = () => {
     if (!customer) {
       refreshCustomer();
     }
-  });
+  }, []);
 
-  const handleSubmit = (
+  const handleSubmit = async (
     values: DetailsFormType,
     setSubmitting: (isSubmitting: boolean) => void
   ) => {
@@ -45,15 +44,10 @@ export const CheckoutDetails = () => {
     const customerId = shortid.generate();
 
     setCustomer({ ...values, id: customerId });
+    saveOrUpdateSessionStorage('customer', values);
     navigate('/checkout/shipping');
   };
 
-  useEffectAfterMount(() => {
-    if (customer) {
-      saveOrUpdateLocalStorage('customer', customer);
-    }
-    console.log('customerDeets', customer);
-  }, [customer]);
   //Todo: Add validation schema.
   return (
     <main>
@@ -71,6 +65,7 @@ export const CheckoutDetails = () => {
           state: customer?.state ?? 'VIC',
           postcode: customer?.postcode ?? ''
         }}
+        enableReinitialize
         onSubmit={(values, { setSubmitting }) => {
           handleSubmit(values, setSubmitting);
         }}>

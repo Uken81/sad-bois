@@ -1,3 +1,7 @@
+/**
+ * A utility function that sends a rewuest to the database to verify a valid user.
+ */
+
 export const validateUser = async (): Promise<boolean> => {
   const requestOptions: RequestInit = {
     method: 'GET',

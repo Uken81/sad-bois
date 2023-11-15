@@ -2,14 +2,14 @@ import { useContext, useEffect, useState } from 'react';
 import { Button, Form, Modal } from 'react-bootstrap';
 import { useNavigate } from 'react-router';
 import { CartContext, CartContextType } from '../../../Context/CartContext';
-import { useRefreshCart } from '../../../Hooks/useRefreshCart';
 import { formatCurrency } from '../../../Utils/currencyFormatter';
+import { useRepopulateCart } from '../../../Hooks/useRepopulateCart';
 
 export const Cart = () => {
   const { cart, setCart } = useContext(CartContext) as CartContextType;
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
-  const refreshCart = useRefreshCart();
+  const refreshCart = useRepopulateCart();
   const formattedSubtotal = formatCurrency(cart?.subtotal ?? 0);
   let hasAgreed = false;
 

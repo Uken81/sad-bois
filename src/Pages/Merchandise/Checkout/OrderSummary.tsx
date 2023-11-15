@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from 'react';
 import { CartContext, CartContextType } from '../../../Context/CartContext';
-import { useRefreshCart } from '../../../Hooks/useRefreshCart';
 import { ShippingOptionsType } from './shippingOptions';
 import { calculateTax } from './CostCalculators/calculateTax';
 import { calculateOrderTotal } from './CostCalculators/CalculateOrderTotal';
 import { formatCurrency } from '../../../Utils/currencyFormatter';
+import { useRepopulateCart } from '../../../Hooks/useRepopulateCart';
 
 export const OrderSummary: React.FC<{ selectedShipping: ShippingOptionsType }> = ({
   selectedShipping
@@ -15,7 +15,7 @@ export const OrderSummary: React.FC<{ selectedShipping: ShippingOptionsType }> =
   const formattedTax = formatCurrency(tax);
   console.log('render');
   const cartItems = cart?.items;
-  const refreshCart = useRefreshCart();
+  const refreshCart = useRepopulateCart();
 
   useEffect(() => {
     if (!cart) {

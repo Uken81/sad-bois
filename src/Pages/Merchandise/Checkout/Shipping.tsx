@@ -5,16 +5,19 @@ import { Button } from 'react-bootstrap';
 import { shippingOptions } from './shippingOptions';
 import { CheckoutContextType } from '../../../App';
 import { formatCurrency } from '../../../Utils/currencyFormatter';
+import { useRepopulateCustomer } from '../../../Hooks/useRepopulateCustomer';
 
 export const Shipping = () => {
   const { customer } = useContext(CustomerContext) as CustomerContextType;
   const { selectedShipping, setSelectedShipping } = useOutletContext() as CheckoutContextType;
+  const refreshCustomer = useRepopulateCustomer();
   console.log('ship', selectedShipping);
   const navigate = useNavigate();
-
   useEffect(() => {
-    console.log('customeShipping', customer);
-  }, [customer]);
+    if (!customer) {
+      refreshCustomer();
+    }
+  }, []);
 
   if (!customer) {
     //Change this to use Routers error page??

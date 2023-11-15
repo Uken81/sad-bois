@@ -5,6 +5,7 @@ import { useEffect, useRef, EffectCallback, DependencyList } from 'react';
  * @param {Function} effect - The effect callback.
  * @param {Array} deps - The dependency list for the effect.
  */
+
 export const useEffectAfterMount = (effect: EffectCallback, deps: DependencyList) => {
   const hasMounted = useRef(false);
 
