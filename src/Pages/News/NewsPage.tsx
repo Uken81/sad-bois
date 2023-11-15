@@ -25,7 +25,7 @@ export const NewsPage: React.FC<{ latest?: Article[] }> = ({ latest }) => {
                 <Card.Body>
                   <Card.Subtitle>NEWS | {formattedDate}</Card.Subtitle>
                   <Card.Title>{capitaliseWords(title)}</Card.Title>
-                  <Link to={`/news/${id}`} style={{ color: 'blue' }}>
+                  <Link to={`/news/article/${id}`} style={{ color: 'blue' }}>
                     READ MORE
                   </Link>
                 </Card.Body>

@@ -102,11 +102,12 @@ function App() {
     createRoutesFromElements(
       <Route path="/" element={<Root />} errorElement={<ErrorPage />}>
         <Route index element={<HomePage />} loader={homepageLoader} />
-        <Route path="news" element={<NewsPage />} loader={newsLoader} />
-        {/*should these both be same path??*/}
-        <Route path="news/:id" element={<NewsArticle />} loader={articleLoader} />
+        <Route path="news">
+          <Route index element={<NewsPage />} loader={newsLoader} />
+          <Route path="article/:id" element={<NewsArticle />} loader={articleLoader} />
+        </Route>
         <Route path="tour" element={<TourInfo />} loader={tourLoader} />
-        <Route path="merchandise" element={<Store />}>
+        <Route path="store" element={<Store />}>
           <Route index element={<Merchandise />} loader={productsLoader} />
           <Route path="add-to-cart/:id" element={<AddToCart />} loader={productLoader} />
           {/* Todo: change below path to viewCart*/}
