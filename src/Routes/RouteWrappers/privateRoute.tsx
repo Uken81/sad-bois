@@ -4,14 +4,29 @@ import { Navigate } from 'react-router';
 
 export const PrivateRoute: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [isValidated, setIsValidated] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const checkAuth = async () => {
-      const auth = await validateUser();
-      setIsValidated(auth);
+      try {
+        const auth = await validateUser();
+        setIsValidated(auth);
+      } catch (error) {
+        //Todo: add some proper error handling.
+        console.log('Error validating user', error);
+      } finally {
+        setIsLoading(false);
+      }
     };
     checkAuth();
   }, []);
+
+  useEffect(() => {
+    console.log('loading', isLoading);
+  });
+  if (isLoading) {
+    return <div>Loading.....</div>;
+  }
 
   return isValidated ? <>{children}</> : <Navigate to={'/login'} />;
 };
