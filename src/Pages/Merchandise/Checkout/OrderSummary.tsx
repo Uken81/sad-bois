@@ -10,10 +10,9 @@ export const OrderSummary: React.FC<{ selectedShipping: ShippingOptionsType }> =
   selectedShipping
 }) => {
   const { cart } = useContext(CartContext) as CartContextType;
-  const [orderTotal, setOrderTotal] = useState<string | undefined>(undefined);
-  const [tax, setTax] = useState<number | undefined>(undefined);
+  const [orderTotal, setOrderTotal] = useState<string | null>(null);
+  const [tax, setTax] = useState<number | null>(null);
   const formattedTax = formatCurrency(tax);
-  console.log('render');
   const cartItems = cart?.items;
   const refreshCart = useRepopulateCart();
 
@@ -26,15 +25,17 @@ export const OrderSummary: React.FC<{ selectedShipping: ShippingOptionsType }> =
 
   useEffect(() => {
     const tax = calculateTax(cart, selectedShipping);
-    setTax(tax);
+    if (tax) {
+      setTax(tax);
+    }
   }, [cart, selectedShipping]);
 
   useEffect(() => {
-    if (tax !== undefined) {
+    if (tax && cart) {
       const orderDetails = { cart, selectedShipping, tax };
       const total = calculateOrderTotal(orderDetails);
       const formattedTotal = formatCurrency(total);
-      setOrderTotal(formattedTotal);
+      setOrderTotal(formattedTotal ?? null);
     }
   }, [cart, selectedShipping, tax]);
 
@@ -61,7 +62,7 @@ export const OrderSummary: React.FC<{ selectedShipping: ShippingOptionsType }> =
       <h2>Discount Code Goes Here</h2>
       <div>
         <h3>Subtotal</h3>
-        <p>{cart?.subtotal}</p>
+        <p>{cart?.subtotal ? cart.subtotal : 'Calculating...'}</p>
       </div>
       <div className="extra-costs">
         <h3>Shipping</h3>

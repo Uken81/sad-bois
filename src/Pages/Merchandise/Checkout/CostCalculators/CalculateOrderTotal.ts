@@ -12,17 +12,18 @@ export const calculateOrderTotal = (orderDetails: OrderDetailsType) => {
   const shippingPrice = orderDetails.selectedShipping?.price;
   const tax = orderDetails.tax;
   console.log('orderdeets', subtotal, shippingPrice, tax);
-  if (subtotal === undefined) {
-    console.log('Subtotal is undefined');
-    return;
+
+  if (!subtotal) {
+    console.log('Subtotal is null or undefined');
+    return null;
   }
-  if (shippingPrice === undefined) {
-    console.log('Shipping price is undefined');
-    return;
+  if (!shippingPrice) {
+    console.log('Shipping price is null or undefined');
+    return null;
   }
-  if (tax === undefined) {
-    console.log('Tax is undefined');
-    return;
+  if (!tax) {
+    console.log('Tax is undefined null or');
+    return null;
   }
 
   return subtotal + shippingPrice + tax;

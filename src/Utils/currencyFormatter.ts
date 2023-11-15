@@ -11,8 +11,8 @@ const currencyFormatter = new Intl.NumberFormat('en-US', {
   maximumFractionDigits: 2
 });
 
-export const formatCurrency = (value: number | undefined) => {
-  if (value === undefined || null) {
+export const formatCurrency = (value: number | null) => {
+  if (!value) {
     console.log('invalid value');
     return;
   }
