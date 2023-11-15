@@ -1,15 +1,18 @@
-import { useContext, useEffect } from 'react';
-import { CustomerContext, CustomerContextType } from '../../../Context/CustomerContext';
+import { useEffect } from 'react';
 import { useNavigate, useOutletContext } from 'react-router';
 import { Button } from 'react-bootstrap';
 import { shippingOptions } from './shippingOptions';
-import { CheckoutContextType } from '../../../App';
 import { formatCurrency } from '../../../Utils/currencyFormatter';
 import { useRepopulateCustomer } from '../../../Hooks/useRepopulateCustomer';
+import {
+  CustomerContextType,
+  SelectedShippingContextType
+} from '../../RouteWrappers/checkoutWrapper';
 
 export const Shipping = () => {
-  const { customer } = useContext(CustomerContext) as CustomerContextType;
-  const { selectedShipping, setSelectedShipping } = useOutletContext() as CheckoutContextType;
+  const { customer } = useOutletContext() as CustomerContextType;
+  const { selectedShipping, setSelectedShipping } =
+    useOutletContext() as SelectedShippingContextType;
   const refreshCustomer = useRepopulateCustomer();
   console.log('ship', selectedShipping);
   const navigate = useNavigate();

@@ -16,11 +16,10 @@ export interface UserContextType {
 export const UserContext = createContext<UserContextType | null>(null);
 
 //CategoryContext
-export type ProductCategories = 'all' | 'clothing' | 'coffee-mug' | 'sticker' | 'misc';
 
-export interface CategoryContextType {
-  selectedCategory: ProductCategories;
-  setSelectedCategory: Dispatch<SetStateAction<ProductCategories>>;
-}
+// export interface CategoryContextType {
+//   selectedCategory: ProductCategories;
+//   setSelectedCategory: Dispatch<SetStateAction<ProductCategories>>;
+// }
 
-export const CategoryContext = createContext<CategoryContextType | null>(null);
+// export const CategoryContext = createContext<CategoryContextType | null>(null);

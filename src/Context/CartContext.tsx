@@ -1,5 +1,5 @@
 import { Dispatch, ReactNode, SetStateAction, createContext, useState } from 'react';
-import { ProductOrder } from '../Pages/Merchandise/ProductOrders/AddToCart';
+import { ProductOrder } from '../Routes/Merchandise/ProductOrders/AddToCart';
 
 export interface CartType {
   items: ProductOrder[];

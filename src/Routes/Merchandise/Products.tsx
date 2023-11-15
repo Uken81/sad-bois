@@ -1,12 +1,11 @@
 import { Card, Col, ListGroup, Row } from 'react-bootstrap';
-import { useLoaderData, useNavigate } from 'react-router';
+import { useLoaderData, useNavigate, useOutletContext } from 'react-router';
 import { Merchandise } from './merchandiseLoader';
 import './merchandise.scss';
-import { useContext } from 'react';
-import { CategoryContext, CategoryContextType } from '../../context';
+import { StoreCategoryContextType } from '../RouteWrappers/storeWrapper';
 
 export const Products: React.FC = () => {
-  const { selectedCategory } = useContext(CategoryContext) as CategoryContextType;
+  const { selectedCategory } = useOutletContext() as StoreCategoryContextType;
   console.log('selectedCat', selectedCategory);
   const loaderData = useLoaderData() as Merchandise;
   const merchandise = loaderData.regular;
@@ -23,8 +22,8 @@ export const Products: React.FC = () => {
         return (
           <Col key={id} xs={12} sm={6} md={4} lg={4}>
             <ListGroup.Item className="item">
-              <Card onClick={() => navigate(`/merchandise/add-to-cart/${id}`)}>
-                <Card.Img variant="top" src={`../../../Assets/Products/${img}`} />
+              <Card onClick={() => navigate(`/store/add-to-cart/${id}`)}>
+                <Card.Img variant="top" src={`/Assets/Products/${img}`} />
                 <Card.Body>
                   <Card.Title>{title}</Card.Title>
                   <Card.Title>{subtitle}</Card.Title>

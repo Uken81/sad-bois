@@ -25,7 +25,7 @@ export const Navbar: React.FC = () => {
           <Link to="/tour">Tour</Link>
         </li>
         <li>
-          <Link to="/merchandise">Swag</Link>
+          <Link to="/store">Swag</Link>
         </li>
         <li>
           <Link to="/profile">PP</Link>

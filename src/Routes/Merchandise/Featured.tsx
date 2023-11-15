@@ -14,7 +14,7 @@ export const Featured: React.FC = () => {
       {featured.map((product) => (
         <Carousel.Item
           key={product.id}
-          onClick={() => navigate(`/merchandise/add-to-cart/${product.id}`)}>
+          onClick={() => navigate(`/store/add-to-cart/${product.id}`)}>
           <Card>
             <Card.Img
               className="card-img"

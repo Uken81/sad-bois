@@ -1,15 +1,15 @@
 import { useContext } from 'react';
-import { CustomerContext, CustomerContextType } from '../../../Context/CustomerContext';
-import { useNavigate } from 'react-router';
+import { useNavigate, useOutletContext } from 'react-router';
 import { useRepopulateCart } from '../../../Hooks/useRepopulateCart';
+import { CustomerContextType } from '../../RouteWrappers/checkoutWrapper';
 
 export const Payment: React.FC = () => {
-  const { customer } = useContext(CustomerContext) as CustomerContextType;
+  const { customer } = useOutletContext() as CustomerContextType;
   // console.log('paycust', customer);
-  const refreshCustomer = useRepopulateCart();
+  // const refreshCustomer = useRepopulateCart();
   const navigate = useNavigate();
 
-  const { email, address, suburb, state, postcode } = customer;
+  // const { email, address, suburb, state, postcode } = customer;
   // useEffect(() => {
   //   if (!customer) {
   //     refreshCustomer();

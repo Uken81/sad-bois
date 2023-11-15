@@ -1,13 +1,13 @@
 import { Formik, Form } from 'formik';
 import { CustomInput } from '../../../Components/Forms/Inputs/CustomInput';
 import { SubmitButton } from '../../../Components/Forms/SubmitButton';
-import { useNavigate } from 'react-router';
+import { useNavigate, useOutletContext } from 'react-router';
 import './checkout.scss';
-import { useContext, useEffect } from 'react';
-import { CustomerContext, CustomerContextType } from '../../../Context/CustomerContext';
+import { useEffect } from 'react';
 import shortid from 'shortid';
 import { useRepopulateCustomer } from '../../../Hooks/useRepopulateCustomer';
 import { saveOrUpdateSessionStorage } from '../../../Utils/saveOrUpdateSessionStorage';
+import { CustomerContextType } from '../../RouteWrappers/checkoutWrapper';
 
 interface DetailsFormType {
   email: string;
@@ -23,7 +23,7 @@ interface DetailsFormType {
 }
 
 export const CheckoutDetails = () => {
-  const { customer, setCustomer } = useContext(CustomerContext) as CustomerContextType;
+  const { customer, setCustomer } = useOutletContext() as CustomerContextType;
   const refreshCustomer = useRepopulateCustomer();
   const navigate = useNavigate();
   //Todo: Create more countries and states or use library if possible.

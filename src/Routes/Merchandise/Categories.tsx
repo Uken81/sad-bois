@@ -1,7 +1,5 @@
 import { Dispatch, SetStateAction } from 'react';
-import { ProductCategories } from '../../context';
-
-// export type ProductCategories = 'all' | 'clothing' | 'coffee-mug' | 'sticker' | 'misc';
+import { ProductCategories } from '../RouteWrappers/storeWrapper';
 
 export const Categories: React.FC<{
   setSelectedCategory?: Dispatch<SetStateAction<ProductCategories>>;

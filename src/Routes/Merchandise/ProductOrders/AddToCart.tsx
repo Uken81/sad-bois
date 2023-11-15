@@ -77,7 +77,7 @@ export const AddToCart: React.FC = () => {
   return (
     <div>
       <div>
-        <img src={`../../../../public/Assets/Products/${img}`} className="product-card" />
+        <img src={`/Assets/Products/${img}`} className="product-card" />
       </div>
       <div>
         <h1>{title}</h1>
@@ -91,10 +91,9 @@ export const AddToCart: React.FC = () => {
       </div>
 
       <div>
-        {newAdded && <Button onClick={() => navigate('/merchandise/cart')}>VIEW CART</Button>}
+        {newAdded && <Button onClick={() => navigate('/store/view-cart')}>VIEW CART</Button>}
         {!newAdded && <Button onClick={handleSubmit}>ADD TO CART</Button>}
       </div>
-      <Button onClick={() => navigate('/merchandise/cart')}>VIEW CART</Button>
       {newAdded && <p>Item added to cart</p>}
     </div>
   );

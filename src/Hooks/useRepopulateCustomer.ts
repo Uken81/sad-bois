@@ -1,13 +1,13 @@
-import { useContext } from 'react';
-import { CustomerContext, CustomerContextType } from '../Context/CustomerContext';
 import { getSessionData } from '../Utils/getSessionData';
+import { useOutletContext } from 'react-router';
+import { CustomerContextType } from '../Routes/RouteWrappers/checkoutWrapper';
 
 /**
  * A custom hook that gets the customer details from session storage if it exists and sets the customer context with the results.
  */
 
 export const useRepopulateCustomer = () => {
-  const { setCustomer } = useContext(CustomerContext) as CustomerContextType;
+  const { setCustomer } = useOutletContext() as CustomerContextType;
 
   return () => {
     const sessionCustomer = getSessionData('customer');
