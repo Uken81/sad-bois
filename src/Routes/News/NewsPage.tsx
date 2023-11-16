@@ -11,6 +11,14 @@ export const NewsPage: React.FC<{ latest?: Article[] }> = ({ latest }) => {
   console.log('all', all);
   const articles = latest || all;
 
+  if (!articles || articles.length === 0) {
+    return (
+      <div className="no-articles">
+        <h1>No News Articles Found</h1>
+      </div>
+    );
+  }
+
   return (
     <Row className="article-summary">
       {articles.map((article) => {
