@@ -3,7 +3,6 @@ import { Merchandise } from './Routes/Merchandise/Merchandise';
 import { Login } from './Routes/Login/Login';
 import ErrorPage from './Routes/ErrorPage/ErrorPage';
 import {
-  Navigate,
   Route,
   RouterProvider,
   createBrowserRouter,
@@ -12,10 +11,9 @@ import {
 import './App.scss';
 import { Register } from './Routes/Login/Register';
 import { productsLoader } from './Routes/Merchandise/merchandiseLoader';
-import { Dispatch, ReactNode, SetStateAction, useEffect, useState } from 'react';
+import { useState } from 'react';
 import { User, UserContext } from './context';
 import { ProfilePage } from './Routes/ProfilePage/ProfilePage';
-import { validateUser } from './Utils/validateUser';
 import { NewsPage } from './Routes/News/NewsPage';
 import { newsLoader } from './Routes/News/DataLoaders/newsLoader';
 import { NewsArticle } from './Routes/News/NewsArticle';

@@ -12,8 +12,8 @@ export const PrivateRoute: React.FC<{ children: ReactNode }> = ({ children }) =>
         const auth = await validateUser();
         setIsValidated(auth);
       } catch (error) {
-        //Todo: add some proper error handling.
-        console.log('Error validating user', error);
+        //Todo: display error message to user here
+        console.error('Error validating user', error);
       } finally {
         setIsLoading(false);
       }
