@@ -1,18 +1,16 @@
 import { Card, Col, ListGroup, Row } from 'react-bootstrap';
-import { useLoaderData, useNavigate, useOutletContext } from 'react-router';
-import { Merchandise } from './merchandiseLoader';
-import './merchandise.scss';
+import { useNavigate, useOutletContext } from 'react-router';
 import { StoreCategoryContextType } from '../RouteWrappers/storeWrapper';
+import { ProductType } from './productsLoader';
+import './merchandise.scss';
 
-export const Products: React.FC = () => {
+export const Products: React.FC<{ regularProducts: ProductType[] }> = ({ regularProducts }) => {
   const { selectedCategory } = useOutletContext() as StoreCategoryContextType;
   console.log('selectedCat', selectedCategory);
-  const loaderData = useLoaderData() as Merchandise;
-  const merchandise = loaderData.regular;
   const displayedProducts =
     selectedCategory === 'all'
-      ? merchandise
-      : merchandise.filter((item) => item.category === selectedCategory);
+      ? regularProducts
+      : regularProducts.filter((item) => item.category === selectedCategory);
   const navigate = useNavigate();
 
   return (

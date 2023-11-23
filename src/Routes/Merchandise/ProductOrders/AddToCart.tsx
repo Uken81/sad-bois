@@ -1,5 +1,5 @@
 import { useLoaderData, useNavigate } from 'react-router';
-import { Product } from '../merchandiseLoader';
+import { Product } from '../productsLoader';
 import './productOrders.scss';
 import { useContext, useState } from 'react';
 import { Size, SizeDropdown } from './SizeDropdown';

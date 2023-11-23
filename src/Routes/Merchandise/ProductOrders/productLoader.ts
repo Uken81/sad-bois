@@ -1,5 +1,5 @@
 import { LoaderFunctionArgs } from 'react-router';
-import { Merchandise } from '../merchandiseLoader';
+import { Merchandise } from '../productsLoader';
 
 export const productLoader = async (loader: LoaderFunctionArgs): Promise<Merchandise> => {
   const id = loader.params.id;

@@ -1,17 +1,20 @@
-import { useLoaderData, useNavigate } from 'react-router';
-import { Merchandise } from './merchandiseLoader';
+import { useNavigate } from 'react-router';
+import { ProductType } from './productsLoader';
 import { Card, Carousel } from 'react-bootstrap';
 import './merchandise.scss';
 
-export const Featured: React.FC = () => {
-  const loaderData = useLoaderData() as Merchandise;
-  const featured = loaderData.featured;
+export const Featured: React.FC<{ featuredProducts: ProductType[] | null }> = ({
+  featuredProducts
+}) => {
   const navigate = useNavigate();
 
-  console.log('featured ', featured);
+  if (!featuredProducts || featuredProducts.length === 0) {
+    return null;
+  }
+
   return (
     <Carousel className="featured" slide>
-      {featured.map((product) => (
+      {featuredProducts.map((product) => (
         <Carousel.Item
           key={product.id}
           onClick={() => navigate(`/store/add-to-cart/${product.id}`)}>

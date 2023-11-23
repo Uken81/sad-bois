@@ -10,7 +10,7 @@ import {
 } from 'react-router-dom';
 import './App.scss';
 import { Register } from './Routes/Login/Register';
-import { productsLoader } from './Routes/Merchandise/merchandiseLoader';
+import { productsLoader } from './Routes/Merchandise/productsLoader';
 import { useState } from 'react';
 import { User, UserContext } from './context';
 import { ProfilePage } from './Routes/ProfilePage/ProfilePage';
