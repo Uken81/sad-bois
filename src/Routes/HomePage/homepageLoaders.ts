@@ -1,3 +1,4 @@
+import { DataError } from '../../Types/loaderTypes';
 import { Article } from '../News/DataLoaders/newsLoader';
 import { Tour } from '../Tour/tourLoader';
 
@@ -8,16 +9,31 @@ export interface HomepageLoader {
 
 export const homepageLoader = async () => {
   const latestNewsData = await latestNewsLoader();
-  const latestShowsData = await latestShowLoader();
+  // const latestShowsData = await latestShowLoader();
 
-  return { latestNewsData, latestShowsData };
+  return { latestNewsData };
+  // return { latestNewsData, latestShowsData };
 };
 
-const latestNewsLoader = async (): Promise<Article[]> => {
-  const response = await fetch('http://localhost:2001/news/latest');
-  const latest: Article[] = await response.json();
+const latestNewsLoader = async (): Promise<Article[] | undefined> => {
+  try {
+    const response = await fetch('http://localhost:2001/news/latest');
+    if (!response.ok) {
+      const data: DataError = await response.json();
+      console.error(`Error fetching latest news: ${data.error}`);
+      return;
+    }
 
-  return latest;
+    const latest: Article[] = await response.json();
+    return latest;
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(error);
+      return;
+    }
+
+    console.error('An unexpected error occurred:', error);
+  }
 };
 
 export const latestShowLoader = async () => {

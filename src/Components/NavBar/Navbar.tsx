@@ -7,14 +7,13 @@ import { Logout } from '../Logout/Logout';
 export const Navbar: React.FC = () => {
   const userContext = useContext(UserContext);
   const user = userContext?.user;
-  console.log('conUser', user?.username);
 
   return (
     <nav>
       <ul>
-        <li className="home">
+        {/* <li className="home">
           <Link to="/test">test</Link>
-        </li>
+        </li> */}
         <li className="home">
           <Link to="/">Sad Bois</Link>
         </li>
