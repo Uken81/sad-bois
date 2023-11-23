@@ -2,11 +2,16 @@ import { Table } from 'react-bootstrap';
 import { useLoaderData } from 'react-router';
 import { Tour } from './tourLoader';
 import { format } from 'date-fns';
+import { NoTour } from './NoTour';
 
 export const TourInfo: React.FC<{ latest?: Tour[] }> = ({ latest }) => {
   const loaderData = useLoaderData() as Tour[];
   const all = loaderData;
   const shows = latest || all;
+  console.log('shows', shows);
+  if (!shows || shows.length === 0) {
+    return <NoTour />;
+  }
 
   return (
     <main>

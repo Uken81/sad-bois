@@ -1,17 +1,16 @@
 import { useLoaderData } from 'react-router';
 import { NewsPage } from '../News/NewsPage';
 import { Banner } from './Banner';
-import './homePage.scss';
 import { HomepageLoader } from './homepageLoaders';
 import { TourInfo } from '../Tour/TourInfo';
 import { SeeAllLink } from './SeeAllLink';
-import { Article } from '../News/DataLoaders/newsLoader';
 import { NoNews } from '../News/NoNews';
+import './homePage.scss';
 
 export const HomePage: React.FC = () => {
   const homepageLoader = useLoaderData() as HomepageLoader;
   const latestNews = homepageLoader.latestNewsData;
-  // const latestShows = homepageLoader.latestShowsData;
+  const latestShows = homepageLoader.latestShowsData;
 
   return (
     <main>
@@ -22,7 +21,7 @@ export const HomePage: React.FC = () => {
       </section>
       <section>
         <SeeAllLink to="/tour" text="SEE ALL SHOWS" />
-        {/* <TourInfo latest={latestShows} /> */}
+        <TourInfo latest={latestShows} />
       </section>
     </main>
   );

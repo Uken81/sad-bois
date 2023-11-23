@@ -9,10 +9,9 @@ export interface HomepageLoader {
 
 export const homepageLoader = async () => {
   const latestNewsData = await latestNewsLoader();
-  // const latestShowsData = await latestShowLoader();
+  const latestShowsData = await latestShowLoader();
 
-  return { latestNewsData };
-  // return { latestNewsData, latestShowsData };
+  return { latestNewsData, latestShowsData };
 };
 
 const latestNewsLoader = async (): Promise<Article[] | undefined> => {
@@ -37,8 +36,22 @@ const latestNewsLoader = async (): Promise<Article[] | undefined> => {
 };
 
 export const latestShowLoader = async () => {
-  const response = await fetch('http://localhost:2001/tour/latest');
-  const shows = response.json();
+  try {
+    const response = await fetch('http://localhost:2001/tour/latest');
+    if (!response.ok) {
+      const data: DataError = await response.json();
+      console.error(`Error fetching latest news: ${data.error}`);
+      return;
+    }
 
-  return shows;
+    const shows = response.json();
+    return shows;
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(error);
+      return;
+    }
+
+    console.error('An unexpected error occurred:', error);
+  }
 };

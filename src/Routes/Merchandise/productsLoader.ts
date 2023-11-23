@@ -1,3 +1,5 @@
+import { DataError } from '../../Types/loaderTypes';
+
 type Category = 'clothing' | 'sticker' | 'coffee-mug' | 'misc';
 
 export interface ProductType {
@@ -22,7 +24,8 @@ export const productsLoader = async (): Promise<MerchandiseType | undefined> => 
     const resFeatured = await fetch('http://localhost:2001/products/featured');
 
     if (!resRegular.ok) {
-      throw new Error('Failed to fetch regular products');
+      const data: DataError = await resRegular.json();
+      throw new Error(`HTTP error! ${data.error}`);
     }
 
     let featured: ProductType[] | null = null;
