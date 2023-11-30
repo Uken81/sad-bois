@@ -1,13 +1,15 @@
 import { Link } from 'react-router-dom';
-import './navbar.scss';
-import { useContext } from 'react';
-import { UserContext } from '../../context';
 import { Logout } from '../Logout/Logout';
+import { UserContextType } from '../../Routes/RouteWrappers/rootWrapper';
+import { useState } from 'react';
+import { ErrorMessage, GeneralErrorType } from '../ErrorMessage';
+import './navbar.scss';
 
-export const Navbar: React.FC = () => {
-  const userContext = useContext(UserContext);
-  const user = userContext?.user;
-
+export const Navbar: React.FC<{
+  userDetailsContext: UserContextType;
+}> = ({ userDetailsContext }) => {
+  const [error, setError] = useState<GeneralErrorType | null>(null);
+  const isDisplayingError = error !== null;
   return (
     <nav>
       <ul>
@@ -29,8 +31,20 @@ export const Navbar: React.FC = () => {
         <li>
           <Link to="/profile">PP</Link>
         </li>
-        <li>{user ? <Logout username={user?.username} /> : <Link to="/login">Log In</Link>}</li>
+        <li>
+          {userDetailsContext.userDetails ? (
+            <Logout userDetailsContext={userDetailsContext} setError={setError} />
+          ) : (
+            <Link to="/login">Log In</Link>
+          )}
+        </li>
       </ul>
+      <ErrorMessage
+        display={isDisplayingError}
+        variant="danger"
+        message={error?.message ?? null}
+        setError={setError}
+      />
     </nav>
   );
 };

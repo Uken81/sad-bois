@@ -1,40 +1,42 @@
 import { HiOutlineLogout } from 'react-icons/hi';
-import './logout.scss';
-import { useContext } from 'react';
-import { UserContext } from '../../context';
+import { Dispatch } from 'react';
 import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
+import { UserContextType } from '../../Routes/RouteWrappers/rootWrapper';
+import './logout.scss';
+import { GeneralErrorType } from '../ErrorMessage';
 
-export const Logout: React.FC<{ username: string }> = ({ username }) => {
-  const userContext = useContext(UserContext);
-  const setUser = userContext?.setUser;
+export const Logout: React.FC<{
+  userDetailsContext: UserContextType;
+  setError: Dispatch<React.SetStateAction<GeneralErrorType | null>>;
+}> = ({ userDetailsContext, setError }) => {
+  const { userDetails, setUserDetails } = userDetailsContext;
   const navigate = useNavigate();
 
-  const handleClick = () => {
+  const handleClick = async () => {
     const requestOptions: RequestInit = {
       method: 'GET',
       credentials: 'include'
     };
-    fetch('http://localhost:2001/auth/logout', requestOptions)
-      .then((response) => {
-        if (!response.ok) {
-          console.log('res: ', response);
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then((data) => {
-        console.log(data);
-        if (setUser) {
-          setUser(null);
-        }
-        navigate('/');
-      });
+
+    try {
+      const response = await fetch('http://localhost:2001/auth/logou', requestOptions);
+
+      if (!response.ok || response === null) {
+        throw new Error('Network response was not ok');
+      }
+
+      setUserDetails(null);
+      navigate('/');
+    } catch (error) {
+      console.error('Error logging out: ', error);
+      setError({ message: 'Failed to logout' });
+    }
   };
   return (
     <div className="logout" onClick={handleClick}>
       <Link to={'/profile'}>
-        <p className="username">{username}</p>
+        <p className="username">{userDetails?.username}</p>
       </Link>
       <HiOutlineLogout style={{ marginBottom: 'auto' }} />
     </div>

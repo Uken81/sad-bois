@@ -7,6 +7,15 @@ form {
   width: 100vw;
   font-size: 2.5rem;
 
+  .alert {
+    margin-top: 1rem;
+  }
+
+  .alert-heading {
+    font-size: 3rem;
+    border-bottom: 2px solid;
+  }
+
   .input-fields {
     display: flex;
     flex-direction: column;

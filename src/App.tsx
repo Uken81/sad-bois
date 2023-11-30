@@ -11,8 +11,6 @@ import {
 import './App.scss';
 import { Register } from './Routes/Login/Register';
 import { productsLoader } from './Routes/Merchandise/productsLoader';
-import { useState } from 'react';
-import { User, UserContext } from './context';
 import { ProfilePage } from './Routes/ProfilePage/ProfilePage';
 import { NewsPage } from './Routes/News/NewsPage';
 import { newsLoader } from './Routes/News/DataLoaders/newsLoader';
@@ -35,8 +33,6 @@ import { Checkout } from './Routes/RouteWrappers/checkoutWrapper';
 import { PrivateRoute } from './Routes/RouteWrappers/privateRoute';
 
 function App() {
-  const [user, setUser] = useState<User | null>(null);
-
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<Root />} errorElement={<ErrorPage />}>
@@ -49,7 +45,6 @@ function App() {
         <Route path="store" element={<Store />}>
           <Route index element={<Merchandise />} loader={productsLoader} />
           <Route path="add-to-cart/:id" element={<AddToCart />} loader={productLoader} />
-          {/* Todo: change below path to viewCart*/}
           <Route path="view-cart" element={<Cart />} />
         </Route>
         <Route path="checkout" element={<Checkout />}>
@@ -57,7 +52,7 @@ function App() {
           <Route path="shipping" element={<Shipping />} />
           <Route path="payment/:shippingMethod" element={<Payment />} />
         </Route>
-        <Route path="login" element={<Login />} />
+        <Route path="login/:registeredEmail?" element={<Login />} />
         <Route path="register" element={<Register />} />
         <Route
           path="/profile"
@@ -73,11 +68,9 @@ function App() {
 
   return (
     <>
-      <UserContext.Provider value={{ user, setUser }}>
-        <CartContextProvider>
-          <RouterProvider router={router} />
-        </CartContextProvider>
-      </UserContext.Provider>
+      <CartContextProvider>
+        <RouterProvider router={router} />
+      </CartContextProvider>
     </>
   );
 }

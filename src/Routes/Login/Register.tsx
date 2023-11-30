@@ -1,11 +1,11 @@
 import { useNavigate } from 'react-router';
-
 import * as Yup from 'yup';
 import { Form, Formik } from 'formik';
-import { CustomInput, FormError } from '../../Components/Forms/Inputs/CustomInput';
+import { CustomInput } from '../../Components/Forms/Inputs/CustomInput';
 import { SubmitButton } from '../../Components/Forms/SubmitButton';
-import './Login.scss';
 import { useState } from 'react';
+import './Login.scss';
+import { ErrorMessage, FormDataErrorType, FormErrorType } from '../../Components/ErrorMessage';
 
 interface RegisterFormValues {
   email: string;
@@ -15,8 +15,8 @@ interface RegisterFormValues {
 }
 
 export const Register: React.FC = () => {
+  const [error, setError] = useState<FormErrorType | null>(null);
   const navigate = useNavigate();
-  const [error, setError] = useState<FormError | undefined>(undefined);
 
   const initialValues = { email: '', username: '', password: '', confirmedPassword: '' };
 
@@ -36,7 +36,7 @@ export const Register: React.FC = () => {
       .required('Required')
   });
 
-  const handleSubmit = (
+  const handleSubmit = async (
     values: RegisterFormValues,
     setSubmitting: (isSubmitting: boolean) => void
   ) => {
@@ -50,32 +50,46 @@ export const Register: React.FC = () => {
       credentials: 'include'
     };
 
-    fetch('http://localhost:2001/auth/register', requestOptions)
-      .then((response) => {
-        if (!response.ok) {
-          console.log('res1: ', response);
-          throw new Error('Network response was not ok');
+    try {
+      const response = await fetch('http://localhost:2001/auth/register', requestOptions);
+
+      if (!response.ok) {
+        const data: FormDataErrorType = await response.json();
+        console.log('dat', data.type);
+        if (data.type === 'duplicateEmail') {
+          const registeredEmail = values.email;
+          navigate(`/login/${registeredEmail}`);
         }
-        return response.json();
-      })
-      //should I create interface for data?
-      .then((data) => {
-        console.log('data: ', data);
-        if (!data.success) {
-          setError({ type: data.type, message: data.message });
-          setSubmitting(false);
-          return;
-        }
+
+        setError({ type: data.type, message: data.message });
         setSubmitting(false);
-        navigate('/');
-      })
-      .catch((err) => {
-        console.log('error: ', err);
-      });
+
+        throw new Error('Network response was not ok');
+      }
+      setSubmitting(false);
+      //TODO: need to show error to user
+      navigate('/');
+    } catch (error) {
+      if (error instanceof TypeError && error.message === 'Failed to fetch') {
+        setError({ type: 'network', message: 'Network error: Failed to connect' });
+        setSubmitting(false);
+        return;
+      }
+
+      if (error instanceof Error) {
+        console.error('error: ', error);
+        setSubmitting(false);
+        return;
+      }
+
+      console.error('An unexpected error occurred:', error);
+      setSubmitting(false);
+    }
   };
 
   const isEmailError = error && error.type === 'email';
   const isPasswordError = error && error.type === 'password';
+  const isNetworkError = (error && error.type === 'network') || false;
 
   return (
     <Formik
@@ -86,6 +100,12 @@ export const Register: React.FC = () => {
       }}>
       {(formik) => (
         <Form>
+          <ErrorMessage
+            display={isNetworkError}
+            variant="danger"
+            message={error?.message ?? null}
+            setError={setError}
+          />
           <div className="input-fields">
             <CustomInput
               name="email"

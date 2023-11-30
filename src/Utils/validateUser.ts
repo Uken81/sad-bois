@@ -14,20 +14,19 @@ export const validateUser = async (): Promise<boolean> => {
       credentials: 'include'
     };
 
-    const respone = await fetch('http://localhost:2001/auth/validate', requestOptions);
-    console.log('respone: ', respone);
+    const response = await fetch('http://localhost:2001/auth/validate', requestOptions);
 
-    if (!respone.ok) {
+    if (!response.ok) {
       throw new Error('Network response was not ok');
     }
 
-    const data: ValidationResult = await respone.json();
+    const data: ValidationResult = await response.json();
     console.log('validationSuccess: ', data.validationSuccess);
     console.log('validationMesage: ', data.message);
 
     return data.validationSuccess;
   } catch (error) {
     console.error('Error during user validation:', error);
-    throw error;
+    return false;
   }
 };

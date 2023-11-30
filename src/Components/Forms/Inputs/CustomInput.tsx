@@ -12,12 +12,7 @@ interface CustomInputProps {
   id?: string;
 }
 
-export interface FormError {
-  type: 'email' | 'password';
-  message: string;
-}
-
-const ErrorText: React.FC<{ error?: string | undefined; touched: boolean }> = ({
+const ErrorText: React.FC<{ error: string | undefined; touched: boolean }> = ({
   error,
   touched
 }) => {
@@ -32,7 +27,7 @@ const ErrorText: React.FC<{ error?: string | undefined; touched: boolean }> = ({
   );
 };
 
-export const CustomInput: React.FC<CustomInputProps & { error?: string | undefined }> = ({
+export const CustomInput: React.FC<CustomInputProps & { error: string | undefined }> = ({
   label,
   error,
   children,
