@@ -20,7 +20,7 @@ export const Logout: React.FC<{
     };
 
     try {
-      const response = await fetch('http://localhost:2001/auth/logou', requestOptions);
+      const response = await fetch('http://localhost:2001/auth/logout', requestOptions);
 
       if (!response.ok || response === null) {
         throw new Error('Network response was not ok');

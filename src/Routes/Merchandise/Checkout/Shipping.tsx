@@ -8,14 +8,15 @@ import {
   CustomerContextType,
   SelectedShippingContextType
 } from '../../RouteWrappers/checkoutWrapper';
+import { ChangeDetails } from './ChangeDetails';
 
-export const Shipping = () => {
+export const Shipping: React.FC = () => {
   const { customer } = useOutletContext() as CustomerContextType;
   const { selectedShipping, setSelectedShipping } =
     useOutletContext() as SelectedShippingContextType;
   const refreshCustomer = useRepopulateCustomer();
-  console.log('ship', selectedShipping);
   const navigate = useNavigate();
+
   useEffect(() => {
     if (!customer) {
       refreshCustomer();
@@ -30,24 +31,18 @@ export const Shipping = () => {
   const { email, address, suburb, state, postcode } = customer;
   const combinedAddress = `${address}, ${suburb}, ${state}, ${postcode}`;
 
-  const changeDetails = (
-    <p className="change-details" onClick={() => navigate('/checkout/details')}>
-      Change
-    </p>
-  );
-
   return (
     <div>
       <div className="shipping-details" style={{ border: 'solid 2px black' }}>
         <div style={{ border: 'solid 1px red' }}>
           <p>Contact</p>
           <p>{email}</p>
-          {changeDetails}
+          <ChangeDetails />
         </div>
         <div style={{ border: 'solid 1px red', marginTop: '10px' }}>
           <p>Ship To</p>
           <p>{combinedAddress}</p>
-          {changeDetails}
+          <ChangeDetails />
         </div>
       </div>
       <div className="shipping-options" style={{ border: 'solid 2px black', marginTop: '50px' }}>

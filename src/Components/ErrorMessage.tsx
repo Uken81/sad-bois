@@ -7,12 +7,20 @@ export interface GeneralErrorType {
 }
 
 export interface FormErrorType extends GeneralErrorType {
-  type?: 'email' | 'duplicateEmail' | 'password' | 'network';
+  type?:
+    | 'email'
+    | 'duplicateEmail'
+    | 'password'
+    | 'network'
+    | 'cardNumber'
+    | 'nameOnCard'
+    | 'cardExpiration'
+    | 'cardSecurityCode';
 }
 
-export interface FormDataErrorType extends FormErrorType {
-  success: boolean;
-}
+// export interface FormDataErrorType extends FormErrorType {
+//   success: boolean;
+// }
 
 type VariantType = 'danger' | 'warning';
 

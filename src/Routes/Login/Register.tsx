@@ -5,7 +5,7 @@ import { CustomInput } from '../../Components/Forms/Inputs/CustomInput';
 import { SubmitButton } from '../../Components/Forms/SubmitButton';
 import { useState } from 'react';
 import './Login.scss';
-import { ErrorMessage, FormDataErrorType, FormErrorType } from '../../Components/ErrorMessage';
+import { ErrorMessage, FormErrorType } from '../../Components/ErrorMessage';
 
 interface RegisterFormValues {
   email: string;
@@ -17,8 +17,6 @@ interface RegisterFormValues {
 export const Register: React.FC = () => {
   const [error, setError] = useState<FormErrorType | null>(null);
   const navigate = useNavigate();
-
-  const initialValues = { email: '', username: '', password: '', confirmedPassword: '' };
 
   const validationSchema = Yup.object({
     email: Yup.string().email('Invalid email address').required('Required'),
@@ -54,7 +52,7 @@ export const Register: React.FC = () => {
       const response = await fetch('http://localhost:2001/auth/register', requestOptions);
 
       if (!response.ok) {
-        const data: FormDataErrorType = await response.json();
+        const data: FormErrorType = await response.json();
         console.log('dat', data.type);
         if (data.type === 'duplicateEmail') {
           const registeredEmail = values.email;
@@ -87,13 +85,14 @@ export const Register: React.FC = () => {
     }
   };
 
-  const isEmailError = error && error.type === 'email';
+  const isEmailError = error?.type === 'email';
+  // const isEmailError = error && error.type === 'email';
   const isPasswordError = error && error.type === 'password';
   const isNetworkError = (error && error.type === 'network') || false;
 
   return (
     <Formik
-      initialValues={initialValues}
+      initialValues={{ email: '', username: '', password: '', confirmedPassword: '' }}
       validationSchema={validationSchema}
       onSubmit={(values, { setSubmitting }) => {
         handleSubmit(values, setSubmitting);

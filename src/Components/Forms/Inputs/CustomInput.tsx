@@ -7,6 +7,7 @@ interface CustomInputProps {
   type?: string;
   as?: string;
   placeholder?: string;
+  inputMode?: string;
   children?: ReactNode;
   // error?: string | null;
   id?: string;
@@ -27,7 +28,7 @@ const ErrorText: React.FC<{ error: string | undefined; touched: boolean }> = ({
   );
 };
 
-export const CustomInput: React.FC<CustomInputProps & { error: string | undefined }> = ({
+export const CustomInput: React.FC<CustomInputProps & { error?: string | undefined }> = ({
   label,
   error,
   children,
@@ -49,6 +50,7 @@ export const CustomInput: React.FC<CustomInputProps & { error: string | undefine
         name={props.name}
         type={props.type}
         placeholder={props.placeholder}
+        inputMode={props.inputMode}
         as={props.as}>
         {children}
       </Field>
