@@ -3,24 +3,26 @@ import { ShippingOptionsType } from './shippingOptions';
 import { calculateTax } from './CostCalculators/calculateTax';
 import { calculateOrderTotal } from './CostCalculators/CalculateOrderTotal';
 import { formatCurrency } from '../../../Utils/currencyFormatter';
-import { useRepopulateCart } from '../../../Hooks/useRepopulateCart';
 import { useOutletContext } from 'react-router';
 import { CartContextType } from '../../RouteWrappers/storeWrapper';
+import { useGetCart } from '../../../Hooks/useGetCart';
 
 export const OrderSummary: React.FC<{ selectedShipping: ShippingOptionsType }> = ({
   selectedShipping
 }) => {
-  const { cart } = useOutletContext() as CartContextType;
+  const { cart, setCart } = useOutletContext() as CartContextType;
   const [orderTotal, setOrderTotal] = useState<string | null>(null);
   const [tax, setTax] = useState<number | null>(null);
   console.log('tax', tax);
   const formattedTax = formatCurrency(tax);
+  const formattedSubtotal = formatCurrency(cart?.subtotal ?? null);
   const cartItems = cart?.items;
-  const refreshCart = useRepopulateCart();
+  const getCart = useGetCart();
 
   useEffect(() => {
     if (!cart) {
-      refreshCart();
+      const retrivedCart = getCart();
+      setCart(retrivedCart);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -36,7 +38,6 @@ export const OrderSummary: React.FC<{ selectedShipping: ShippingOptionsType }> =
     if (tax && cart) {
       const orderDetails = { cart, selectedShipping, tax };
       const total = calculateOrderTotal(orderDetails);
-      console.log('testTotal', total);
       const formattedTotal = formatCurrency(total);
       setOrderTotal(formattedTotal ?? null);
     }
@@ -65,7 +66,7 @@ export const OrderSummary: React.FC<{ selectedShipping: ShippingOptionsType }> =
       <h2>Discount Code Goes Here</h2>
       <div>
         <h3>Subtotal</h3>
-        <p>{cart?.subtotal ? cart.subtotal : 'Calculating...'}</p>
+        <p>{formattedSubtotal ? formattedSubtotal : 'Calculating...'}</p>
       </div>
       <div className="extra-costs">
         <h3>Shipping</h3>

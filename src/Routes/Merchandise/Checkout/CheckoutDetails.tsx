@@ -3,9 +3,9 @@ import { CustomInput } from '../../../Components/Forms/Inputs/CustomInput';
 import { SubmitButton } from '../../../Components/Forms/SubmitButton';
 import { useNavigate, useOutletContext } from 'react-router';
 import { useEffect } from 'react';
-import { useRepopulateCustomer } from '../../../Hooks/useRepopulateCustomer';
 import { saveOrUpdateSessionStorage } from '../../../Utils/saveOrUpdateSessionStorage';
 import { CustomerContextType } from '../../RouteWrappers/checkoutWrapper';
+import { useGetCustomer } from '../../../Hooks/useGetCustomer';
 import './checkout.scss';
 
 interface DetailsFormType {
@@ -23,7 +23,8 @@ interface DetailsFormType {
 
 export const CheckoutDetails = () => {
   const { customer, setCustomer } = useOutletContext() as CustomerContextType;
-  const refreshCustomer = useRepopulateCustomer();
+  const getCustomer = useGetCustomer();
+
   const navigate = useNavigate();
   //Todo: Create more countries and states or use library if possible.
   const countries = ['Australia', 'USA'];
@@ -31,8 +32,10 @@ export const CheckoutDetails = () => {
 
   useEffect(() => {
     if (!customer) {
-      refreshCustomer();
+      const retrievedCustomer = getCustomer();
+      setCustomer(retrievedCustomer);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleSubmit = async (

@@ -3,24 +3,27 @@ import { useNavigate, useOutletContext } from 'react-router';
 import { Button } from 'react-bootstrap';
 import { shippingOptions } from './shippingOptions';
 import { formatCurrency } from '../../../Utils/currencyFormatter';
-import { useRepopulateCustomer } from '../../../Hooks/useRepopulateCustomer';
 import {
   CustomerContextType,
   SelectedShippingContextType
 } from '../../RouteWrappers/checkoutWrapper';
 import { ChangeDetails } from './ChangeDetails';
+import { useGetCustomer } from '../../../Hooks/useGetCustomer';
 
 export const Shipping: React.FC = () => {
-  const { customer } = useOutletContext() as CustomerContextType;
+  const { customer, setCustomer } = useOutletContext() as CustomerContextType;
   const { selectedShipping, setSelectedShipping } =
     useOutletContext() as SelectedShippingContextType;
-  const refreshCustomer = useRepopulateCustomer();
+  const getCustomer = useGetCustomer();
+
   const navigate = useNavigate();
 
   useEffect(() => {
     if (!customer) {
-      refreshCustomer();
+      const retrievedCustomer = getCustomer();
+      setCustomer(retrievedCustomer);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (!customer) {
@@ -47,7 +50,7 @@ export const Shipping: React.FC = () => {
       </div>
       <div className="shipping-options" style={{ border: 'solid 2px black', marginTop: '50px' }}>
         {shippingOptions.map((option) => {
-          const formattedPrice = formatCurrency(option.price);
+          const formattedPrice = formatCurrency(option.shippingPrice);
           return (
             <div
               key={option.type}

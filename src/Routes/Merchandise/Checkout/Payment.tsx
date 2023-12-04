@@ -1,23 +1,22 @@
 import { useOutletContext } from 'react-router';
 import { CustomerContextType } from '../../RouteWrappers/checkoutWrapper';
-import { useRepopulateCustomer } from '../../../Hooks/useRepopulateCustomer';
+import { useGetCustomer } from '../../../Hooks/useGetCustomer';
 import { ChangeDetails } from './ChangeDetails';
 import { PaymentDetails } from './PaymentDetails';
-import { CartContextType } from '../../RouteWrappers/storeWrapper';
+import { useEffect } from 'react';
 
 export const Payment: React.FC = () => {
   const outletContext = useOutletContext();
-  const { customer } = outletContext as CustomerContextType;
-  console.log('customer', customer);
-  // const { customer } = useOutletContext() as CustomerContextType;
-  // const { cart, setCart } = useOutletContext() as CartContextType;
-  // const { cart } = outletContext as CartContextType;
-  // console.log('cart', cart);
-  const refreshCustomer = useRepopulateCustomer();
+  const { customer, setCustomer } = outletContext as CustomerContextType;
+  const getCustomer = useGetCustomer();
 
-  if (!customer) {
-    refreshCustomer();
-  }
+  useEffect(() => {
+    if (!customer) {
+      const retrievedCustomer = getCustomer();
+      setCustomer(retrievedCustomer);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const { email, address, suburb, state, postcode } = customer ?? {};
   const combinedAddress = `${address}, ${suburb}, ${state}, ${postcode}`;

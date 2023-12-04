@@ -1,14 +1,14 @@
 import { useLoaderData, useNavigate, useOutletContext } from 'react-router';
-import { Product } from '../productsLoader';
-import './productOrders.scss';
 import { useState } from 'react';
 import { Size, SizeDropdown } from './SizeDropdown';
 import { Quantity } from './Quantity';
 import { Button } from 'react-bootstrap';
-import shortid from 'shortid';
 import { useEffectAfterMount } from '../../../Hooks/useEffectAfterMount';
 import { saveOrUpdateSessionStorage } from '../../../Utils/saveOrUpdateSessionStorage';
 import { CartContextType } from '../../RouteWrappers/storeWrapper';
+import { ProductType } from '../productsLoader';
+import shortid from 'shortid';
+import './productOrders.scss';
 
 export interface ProductOrder {
   orderId: string;
@@ -23,7 +23,7 @@ export interface ProductOrder {
 }
 
 export const AddToCart: React.FC = () => {
-  const loaderData = useLoaderData() as Product;
+  const loaderData = useLoaderData() as ProductType;
   const { id, img, title, subtitle, price, category } = loaderData;
   const { cart, setCart } = useOutletContext() as CartContextType;
   const [size, setSize] = useState<Size | undefined>(undefined);
@@ -34,7 +34,6 @@ export const AddToCart: React.FC = () => {
   const displayDropdown = category === 'clothing';
 
   const addProduct = async () => {
-    console.log('OA1', newAdded);
     const orderId = shortid.generate();
     const productOrder: ProductOrder = {
       orderId,
