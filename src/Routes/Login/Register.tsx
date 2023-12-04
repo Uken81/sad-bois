@@ -86,9 +86,8 @@ export const Register: React.FC = () => {
   };
 
   const isEmailError = error?.type === 'email';
-  // const isEmailError = error && error.type === 'email';
-  const isPasswordError = error && error.type === 'password';
-  const isNetworkError = (error && error.type === 'network') || false;
+  const isPasswordError = error?.type === 'password';
+  const isNetworkError = error?.type === 'network' || false;
 
   return (
     <Formik

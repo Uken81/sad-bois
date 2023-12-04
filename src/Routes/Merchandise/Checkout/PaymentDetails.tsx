@@ -3,7 +3,13 @@ import { CustomInput } from '../../../Components/Forms/Inputs/CustomInput';
 import { SubmitButton } from '../../../Components/Forms/SubmitButton';
 import * as Yup from 'yup';
 import { useState } from 'react';
-import { FormErrorType } from '../../../Components/ErrorMessage';
+import { ErrorMessage, FormErrorType } from '../../../Components/ErrorMessage';
+import { useNavigate, useOutletContext } from 'react-router';
+import {
+  CustomerContextType,
+  SelectedShippingContextType
+} from '../../RouteWrappers/checkoutWrapper';
+import { CartContextType } from '../../RouteWrappers/storeWrapper';
 
 export interface CardDetailsFormType {
   cardNumber: string;
@@ -12,7 +18,13 @@ export interface CardDetailsFormType {
   securityCode: string;
 }
 export const PaymentDetails = () => {
+  const outletContext = useOutletContext();
+  const { customer, setCustomer } = outletContext as CustomerContextType;
+  const { cart, setCart } = outletContext as CartContextType;
+  const { selectedShipping, setSelectedShipping } = outletContext as SelectedShippingContextType;
   const [error, setError] = useState<FormErrorType | null>(null);
+  const navigate = useNavigate();
+
   const validationSchema = Yup.object().shape({
     cardNumber: Yup.string()
       //TODO: Investigate using regex for more detailed validaion.
@@ -34,7 +46,7 @@ export const PaymentDetails = () => {
     console.log('CardValues', values);
     const requestOptions: RequestInit = {
       method: 'POST',
-      body: JSON.stringify(values),
+      body: JSON.stringify({ formValues: values, customer, cart, selectedShipping }),
       headers: {
         'Content-Type': 'application/json'
       },
@@ -46,13 +58,18 @@ export const PaymentDetails = () => {
       if (!response.ok) {
         const data: FormErrorType = await response.json();
         setError({ type: data.type, message: data.message });
-        throw new Error('Network response was not ok');
+        throw new Error(`Network response was not ok: ${data.message}`);
       }
-      //add navigation
+
+      const data = await response.json();
+      setCustomer(null);
+      setCart(null);
+      setSelectedShipping(null);
       setSubmitting(false);
+      navigate(`/store/checkout/order-summary/:${data.orderSummary}`);
     } catch (error) {
       if (error instanceof Error) {
-        console.error('error: ', error);
+        console.error(error);
         setSubmitting(false);
         return;
       }
@@ -66,21 +83,28 @@ export const PaymentDetails = () => {
   const isNameOnCardError = error?.type === 'nameOnCard';
   const isEpirationDateError = error?.type === 'cardExpiration';
   const isSecurityCodeError = error?.type === 'cardSecurityCode';
+  const isNetworkError = error?.type === 'network' || false;
 
   return (
     <Formik
       validationSchema={validationSchema}
       initialValues={{
-        cardNumber: '',
-        nameOnCard: '',
-        expirationDate: '',
-        securityCode: ''
+        cardNumber: '5688276923105021',
+        nameOnCard: 'Mr Test',
+        expirationDate: '11/24',
+        securityCode: '666'
       }}
       onSubmit={(values, { setSubmitting }) => {
         handleSubmit(values, setSubmitting);
       }}>
       {(formik) => (
         <Form>
+          <ErrorMessage
+            display={isNetworkError}
+            variant="danger"
+            message={error?.message ?? null}
+            setError={setError}
+          />
           <h2>Credit card</h2>
           <CustomInput
             name="cardNumber"

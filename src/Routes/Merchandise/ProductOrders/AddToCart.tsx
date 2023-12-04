@@ -1,14 +1,14 @@
-import { useLoaderData, useNavigate } from 'react-router';
+import { useLoaderData, useNavigate, useOutletContext } from 'react-router';
 import { Product } from '../productsLoader';
 import './productOrders.scss';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { Size, SizeDropdown } from './SizeDropdown';
 import { Quantity } from './Quantity';
 import { Button } from 'react-bootstrap';
 import shortid from 'shortid';
-import { CartContext, CartContextType } from '../../../Context/CartContext';
 import { useEffectAfterMount } from '../../../Hooks/useEffectAfterMount';
 import { saveOrUpdateSessionStorage } from '../../../Utils/saveOrUpdateSessionStorage';
+import { CartContextType } from '../../RouteWrappers/storeWrapper';
 
 export interface ProductOrder {
   orderId: string;
@@ -25,7 +25,7 @@ export interface ProductOrder {
 export const AddToCart: React.FC = () => {
   const loaderData = useLoaderData() as Product;
   const { id, img, title, subtitle, price, category } = loaderData;
-  const { cart, setCart } = useContext(CartContext) as CartContextType;
+  const { cart, setCart } = useOutletContext() as CartContextType;
   const [size, setSize] = useState<Size | undefined>(undefined);
   const [quantity, setQuantity] = useState(1);
   const [newAdded, setNewAdded] = useState<boolean>(false);

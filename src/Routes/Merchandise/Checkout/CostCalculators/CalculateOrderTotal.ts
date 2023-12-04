@@ -1,4 +1,4 @@
-import { CartType } from '../../../../Context/CartContext';
+import { CartType } from '../../../RouteWrappers/storeWrapper';
 import { ShippingOptionsType } from '../shippingOptions';
 
 export interface OrderDetailsType {
@@ -9,7 +9,7 @@ export interface OrderDetailsType {
 
 export const calculateOrderTotal = (orderDetails: OrderDetailsType) => {
   const subtotal = orderDetails.cart?.subtotal;
-  const shippingPrice = orderDetails.selectedShipping?.price;
+  const shippingPrice = orderDetails.selectedShipping?.shippingPrice;
   const tax = orderDetails.tax;
   console.log('orderdeets', subtotal, shippingPrice, tax);
 

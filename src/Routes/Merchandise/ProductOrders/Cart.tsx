@@ -1,12 +1,12 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button, Form, Modal } from 'react-bootstrap';
-import { useNavigate } from 'react-router';
-import { CartContext, CartContextType } from '../../../Context/CartContext';
+import { useNavigate, useOutletContext } from 'react-router';
 import { formatCurrency } from '../../../Utils/currencyFormatter';
 import { useRepopulateCart } from '../../../Hooks/useRepopulateCart';
+import { CartContextType } from '../../RouteWrappers/storeWrapper';
 
 export const Cart = () => {
-  const { cart, setCart } = useContext(CartContext) as CartContextType;
+  const { cart, setCart } = useOutletContext() as CartContextType;
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
   const refreshCart = useRepopulateCart();
@@ -36,12 +36,11 @@ export const Cart = () => {
       return;
     }
 
-    navigate('/checkout/details');
+    navigate('/store/checkout/details');
   };
 
   useEffect(() => {
     console.log('sub', cart?.subtotal);
-    // console.log('show', showModal);
     console.log('cartInCart', cart);
   });
 
@@ -94,7 +93,7 @@ export const Cart = () => {
         <p>Taxes and shipping calculated and checkout</p>
       </div>
       <div>
-        <Button onClick={() => navigate('/merchandise')}>CONTINUE SHOPPING</Button>
+        <Button onClick={() => navigate('/store')}>CONTINUE SHOPPING</Button>
       </div>
       <div>
         <Form.Check onChange={() => (hasAgreed = !hasAgreed)} aria-label="terms" />

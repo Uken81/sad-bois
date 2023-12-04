@@ -3,9 +3,16 @@ import { CustomerContextType } from '../../RouteWrappers/checkoutWrapper';
 import { useRepopulateCustomer } from '../../../Hooks/useRepopulateCustomer';
 import { ChangeDetails } from './ChangeDetails';
 import { PaymentDetails } from './PaymentDetails';
+import { CartContextType } from '../../RouteWrappers/storeWrapper';
 
 export const Payment: React.FC = () => {
-  const { customer } = useOutletContext() as CustomerContextType;
+  const outletContext = useOutletContext();
+  const { customer } = outletContext as CustomerContextType;
+  console.log('customer', customer);
+  // const { customer } = useOutletContext() as CustomerContextType;
+  // const { cart, setCart } = useOutletContext() as CartContextType;
+  // const { cart } = outletContext as CartContextType;
+  // console.log('cart', cart);
   const refreshCustomer = useRepopulateCustomer();
 
   if (!customer) {

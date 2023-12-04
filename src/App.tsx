@@ -23,7 +23,6 @@ import { tourLoader } from './Routes/Tour/tourLoader';
 import { homepageLoader } from './Routes/HomePage/homepageLoaders';
 import { Cart } from './Routes/Merchandise/ProductOrders/Cart';
 import { CheckoutDetails } from './Routes/Merchandise/Checkout/CheckoutDetails';
-import { CartContextProvider } from './Context/CartContext';
 import './Routes/Merchandise/Checkout/checkout.scss';
 import { Shipping } from './Routes/Merchandise/Checkout/Shipping';
 import { Payment } from './Routes/Merchandise/Checkout/Payment';
@@ -31,6 +30,7 @@ import { Root } from './Routes/RouteWrappers/rootWrapper';
 import { Store } from './Routes/RouteWrappers/storeWrapper';
 import { Checkout } from './Routes/RouteWrappers/checkoutWrapper';
 import { PrivateRoute } from './Routes/RouteWrappers/privateRoute';
+import { OrderConfirmation } from './Routes/Merchandise/Checkout/OrderConfirmation';
 
 function App() {
   const router = createBrowserRouter(
@@ -46,11 +46,12 @@ function App() {
           <Route index element={<Merchandise />} loader={productsLoader} />
           <Route path="add-to-cart/:id" element={<AddToCart />} loader={productLoader} />
           <Route path="view-cart" element={<Cart />} />
-        </Route>
-        <Route path="checkout" element={<Checkout />}>
-          <Route path="details" element={<CheckoutDetails />} />
-          <Route path="shipping" element={<Shipping />} />
-          <Route path="payment/:shippingMethod" element={<Payment />} />
+          <Route path="checkout" element={<Checkout />}>
+            <Route path="details" element={<CheckoutDetails />} />
+            <Route path="shipping" element={<Shipping />} />
+            <Route path="payment/:shippingMethod" element={<Payment />} />
+            <Route path="orderConfirmation/:orderSummary" element={<OrderConfirmation />} />
+          </Route>
         </Route>
         <Route path="login/:registeredEmail?" element={<Login />} />
         <Route path="register" element={<Register />} />
@@ -68,9 +69,7 @@ function App() {
 
   return (
     <>
-      <CartContextProvider>
-        <RouterProvider router={router} />
-      </CartContextProvider>
+      <RouterProvider router={router} />
     </>
   );
 }

@@ -1,15 +1,16 @@
-import { useContext, useEffect, useState } from 'react';
-import { CartContext, CartContextType } from '../../../Context/CartContext';
+import { useEffect, useState } from 'react';
 import { ShippingOptionsType } from './shippingOptions';
 import { calculateTax } from './CostCalculators/calculateTax';
 import { calculateOrderTotal } from './CostCalculators/CalculateOrderTotal';
 import { formatCurrency } from '../../../Utils/currencyFormatter';
 import { useRepopulateCart } from '../../../Hooks/useRepopulateCart';
+import { useOutletContext } from 'react-router';
+import { CartContextType } from '../../RouteWrappers/storeWrapper';
 
 export const OrderSummary: React.FC<{ selectedShipping: ShippingOptionsType }> = ({
   selectedShipping
 }) => {
-  const { cart } = useContext(CartContext) as CartContextType;
+  const { cart } = useOutletContext() as CartContextType;
   const [orderTotal, setOrderTotal] = useState<string | null>(null);
   const [tax, setTax] = useState<number | null>(null);
   const formattedTax = formatCurrency(tax);
@@ -66,7 +67,7 @@ export const OrderSummary: React.FC<{ selectedShipping: ShippingOptionsType }> =
       </div>
       <div className="extra-costs">
         <h3>Shipping</h3>
-        <p>{selectedShipping?.price}</p>
+        <p>{selectedShipping?.shippingPrice}</p>
         <h3>GST</h3>
         <p>{formattedTax ? formattedTax : 'Calculating...'}</p>
       </div>

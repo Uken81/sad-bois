@@ -1,10 +1,10 @@
 import { Dispatch, SetStateAction, useState } from 'react';
 import { ShippingOptionsType, shippingOptions } from '../Merchandise/Checkout/shippingOptions';
-import { Outlet } from 'react-router';
+import { Outlet, useOutletContext } from 'react-router';
 import { OrderSummary } from '../Merchandise/Checkout/OrderSummary';
+import { CartContextType } from './storeWrapper';
 
 export interface CustomerType {
-  id: string;
   email: string;
   emailoffers: boolean;
   firstname: string;
@@ -28,13 +28,14 @@ export interface SelectedShippingContextType {
 }
 
 export const Checkout = () => {
+  const { cart } = useOutletContext() as CartContextType;
   const [customer, setCustomer] = useState<CustomerType | null>(null);
   const [selectedShipping, setSelectedShipping] = useState<ShippingOptionsType>(shippingOptions[0]);
 
   console.log('selectedShipping', selectedShipping);
   return (
     <div className="checkout">
-      <Outlet context={{ selectedShipping, setSelectedShipping, customer, setCustomer }} />
+      <Outlet context={{ selectedShipping, setSelectedShipping, customer, setCustomer, cart }} />
       <OrderSummary selectedShipping={selectedShipping} />
     </div>
   );

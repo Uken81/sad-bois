@@ -1,13 +1,13 @@
-import { useContext } from 'react';
-import { CartContext, CartContextType } from '../Context/CartContext';
+import { CartContextType } from '../Routes/RouteWrappers/storeWrapper';
 import { getSessionData } from '../Utils/getSessionData';
+import { useOutletContext } from 'react-router';
 
 /**
  * A custom hook that gets the data from session storage if it exists and sets the cart context with the results.
  */
 
 export const useRepopulateCart = () => {
-  const { setCart } = useContext(CartContext) as CartContextType;
+  const { setCart } = useOutletContext() as CartContextType;
 
   return () => {
     const sessionCart = getSessionData('cart');

@@ -2,12 +2,11 @@ import { Formik, Form } from 'formik';
 import { CustomInput } from '../../../Components/Forms/Inputs/CustomInput';
 import { SubmitButton } from '../../../Components/Forms/SubmitButton';
 import { useNavigate, useOutletContext } from 'react-router';
-import './checkout.scss';
 import { useEffect } from 'react';
-import shortid from 'shortid';
 import { useRepopulateCustomer } from '../../../Hooks/useRepopulateCustomer';
 import { saveOrUpdateSessionStorage } from '../../../Utils/saveOrUpdateSessionStorage';
 import { CustomerContextType } from '../../RouteWrappers/checkoutWrapper';
+import './checkout.scss';
 
 interface DetailsFormType {
   email: string;
@@ -40,12 +39,9 @@ export const CheckoutDetails = () => {
     values: DetailsFormType,
     setSubmitting: (isSubmitting: boolean) => void
   ) => {
-    //should this be set only at db??
-    const customerId = shortid.generate();
-
-    setCustomer({ ...values, id: customerId });
+    setCustomer(values);
     saveOrUpdateSessionStorage('customer', values);
-    navigate('/checkout/shipping');
+    navigate('/store/checkout/shipping');
   };
 
   //Todo: Add validation schema.
