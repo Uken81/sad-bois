@@ -13,6 +13,7 @@ export const OrderSummary: React.FC<{ selectedShipping: ShippingOptionsType }> =
   const { cart } = useOutletContext() as CartContextType;
   const [orderTotal, setOrderTotal] = useState<string | null>(null);
   const [tax, setTax] = useState<number | null>(null);
+  console.log('tax', tax);
   const formattedTax = formatCurrency(tax);
   const cartItems = cart?.items;
   const refreshCart = useRepopulateCart();
@@ -35,6 +36,7 @@ export const OrderSummary: React.FC<{ selectedShipping: ShippingOptionsType }> =
     if (tax && cart) {
       const orderDetails = { cart, selectedShipping, tax };
       const total = calculateOrderTotal(orderDetails);
+      console.log('testTotal', total);
       const formattedTotal = formatCurrency(total);
       setOrderTotal(formattedTotal ?? null);
     }
