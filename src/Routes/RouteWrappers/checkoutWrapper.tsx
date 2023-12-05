@@ -28,14 +28,16 @@ export interface SelectedShippingContextType {
 }
 
 export const Checkout = () => {
-  const { cart } = useOutletContext() as CartContextType;
+  const { cart, setCart } = useOutletContext() as CartContextType;
   const [customer, setCustomer] = useState<CustomerType | null>(null);
   const [selectedShipping, setSelectedShipping] = useState<ShippingOptionsType>(shippingOptions[0]);
 
   console.log('selectedShipping', selectedShipping);
   return (
     <div className="checkout">
-      <Outlet context={{ selectedShipping, setSelectedShipping, customer, setCustomer, cart }} />
+      <Outlet
+        context={{ selectedShipping, setSelectedShipping, customer, setCustomer, cart, setCart }}
+      />
       <OrderSummary selectedShipping={selectedShipping} />
     </div>
   );
