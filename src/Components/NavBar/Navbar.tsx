@@ -8,6 +8,8 @@ import './navbar.scss';
 export const Navbar: React.FC<{
   userDetailsContext: UserContextType;
 }> = ({ userDetailsContext }) => {
+  const { userDetails } = userDetailsContext;
+  console.log('navDeets', userDetails?.email);
   const [error, setError] = useState<GeneralErrorType | null>(null);
   const isDisplayingError = error !== null;
   return (
@@ -29,10 +31,10 @@ export const Navbar: React.FC<{
           <Link to="/store">Swag</Link>
         </li>
         <li>
-          <Link to="/profile">PP</Link>
+          <Link to={`profile/${userDetails?.email}`}>PP</Link>
         </li>
         <li>
-          {userDetailsContext.userDetails ? (
+          {userDetails ? (
             <Logout userDetailsContext={userDetailsContext} setError={setError} />
           ) : (
             <Link to="/login">Log In</Link>

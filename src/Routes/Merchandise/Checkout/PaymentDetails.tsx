@@ -54,7 +54,7 @@ export const PaymentDetails = () => {
     };
 
     try {
-      const response = await fetch('http://localhost:2001/process-payment', requestOptions);
+      const response = await fetch('http://localhost:2001/process-order', requestOptions);
       if (!response.ok) {
         const data: FormErrorType = await response.json();
         setError({ type: data.type, message: data.message });

@@ -31,6 +31,7 @@ import { Checkout } from './Routes/RouteWrappers/checkoutWrapper';
 import { PrivateRoute } from './Routes/RouteWrappers/privateRoute';
 import { OrderConfirmation } from './Routes/Merchandise/Checkout/OrderConfirmation/OrderConfirmation';
 import './Routes/Merchandise/Checkout/checkout.scss';
+import { ordersLoader } from './Routes/ProfilePage/ordersLoader';
 
 function App() {
   const router = createBrowserRouter(
@@ -56,12 +57,13 @@ function App() {
         <Route path="login/:registeredEmail?" element={<Login />} />
         <Route path="register" element={<Register />} />
         <Route
-          path="/profile"
+          path="/profile/:email?"
           element={
             <PrivateRoute>
               <ProfilePage />
             </PrivateRoute>
           }
+          loader={ordersLoader}
         />
       </Route>
     )
