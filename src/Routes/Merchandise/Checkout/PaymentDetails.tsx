@@ -24,7 +24,7 @@ export const PaymentDetails = () => {
   const { selectedShipping, setSelectedShipping } = outletContext as SelectedShippingContextType;
   const [error, setError] = useState<FormErrorType | null>(null);
   const navigate = useNavigate();
-
+  console.log('PDCustomer', customer);
   const validationSchema = Yup.object().shape({
     cardNumber: Yup.string()
       //TODO: Investigate using regex for more detailed validaion.
@@ -60,13 +60,15 @@ export const PaymentDetails = () => {
         setError({ type: data.type, message: data.message });
         throw new Error(`Network response was not ok: ${data.message}`);
       }
-
+      console.log('res', response);
       const data = await response.json();
+      console.log('dat', data);
+      const { customerEmail, trackingId } = data.orderSummary;
       setCustomer(null);
       setCart(null);
       setSelectedShipping(null);
       setSubmitting(false);
-      navigate(`/store/checkout/order-summary/:${data.orderSummary}`);
+      navigate(`/orderConfirmation/${customerEmail}/${trackingId}`);
     } catch (error) {
       if (error instanceof Error) {
         console.error(error);

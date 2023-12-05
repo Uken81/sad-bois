@@ -1,4 +1,4 @@
-import { useOutletContext } from 'react-router';
+import { useOutletContext, useParams } from 'react-router';
 import { CustomerContextType } from '../../RouteWrappers/checkoutWrapper';
 import { useGetCustomer } from '../../../Hooks/useGetCustomer';
 import { ChangeDetails } from './ChangeDetails';
@@ -6,6 +6,8 @@ import { PaymentDetails } from './PaymentDetails';
 import { useEffect } from 'react';
 
 export const Payment: React.FC = () => {
+  const params = useParams();
+  const shippingMethod = params?.shippingMethod ?? null;
   const outletContext = useOutletContext();
   const { customer, setCustomer } = outletContext as CustomerContextType;
   const getCustomer = useGetCustomer();
@@ -31,6 +33,7 @@ export const Payment: React.FC = () => {
           <ChangeDetails />
         </div>
         <div style={{ border: 'solid 1px red', marginTop: '10px' }}>
+          <p>{shippingMethod}</p>
           <p>Ship To</p>
           <p>{combinedAddress}</p>
           <ChangeDetails />

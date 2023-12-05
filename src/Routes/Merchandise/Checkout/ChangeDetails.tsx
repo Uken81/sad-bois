@@ -4,7 +4,7 @@ export const ChangeDetails: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <p className="change-details" onClick={() => navigate('/checkout/details')}>
+    <p className="change-details" onClick={() => navigate('/store/checkout/details')}>
       Change
     </p>
   );

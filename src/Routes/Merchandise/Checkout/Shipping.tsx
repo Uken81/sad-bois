@@ -62,7 +62,7 @@ export const Shipping: React.FC = () => {
           );
         })}
       </div>
-      <Button onClick={() => navigate(`/store/checkout/payment/${selectedShipping}`)}>
+      <Button onClick={() => navigate(`/store/checkout/payment/${selectedShipping.name}`)}>
         Continue to Payment
       </Button>
     </div>
