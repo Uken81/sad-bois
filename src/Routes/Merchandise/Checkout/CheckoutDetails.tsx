@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import { saveOrUpdateSessionStorage } from '../../../Utils/saveOrUpdateSessionStorage';
 import { CustomerContextType } from '../../RouteWrappers/checkoutWrapper';
 import { useGetCustomer } from '../../../Hooks/useGetCustomer';
+import * as Yup from 'yup';
 import './checkout.scss';
 
 interface DetailsFormType {
@@ -26,9 +27,8 @@ export const CheckoutDetails = () => {
   const getCustomer = useGetCustomer();
 
   const navigate = useNavigate();
-  //Todo: Create more countries and states or use library if possible.
-  const countries = ['Australia', 'USA'];
-  const states = ['VIC', 'NSW'];
+  const countries = ['Australia'];
+  const states = ['VIC', 'NSW', 'QLD', 'SA', 'WA', 'TAS', 'ACT', 'NT'];
 
   useEffect(() => {
     if (!customer) {
@@ -44,14 +44,30 @@ export const CheckoutDetails = () => {
   ) => {
     setCustomer(values);
     saveOrUpdateSessionStorage('customer', values);
+    setSubmitting(false);
     navigate('/store/checkout/shipping');
   };
 
-  //Todo: Add validation schema.
+  const detailsFormSchema = Yup.object().shape({
+    email: Yup.string().email('Invalid email address').required('Email is required'),
+    emailoffers: Yup.boolean(),
+    firstname: Yup.string().required('First Name is required'),
+    lastname: Yup.string().required('Last Name is required'),
+    country: Yup.string().required('Country is required'),
+    address: Yup.string().required('Address is required'),
+    apartment: Yup.string(),
+    suburb: Yup.string().required('Suburb is required'),
+    state: Yup.string().required('State is required'),
+    postcode: Yup.string()
+      .matches(/^[0-9]+$/, 'Must be only digits')
+      .required('Post Code is required')
+  });
+
   return (
     <main>
       <h4>Contact</h4>
       <Formik
+        validationSchema={detailsFormSchema}
         initialValues={{
           email: customer?.email ?? '',
           emailoffers: customer?.emailoffers ?? false,
