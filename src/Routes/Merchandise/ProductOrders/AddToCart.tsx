@@ -8,6 +8,7 @@ import { saveOrUpdateSessionStorage } from '../../../Utils/saveOrUpdateSessionSt
 import { CartContextType } from '../../RouteWrappers/storeWrapper';
 import { ProductType } from '../productsLoader';
 import shortid from 'shortid';
+import { ShareButton } from '../../../Components/Share/ShareButton';
 import './productOrders.scss';
 
 export interface ProductOrder {
@@ -90,10 +91,11 @@ export const AddToCart: React.FC = () => {
       </div>
 
       <div>
-        {newAdded && <Button onClick={() => navigate('/store/view-cart')}>VIEW CART</Button>}
-        {!newAdded && <Button onClick={handleSubmit}>ADD TO CART</Button>}
+        {newAdded ? <Button onClick={() => navigate('/store/view-cart')}>VIEW CART</Button> : null}
+        {!newAdded ? <Button onClick={handleSubmit}>ADD TO CART</Button> : null}
       </div>
-      {newAdded && <p>Item added to cart</p>}
+      {newAdded ? <p>Item added to cart</p> : null}
+      <ShareButton />
     </div>
   );
 };
