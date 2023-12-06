@@ -1,22 +1,20 @@
 import { Dispatch } from 'react';
 import { Dropdown, DropdownButton } from 'react-bootstrap';
-export type Size = 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl';
 
 export const SizeDropdown: React.FC<{
-  setSize: Dispatch<React.SetStateAction<Size | undefined>>;
-  size: string | undefined;
+  setSize: Dispatch<React.SetStateAction<string>>;
+  size: string;
   display: boolean;
 }> = ({ setSize, size, display }) => {
-  const title = size ? size.toUpperCase() : '-';
-
-  function isSize(eventKey: string): eventKey is Size {
-    return ['xs', 's', 'm', 'l', 'xl', 'xxl'].includes(eventKey);
-  }
+  const title = size.toUpperCase();
 
   const handleSelect = (eventKey: string | null) => {
-    if (eventKey && isSize(eventKey)) {
-      setSize(eventKey);
+    if (!eventKey) {
+      console.error('Size dropdown event key is null or undefined');
+      return;
     }
+
+    setSize(eventKey);
   };
 
   return display ? (

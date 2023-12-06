@@ -1,6 +1,6 @@
 import { useLoaderData, useNavigate, useOutletContext } from 'react-router';
 import { useState } from 'react';
-import { Size, SizeDropdown } from './SizeDropdown';
+import { SizeDropdown } from './SizeDropdown';
 import { Quantity } from './Quantity';
 import { Button } from 'react-bootstrap';
 import { useEffectAfterMount } from '../../../Hooks/useEffectAfterMount';
@@ -16,7 +16,7 @@ export interface ProductOrder {
   productId: string;
   name: string;
   img: string;
-  size?: Size | undefined;
+  size?: string;
   price: number;
   //Todo: Add color?
   quantity: number;
@@ -27,11 +27,10 @@ export const AddToCart: React.FC = () => {
   const loaderData = useLoaderData() as ProductType;
   const { id, img, title, subtitle, price, category } = loaderData;
   const { cart, setCart } = useOutletContext() as CartContextType;
-  const [size, setSize] = useState<Size | undefined>(undefined);
+  const [size, setSize] = useState<string>('m');
   const [quantity, setQuantity] = useState(1);
-  const [newAdded, setNewAdded] = useState<boolean>(false);
+  const [isAdded, setIsAdded] = useState<boolean>(false);
   const navigate = useNavigate();
-
   const displayDropdown = category === 'clothing';
 
   const addProduct = async () => {
@@ -63,7 +62,7 @@ export const AddToCart: React.FC = () => {
   };
 
   const handleSubmit = () => {
-    setNewAdded(true);
+    setIsAdded(true);
     addProduct();
   };
 
@@ -91,10 +90,10 @@ export const AddToCart: React.FC = () => {
       </div>
 
       <div>
-        {newAdded ? <Button onClick={() => navigate('/store/view-cart')}>VIEW CART</Button> : null}
-        {!newAdded ? <Button onClick={handleSubmit}>ADD TO CART</Button> : null}
+        {isAdded ? <Button onClick={() => navigate('/store/view-cart')}>VIEW CART</Button> : null}
+        {!isAdded ? <Button onClick={handleSubmit}>ADD TO CART</Button> : null}
       </div>
-      {newAdded ? <p>Item added to cart</p> : null}
+      {isAdded ? <p>Item added to cart</p> : null}
       <ShareButton />
     </div>
   );
