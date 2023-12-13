@@ -5,10 +5,10 @@ import { Quantity } from './Quantity';
 import { Button } from 'react-bootstrap';
 import { useEffectAfterMount } from '../../../Hooks/useEffectAfterMount';
 import { saveOrUpdateSessionStorage } from '../../../Utils/saveOrUpdateSessionStorage';
-import { CartContextType } from '../../RouteWrappers/storeWrapper';
 import { ProductType } from '../productsLoader';
 import shortid from 'shortid';
 import { ShareButton } from '../../../Components/Share/ShareButton';
+import { CartContextType } from '../../RouteWrappers/rootWrapper';
 import './productOrders.scss';
 
 export interface ProductOrder {

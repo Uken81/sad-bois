@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { Button, Form, Modal } from 'react-bootstrap';
 import { useNavigate, useOutletContext } from 'react-router';
 import { formatCurrency } from '../../../Utils/currencyFormatter';
-import { CartContextType } from '../../RouteWrappers/storeWrapper';
 import { useGetCart } from '../../../Hooks/useGetCart';
+import { CartContextType } from '../../RouteWrappers/rootWrapper';
 
 export const Cart = () => {
   const { cart, setCart } = useOutletContext() as CartContextType;

@@ -13,14 +13,14 @@ export const NewsPage: React.FC<{ latest?: Article[] }> = ({ latest }) => {
   return (
     <Row className="article-summary">
       {articles.map((article) => {
-        const { id, date, title } = article;
+        const { id, img, date, title } = article;
         const formattedDate = format(new Date(date), 'dd/MM/yyyy');
 
         return (
           <Col key={article.id} xs={12} sm={6} md={4} lg={4}>
             <ListGroup.Item className="article">
               <Card>
-                <Card.Img variant="top" src={`../../../Assets/News/${article.img}`} />
+                <Card.Img variant="top" src={`../../../Assets/News/${img}.png`} />
                 <Card.Body>
                   <Card.Subtitle>NEWS | {formattedDate}</Card.Subtitle>
                   <Card.Title>{capitaliseWords(title)}</Card.Title>

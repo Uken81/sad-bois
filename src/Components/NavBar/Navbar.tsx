@@ -1,13 +1,15 @@
 import { Link } from 'react-router-dom';
 import { Logout } from '../Logout/Logout';
-import { UserContextType } from '../../Routes/RouteWrappers/rootWrapper';
+import { CartType, UserContextType } from '../../Routes/RouteWrappers/rootWrapper';
 import { useState } from 'react';
 import { ErrorMessage, GeneralErrorType } from '../ErrorMessage';
 import './navbar.scss';
+import { CartLink } from './CartLink';
 
 export const Navbar: React.FC<{
   userDetailsContext: UserContextType;
-}> = ({ userDetailsContext }) => {
+  cart: CartType | null;
+}> = ({ userDetailsContext, cart }) => {
   const { userDetails } = userDetailsContext;
   console.log('navDeets', userDetails?.email);
   const [error, setError] = useState<GeneralErrorType | null>(null);
@@ -39,6 +41,9 @@ export const Navbar: React.FC<{
           ) : (
             <Link to="/login">Log In</Link>
           )}
+        </li>
+        <li>
+          <CartLink cart={cart} />
         </li>
       </ul>
       <ErrorMessage

@@ -2,7 +2,7 @@ import { Dispatch, SetStateAction, useState } from 'react';
 import { ShippingOptionsType, shippingOptions } from '../Merchandise/Checkout/shippingOptions';
 import { Outlet, useOutletContext } from 'react-router';
 import { OrderSummary } from '../Merchandise/Checkout/OrderSummary';
-import { CartContextType } from './storeWrapper';
+import { CartContextType } from './rootWrapper';
 
 export interface CustomerType {
   email: string;
