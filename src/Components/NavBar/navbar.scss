@@ -6,14 +6,15 @@ nav {
     display: flex;
     justify-content: end;
     list-style: none;
-    margin-right: 1rem;
+    margin-right: 2rem;
+    margin-bottom: 0;
 
     .home {
       margin-right: auto;
     }
 
     li {
-      margin: 1rem 1rem;
+      margin: 1rem;
     }
   }
 }

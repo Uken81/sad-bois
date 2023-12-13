@@ -3,8 +3,8 @@ import { Logout } from '../Logout/Logout';
 import { CartType, UserContextType } from '../../Routes/RouteWrappers/rootWrapper';
 import { useState } from 'react';
 import { ErrorMessage, GeneralErrorType } from '../ErrorMessage';
-import './navbar.scss';
 import { CartLink } from './CartLink';
+import './navbar.scss';
 
 export const Navbar: React.FC<{
   userDetailsContext: UserContextType;
