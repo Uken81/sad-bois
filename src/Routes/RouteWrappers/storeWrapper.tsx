@@ -1,6 +1,6 @@
-import { Dispatch, SetStateAction, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { Categories } from '../Merchandise/Categories';
-import { Outlet, useOutletContext } from 'react-router';
+import { Outlet, useNavigate, useOutletContext } from 'react-router';
 import { CartContextType } from './rootWrapper';
 
 export type ProductCategories = 'all' | 'clothing' | 'coffee-mug' | 'sticker' | 'misc';
@@ -13,6 +13,11 @@ export interface StoreCategoryContextType {
 export const Store: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<ProductCategories>('all');
   const { cart, setCart } = useOutletContext() as CartContextType;
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    navigate('/store');
+  }, [navigate, selectedCategory]);
 
   return (
     <>

@@ -1,14 +1,16 @@
-import { useNavigate } from 'react-router';
+import { useNavigate, useOutletContext } from 'react-router';
 import { ProductType } from './productsLoader';
 import { Card, Carousel } from 'react-bootstrap';
 import './merchandise.scss';
+import { StoreCategoryContextType } from '../RouteWrappers/storeWrapper';
 
 export const Featured: React.FC<{ featuredProducts: ProductType[] | null }> = ({
   featuredProducts
 }) => {
+  const { selectedCategory } = useOutletContext() as StoreCategoryContextType;
   const navigate = useNavigate();
 
-  if (!featuredProducts || featuredProducts.length === 0) {
+  if (!featuredProducts || featuredProducts.length === 0 || selectedCategory !== 'all') {
     return null;
   }
 
