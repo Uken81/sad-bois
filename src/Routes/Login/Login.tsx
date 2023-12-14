@@ -9,7 +9,7 @@ import './Login.scss';
 import { Button } from 'react-bootstrap';
 import { validateUser } from '../../Utils/validateUser';
 import { UserContextType, UserType } from '../RouteWrappers/rootWrapper';
-import { ErrorMessage, FormDataErrorType, FormErrorType } from '../../Components/ErrorMessage';
+import { ErrorMessage, FormErrorType } from '../../Components/ErrorMessage';
 
 interface LoginFormValues {
   email: string;

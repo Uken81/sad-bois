@@ -5,7 +5,7 @@ import { HomepageLoader } from './homepageLoaders';
 import { TourInfo } from '../Tour/TourInfo';
 import { SeeAllLink } from './SeeAllLink';
 import { NoNews } from '../News/NoNews';
-import './homePage.scss';
+// import './homePage.scss';
 
 export const HomePage: React.FC = () => {
   const homepageLoader = useLoaderData() as HomepageLoader;

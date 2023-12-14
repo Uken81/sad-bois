@@ -5,15 +5,16 @@ import { CartType } from '../../Routes/RouteWrappers/rootWrapper';
 export const CartLink: React.FC<{ cart: CartType | null }> = ({ cart }) => {
   const itemsInCart = cart?.items.length;
   const navigate = useNavigate();
-  console.log('navCart', cart);
   if (!cart || itemsInCart === 0) {
     return null;
   }
-
+  console.log('items', itemsInCart);
   return (
-    <div onClick={() => navigate('/store/view-cart')}>
-      <PiShoppingCartBold style={{ color: 'white' }} />
-      <span>({itemsInCart})</span>
+    <div className="indicator" onClick={() => navigate('/store/view-cart')}>
+      {/* <span className="indicator-item badge badge-secondary h-0">{itemsInCart}</span> */}
+      <div>
+        <PiShoppingCartBold />
+      </div>
     </div>
   );
 };
