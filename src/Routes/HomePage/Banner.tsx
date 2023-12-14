@@ -1,9 +1,7 @@
-import './homePage.scss';
-
 export const Banner: React.FC = () => {
   return (
     <div className="banner">
-      <div className="banner-img">{/* <div className="logo-img"></div> */}</div>
+      <div className="bg-[url('../../../public/Assets/Banners/banner1.png')] h-96 w-screen bg-cover bg-center"></div>
     </div>
   );
 };

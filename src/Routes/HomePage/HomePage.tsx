@@ -15,9 +15,10 @@ export const HomePage: React.FC = () => {
   return (
     <main>
       <Banner />
-      <section>
-        <SeeAllLink to="/news" text="SEE ALL NEWS" />
+      <div className="divider"></div>
+      <section className="">
         {latestNews ? <NewsPage latest={latestNews} /> : <NoNews />}
+        <SeeAllLink to="/news" text="SEE ALL NEWS" />
       </section>
       <section>
         <SeeAllLink to="/tour" text="SEE ALL SHOWS" />

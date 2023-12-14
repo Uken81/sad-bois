@@ -8,7 +8,6 @@ import {
   createBrowserRouter,
   createRoutesFromElements
 } from 'react-router-dom';
-// import './App.scss';
 import { Register } from './Routes/Login/Register';
 import { productsLoader } from './Routes/Merchandise/productsLoader';
 import { ProfilePage } from './Routes/ProfilePage/ProfilePage';
@@ -30,7 +29,6 @@ import { Store } from './Routes/RouteWrappers/storeWrapper';
 import { Checkout } from './Routes/RouteWrappers/checkoutWrapper';
 import { PrivateRoute } from './Routes/RouteWrappers/privateRoute';
 import { OrderConfirmation } from './Routes/Merchandise/Checkout/OrderConfirmation/OrderConfirmation';
-// import './Routes/Merchandise/Checkout/checkout.scss';
 import { ordersLoader } from './Routes/ProfilePage/ordersLoader';
 
 function App() {
