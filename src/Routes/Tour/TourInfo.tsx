@@ -12,38 +12,38 @@ export const TourInfo: React.FC<{ latest?: Tour[] }> = ({ latest }) => {
     return <NoTour />;
   }
   return (
-    <main className=" px-2 sm:px-2 lg:px-8">
+    <main className="px-2 sm:px-2 md:px-12 lg:px-8 md:w-screen">
       <h1 className="text-2xl font-bold text-center sm:text-left">UPCOMING SHOWS</h1>
-      <h3 className="text-xl text-center sm:text-left">Japan Tour</h3>
-      <div className="overflow-x-auto ">
-        <table className="w-full">
+      <h3 className="text-xl text-center md:my-8">Japan Tour</h3>
+      <div className="overflow-x-auto md:w-full">
+        <table className="md:w-full ">
           <thead className="bg-gray-800 text-white">
-            <tr>
-              <th className="px-1 py-2 text-left text-xs font-medium uppercase tracking-wider">
+            <tr className="text-center">
+              <th className="py-2  text-xs font-medium uppercase tracking-wider md:text-lg md:px-6">
                 Date
               </th>
-              <th className="px-1 py-2 text-left text-xs font-medium uppercase tracking-wider">
+              <th className="py-2  text-xs font-medium uppercase tracking-wider md:text-lg md:px-6">
                 Location
               </th>
-              <th className="px-5 py-2 text-left text-xs font-medium uppercase tracking-wider">
+              <th className="ppy-2  text-xs font-medium uppercase tracking-wider md:text-lg md:px-6">
                 Venue
               </th>
-              <th className="px-1 py-2 text-left text-xs font-medium uppercase tracking-wider">
+              <th className="py-2  text-xs font-medium uppercase tracking-wider md:text-lg md:px-6">
                 Status
               </th>
             </tr>
           </thead>
-          <tbody className="bg-black divide-y divide-gray-200">
+          <tbody className="bg-black divide-y divide-gray-200 ">
             {shows.map((show) => {
               const { id, date, location, venue, ticketStatus } = show;
               const formattedDate = format(new Date(date), 'dd/MM/yyyy');
 
               return (
-                <tr key={id} className="text-yellow-500 text-xs whitespace-normal">
-                  <td className="px-1 py-2">{formattedDate}</td>
-                  <td className="px-1 py-2">{location}</td>
-                  <td className="px-1 py-2">{venue}</td>
-                  <td className="px-1 py-2">{ticketStatus}</td>
+                <tr key={id} className="text-yellow-500 text-xs text-center whitespace-normal ">
+                  <td className="px-1 py-2 md:text-lg">{formattedDate}</td>
+                  <td className="px-1 py-2 md:text-lg">{location}</td>
+                  <td className="px-1 py-2 md:text-lg">{venue}</td>
+                  <td className="px-1 py-2 md:text-lg">{ticketStatus}</td>
                 </tr>
               );
             })}
