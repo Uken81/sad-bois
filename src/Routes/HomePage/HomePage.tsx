@@ -5,7 +5,6 @@ import { HomepageLoader } from './homepageLoaders';
 import { TourInfo } from '../Tour/TourInfo';
 import { SeeAllLink } from './SeeAllLink';
 import { NoNews } from '../News/NoNews';
-// import './homePage.scss';
 
 export const HomePage: React.FC = () => {
   const homepageLoader = useLoaderData() as HomepageLoader;
@@ -20,9 +19,10 @@ export const HomePage: React.FC = () => {
         {latestNews ? <NewsPage latest={latestNews} /> : <NoNews />}
         <SeeAllLink to="/news" text="SEE ALL NEWS" />
       </section>
+      <div className="divider"></div>
       <section>
-        <SeeAllLink to="/tour" text="SEE ALL SHOWS" />
         <TourInfo latest={latestShows} />
+        <SeeAllLink to="/tour" text="SEE ALL SHOWS" />
       </section>
     </main>
   );
