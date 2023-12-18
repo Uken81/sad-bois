@@ -9,7 +9,8 @@ export default {
         link: '#000'
       },
       backgroundImage: {
-        backgroundLogo: 'url("../public/Assets/logo1.png")'
+        backgroundLogo: 'url("../public/Assets/logo1.png")',
+        stadium: 'url("../public/Assets/Banners/stadium2.jpeg")'
       }
     }
   },
