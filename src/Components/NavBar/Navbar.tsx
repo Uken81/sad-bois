@@ -13,7 +13,7 @@ export const Navbar: React.FC<{
   const [error, setError] = useState<GeneralErrorType | null>(null);
   const isDisplayingError = error !== null;
   return (
-    <nav className="navbar bg-base-100 ">
+    <nav className="navbar bg-base-100 border-b-2">
       <div className="navbar-start ">
         <Link to="/" className="text-black no-underline btn btn-ghost text-xl">
           The Sad Bois

@@ -18,10 +18,6 @@ export interface FormErrorType extends GeneralErrorType {
     | 'cardSecurityCode';
 }
 
-// export interface FormDataErrorType extends FormErrorType {
-//   success: boolean;
-// }
-
 type VariantType = 'danger' | 'warning';
 
 export const ErrorMessage: React.FC<{
@@ -37,7 +33,11 @@ export const ErrorMessage: React.FC<{
   }
 
   return (
-    <Alert className="alert" variant={variant} dismissible onClose={() => setError(null)}>
+    <Alert
+      className="alert text-base w-96"
+      variant={variant}
+      dismissible
+      onClose={() => setError(null)}>
       <Alert.Heading className="alert-heading">{capitalisedMessage}</Alert.Heading>
       <p>Please refresh page or try again later</p>
     </Alert>

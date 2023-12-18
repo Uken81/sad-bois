@@ -1,5 +1,3 @@
-import { Button } from 'react-bootstrap';
-
 export const SubmitButton: React.FC<{
   isSubmitting: boolean;
   text?: string | undefined;
@@ -7,10 +5,12 @@ export const SubmitButton: React.FC<{
 }> = ({ isSubmitting, text, loadingText }) => {
   const buttonText = text ? text : 'Submit';
   const loadingButtonText = loadingText ? loadingText : 'Submitting';
+  const hoverStyles = 'bg-gradient-to-r from-yellow-400 to-black';
 
   return (
-    <Button type="submit" size="lg" variant="warning" disabled={isSubmitting}>
+    <button
+      className={`bg-yellow-400 hover:${hoverStyles} text-gray-800 font-semibold py-2 px-4 m-2 border border-gray-400 rounded shadow`}>
       {isSubmitting ? loadingButtonText : buttonText}
-    </Button>
+    </button>
   );
 };

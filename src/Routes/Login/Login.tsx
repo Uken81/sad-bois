@@ -5,8 +5,6 @@ import { CustomInput } from '../../Components/Forms/Inputs/CustomInput';
 import { SubmitButton } from '../../Components/Forms/SubmitButton';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import './Login.scss';
-import { Button } from 'react-bootstrap';
 import { validateUser } from '../../Utils/validateUser';
 import { UserContextType, UserType } from '../RouteWrappers/rootWrapper';
 import { ErrorMessage, FormErrorType } from '../../Components/ErrorMessage';
@@ -20,6 +18,7 @@ export const Login: React.FC = () => {
   const { registeredEmail } = useParams();
   const { setUserDetails } = useOutletContext() as UserContextType;
   const [error, setError] = useState<FormErrorType | null>(null);
+  // const [error, setError] = useState<FormErrorType | null>(null);
   const navigate = useNavigate();
 
   //Todo: Change these inital values to test user when about to publish.
@@ -37,7 +36,6 @@ export const Login: React.FC = () => {
     values: LoginFormValues,
     setSubmitting: (isSubmitting: boolean) => void
   ) => {
-    console.log('values', values);
     const requestOptions: RequestInit = {
       method: 'POST',
       body: JSON.stringify(values),
@@ -49,9 +47,8 @@ export const Login: React.FC = () => {
 
     try {
       const response = await fetch('http://localhost:2001/auth/login', requestOptions);
-      console.log('res', response);
       if (!response.ok) {
-        const data: FormDataErrorType = await response.json();
+        const data: FormErrorType = await response.json();
         setError({ type: data.type, message: data.message });
         setSubmitting(false);
 
@@ -86,6 +83,7 @@ export const Login: React.FC = () => {
   const isPasswordError = error && error.type === 'password';
   const isNetworkError = (error && error.type === 'network') || false;
 
+  const backgroundGradient = 'bg-gradient-to-b from-black to-gray-600';
   return (
     <>
       <Formik
@@ -95,33 +93,48 @@ export const Login: React.FC = () => {
           handleSubmit(values, setSubmitting);
         }}>
         {(formik) => (
-          <Form>
-            <ErrorMessage
-              display={isNetworkError}
-              variant="danger"
-              message={error?.message ?? null}
-              setError={setError}
-            />
-            <div className="input-fields">
-              <CustomInput
-                name="email"
-                type="email"
-                label="Email"
-                error={isEmailError ? error.message : undefined}
-              />
-              <CustomInput
-                name="password"
-                type="password"
-                label="Password"
-                error={isPasswordError ? error.message : undefined}
-              />
-              <SubmitButton isSubmitting={formik.isSubmitting} />
+          <div className={`flex flex-col p-2 ${backgroundGradient} h-screen`}>
+            <div className="flex items-center h-1/2">
+              {/* <div className="bg-backgroundLogo bg-cover bg-no-repeat h-1/2 bg-center"> */}
+              <img src="../public/Assets/logo1.png" className="mx-auto"></img>
             </div>
-          </Form>
+            {/* <div className="bg-backgroundLogo bg-cover bg-no-repeat h-1/2 bg-center" /> */}
+            <div className="md:mx-64">
+              <Form className="form-control h-fit ">
+                <ErrorMessage
+                  display={isNetworkError}
+                  variant="danger"
+                  message={error?.message ?? null}
+                  setError={setError}
+                />
+                <h1 className="text-center">Login</h1>
+                <div className="flex flex-col justify-center items-center ">
+                  <CustomInput
+                    name="email"
+                    type="email"
+                    placeholder="Email"
+                    error={isEmailError ? error?.message : undefined}
+                  />
+                  <CustomInput
+                    name="password"
+                    type="password"
+                    placeholder="Password"
+                    error={isPasswordError ? error.message : undefined}
+                  />
+                  <div className="my-2">
+                    <span className="text-sm">Dont have an account? </span>
+                    <Link className="text-sm" to="/register">
+                      Sign up
+                    </Link>
+                  </div>
+                  <SubmitButton isSubmitting={formik.isSubmitting} />
+                </div>
+              </Form>
+            </div>
+            {/* <Button onClick={validateUser}>Validate</Button> */}
+          </div>
         )}
       </Formik>
-      <Link to="/register">Register</Link>
-      <Button onClick={validateUser}>Validate</Button>
     </>
   );
 };

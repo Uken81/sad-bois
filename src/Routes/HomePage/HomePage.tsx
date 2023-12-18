@@ -12,7 +12,7 @@ export const HomePage: React.FC = () => {
   const latestShows = homepageLoader.latestShowsData;
 
   return (
-    <main>
+    <main className="mt-1">
       <Banner />
       <div className="divider"></div>
       <section className="">

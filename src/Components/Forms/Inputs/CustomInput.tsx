@@ -1,13 +1,14 @@
 import { Field, useField } from 'formik';
 import { ReactNode } from 'react';
 
+type InputMode = 'email' | 'search' | 'tel' | 'text' | 'url' | 'none' | 'numeric' | 'decimal';
+
 interface CustomInputProps {
-  label: string;
   name: string;
   type?: string;
   as?: string;
   placeholder?: string;
-  inputMode?: string;
+  inputMode?: InputMode;
   children?: ReactNode;
   // error?: string | null;
   id?: string;
@@ -21,32 +22,23 @@ const ErrorText: React.FC<{ error: string | undefined; touched: boolean }> = ({
     return null;
   }
 
-  return (
-    <div className="error-text" style={{ color: 'red' }}>
-      {error}
-    </div>
-  );
+  return <div className="text-lg text-red-500 mt-2">{error}</div>;
 };
 
 export const CustomInput: React.FC<CustomInputProps & { error?: string | undefined }> = ({
-  label,
   error,
   children,
   ...props
 }) => {
-  //dont remove field from hook array as it needs to be in correct order!
+  //**Dont remove field from hook array as it needs to be in correct order!**
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [field, meta] = useField(props);
 
-  const errorClass = (meta.touched && meta.error) || error ? '-error' : '';
-
+  const errorBorder = (meta.touched && meta.error) || error ? 'border-red-500' : null;
   return (
     <>
-      <label className="input-label" htmlFor={props.id || props.name}>
-        {label}
-      </label>
       <Field
-        className={`input${errorClass}`}
+        className={`input input-bordered w-full max-w-xs text-lg bg-black text-white ${errorBorder} border-4 mt-4`}
         name={props.name}
         type={props.type}
         placeholder={props.placeholder}

@@ -6,7 +6,10 @@ export default {
   theme: {
     extend: {
       textColor: {
-        link: '#000' // Define a new utility class `.text-link-black`
+        link: '#000'
+      },
+      backgroundImage: {
+        backgroundLogo: 'url("../public/Assets/logo1.png")'
       }
     }
   },
