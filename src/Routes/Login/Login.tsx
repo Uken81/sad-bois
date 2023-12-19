@@ -94,7 +94,7 @@ export const Login: React.FC = () => {
         }}>
         {(formik) => (
           <div className={`flex flex-col p-2 ${backgroundGradient} h-screen`}>
-            <div className="flex items-center h-1/2">
+            <div className="flex h-1/2 items-center">
               {/* <div className="bg-backgroundLogo bg-cover bg-no-repeat h-1/2 bg-center"> */}
               <img src="../public/Assets/logo1.png" className="mx-auto"></img>
             </div>
@@ -108,7 +108,7 @@ export const Login: React.FC = () => {
                   setError={setError}
                 />
                 <h1 className="text-center">Login</h1>
-                <div className="flex flex-col justify-center items-center ">
+                <div className="flex flex-col items-center justify-center">
                   <CustomInput
                     name="email"
                     type="email"

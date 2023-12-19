@@ -11,7 +11,7 @@ export const NewsPage: React.FC<{ latest?: Article[] }> = ({ latest }) => {
   const navigate = useNavigate();
 
   return (
-    <div className="grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-6 lg:gap-8 xl:gap-10 justify-items-center mx-auto">
+    <div className="mx-auto grid grid-cols-1 justify-items-center gap-6 md:grid-cols-3 md:gap-6 lg:gap-8 xl:gap-10">
       {articles.map((article) => {
         const { id, img, date, title } = article;
         const formattedDate = format(new Date(date), 'dd/MM/yyyy');
@@ -39,29 +39,3 @@ export const NewsPage: React.FC<{ latest?: Article[] }> = ({ latest }) => {
     </div>
   );
 };
-
-// return (
-//   <Row className="article-summary">
-//     {articles.map((article) => {
-//       const { id, img, date, title } = article;
-//       const formattedDate = format(new Date(date), 'dd/MM/yyyy');
-
-//       return (
-//         <Col key={article.id} xs={12} sm={6} md={4} lg={4}>
-//           <ListGroup.Item className="article">
-//             <Card>
-//               <Card.Img variant="top" src={`../../../Assets/News/${img}.png`} />
-//               <Card.Body>
-//                 <Card.Subtitle>NEWS | {formattedDate}</Card.Subtitle>
-//                 <Card.Title>{capitaliseWords(title)}</Card.Title>
-//                 <Link to={`/news/article/${id}`} style={{ color: 'blue' }}>
-//                   READ MORE
-//                 </Link>
-//               </Card.Body>
-//             </Card>
-//           </ListGroup.Item>
-//         </Col>
-//       );
-//     })}
-//   </Row>
-// );
