@@ -1,5 +1,4 @@
 import { Dispatch, SetStateAction } from 'react';
-import { Alert } from 'react-bootstrap';
 import { capitaliseWords } from '../Utils/capitaliseWords';
 
 export interface GeneralErrorType {
@@ -18,7 +17,7 @@ export interface FormErrorType extends GeneralErrorType {
     | 'cardSecurityCode';
 }
 
-type VariantType = 'danger' | 'warning';
+type VariantType = 'error' | 'warning';
 
 export const ErrorMessage: React.FC<{
   display: boolean;
@@ -33,13 +32,23 @@ export const ErrorMessage: React.FC<{
   }
 
   return (
-    <Alert
-      className="alert text-base w-96"
-      variant={variant}
-      dismissible
-      onClose={() => setError(null)}>
-      <Alert.Heading className="alert-heading">{capitalisedMessage}</Alert.Heading>
-      <p>Please refresh page or try again later</p>
-    </Alert>
+    <div role="alert" className={`alert alert-${variant} max-w-lg`} onClick={() => setError(null)}>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="h-6 w-6 shrink-0 stroke-current"
+        fill="none"
+        viewBox="0 0 24 24">
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+          d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+        />
+      </svg>
+      <div>
+        <h3 className="font-bold">Please refresh page or try again later</h3>
+        <div className="text-xs">{capitalisedMessage}</div>
+      </div>
+    </div>
   );
 };

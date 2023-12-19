@@ -1,13 +1,11 @@
 import { useNavigate, useOutletContext, useParams } from 'react-router';
 import * as Yup from 'yup';
-import { Form, Formik } from 'formik';
+import { Formik } from 'formik';
 import { CustomInput } from '../../Components/Forms/Inputs/CustomInput';
-import { SubmitButton } from '../../Components/Forms/SubmitButton';
-import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import { validateUser } from '../../Utils/validateUser';
 import { UserContextType, UserType } from '../RouteWrappers/rootWrapper';
 import { ErrorMessage, FormErrorType } from '../../Components/ErrorMessage';
+import { UserForm } from './UserForm';
 
 interface LoginFormValues {
   email: string;
@@ -18,7 +16,6 @@ export const Login: React.FC = () => {
   const { registeredEmail } = useParams();
   const { setUserDetails } = useOutletContext() as UserContextType;
   const [error, setError] = useState<FormErrorType | null>(null);
-  // const [error, setError] = useState<FormErrorType | null>(null);
   const navigate = useNavigate();
 
   //Todo: Change these inital values to test user when about to publish.
@@ -83,7 +80,6 @@ export const Login: React.FC = () => {
   const isPasswordError = error && error.type === 'password';
   const isNetworkError = (error && error.type === 'network') || false;
 
-  const backgroundGradient = 'bg-gradient-to-b from-black to-gray-600';
   return (
     <>
       <Formik
@@ -93,46 +89,26 @@ export const Login: React.FC = () => {
           handleSubmit(values, setSubmitting);
         }}>
         {(formik) => (
-          <div className={`flex flex-col p-2 ${backgroundGradient} h-screen`}>
-            <div className="flex h-1/2 items-center">
-              {/* <div className="bg-backgroundLogo bg-cover bg-no-repeat h-1/2 bg-center"> */}
-              <img src="../public/Assets/logo1.png" className="mx-auto"></img>
-            </div>
-            {/* <div className="bg-backgroundLogo bg-cover bg-no-repeat h-1/2 bg-center" /> */}
-            <div className="md:mx-64">
-              <Form className="form-control h-fit ">
-                <ErrorMessage
-                  display={isNetworkError}
-                  variant="danger"
-                  message={error?.message ?? null}
-                  setError={setError}
-                />
-                <h1 className="text-center">Login</h1>
-                <div className="flex flex-col items-center justify-center">
-                  <CustomInput
-                    name="email"
-                    type="email"
-                    placeholder="Email"
-                    error={isEmailError ? error?.message : undefined}
-                  />
-                  <CustomInput
-                    name="password"
-                    type="password"
-                    placeholder="Password"
-                    error={isPasswordError ? error.message : undefined}
-                  />
-                  <div className="my-2">
-                    <span className="text-sm">Dont have an account? </span>
-                    <Link className="text-sm" to="/register">
-                      Sign up
-                    </Link>
-                  </div>
-                  <SubmitButton isSubmitting={formik.isSubmitting} />
-                </div>
-              </Form>
-            </div>
-            {/* <Button onClick={validateUser}>Validate</Button> */}
-          </div>
+          <UserForm formik={formik} title="login">
+            <ErrorMessage
+              display={isNetworkError}
+              variant="error"
+              message={error?.message ?? null}
+              setError={setError}
+            />
+            <CustomInput
+              name="email"
+              type="email"
+              placeholder="Email"
+              error={isEmailError ? error?.message : undefined}
+            />
+            <CustomInput
+              name="password"
+              type="password"
+              placeholder="Password"
+              error={isPasswordError ? error.message : undefined}
+            />
+          </UserForm>
         )}
       </Formik>
     </>

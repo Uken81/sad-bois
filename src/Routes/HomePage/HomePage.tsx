@@ -12,14 +12,14 @@ export const HomePage: React.FC = () => {
   const latestShows = homepageLoader.latestShowsData;
 
   return (
-    <main className="mt-1">
+    <main className="mt-1 ">
       <Banner />
-      <div className="divider"></div>
+      <div className="divider" />
       <section className="">
         {latestNews ? <NewsPage latest={latestNews} /> : <NoNews />}
         <SeeAllLink to="/news" text="SEE ALL NEWS" />
       </section>
-      <div className="divider"></div>
+      <div className="divider" />
       <section>
         <TourInfo latest={latestShows} />
         <SeeAllLink to="/tour" text="SEE ALL SHOWS" />

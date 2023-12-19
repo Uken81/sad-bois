@@ -1,10 +1,10 @@
 import { useNavigate } from 'react-router';
 import * as Yup from 'yup';
-import { Form, Formik } from 'formik';
+import { Formik } from 'formik';
 import { CustomInput } from '../../Components/Forms/Inputs/CustomInput';
-import { SubmitButton } from '../../Components/Forms/SubmitButton';
 import { useState } from 'react';
 import { ErrorMessage, FormErrorType } from '../../Components/ErrorMessage';
+import { UserForm } from './UserForm';
 
 interface RegisterFormValues {
   email: string;
@@ -86,7 +86,6 @@ export const Register: React.FC = () => {
   const isPasswordError = error?.type === 'password';
   const isNetworkError = error?.type === 'network' || false;
 
-  const backgroundGradient = 'bg-gradient-to-b from-black to-gray-600';
   return (
     <Formik
       initialValues={{ email: '', username: '', password: '', confirmedPassword: '' }}
@@ -95,44 +94,71 @@ export const Register: React.FC = () => {
         handleSubmit(values, setSubmitting);
       }}>
       {(formik) => (
-        <div className={`flex flex-col p-2 ${backgroundGradient} h-screen`}>
-          <div className="flex items-center h-1/2 mb-3">
-            <img src="../public/Assets/logo1.png" className="mx-auto"></img>
-          </div>
-          <div className="md:mx-56 ">
-            <Form className="form-control h-fit ">
-              <ErrorMessage
-                display={isNetworkError}
-                variant="danger"
-                message={error?.message ?? null}
-                setError={setError}
-              />
-              <h1 className="text-center">Sign Up</h1>
-              <div className="flex flex-col justify-center items-center">
-                <CustomInput
-                  name="email"
-                  type="email"
-                  placeholder="Email"
-                  error={isEmailError ? error.message : undefined}
-                />
-                <CustomInput name="username" type="text" placeholder="Username" error={undefined} />
-                <CustomInput
-                  name="password"
-                  type="password"
-                  placeholder="Password"
-                  error={isPasswordError ? error.message : undefined}
-                />
-                <CustomInput
-                  name="confirmedPassword"
-                  type="password"
-                  placeholder="Confirm Password"
-                  error={isPasswordError ? error.message : undefined}
-                />
-                <SubmitButton isSubmitting={formik.isSubmitting} />
-              </div>
-            </Form>
-          </div>
-        </div>
+        <UserForm title="sign up" formik={formik}>
+          <ErrorMessage
+            display={isNetworkError}
+            variant="error"
+            message={error?.message ?? null}
+            setError={setError}
+          />
+          <CustomInput
+            name="email"
+            type="email"
+            placeholder="Email"
+            error={isEmailError ? error.message : undefined}
+          />
+          <CustomInput name="username" type="text" placeholder="Username" error={undefined} />
+          <CustomInput
+            name="password"
+            type="password"
+            placeholder="Password"
+            error={isPasswordError ? error.message : undefined}
+          />
+          <CustomInput
+            name="confirmedPassword"
+            type="password"
+            placeholder="Confirm Password"
+            error={isPasswordError ? error.message : undefined}
+          />
+        </UserForm>
+        // <div className={`flex flex-col p-2 ${backgroundGradient} h-screen`}>
+        //   <div className="mb-3 flex h-1/2 items-center">
+        //     <img src="../public/Assets/logo1.png" className="mx-auto"></img>
+        //   </div>
+        //   <div className="md:mx-56 ">
+        //     <Form className="form-control h-fit ">
+        //       <ErrorMessage
+        //         display={isNetworkError}
+        //         variant="error"
+        //         message={error?.message ?? null}
+        //         setError={setError}
+        //       />
+        //       <h1 className="text-center">Sign Up</h1>
+        //       <div className="flex flex-col items-center justify-center">
+        //         <CustomInput
+        //           name="email"
+        //           type="email"
+        //           placeholder="Email"
+        //           error={isEmailError ? error.message : undefined}
+        //         />
+        //         <CustomInput name="username" type="text" placeholder="Username" error={undefined} />
+        //         <CustomInput
+        //           name="password"
+        //           type="password"
+        //           placeholder="Password"
+        //           error={isPasswordError ? error.message : undefined}
+        //         />
+        //         <CustomInput
+        //           name="confirmedPassword"
+        //           type="password"
+        //           placeholder="Confirm Password"
+        //           error={isPasswordError ? error.message : undefined}
+        //         />
+        //         <SubmitButton isSubmitting={formik.isSubmitting} />
+        //       </div>
+        //     </Form>
+        //   </div>
+        // </div>
       )}
     </Formik>
   );

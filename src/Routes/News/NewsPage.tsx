@@ -22,15 +22,15 @@ export const NewsPage: React.FC<{ latest?: Article[] }> = ({ latest }) => {
             </figure>
             <div className="card-body">
               <div className="flex items-center space-x-2">
-                <h5 className="font-bold text-yellow-500">{dateHeading}:</h5>
+                <h5 className="font-bold text-accent">{dateHeading}:</h5>
                 <h6>{formattedDate}</h6>
               </div>
               <h3 className="card-title">{capitaliseWords(title)}</h3>
 
-              <div className="card-actions justify-end">
-                <button className="btn btn-outline" onClick={() => navigate(`/news/article/${id}`)}>
+              <div className="card-actions mr-auto mt-2 justify-end border-b border-l border-black duration-300 hover:bg-accent hover:text-white">
+                <p className="px-1 text-lg " onClick={() => navigate(`/news/article/${id}`)}>
                   Read More
-                </button>
+                </p>
               </div>
             </div>
           </div>

@@ -5,11 +5,9 @@ export const SubmitButton: React.FC<{
 }> = ({ isSubmitting, text, loadingText }) => {
   const buttonText = text ? text : 'Submit';
   const loadingButtonText = loadingText ? loadingText : 'Submitting';
-  const hoverStyles = 'bg-gradient-to-r from-yellow-400 to-black';
 
   return (
-    <button
-      className={`bg-yellow-400 hover:${hoverStyles} text-gray-800 font-semibold py-2 px-4 m-2 border border-gray-400 rounded shadow`}>
+    <button className="btn btn-outline  btn-md w-48 hover:btn-accent">
       {isSubmitting ? loadingButtonText : buttonText}
     </button>
   );
