@@ -20,9 +20,11 @@ export const HomePage: React.FC = () => {
         <SeeAllLink to="/news" text="SEE ALL NEWS" />
       </section>
       <div className="divider" />
-      <section>
+      <section className="w-screen">
         <TourInfo latest={latestShows} />
-        <SeeAllLink to="/tour" text="SEE ALL SHOWS" />
+        <div className="p-4">
+          <SeeAllLink to="/tour" text="SEE ALL SHOWS" />
+        </div>
       </section>
     </main>
   );
