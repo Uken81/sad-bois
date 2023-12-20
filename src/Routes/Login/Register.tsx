@@ -121,44 +121,6 @@ export const Register: React.FC = () => {
             error={isPasswordError ? error.message : undefined}
           />
         </UserForm>
-        // <div className={`flex flex-col p-2 ${backgroundGradient} h-screen`}>
-        //   <div className="mb-3 flex h-1/2 items-center">
-        //     <img src="../public/Assets/logo1.png" className="mx-auto"></img>
-        //   </div>
-        //   <div className="md:mx-56 ">
-        //     <Form className="form-control h-fit ">
-        //       <ErrorMessage
-        //         display={isNetworkError}
-        //         variant="error"
-        //         message={error?.message ?? null}
-        //         setError={setError}
-        //       />
-        //       <h1 className="text-center">Sign Up</h1>
-        //       <div className="flex flex-col items-center justify-center">
-        //         <CustomInput
-        //           name="email"
-        //           type="email"
-        //           placeholder="Email"
-        //           error={isEmailError ? error.message : undefined}
-        //         />
-        //         <CustomInput name="username" type="text" placeholder="Username" error={undefined} />
-        //         <CustomInput
-        //           name="password"
-        //           type="password"
-        //           placeholder="Password"
-        //           error={isPasswordError ? error.message : undefined}
-        //         />
-        //         <CustomInput
-        //           name="confirmedPassword"
-        //           type="password"
-        //           placeholder="Confirm Password"
-        //           error={isPasswordError ? error.message : undefined}
-        //         />
-        //         <SubmitButton isSubmitting={formik.isSubmitting} />
-        //       </div>
-        //     </Form>
-        //   </div>
-        // </div>
       )}
     </Formik>
   );

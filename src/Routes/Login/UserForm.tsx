@@ -17,11 +17,11 @@ export const UserForm = <T,>({
   const backgroundGradient = 'bg-gradient-to-b from-black to-gray-600';
 
   return (
-    <div className={`flex h-screen flex-col ${backgroundGradient} items-center `}>
-      <div className="flex h-1/2 w-screen items-center ">
-        <img src="../public/Assets/logo1.png" className="mx-auto"></img>
+    <div className={`flex flex-col ${backgroundGradient} items-center`}>
+      <div>
+        <img src="../public/Assets/logo1.png" className="mx-auto my-5"></img>
       </div>
-      <Form className="card bg-yellow-50 shadow-sm shadow-slate-200 md:w-96">
+      <Form className="card my-5 bg-yellow-50 shadow-sm shadow-slate-200 md:w-96">
         <div className="card card-body items-center">
           <h1 className="text-center text-h1 font-h1">{capitaliseWords(title)}</h1>
           {children}
@@ -33,7 +33,7 @@ export const UserForm = <T,>({
               </Link>
             </div>
           ) : null}
-          <div className="my-2 ">
+          <div className="my-2">
             <SubmitButton isSubmitting={formik.isSubmitting} />
           </div>
         </div>
