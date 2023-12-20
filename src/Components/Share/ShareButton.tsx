@@ -7,6 +7,7 @@ export const ShareButton: React.FC = () => {
 
   return (
     <div className="flex flex-row gap-4">
+      <ShareOptions showOptions={showOptions} />
       <div className="hover:cursor-pointer">
         <HiOutlineShare
           color={'gray'}
@@ -14,7 +15,6 @@ export const ShareButton: React.FC = () => {
           onClick={() => setShowOptions(!showOptions)}
         />
       </div>
-      <ShareOptions showOptions={showOptions} />
     </div>
   );
 };

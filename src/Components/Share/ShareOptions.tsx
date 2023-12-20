@@ -21,9 +21,9 @@ export const ShareOptions: React.FC<{ showOptions: boolean }> = ({ showOptions }
     )}`;
     window.open(facebookShareUrl, '_blank');
   };
-  const test = showOptions ? 'flex' : 'hidden';
-  return (
-    <div className={`${test} flex-row gap-4 duration-1000`}>
+
+  return showOptions ? (
+    <div className="flex flex-row gap-4">
       <IoIosMailOpen
         color={'grey'}
         size={'1.5rem'}
@@ -37,21 +37,5 @@ export const ShareOptions: React.FC<{ showOptions: boolean }> = ({ showOptions }
         style={{ cursor: 'pointer' }}
       />
     </div>
-  );
-  // return showOptions ? (
-  //   <div className="flex flex-row gap-4">
-  //     <IoIosMailOpen
-  //       color={'grey'}
-  //       size={'1.5rem'}
-  //       onClick={shareViaEmail}
-  //       style={{ cursor: 'pointer' }}
-  //     />
-  //     <FaFacebook
-  //       color={'grey'}
-  //       size={'1.5rem'}
-  //       onClick={shareOnFacebook}
-  //       style={{ cursor: 'pointer' }}
-  //     />
-  //   </div>
-  // ) : null;
+  ) : null;
 };

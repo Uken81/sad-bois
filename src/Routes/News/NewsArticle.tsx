@@ -12,8 +12,8 @@ export const NewsArticle = () => {
   return (
     <main className=" md:mx-24 lg:mx-48">
       <h1 className="h1-font my-2  text-center md:m-4 md:text-5xl">{title}</h1>
-      <div className="block w-3/4 flex-row justify-between md:my-4 md:flex">
-        <div className="flex flex-row justify-center md:text-lg">
+      <div className="block w-1/2 flex-row justify-between md:my-4 md:flex">
+        <div className="flex flex-row justify-center md:text-xl">
           <p className="mr-2 font-bold text-accent">NEWS |</p>
           <span className="text-gray-500">{formattedDate}</span>
         </div>
