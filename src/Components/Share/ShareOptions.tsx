@@ -1,10 +1,13 @@
 import { IoIosMailOpen } from 'react-icons/io';
 import { FaFacebook } from 'react-icons/fa';
+import { useLocation } from 'react-router';
 
-export const ShareOptions: React.FC<{ showOptions: boolean; url: string }> = ({
-  showOptions,
-  url
-}) => {
+export const ShareOptions: React.FC<{ showOptions: boolean }> = ({ showOptions }) => {
+  const location = useLocation();
+
+  const baseUrl = window.location.origin;
+  const url = `${baseUrl}${location.pathname}`;
+
   const shareViaEmail = () => {
     const body = url;
     const mailtoLink = `mailto:?body=${encodeURIComponent(body)}`;
@@ -18,11 +21,37 @@ export const ShareOptions: React.FC<{ showOptions: boolean; url: string }> = ({
     )}`;
     window.open(facebookShareUrl, '_blank');
   };
-
-  return showOptions ? (
-    <div>
-      <IoIosMailOpen onClick={shareViaEmail} style={{ cursor: 'pointer' }} />
-      <FaFacebook onClick={shareOnFacebook} style={{ cursor: 'pointer' }} />
+  const test = showOptions ? 'flex' : 'hidden';
+  return (
+    <div className={`${test} flex-row gap-4 duration-1000`}>
+      <IoIosMailOpen
+        color={'grey'}
+        size={'1.5rem'}
+        onClick={shareViaEmail}
+        style={{ cursor: 'pointer' }}
+      />
+      <FaFacebook
+        color={'grey'}
+        size={'1.5rem'}
+        onClick={shareOnFacebook}
+        style={{ cursor: 'pointer' }}
+      />
     </div>
-  ) : null;
+  );
+  // return showOptions ? (
+  //   <div className="flex flex-row gap-4">
+  //     <IoIosMailOpen
+  //       color={'grey'}
+  //       size={'1.5rem'}
+  //       onClick={shareViaEmail}
+  //       style={{ cursor: 'pointer' }}
+  //     />
+  //     <FaFacebook
+  //       color={'grey'}
+  //       size={'1.5rem'}
+  //       onClick={shareOnFacebook}
+  //       style={{ cursor: 'pointer' }}
+  //     />
+  //   </div>
+  // ) : null;
 };

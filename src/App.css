@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+.h1-font {
+  @apply text-h1 font-h1;
+}
 a {
   @apply no-underline;
 }
