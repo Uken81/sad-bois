@@ -1,7 +1,8 @@
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
-import { Categories } from '../Merchandise/Categories';
+import { Categories } from '../Merchandise/Categories/Categories';
 import { Outlet, useNavigate, useOutletContext } from 'react-router';
 import { CartContextType } from './rootWrapper';
+import { CategoriesDropdown } from '../Merchandise/Categories/CategoriesDropdown';
 
 export type ProductCategories = 'all' | 'clothing' | 'coffee-mug' | 'sticker' | 'misc';
 
@@ -21,7 +22,13 @@ export const Store: React.FC = () => {
 
   return (
     <>
-      <Categories setSelectedCategory={setSelectedCategory} />
+      <div className="hidden md:block">
+        <Categories setSelectedCategory={setSelectedCategory} />
+      </div>
+      <div className="flex justify-center md:hidden">
+        <CategoriesDropdown setSelectedCategory={setSelectedCategory} />
+      </div>
+      <div className="divider" />
       <Outlet context={{ selectedCategory, setSelectedCategory, cart, setCart }} />
     </>
   );

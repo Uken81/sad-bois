@@ -2,7 +2,6 @@ import { Card, Col, ListGroup, Row } from 'react-bootstrap';
 import { useNavigate, useOutletContext } from 'react-router';
 import { StoreCategoryContextType } from '../RouteWrappers/storeWrapper';
 import { ProductType } from './productsLoader';
-import './merchandise.scss';
 
 export const Products: React.FC<{ regularProducts: ProductType[] }> = ({ regularProducts }) => {
   const { selectedCategory } = useOutletContext() as StoreCategoryContextType;
