@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router';
 import { Navbar } from '../../Components/NavBar/Navbar';
 import { Dispatch, SetStateAction, useState } from 'react';
-import { ProductOrder } from '../Merchandise/ProductOrders/AddToCart';
+import { ProductOrder } from '../Merchandise/ProductOrders/AddToCart/AddToCart';
 
 export interface UserType {
   email: string;

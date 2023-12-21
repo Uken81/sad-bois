@@ -16,7 +16,7 @@ import { newsLoader } from './Routes/News/DataLoaders/newsLoader';
 import { NewsArticle } from './Routes/News/NewsArticle';
 import { articleLoader } from './Routes/News/DataLoaders/articleLoader';
 import { productLoader } from './Routes/Merchandise/ProductOrders/productLoader';
-import { AddToCart } from './Routes/Merchandise/ProductOrders/AddToCart';
+import { AddToCart } from './Routes/Merchandise/ProductOrders/AddToCart/AddToCart';
 import { TourInfo } from './Routes/Tour/TourInfo';
 import { tourLoader } from './Routes/Tour/tourLoader';
 import { homepageLoader } from './Routes/HomePage/homepageLoaders';

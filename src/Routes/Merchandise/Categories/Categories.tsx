@@ -6,25 +6,29 @@ export const Categories: React.FC<{
 }> = ({ setSelectedCategory }) => {
   return (
     <ul className="my-5 flex flex-col justify-center gap-10 md:flex-row">
-      <li className="cursor-pointer hover:text-accent" onClick={() => setSelectedCategory('all')}>
+      <li
+        className="cursor-pointer hover:text-accent hover:underline"
+        onClick={() => setSelectedCategory('all')}>
         All
       </li>
       <li
-        className="cursor-pointer hover:text-accent"
+        className="cursor-pointer hover:text-accent hover:underline"
         onClick={() => setSelectedCategory!('clothing')}>
         Clothing
       </li>
       <li
-        className="cursor-pointer hover:text-accent"
+        className="cursor-pointer hover:text-accent hover:underline"
         onClick={() => setSelectedCategory('coffee-mug')}>
         Coffee Mugs
       </li>
       <li
-        className="cursor-pointer hover:text-accent"
+        className="cursor-pointer hover:text-accent hover:underline"
         onClick={() => setSelectedCategory!('sticker')}>
         Stickers
       </li>
-      <li className="cursor-pointer hover:text-accent" onClick={() => setSelectedCategory!('misc')}>
+      <li
+        className="cursor-pointer hover:text-accent hover:underline"
+        onClick={() => setSelectedCategory!('misc')}>
         Misc
       </li>
     </ul>

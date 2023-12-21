@@ -5,6 +5,10 @@
 .h1-font {
   @apply text-h1 font-h1;
 }
+
+.h2-font {
+  @apply text-h2 font-h2;
+}
 a {
   @apply no-underline;
 }
