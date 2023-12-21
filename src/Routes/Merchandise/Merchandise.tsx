@@ -10,8 +10,12 @@ export const Merchandise: React.FC = () => {
 
   return (
     <main>
-      <h1>Sad Boi Swag</h1>
-      <Featured featuredProducts={featuredProducts} />
+      <h1 className="h1-font text-center">Sad Boi Swag</h1>
+      <div className="relative h-96">
+        <div className=" mb-10 mt-10">
+          <Featured featuredProducts={featuredProducts} />
+        </div>
+      </div>
       <Products regularProducts={regularProducts} />
     </main>
   );

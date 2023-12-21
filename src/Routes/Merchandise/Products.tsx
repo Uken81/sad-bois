@@ -13,7 +13,7 @@ export const Products: React.FC<{ regularProducts: ProductType[] }> = ({ regular
   const navigate = useNavigate();
 
   return (
-    <Row className="products">
+    <Row className="">
       {displayedProducts.map((item) => {
         const { id, img, title, subtitle, price } = item;
         return (
