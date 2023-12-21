@@ -7,22 +7,23 @@ export const ProductCard: React.FC<{ product: ProductType }> = ({ product }) => 
 
   return (
     <div
-      className="card w-96 bg-base-100 shadow-xl"
+      key={id}
+      className="card max-h-96 w-80  bg-yellow-50 shadow-xl"
       onClick={() => navigate(`/store/add-to-cart/${id}`)}>
-      <figure className="">
+      <figure className="p-4">
         <img
           src={`../../../public/Assets/Products/${img}`}
           className="h-full w-full object-contain"
         />
       </figure>
-      <div className="card-body">
+      <div className="card-body flex items-center space-x-2">
         <h2 className="card-title">
           {title}
           <div className="badge badge-accent">Featured</div>
         </h2>
         <p>{subtitle}</p>
         <div className="card-actions justify-end">
-          <div className="badge badge-outline">{price}</div>
+          <div className="badge badge-outline">${price}</div>
         </div>
       </div>
     </div>

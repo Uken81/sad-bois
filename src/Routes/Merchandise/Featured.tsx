@@ -52,5 +52,25 @@ export const Featured: React.FC<{ featuredProducts: ProductType[] | null }> = ({
         </p>
       </div>
     </div>
+
+    // <div className="carousel carousel-center max-w-md space-x-4 rounded-box p-4 align-middle">
+    //   {featuredProducts.map((item, index) => (
+    //     <div
+    //       onClick={() => console.log('id', item.id)}
+    //       key={item.id}
+    //       className={`carousel-item transition-opacity duration-1000 ${
+    //         index === activeIndex
+    //           ? 'pointer-events-auto opacity-100'
+    //           : 'pointer-events-none opacity-0'
+    //       } absolute inset-0 w-full justify-center bg-black`}>
+    //       {/* className={`carousel-item transition-opacity duration-1000 ${
+    //         index === activeIndex
+    //           ? 'pointer-events-auto opacity-100'
+    //           : 'pointer-events-none opacity-0'
+    //       } absolute inset-0 w-full`}> */}
+    //       <img src={`../../../public/Assets/Products/${item.img}`} className="rounded-box" />
+    //     </div>
+    //   ))}
+    // </div>
   );
 };
