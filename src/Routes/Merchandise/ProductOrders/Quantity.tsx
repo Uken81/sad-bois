@@ -13,8 +13,6 @@ export const Quantity: React.FC<{
 
   return (
     <div className="flex flex-row">
-      {/* <label htmlFor="quantity-input">Quantity</label> */}
-      {/* <BsFillFileMinusFill color="red" size={'25'} /> */}
       <p
         className="w-10 border-2 border-primary bg-accent p-2 text-center text-lg hover:cursor-pointer"
         onClick={() => setQuantity((count) => Math.max(count - 1, 1))}>
