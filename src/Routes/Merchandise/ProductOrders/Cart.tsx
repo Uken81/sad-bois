@@ -115,6 +115,7 @@ export const Cart = () => {
           </div>
         </dialog>
       </div>
+      {/*You must aggree to terms and conditions to proceed to checkout.*/}
       <div className="mb-10 flex flex-col items-center space-y-6">
         <div className="text-center">
           <p className="text-lg font-bold">Subtotal {formattedSubtotal}</p>

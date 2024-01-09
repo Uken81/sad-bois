@@ -15,8 +15,9 @@ export const TourInfo: React.FC<{ latest?: Tour[] }> = ({ latest }) => {
   }
 
   return (
-    <main className={`flex bg-stadium bg-cover bg-no-repeat align-middle ${variableHeight}`}>
-      <h1 className="mt-2 text-center text-2xl font-bold tracking-wide text-white sm:text-left">
+    <main
+      className={`flex flex-col bg-stadium bg-cover bg-no-repeat align-middle ${variableHeight}`}>
+      <h1 className="mt-2 text-center text-h1 tracking-wide text-white">
         THE SAD BOIS UPCOMING SHOWS
       </h1>
       <div className="flex h-full items-center justify-center">

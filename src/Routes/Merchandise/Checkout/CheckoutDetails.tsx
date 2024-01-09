@@ -7,7 +7,6 @@ import { saveOrUpdateSessionStorage } from '../../../Utils/saveOrUpdateSessionSt
 import { CustomerContextType } from '../../RouteWrappers/checkoutWrapper';
 import { useGetCustomer } from '../../../Hooks/useGetCustomer';
 import * as Yup from 'yup';
-import './checkout.scss';
 
 interface DetailsFormType {
   email: string;
@@ -64,8 +63,7 @@ export const CheckoutDetails = () => {
   });
 
   return (
-    <main>
-      <h4>Contact</h4>
+    <main className="flex ">
       <Formik
         validationSchema={detailsFormSchema}
         initialValues={{
@@ -85,13 +83,17 @@ export const CheckoutDetails = () => {
           handleSubmit(values, setSubmitting);
         }}>
         {(formik) => (
-          <Form>
-            <h4>Contact</h4>
-            <CustomInput name="email" type="email" label="Email" />
-            <CustomInput name="emailoffers" type="checkbox" label="Email me with news and offers" />
+          <Form className="flex w-full flex-col items-center justify-center text-center">
+            <h3 className="text-h3">Contact</h3>
+            <CustomInput name="email" type="email" placeholder="Email" />
+            {/* <CustomInput
+              name="emailoffers"
+              type="checkbox"
+              placeholder="Email me with news and offers"
+            /> */}
 
-            <h4>Shipping address</h4>
-            <CustomInput name="country" as="select" label="Country">
+            <h3 className="my-2 text-h3">Shipping address</h3>
+            <CustomInput name="country" as="select" placeholder="Country">
               {countries.map((name) => (
                 <option key={name} value={name}>
                   {name}
@@ -99,20 +101,22 @@ export const CheckoutDetails = () => {
               ))}
             </CustomInput>
 
-            <CustomInput name="firstname" label="First Name" />
-            <CustomInput name="lastname" label="Last Name" />
-            <CustomInput name="address" type="address" label="Shipping Adress" />
-            <CustomInput name="apartment" label="Apartment, suite, etc. (optional)" />
-            <CustomInput name="suburb" label="Suburb" />
-            <CustomInput name="state" as="select" label="Country">
+            <CustomInput name="firstname" placeholder="First Name" />
+            <CustomInput name="lastname" placeholder="Last Name" />
+            <CustomInput name="address" type="address" placeholder="Shipping Adress" />
+            <CustomInput name="apartment" placeholder="Apartment, suite, etc. (optional)" />
+            <CustomInput name="suburb" placeholder="Suburb" />
+            <CustomInput name="state" as="select" placeholder="Country">
               {states.map((name) => (
                 <option key={name} value={name}>
                   {name}
                 </option>
               ))}
             </CustomInput>
-            <CustomInput name="postcode" type="number" label="Post Code" />
-            <SubmitButton isSubmitting={formik.isSubmitting} />
+            <CustomInput name="postcode" type="number" placeholder="Post Code" />
+            <div className="my-4">
+              <SubmitButton isSubmitting={formik.isSubmitting} />
+            </div>
           </Form>
         )}
       </Formik>
