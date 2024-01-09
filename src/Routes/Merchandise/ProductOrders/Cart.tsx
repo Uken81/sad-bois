@@ -3,7 +3,6 @@ import { useNavigate, useOutletContext } from 'react-router';
 import { formatCurrency } from '../../../Utils/currencyFormatter';
 import { useGetCart } from '../../../Hooks/useGetCart';
 import { CartContextType } from '../../RouteWrappers/rootWrapper';
-import { Quantity } from './Quantity';
 
 export const Cart = () => {
   const { cart, setCart } = useOutletContext() as CartContextType;

@@ -3,7 +3,7 @@ import { ShippingOptionsType, shippingOptions } from '../Merchandise/Checkout/sh
 import { Outlet, useOutletContext } from 'react-router';
 import { OrderSummary } from '../Merchandise/Checkout/OrderSummary';
 import { CartContextType } from './rootWrapper';
-import { MobileCollapse } from '../../Components/MobileCollapse';
+import { OrderSummaryCollapse } from '../Merchandise/Checkout/OrderSummaryCollapse';
 
 export interface CustomerType {
   email: string;
@@ -37,14 +37,12 @@ export const Checkout = () => {
   return (
     <div className="flex w-screen flex-col md:flex-row">
       <div className="md:hidden md:w-1/2">
-        <MobileCollapse
-          closedText="Show order summary"
-          openText="Hide order summary"
-          subtitle={`$${cart?.subtotal.toString()}`}>
-          <OrderSummary selectedShipping={selectedShipping} />
-        </MobileCollapse>
+        <OrderSummaryCollapse
+          selectedShipping={selectedShipping}
+          subtotal={cart?.subtotal ?? null}
+        />
       </div>
-      <div className="md:w-1/2">
+      <div className="mt-5 md:w-1/2">
         <Outlet
           context={{ selectedShipping, setSelectedShipping, customer, setCustomer, cart, setCart }}
         />
