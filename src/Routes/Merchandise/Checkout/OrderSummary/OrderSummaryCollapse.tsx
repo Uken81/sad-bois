@@ -1,6 +1,6 @@
-import { MobileCollapse } from '../../../Components/MobileCollapse';
+import { MobileCollapse } from '../../../../Components/MobileCollapse';
 import { OrderSummary } from './OrderSummary';
-import { ShippingOptionsType } from './shippingOptions';
+import { ShippingOptionsType } from '../shippingOptions';
 
 export const OrderSummaryCollapse: React.FC<{
   selectedShipping: ShippingOptionsType;

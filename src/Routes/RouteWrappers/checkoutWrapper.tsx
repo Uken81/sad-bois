@@ -1,9 +1,9 @@
 import { Dispatch, SetStateAction, useState } from 'react';
 import { ShippingOptionsType, shippingOptions } from '../Merchandise/Checkout/shippingOptions';
 import { Outlet, useOutletContext } from 'react-router';
-import { OrderSummary } from '../Merchandise/Checkout/OrderSummary';
+import { OrderSummary } from '../Merchandise/Checkout/OrderSummary/OrderSummary';
 import { CartContextType } from './rootWrapper';
-import { OrderSummaryCollapse } from '../Merchandise/Checkout/OrderSummaryCollapse';
+import { OrderSummaryCollapse } from '../Merchandise/Checkout/OrderSummary/OrderSummaryCollapse';
 
 export interface CustomerType {
   email: string;

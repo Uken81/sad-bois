@@ -3,15 +3,18 @@ import { useNavigate } from 'react-router';
 import { CartType } from '../../Routes/RouteWrappers/rootWrapper';
 
 export const CartLink: React.FC<{ cart: CartType | null }> = ({ cart }) => {
-  const itemsInCart = cart?.items.length;
+  const numberOfItems = cart?.items.length.toString();
   const navigate = useNavigate();
-  if (!cart || itemsInCart === 0) {
+
+  if (!cart || numberOfItems === '0') {
     return null;
   }
-  console.log('items', itemsInCart);
+
   return (
     <div className="indicator" onClick={() => navigate('/store/view-cart')}>
-      {/* <span className="indicator-item badge badge-secondary h-0">{itemsInCart}</span> */}
+      <div className="badge indicator-item badge-accent h-[15px] w-[15px] rounded-full border-2 p-0">
+        <div className="text-[7px] font-bold">{numberOfItems}</div>
+      </div>
       <div>
         <PiShoppingCartBold />
       </div>
