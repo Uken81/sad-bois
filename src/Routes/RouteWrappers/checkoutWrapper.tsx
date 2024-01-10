@@ -1,5 +1,8 @@
 import { Dispatch, SetStateAction, useState } from 'react';
-import { ShippingOptionsType, shippingOptions } from '../Merchandise/Checkout/shippingOptions';
+import {
+  ShippingOptionsType,
+  shippingOptions
+} from '../Merchandise/Checkout/Shipping/shippingOptions';
 import { Outlet, useOutletContext } from 'react-router';
 import { OrderSummary } from '../Merchandise/Checkout/OrderSummary/OrderSummary';
 import { CartContextType } from './rootWrapper';

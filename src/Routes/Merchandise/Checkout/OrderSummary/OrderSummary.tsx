@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { ShippingOptionsType } from '../shippingOptions';
+import { ShippingOptionsType } from '../Shipping/shippingOptions';
 import { useOutletContext } from 'react-router';
 import { useGetCart } from '../../../../Hooks/useGetCart';
 import { CartContextType } from '../../../RouteWrappers/rootWrapper';

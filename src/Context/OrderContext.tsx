@@ -1,5 +1,5 @@
 import { Dispatch, ReactNode, SetStateAction, createContext, useState } from 'react';
-import { ShippingOptionsType } from '../Routes/Merchandise/Checkout/shippingOptions';
+import { ShippingOptionsType } from '../Routes/Merchandise/Checkout/Shipping/shippingOptions';
 
 interface OrderType {
   customerId: number;

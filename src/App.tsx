@@ -22,7 +22,7 @@ import { tourLoader } from './Routes/Tour/tourLoader';
 import { homepageLoader } from './Routes/HomePage/homepageLoaders';
 import { Cart } from './Routes/Merchandise/ProductOrders/Cart';
 import { CheckoutDetails } from './Routes/Merchandise/Checkout/CheckoutDetails';
-import { Shipping } from './Routes/Merchandise/Checkout/Shipping';
+import { Shipping } from './Routes/Merchandise/Checkout/Shipping/Shipping';
 import { Payment } from './Routes/Merchandise/Checkout/Payment';
 import { Root } from './Routes/RouteWrappers/rootWrapper';
 import { Store } from './Routes/RouteWrappers/storeWrapper';

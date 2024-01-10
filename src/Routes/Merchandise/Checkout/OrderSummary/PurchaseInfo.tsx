@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { CartType } from '../../../RouteWrappers/rootWrapper';
-import { ShippingOptionsType } from '../shippingOptions';
+import { ShippingOptionsType } from '../Shipping/shippingOptions';
 import { calculateTax } from '../CostCalculators/calculateTax';
 import { calculateOrderTotal } from '../CostCalculators/CalculateOrderTotal';
 import { formatCurrency } from '../../../../Utils/currencyFormatter';
