@@ -1,15 +1,15 @@
 import { Form, Formik } from 'formik';
-import { CustomInput } from '../../../Components/Forms/Inputs/CustomInput';
-import { SubmitButton } from '../../../Components/Forms/SubmitButton';
+import { CustomInput } from '../../../../Components/Forms/Inputs/CustomInput';
+import { SubmitButton } from '../../../../Components/Forms/SubmitButton';
 import * as Yup from 'yup';
 import { useState } from 'react';
-import { ErrorMessage, FormErrorType } from '../../../Components/ErrorMessage';
+import { ErrorMessage, FormErrorType } from '../../../../Components/ErrorMessage';
 import { useNavigate, useOutletContext } from 'react-router';
 import {
   CustomerContextType,
   SelectedShippingContextType
-} from '../../RouteWrappers/checkoutWrapper';
-import { CartContextType } from '../../RouteWrappers/storeWrapper';
+} from '../../../RouteWrappers/checkoutWrapper';
+import { CartContextType } from '../../../RouteWrappers/rootWrapper';
 
 export interface CardDetailsFormType {
   cardNumber: string;
@@ -24,7 +24,7 @@ export const PaymentDetails = () => {
   const { selectedShipping, setSelectedShipping } = outletContext as SelectedShippingContextType;
   const [error, setError] = useState<FormErrorType | null>(null);
   const navigate = useNavigate();
-  console.log('PDCustomer', customer);
+
   const validationSchema = Yup.object().shape({
     cardNumber: Yup.string()
       //TODO: Investigate using regex for more detailed validaion.
@@ -60,9 +60,7 @@ export const PaymentDetails = () => {
         setError({ type: data.type, message: data.message });
         throw new Error(`Network response was not ok: ${data.message}`);
       }
-      console.log('res', response);
       const data = await response.json();
-      console.log('dat', data);
       const { customerEmail, trackingId } = data.orderSummary;
       setCustomer(null);
       setCart(null);
@@ -96,51 +94,57 @@ export const PaymentDetails = () => {
         expirationDate: '11/24',
         securityCode: '666'
       }}
+      // initialValues={{
+      //   cardNumber: '',
+      //   nameOnCard: '',
+      //   expirationDate: '',
+      //   securityCode: ''
+      // }}
       onSubmit={(values, { setSubmitting }) => {
         handleSubmit(values, setSubmitting);
       }}>
       {(formik) => (
-        <Form>
+        <Form className="px-4">
           <ErrorMessage
             display={isNetworkError}
-            variant="danger"
+            variant="error"
             message={error?.message ?? null}
             setError={setError}
           />
-          <h2>Credit card</h2>
           <CustomInput
             name="cardNumber"
-            label="Card Number"
+            placeholder="Card Number"
             type="tel"
             inputMode="numeric"
-            placeholder="5688 2769 2310 5021"
             error={isCardNumberError ? error.message : undefined}
           />
           <CustomInput
             name="nameOnCard"
-            label="Name On Card"
+            placeholder="Name On Card"
             type="text"
             error={isNameOnCardError ? error.message : undefined}
           />
           <CustomInput
             name="expirationDate"
-            label="Expiration Date (MM / YY)"
+            placeholder="Expiration Date (MM / YY)"
             type="text"
             inputMode="numeric"
             error={isEpirationDateError ? error.message : undefined}
           />
           <CustomInput
             name="securityCode"
-            label="Security Code"
+            placeholder="Security Code"
             type="tel"
             inputMode="numeric"
             error={isSecurityCodeError ? error.message : undefined}
           />
-          <SubmitButton
-            isSubmitting={formik.isSubmitting}
-            text="Pay Now"
-            loadingText="Processing"
-          />
+          <div className="py-4 text-center">
+            <SubmitButton
+              isSubmitting={formik.isSubmitting}
+              text="Pay Now"
+              loadingText="Processing"
+            />
+          </div>
         </Form>
       )}
     </Formik>

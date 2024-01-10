@@ -23,7 +23,7 @@ import { homepageLoader } from './Routes/HomePage/homepageLoaders';
 import { Cart } from './Routes/Merchandise/ProductOrders/Cart';
 import { CheckoutDetails } from './Routes/Merchandise/Checkout/CheckoutDetails';
 import { Shipping } from './Routes/Merchandise/Checkout/Shipping/Shipping';
-import { Payment } from './Routes/Merchandise/Checkout/Payment';
+import { Payment } from './Routes/Merchandise/Checkout/Payment/Payment';
 import { Root } from './Routes/RouteWrappers/rootWrapper';
 import { Store } from './Routes/RouteWrappers/storeWrapper';
 import { Checkout } from './Routes/RouteWrappers/checkoutWrapper';
@@ -48,7 +48,7 @@ function App() {
           <Route path="checkout" element={<Checkout />}>
             <Route path="details" element={<CheckoutDetails />} />
             <Route path="shipping" element={<Shipping />} />
-            <Route path="payment/:shippingMethod" element={<Payment />} />
+            <Route path="payment" element={<Payment />} />
           </Route>
         </Route>
         <Route path="orderConfirmation/:email/:trackingId" element={<OrderConfirmation />} />

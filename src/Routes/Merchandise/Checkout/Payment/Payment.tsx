@@ -1,15 +1,17 @@
-import { useEffect } from 'react';
-import { useNavigate, useOutletContext } from 'react-router';
+import { useOutletContext } from 'react-router';
 import { CustomerContextType } from '../../../RouteWrappers/checkoutWrapper';
 import { useGetCustomer } from '../../../../Hooks/useGetCustomer';
+import { PaymentDetails } from './PaymentDetails';
+import { useEffect } from 'react';
 import { ContactDetails } from '../CustomerDetails/ContactDetails';
 import { AddressDetails } from '../CustomerDetails/AdressDetails';
-import { ShippingSelection } from './ShippingSelection';
+import { ShippingMethodDetails } from '../CustomerDetails/ShippingMethodDetails';
+import { CardOptions } from './CardOptions/CardOptions';
 
-export const Shipping: React.FC = () => {
-  const { customer, setCustomer } = useOutletContext() as CustomerContextType;
+export const Payment: React.FC = () => {
+  const outletContext = useOutletContext();
+  const { customer, setCustomer } = outletContext as CustomerContextType;
   const getCustomer = useGetCustomer();
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (!customer) {
@@ -24,24 +26,25 @@ export const Shipping: React.FC = () => {
     return <div className="no-data">No customer data available</div>;
   }
 
-  const { email, address, suburb, state, postcode } = customer;
+  const { email, address, suburb, state, postcode } = customer ?? {};
   const combinedAddress = `${address}, ${suburb}, ${state}, ${postcode}`;
 
   return (
-    <div className="mx-5">
-      <div className="rounded border border-neutral-200 p-4">
+    <div className="mx-5 mb-4 space-y-5">
+      <div className="rounded border border-base-300 p-4">
         <ContactDetails email={email} />
         <div className="w-9/10 divider mx-auto" />
         <AddressDetails address={combinedAddress} />
+        <div className="w-9/10 divider mx-auto" />
+        <ShippingMethodDetails />
       </div>
-      <div className="my-5 rounded border border-neutral-200 p-4">
-        <ShippingSelection />
+      <h2 className="text-center text-h2">Payment</h2>
+      <div className="border border-base-300 ">
+        <CardOptions />
+        <div className="bg-base-200">
+          <PaymentDetails />
+        </div>
       </div>
-      <button
-        className="btn btn-accent btn-active w-full rounded-sm"
-        onClick={() => navigate(`/store/checkout/payment`)}>
-        Continue to Payment
-      </button>
     </div>
   );
 };
