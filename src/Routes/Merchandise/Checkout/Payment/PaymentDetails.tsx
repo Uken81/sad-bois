@@ -61,12 +61,13 @@ export const PaymentDetails = () => {
         throw new Error(`Network response was not ok: ${data.message}`);
       }
       const data = await response.json();
-      const { customerEmail, trackingId } = data.orderSummary;
+      console.log('OS', data.orderSummary);
+      const { customerEmail, orderId } = data.orderSummary;
       setCustomer(null);
       setCart(null);
       setSelectedShipping(null);
       setSubmitting(false);
-      navigate(`/orderConfirmation/${customerEmail}/${trackingId}`);
+      navigate(`/order-confirmation/${customerEmail}/${orderId}`);
     } catch (error) {
       if (error instanceof Error) {
         console.error(error);

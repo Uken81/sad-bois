@@ -117,7 +117,7 @@ export const Cart = () => {
       <div className="mb-10 flex flex-col items-center space-y-6">
         <div className="text-center">
           <p className="text-lg font-bold">Subtotal {formattedSubtotal}</p>
-          <p>Taxes and shipping calculated and checkout</p>
+          <p>Taxes and shipping calculated at checkout</p>
         </div>
         <button className="btn" onClick={() => navigate('/store')}>
           CONTINUE SHOPPING

@@ -51,7 +51,7 @@ function App() {
             <Route path="payment" element={<Payment />} />
           </Route>
         </Route>
-        <Route path="orderConfirmation/:email/:trackingId" element={<OrderConfirmation />} />
+        <Route path="order-confirmation/:email/:orderId" element={<OrderConfirmation />} />
         <Route path="login/:registeredEmail?" element={<Login />} />
         <Route path="register" element={<Register />} />
         <Route

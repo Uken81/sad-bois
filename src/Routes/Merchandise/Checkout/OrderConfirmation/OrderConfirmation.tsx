@@ -1,40 +1,26 @@
-import { useNavigate, useOutletContext, useParams } from 'react-router';
+import { useParams } from 'react-router';
 import { FaCheckCircle } from 'react-icons/fa';
-import { Button } from 'react-bootstrap';
-import { UserContextType } from '../../../RouteWrappers/rootWrapper';
+import { ConfirmationDetails } from './ConfirmationDetails';
+import { OrderIssues } from './OrderIssues';
+import { ActionButton } from './ActionButton';
 
 export const OrderConfirmation: React.FC = () => {
-  const { userDetails } = useOutletContext() as UserContextType;
-  console.log('user', userDetails);
-  const { email, trackingId } = useParams();
-  const navigate = useNavigate();
+  const { email, orderId } = useParams();
 
   return (
-    <main>
-      <div className="confirmation-details">
-        <FaCheckCircle />
-        <h1>Order Confirmed</h1>
-        <p>Your order number is {trackingId}</p>
-        <p>You will recieve an email shortly at {email}</p>
+    <main className="flex flex-col">
+      <div className="my-10 self-center">
+        <FaCheckCircle size="150" color="green" />
       </div>
-      <div className="questions">
-        <h3>Questions?</h3>
-        <h3>Call 1800 sadbois</h3>
-        <a href="mailto:brendanhurd@gmail.com" target="_blank" rel="noopener noreferrer">
-          Email us
-        </a>
+      <h1 className="text-center text-h1">Order Confirmed</h1>
+      <div className="mx-4 border border-base-300 bg-base-200 p-4">
+        <ConfirmationDetails orderId={orderId} email={email} />
+        <div className="w-9/10 divider mx-auto" />
+        <OrderIssues />
       </div>
-      {userDetails ? (
-        <div className="account">
-          <h2>Save your information for next time?</h2>
-          <Button onClick={() => navigate('/register')}>Create Account</Button>
-        </div>
-      ) : (
-        <div>
-          <h2>View orders in profile page?</h2>
-          <Button onClick={() => navigate('/profile')}>View Orders</Button>
-        </div>
-      )}
+      <div className="my-2 text-center">
+        <ActionButton />
+      </div>
     </main>
   );
 };
