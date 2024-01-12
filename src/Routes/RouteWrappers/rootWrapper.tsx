@@ -29,8 +29,9 @@ export const Root: React.FC = () => {
 
   return (
     <>
-      <Navbar userDetailsContext={{ userDetails, setUserDetails }} cart={cart} />
-      <Outlet context={{ userDetails, setUserDetails, cart, setCart }} />
+      <Navbar userDetailsContext={{ userDetails, setUserDetails }} cart={cart}>
+        <Outlet context={{ userDetails, setUserDetails, cart, setCart }} />
+      </Navbar>
     </>
   );
 };

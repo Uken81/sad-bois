@@ -1,16 +1,13 @@
-import { HiOutlineLogout } from 'react-icons/hi';
-import { Dispatch } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 import { useNavigate } from 'react-router';
-import { UserContextType } from '../../Routes/RouteWrappers/rootWrapper';
-import { GeneralErrorType } from '../ErrorMessage';
+import { UserType } from '../../../Routes/RouteWrappers/rootWrapper';
+import { RiLogoutCircleFill } from 'react-icons/ri';
 
 export const Logout: React.FC<{
-  userDetailsContext: UserContextType;
-  setError: Dispatch<React.SetStateAction<GeneralErrorType | null>>;
-}> = ({ userDetailsContext, setError }) => {
-  const { setUserDetails } = userDetailsContext;
+  setUserDetails: Dispatch<SetStateAction<UserType | null>>;
+  setShowModal: Dispatch<SetStateAction<boolean>>;
+}> = ({ setUserDetails, setShowModal }) => {
   const navigate = useNavigate();
-
   const handleClick = async () => {
     const requestOptions: RequestInit = {
       method: 'GET',
@@ -28,13 +25,16 @@ export const Logout: React.FC<{
       navigate('/');
     } catch (error) {
       console.error('Error logging out: ', error);
-      setError({ message: 'Failed to logout' });
+      setShowModal(true);
     }
   };
+
   return (
-    <div className="logout" onClick={handleClick}>
-      <HiOutlineLogout />
-      <span>Log out</span>
+    <div className="flex flex-row items-center" onClick={handleClick}>
+      <div className="mr-4 text-accent lg:hidden">
+        <RiLogoutCircleFill />
+      </div>
+      <p>Logout</p>
     </div>
   );
 };

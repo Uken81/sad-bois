@@ -35,7 +35,7 @@ export const ErrorMessage: React.FC<{
     <div role="alert" className={`alert alert-${variant} max-w-lg`} onClick={() => setError(null)}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        className="h-6 w-6 shrink-0 stroke-current"
+        className="ml-auto h-6 w-6 shrink-0 stroke-current"
         fill="none"
         viewBox="0 0 24 24">
         <path

@@ -43,9 +43,9 @@ module.exports = {
     themes: [
       {
         cupcake: {
-          ...require('daisyui/src/theming/themes')['cupcake'],
-          primary: 'black',
-          secondary: 'white'
+          ...require('daisyui/src/theming/themes')['luxury']
+          // primary: 'black',
+          // secondary: 'white'
           // backgroundColor: '#fefce8'
         }
       }

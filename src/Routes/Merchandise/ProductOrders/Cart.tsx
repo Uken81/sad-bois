@@ -3,6 +3,7 @@ import { useNavigate, useOutletContext } from 'react-router';
 import { formatCurrency } from '../../../Utils/currencyFormatter';
 import { useGetCart } from '../../../Hooks/useGetCart';
 import { CartContextType } from '../../RouteWrappers/rootWrapper';
+import { Modal } from '../../../Components/Modal';
 
 export const Cart = () => {
   const { cart, setCart } = useOutletContext() as CartContextType;
@@ -35,29 +36,8 @@ export const Cart = () => {
       setShowModal(true);
       return;
     }
-
     navigate('/store/checkout/details');
   };
-
-  useEffect(() => {
-    const modal = document.getElementById('terms-modal') as HTMLDialogElement | null;
-
-    if (!modal) {
-      console.error('Modal element is null or undefined.');
-      return;
-    }
-
-    if (showModal) {
-      modal.showModal();
-    } else {
-      modal.close();
-    }
-  }, [showModal]);
-
-  useEffect(() => {
-    console.log('sub', cart?.subtotal);
-    console.log('cartInCart', cart);
-  });
 
   return (
     <div className="flex flex-col items-center">
@@ -99,21 +79,12 @@ export const Cart = () => {
           </div>
         );
       })}
-      <div className="show modal" style={{ display: 'block', position: 'initial' }}>
-        <dialog id="terms-modal" className="modal">
-          <div className="modal-box">
-            <form method="dialog">
-              <button
-                className="btn btn-circle btn-ghost btn-sm absolute right-2 top-2"
-                onClick={() => setShowModal(false)}>
-                ✕
-              </button>
-            </form>
-            <h3 className="text-lg font-bold">Error Adding Items</h3>
-            <p className="py-4">You must agree to the terms and conditions.</p>
-          </div>
-        </dialog>
-      </div>
+      <Modal id="terms-agreement" isOpen={showModal} setShowModal={setShowModal}>
+        <div className="text-center">
+          <p className="text-lg font-bold">Error Adding Items</p>
+          <p>You must agree to the terms and conditions.</p>
+        </div>
+      </Modal>
       <div className="mb-10 flex flex-col items-center space-y-6">
         <div className="text-center">
           <p className="text-lg font-bold">Subtotal {formattedSubtotal}</p>

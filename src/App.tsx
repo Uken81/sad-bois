@@ -1,6 +1,6 @@
 import { HomePage } from './Routes/HomePage/HomePage';
 import { Merchandise } from './Routes/Merchandise/Merchandise';
-import { Login } from './Routes/Login/Login';
+import { LoginForm } from './Routes/LoginPage/LoginForm';
 import ErrorPage from './Routes/ErrorPage/ErrorPage';
 import {
   Route,
@@ -8,7 +8,7 @@ import {
   createBrowserRouter,
   createRoutesFromElements
 } from 'react-router-dom';
-import { Register } from './Routes/Login/Register';
+import { Register } from './Routes/LoginPage/Register';
 import { productsLoader } from './Routes/Merchandise/productsLoader';
 import { ProfilePage } from './Routes/ProfilePage/ProfilePage';
 import { NewsPage } from './Routes/News/NewsPage';
@@ -52,7 +52,7 @@ function App() {
           </Route>
         </Route>
         <Route path="order-confirmation/:email/:orderId" element={<OrderConfirmation />} />
-        <Route path="login/:registeredEmail?" element={<Login />} />
+        <Route path="login/:registeredEmail?" element={<LoginForm />} />
         <Route path="register" element={<Register />} />
         <Route
           path="/profile/:email?"

@@ -12,7 +12,7 @@ interface LoginFormValues {
   password: string;
 }
 
-export const Login: React.FC = () => {
+export const LoginForm: React.FC = () => {
   const { registeredEmail } = useParams();
   const { setUserDetails } = useOutletContext() as UserContextType;
   const [error, setError] = useState<FormErrorType | null>(null);
