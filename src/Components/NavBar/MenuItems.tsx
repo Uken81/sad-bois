@@ -60,7 +60,7 @@ export const MenuItems: React.FC<{
               <Logout setUserDetails={setUserDetails} setShowModal={setShowModal} />
             </div>
             <div className="hidden lg:block">
-              <UserOptions userDetailContext={userDetailsContext} setS />
+              <UserOptions userDetailContext={userDetailsContext} setShowModal={setShowModal} />
             </div>
           </>
         ) : (
