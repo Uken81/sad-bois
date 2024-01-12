@@ -6,26 +6,35 @@ export const Orders: React.FC<{ userOrders: OrderType[] | null }> = ({ userOrder
     return (
       <div>
         <h3>
-          You have not made any orders, visit the store to get youre hands on some awesome swag!
+          You have not made any orders, visit the store to get your hands on some awesome swag!
         </h3>
       </div>
     );
   }
 
   return (
-    <div>
-      <h1>Orders</h1>
+    <div className="flex flex-col gap-4 bg-secondary p-4">
+      <h1 className="text-h1">Orders</h1>
       {userOrders.map((order) => {
         const { orderId, dateOrdered, shippingType, totalCost } = order;
         console.log('DATE', dateOrdered);
         const formattedDate = format(new Date(dateOrdered), 'dd/MM/yyyy');
 
         return (
-          <div className="order" key={orderId}>
-            <p>Order ID: {orderId}</p>
-            <p>Date of purchase: {formattedDate}</p>
-            <p>Shipping: {shippingType}</p>
-            <p>Total cost: {totalCost}</p>
+          <div className="mx-2 space-y-2 border border-primary p-4" key={orderId}>
+            <p className="font-bold">
+              Date of purchase: <span className="font-normal text-primary">{formattedDate}</span>
+            </p>
+            <p className="font-bold">
+              Shipping: <span className="font-normal text-primary">{shippingType}</span>
+            </p>
+
+            <p className="font-bold">
+              Total cost: <span className="font-normal text-primary">${totalCost}</span>
+            </p>
+            <p className="font-bold">
+              Order ID: <span className="font-normal text-primary">{orderId}</span>
+            </p>
           </div>
         );
       })}
