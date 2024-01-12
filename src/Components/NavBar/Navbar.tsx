@@ -39,13 +39,15 @@ export const Navbar: React.FC<{
         {children}
       </div>
       <SideDrawer>
+        {/* <div className="divider divider-primary" /> */}
+
         <MenuItems
           icons
           userDetailsContext={userDetailsContext}
           toggleDrawer={toggleDrawer}
           setShowModal={setShowModal}
         />
-        <div className="divider divider-secondary" />
+        <div className="divider divider-accent" />
         <div className="p-10">
           <img src="../public/Assets/logo1.png" />
         </div>

@@ -31,10 +31,10 @@ export const Logout: React.FC<{
 
   return (
     <div className="flex flex-row items-center" onClick={handleClick}>
-      <div className="mr-4 text-accent lg:hidden">
+      <div className="mr-4 lg:hidden">
         <RiLogoutCircleFill />
       </div>
-      <p>Logout</p>
+      <p className="text-primary">Logout</p>
     </div>
   );
 };
