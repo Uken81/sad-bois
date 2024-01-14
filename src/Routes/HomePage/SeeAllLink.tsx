@@ -1,10 +1,13 @@
 import { useNavigate } from 'react-router';
 
-export const SeeAllLink: React.FC<{ to: string; text: string }> = ({ to, text }) => {
+export const SeeAllLink: React.FC<{ destination: string; text: string }> = ({
+  destination,
+  text
+}) => {
   const navigate = useNavigate();
   return (
-    <div className="flex justify-end hover:text-yellow-500">
-      <span className="btn btn-accent mt-4  hover:btn-outline" onClick={() => navigate(to)}>
+    <div className="flex justify-center hover:text-yellow-500 md:justify-end">
+      <span className="btn btn-accent hover:btn-outline" onClick={() => navigate(destination)}>
         {text}
       </span>
     </div>

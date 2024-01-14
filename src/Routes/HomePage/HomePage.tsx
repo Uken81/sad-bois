@@ -15,16 +15,19 @@ export const HomePage: React.FC = () => {
     <main className="mt-1 ">
       <Banner />
       <div className="divider" />
-      <section className="">
+      <section className="mx-8">
         {latestNews ? <NewsPage latest={latestNews} /> : <NoNews />}
-        <SeeAllLink to="/news" text="SEE ALL NEWS" />
+        <div className="mr-4">
+          <SeeAllLink destination="/news" text="SEE ALL NEWS" />
+        </div>
       </section>
       <div className="divider" />
       <section className="w-screen">
         <TourInfo latest={latestShows} />
-        <div className="p-4">
-          <SeeAllLink to="/tour" text="SEE ALL SHOWS" />
+        <div className="mb-4 mr-14 mt-8">
+          <SeeAllLink destination="/tour" text="SEE ALL SHOWS" />
         </div>
+        <div className="divider" />
       </section>
     </main>
   );

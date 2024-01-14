@@ -19,17 +19,17 @@ export const NewsPage: React.FC<{ latest?: Article[] }> = ({ latest }) => {
         return (
           <div
             key={id}
-            className="card w-72 bg-base-100 shadow-xl lg:w-80 xl:w-96"
+            className="card w-72 bg-base-300 shadow-sm shadow-neutral-500 lg:w-80 xl:w-96"
             onClick={() => navigate(`/news/article/${id}`)}>
             <figure>
               <img src={`../../../public/Assets/News/${img}.png`} alt={title} />
             </figure>
             <div className="card-body">
-              <div className="flex items-center space-x-2">
-                <h5 className="font-bold text-accent">{dateHeading}:</h5>
-                <h6>{formattedDate}</h6>
+              <div className="flex items-center">
+                <span className="mr-2 font-bold">{dateHeading}:</span>
+                <span className="">{formattedDate}</span>
               </div>
-              <h3 className="card-title">{capitaliseWords(title)}</h3>
+              <h3 className="card-title text-primary">{capitaliseWords(title)}</h3>
               <ArticleLink id={id} />
             </div>
           </div>
