@@ -94,7 +94,7 @@ export const Register: React.FC = () => {
         handleSubmit(values, setSubmitting);
       }}>
       {(formik) => (
-        <UserForm title="sign up" formik={formik}>
+        <UserForm formik={formik}>
           <ErrorMessage
             display={isNetworkError}
             variant="error"

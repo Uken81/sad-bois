@@ -10,7 +10,6 @@ export const HomePage: React.FC = () => {
   const homepageLoader = useLoaderData() as HomepageLoader;
   const latestNews = homepageLoader.latestNewsData;
   const latestShows = homepageLoader.latestShowsData;
-
   return (
     <main className="mt-1 ">
       <Banner />

@@ -1,6 +1,5 @@
 import { HomePage } from './Routes/HomePage/HomePage';
 import { Merchandise } from './Routes/Merchandise/Merchandise';
-import { LoginForm } from './Routes/LoginPage/LoginForm';
 import ErrorPage from './Routes/ErrorPage/ErrorPage';
 import {
   Route,
@@ -30,6 +29,7 @@ import { PrivateRoute } from './Routes/RouteWrappers/privateRoute';
 import { OrderConfirmation } from './Routes/Merchandise/Checkout/OrderConfirmation/OrderConfirmation';
 import { ordersLoader } from './Routes/ProfilePage/ordersLoader';
 import { Tour } from './Routes/Tour/Tour';
+import { LoginPage } from './Routes/LoginPage/LoginPage';
 
 function App() {
   const router = createBrowserRouter(
@@ -52,7 +52,7 @@ function App() {
           </Route>
         </Route>
         <Route path="order-confirmation/:email/:orderId" element={<OrderConfirmation />} />
-        <Route path="login/:registeredEmail?" element={<LoginForm />} />
+        <Route path="login/:registeredEmail?" element={<LoginPage />} />
         <Route path="register" element={<Register />} />
         <Route
           path="/profile/:email?"

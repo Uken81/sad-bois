@@ -7,7 +7,7 @@ export const SubmitButton: React.FC<{
   const loadingButtonText = loadingText ? loadingText : 'Submitting';
 
   return (
-    <button className="btn btn-outline  btn-md w-48 hover:btn-accent" type="submit">
+    <button className="btn btn-primary btn-md w-48" type="submit">
       {isSubmitting ? loadingButtonText : buttonText}
     </button>
   );

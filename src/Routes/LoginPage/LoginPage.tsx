@@ -12,7 +12,7 @@ interface LoginFormValues {
   password: string;
 }
 
-export const LoginForm: React.FC = () => {
+export const LoginPage: React.FC = () => {
   const { registeredEmail } = useParams();
   const { setUserDetails } = useOutletContext() as UserContextType;
   const [error, setError] = useState<FormErrorType | null>(null);
@@ -89,7 +89,7 @@ export const LoginForm: React.FC = () => {
           handleSubmit(values, setSubmitting);
         }}>
         {(formik) => (
-          <UserForm formik={formik} title="login">
+          <UserForm formik={formik}>
             <ErrorMessage
               display={isNetworkError}
               variant="error"
