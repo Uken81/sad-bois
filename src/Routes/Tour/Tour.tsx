@@ -6,10 +6,11 @@ import { ToursTable } from './Table/ToursTable';
 export const Tour: React.FC<{ latest?: TourType[] }> = ({ latest }) => {
   const loaderData = useLoaderData() as TourType[];
   const all = loaderData;
-  const shows = latest || all;
+  let shows = latest || all;
+  // const shows = latest || all;
   const location = useLocation();
   const variableHeight = location.pathname === '/tour' ? 'h-screen' : null;
-
+  shows = [];
   if (!shows || shows.length === 0) {
     return <NoTour />;
   }
