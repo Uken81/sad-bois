@@ -13,8 +13,8 @@ export const Merchandise: React.FC = () => {
 
   return (
     <main>
-      <h1 className="h1-font text-center">Sad Boi Swag</h1>
-      <div className="relative mb-2 mt-10 h-96">
+      <h1 className="text-center text-h1 font-h1">Sad Boi Swag</h1>
+      <div className="relative mb-5 mt-10 h-96">
         <Featured featuredProducts={featuredProducts} activeIndex={activeIndex} />
       </div>
       <TransitionButtons

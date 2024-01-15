@@ -1,7 +1,7 @@
 import { useOutletContext } from 'react-router';
 import { ProductType } from '../productsLoader';
 import { StoreCategoryContextType } from '../../RouteWrappers/storeWrapper';
-import { ProductCard } from '../ProductCard';
+import { ProductCard } from '../ProductCard/ProductCard';
 
 export const Featured: React.FC<{
   featuredProducts: ProductType[] | null;

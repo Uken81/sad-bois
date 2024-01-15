@@ -1,6 +1,7 @@
 import { DataError } from '../../Types/loaderTypes';
 
 type Category = 'clothing' | 'sticker' | 'coffee-mug' | 'misc';
+export type dbBollean = 0 | 1;
 
 export interface ProductType {
   //could add available countries, member exclusive
@@ -9,8 +10,9 @@ export interface ProductType {
   title: string;
   subtitle: string;
   price: number;
-  applyMemberDiscount: boolean;
+  // applyMemberDiscount: boolean;
   img: string;
+  isFeatured: dbBollean;
 }
 
 export interface MerchandiseType {

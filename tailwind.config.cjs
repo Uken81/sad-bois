@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 // const plugin = require('tailwindcss/plugin');
-import plugin from 'tailwindcss/plugin';
+// import plugin from 'tailwindcss/plugin';
 module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx}'],
   theme: {
@@ -31,7 +31,7 @@ module.exports = {
     themes: [
       {
         cupcake: {
-          ...require('daisyui/src/theming/themes')['luxury']
+          ...require('daisyui/src/theming/themes')['business']
           // primary: 'black',
           // secondary: 'white'
           // backgroundColor: '#fefce8'
