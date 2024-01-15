@@ -9,7 +9,7 @@ import shortid from 'shortid';
 import { ShareButton } from '../../../../Components/Share/ShareButton';
 import { CartContextType } from '../../../RouteWrappers/rootWrapper';
 import { ShareOptions } from '../../../../Components/Share/ShareOptions';
-import { ActionButton } from './ActionButton';
+import { ActionButton, AddButton } from './AddButton';
 
 export interface ProductOrder {
   orderId: string;
@@ -72,23 +72,22 @@ export const AddToCart: React.FC = () => {
   }, [cart]);
 
   return (
-    <div className="flex h-full flex-col items-center gap-4 md:mx-24 md:my-24 md:flex-row md:gap-0">
-      <div className="flex w-1/2 justify-center">
+    <div className="flex h-full flex-col items-center gap-4 md:mx-24 md:my-24 md:flex-row md:gap-0 xl:mx-64">
+      <div className="flex h-full w-1/2 justify-center">
         <img src={`/Assets/Products/${img}`} className="h-48 md:h-96" />
       </div>
-      <div className="align-middle md:flex md:w-1/2  md:flex-col md:space-y-10">
+      <div className="align-middle md:flex md:w-1/2 md:flex-col md:space-y-10">
         <div className="text-center md:space-y-2">
           <h1 className="h1-font md:text-5xl">{title}</h1>
           <h2 className="h2-font">{subtitle}</h2>
           <h2 className="h2-font ">${price}</h2>
         </div>
         <div className="flex flex-col items-center gap-6">
-          <p>Shipping calculated at checkout</p>
+          <p className="text-secondary">Shipping calculated at checkout</p>
           <SizeSelectors size={size} setSize={setSize} display={displayDropdown} />
           <Quantity quantity={quantity} setQuantity={setQuantity} />
-          <ActionButton isAdded={isAdded} handleSubmit={handleSubmit} />
+          <AddButton isAdded={isAdded} handleSubmit={handleSubmit} />
         </div>
-        {/* <button onClick={() => console.log('s', size)}>con</button> */}
         {isAdded ? <p className="mt-1 text-center font-mono">Item added to cart</p> : null}
         <div className="my-4 flex justify-center md:my-0">
           <div className="hidden md:flex">

@@ -45,7 +45,7 @@ export const MenuItems: React.FC<{
         const { destination, text, icon } = link;
 
         return (
-          <div className="flex flex-row items-center border-l-2 border-accent duration-700 hover:border-primary">
+          <div className="flex flex-row items-center border-l-2 border-accent duration-500 hover:border-primary">
             <div className="ml-2">{icons ? icon : null}</div>
             <li className="font-bold text-primary" onClick={toggleDrawer}>
               <Link to={`/${destination}`}>{text}</Link>
@@ -53,7 +53,9 @@ export const MenuItems: React.FC<{
           </div>
         );
       })}
-      <div className="border-l-2 border-accent pl-2" onClick={toggleDrawer}>
+      <div
+        className="border-l-2 border-accent pl-2 duration-500 hover:border-primary"
+        onClick={toggleDrawer}>
         {userDetails ? (
           <>
             <div className="lg:hidden">

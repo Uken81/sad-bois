@@ -5,7 +5,7 @@ export const Login: React.FC<{ icons?: boolean }> = ({ icons }) => {
   return (
     <div className="flex flex-row items-center">
       <div>{icons ? <RiLoginCircleFill /> : null}</div>
-      <li className="text-primary">
+      <li className="font-bold text-primary">
         <Link to={'/login'}>Login</Link>
       </li>
     </div>

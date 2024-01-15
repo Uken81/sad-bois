@@ -11,7 +11,7 @@ export const CartLink: React.FC<{ cart: CartType | null }> = ({ cart }) => {
   }
 
   return (
-    <div className="indicator" onClick={() => navigate('/store/view-cart')}>
+    <div className="indicator  cursor-pointer" onClick={() => navigate('/store/view-cart')}>
       <div className="badge indicator-item badge-accent h-[15px] w-[15px] rounded-full border-2 p-0">
         <div className="text-[7px] font-bold">{numberOfItems}</div>
       </div>

@@ -20,7 +20,7 @@ export const Quantity: React.FC<{
       </p>
       <input
         className=" w-10 bg-primary text-center text-secondary"
-        type="number"
+        type="text"
         id="numberInput"
         name="quantity-input"
         defaultValue={1}
