@@ -17,7 +17,6 @@ import { NewsArticle } from './Routes/News/NewsArticle';
 import { articleLoader } from './Routes/News/DataLoaders/articleLoader';
 import { productLoader } from './Routes/Merchandise/ProductOrders/productLoader';
 import { AddToCart } from './Routes/Merchandise/ProductOrders/AddToCart/AddToCart';
-import { TourInfo } from './Routes/Tour/TourInfo';
 import { tourLoader } from './Routes/Tour/tourLoader';
 import { homepageLoader } from './Routes/HomePage/homepageLoaders';
 import { Cart } from './Routes/Merchandise/ProductOrders/Cart';
@@ -30,6 +29,7 @@ import { Checkout } from './Routes/RouteWrappers/checkoutWrapper';
 import { PrivateRoute } from './Routes/RouteWrappers/privateRoute';
 import { OrderConfirmation } from './Routes/Merchandise/Checkout/OrderConfirmation/OrderConfirmation';
 import { ordersLoader } from './Routes/ProfilePage/ordersLoader';
+import { Tour } from './Routes/Tour/Tour';
 
 function App() {
   const router = createBrowserRouter(
@@ -40,7 +40,7 @@ function App() {
           <Route index element={<NewsPage />} loader={newsLoader} />
           <Route path="article/:id" element={<NewsArticle />} loader={articleLoader} />
         </Route>
-        <Route path="tour" element={<TourInfo />} loader={tourLoader} />
+        <Route path="tour" element={<Tour />} loader={tourLoader} />
         <Route path="store" element={<Store />}>
           <Route index element={<Merchandise />} loader={productsLoader} />
           <Route path="add-to-cart/:id" element={<AddToCart />} loader={productLoader} />

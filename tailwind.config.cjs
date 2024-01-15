@@ -1,26 +1,9 @@
 /** @type {import('tailwindcss').Config} */
+// const plugin = require('tailwindcss/plugin');
+import plugin from 'tailwindcss/plugin';
 module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx}'],
   theme: {
-    themes: [
-      {
-        // mytheme: {
-        //   // Replace 'mytheme' with your theme name
-        //   // primary: 'linear-gradient(90deg, #facc15, #000)'
-        //   primary: '#facc15',
-        //   backgroundColor: '#facc15'
-        //   // ... other color settings
-        // }
-        mytheme: {
-          primary: '#a991f7',
-          secondary: '#f6d860',
-          accent: '#37cdbe',
-          neutral: '#3d4451',
-          'base-100': '#ffffff'
-        }
-      }
-      // ... other themes
-    ],
     extend: {
       fontSize: {
         h1: '2rem',
@@ -32,6 +15,11 @@ module.exports = {
         h2: '600',
         h3: '500'
       },
+      // textShadow: {
+      //   // DEFAULT: '0 2px 4px #000',
+      //   sm: '0 2px 2px #000',
+      //   lg: '0 4px 10px #000'
+      // },
       backgroundImage: {
         backgroundLogo: 'url("../public/Assets/logo1.png")',
         stadium: 'url("../public/Assets/Banners/stadium2.jpeg")'
@@ -49,6 +37,16 @@ module.exports = {
           // backgroundColor: '#fefce8'
         }
       }
+      // plugin(function ({ matchUtilities, theme }) {
+      //   matchUtilities(
+      //     {
+      //       'text-shadow': (value) => ({
+      //         textShadow: value
+      //       })
+      //     },
+      //     { values: theme('textShadow') }
+      //   );
+      // })
     ]
   }
 };

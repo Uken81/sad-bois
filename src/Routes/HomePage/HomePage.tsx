@@ -2,7 +2,7 @@ import { useLoaderData } from 'react-router';
 import { NewsPage } from '../News/NewsPage';
 import { Banner } from './Banner';
 import { HomepageLoader } from './homepageLoaders';
-import { TourInfo } from '../Tour/TourInfo';
+import { Tour } from '../Tour/Tour';
 import { SeeAllLink } from './SeeAllLink';
 import { NoNews } from '../News/NoNews';
 
@@ -23,8 +23,8 @@ export const HomePage: React.FC = () => {
       </section>
       <div className="divider" />
       <section className="w-screen">
-        <TourInfo latest={latestShows} />
-        <div className="mb-4 mr-14 mt-8">
+        <Tour latest={latestShows} />
+        <div className="mb-4 mt-8 md:mr-12">
           <SeeAllLink destination="/tour" text="SEE ALL SHOWS" />
         </div>
         <div className="divider" />

@@ -1,6 +1,9 @@
 export const HamburgerIcon = () => {
   return (
-    <label htmlFor="nav-drawer" aria-label="open sidebar" className="btn btn-square btn-ghost">
+    <label
+      htmlFor="nav-drawer"
+      aria-label="open sidebar"
+      className="btn btn-square btn-ghost text-primary">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"

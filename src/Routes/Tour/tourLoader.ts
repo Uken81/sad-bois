@@ -1,6 +1,6 @@
 import { DataError } from '../../Types/loaderTypes';
 
-export interface Tour {
+export interface TourType {
   id: string;
   date: Date;
   location: string;
@@ -8,7 +8,7 @@ export interface Tour {
   ticketStatus: 'pending' | 'onsale' | 'postponed';
 }
 
-export const tourLoader = async (): Promise<Tour[] | undefined> => {
+export const tourLoader = async (): Promise<TourType[] | undefined> => {
   try {
     const response = await fetch('http://localhost:2001/tour');
     if (!response.ok) {
