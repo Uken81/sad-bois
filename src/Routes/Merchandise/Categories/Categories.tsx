@@ -5,7 +5,7 @@ export const Categories: React.FC<{
   setSelectedCategory: Dispatch<SetStateAction<ProductCategories>>;
 }> = ({ setSelectedCategory }) => {
   return (
-    <ul className="mt-5 flex flex-col justify-center gap-10 md:flex-row">
+    <ul className="mt-5 flex flex-col justify-center gap-10 md:flex-row md:text-primary">
       <li
         className="cursor-pointer hover:text-accent hover:underline"
         onClick={() => setSelectedCategory('all')}>
