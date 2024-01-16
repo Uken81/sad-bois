@@ -12,7 +12,7 @@ export const UserForm = <T,>({
   formik: FormikProps<T>;
 }) => {
   const location = useLocation();
-  const isLoginPage = location.pathname === '/login';
+  const isLoginPage = /\/login(\/.*)?$/.test(location.pathname);
   const title = isLoginPage ? 'Login' : 'Sign Up';
 
   const backgroundGradient = 'bg-gradient-to-b from-black to-gray-600';
