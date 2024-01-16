@@ -1,7 +1,7 @@
 import { useLoaderData, useOutletContext } from 'react-router';
 import { useState } from 'react';
-import { SizeSelectors } from '../SizeSelectors';
-import { Quantity } from '../Quantity';
+import { SizeSelectors } from './SizeSelectors';
+import { Quantity } from './Quantity';
 import { useEffectAfterMount } from '../../../../Hooks/useEffectAfterMount';
 import { saveOrUpdateSessionStorage } from '../../../../Utils/saveOrUpdateSessionStorage';
 import { ProductType } from '../../productsLoader';
@@ -9,7 +9,7 @@ import shortid from 'shortid';
 import { ShareButton } from '../../../../Components/Share/ShareButton';
 import { CartContextType } from '../../../RouteWrappers/rootWrapper';
 import { ShareOptions } from '../../../../Components/Share/ShareOptions';
-import { ActionButton, AddButton } from './AddButton';
+import { AddButton } from './AddButton';
 
 export interface ProductOrder {
   orderId: string;

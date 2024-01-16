@@ -84,7 +84,7 @@ export const CheckoutDetails = () => {
         }}>
         {(formik) => (
           <Form className="flex w-full flex-col items-center justify-center text-center">
-            <h3 className="text-h3">Contact</h3>
+            <h2 className="text-h2 font-h2">Contact</h2>
             <CustomInput name="email" type="email" placeholder="Email" />
             {/* <CustomInput
               name="emailoffers"
@@ -92,7 +92,7 @@ export const CheckoutDetails = () => {
               placeholder="Email me with news and offers"
             /> */}
 
-            <h3 className="my-2 text-h3">Shipping address</h3>
+            <h2 className="my-2 text-h2 font-h2">Shipping address</h2>
             <CustomInput name="country" as="select" placeholder="Country">
               {countries.map((name) => (
                 <option key={name} value={name}>

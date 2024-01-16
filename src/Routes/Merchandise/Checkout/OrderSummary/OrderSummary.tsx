@@ -23,20 +23,21 @@ export const OrderSummary: React.FC<{ selectedShipping: ShippingOptionsType }> =
   }, []);
 
   //Todo: Not working as intended, review
-  // if (!cart || cart.items.length === 0) {
-  //   <div className="h-28 font-mono font-bold">
-  //     <p>Cart is empty.</p>
-  //   </div>;
-  //   return;
-  // }
+  if (!cart || cart.items.length === 0) {
+    return (
+      <div className="h-28 font-mono font-bold">
+        <p>Cart is empty.</p>
+      </div>
+    );
+  }
 
   return (
-    <aside>
+    <aside className=" flex flex-col">
       {cartItems?.map((item) => {
         const { orderId, img, name, size, quantity, cost } = item;
 
         return (
-          <div key={orderId} className="my-5 flex flex-row">
+          <div key={orderId} className="my-5 flex w-full flex-row rounded border bg-primary">
             <ProductImage imageSrc={img} quantity={quantity} />
             <ProductInfo name={name} size={size} cost={cost} />
           </div>

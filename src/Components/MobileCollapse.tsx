@@ -21,7 +21,7 @@ export const MobileCollapse: React.FC<{
           <div className="ml-1">
             {isClosed ? <FaChevronDown size="1rem" /> : <FaChevronUp size="1rem" />}
           </div>
-          {subtitle ? <div className="ml-auto">{subtitle}</div> : null}
+          {subtitle ? <div className="ml-auto mr-2">{subtitle}</div> : null}
         </div>
       </div>
       <div className="collapse-content">{children}</div>

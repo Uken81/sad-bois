@@ -48,20 +48,23 @@ export const Cart = () => {
 
         return (
           <div key={orderId} className="flex w-full flex-col items-center">
-            <div className="">
+            <div className="m-2">
               <img src={`/Assets/Products/${img}`} className="h-24" />
             </div>
 
-            <div className="my-4 text-center font-bold">
-              <p>{name}</p>
+            <div className="my-4 text-center ">
+              <p className="text-lg font-bold text-secondary [text-shadow:0px_0px_1px_#ffffff]">
+                {name}
+              </p>
               <p className="uppercase">{size}</p>
               <p
-                className="hover:cursor-pointer hover:text-gray-400"
+                className="mt-4 font-bold hover:cursor-pointer hover:text-gray-400"
                 onClick={() => removeItems(orderId)}>
                 Remove
               </p>
             </div>
-            <div className="w-full px-24">
+            {/* <div className="w-full px-24"> */}
+            <div className="w-1/2 md:w-1/4 lg:px-10 xl:px-14">
               <div className="flex justify-between">
                 <span>Price</span>
                 <span>{formattedPrice}</span>
@@ -75,7 +78,7 @@ export const Cart = () => {
                 <span>{formattedCost}</span>
               </div>
             </div>
-            <div className="divider" />
+            <div className="divider md:w-3/4 md:self-center lg:w-2/3 xl:w-1/3" />
           </div>
         );
       })}

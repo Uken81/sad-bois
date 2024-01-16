@@ -39,7 +39,7 @@ export const Checkout = () => {
   console.log('selectedShipping', selectedShipping);
   return (
     <div className="flex w-screen flex-col md:flex-row">
-      <div className="md:hidden md:w-1/2">
+      <div className="mx-4 md:hidden md:w-1/2">
         <OrderSummaryCollapse
           selectedShipping={selectedShipping}
           subtotal={cart?.subtotal ?? null}
@@ -50,7 +50,7 @@ export const Checkout = () => {
           context={{ selectedShipping, setSelectedShipping, customer, setCustomer, cart, setCart }}
         />
       </div>
-      <div className="hidden w-1/2 md:block">
+      <div className="mx-4 hidden w-1/2 md:block">
         <OrderSummary selectedShipping={selectedShipping} />
       </div>
     </div>

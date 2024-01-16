@@ -9,11 +9,13 @@ export const OrderSummaryCollapse: React.FC<{
   const subtotalString = subtotal ? subtotal?.toString() : '';
 
   return (
-    <MobileCollapse
-      closedText="Show order summary"
-      openText="Hide order summary"
-      subtitle={`$${subtotalString}`}>
-      <OrderSummary selectedShipping={selectedShipping} />
-    </MobileCollapse>
+    <div className="">
+      <MobileCollapse
+        closedText="Show order summary"
+        openText="Hide order summary"
+        subtitle={`$${subtotalString}`}>
+        <OrderSummary selectedShipping={selectedShipping} />
+      </MobileCollapse>
+    </div>
   );
 };
