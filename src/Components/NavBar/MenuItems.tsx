@@ -40,13 +40,13 @@ export const MenuItems: React.FC<{
       <div onClick={toggleDrawer} className="text-center lg:hidden">
         <HomeLink />
       </div>
-      <div className="divider divider-accent" />
+      <div className="divider" />
       {standardLinks.map((link) => {
         const { destination, text, icon } = link;
 
         return (
-          <div className="flex flex-row items-center border-l-2 border-accent duration-500 hover:border-primary">
-            <div className="ml-2">{icons ? icon : null}</div>
+          <div className="flex flex-row items-center border-l-2 border-secondary duration-500 hover:border-accent">
+            <div className="ml-1 text-secondary">{icons ? icon : null}</div>
             <li className="font-bold text-primary" onClick={toggleDrawer}>
               <Link to={`/${destination}`}>{text}</Link>
             </li>
@@ -54,7 +54,7 @@ export const MenuItems: React.FC<{
         );
       })}
       <div
-        className="border-l-2 border-accent pl-2 duration-500 hover:border-primary"
+        className="border-l-2 border-secondary pl-2 duration-500 hover:border-accent"
         onClick={toggleDrawer}>
         {userDetails ? (
           <>

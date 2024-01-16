@@ -109,7 +109,7 @@ export const Cart = () => {
             </span>
           </label>
         </div>
-        <button className="btn" onClick={proceedToCheckout}>
+        <button className="btn btn-secondary mb-2" onClick={proceedToCheckout}>
           CHECKOUT
         </button>
       </div>
