@@ -105,7 +105,7 @@ export const PaymentDetails = () => {
         handleSubmit(values, setSubmitting);
       }}>
       {(formik) => (
-        <Form className="px-4">
+        <Form className="px-4 md:px-0">
           <ErrorMessage
             display={isNetworkError}
             variant="error"

@@ -31,17 +31,17 @@ export const Payment: React.FC = () => {
 
   return (
     <div className="mx-5 mb-4 space-y-5">
-      <div className="rounded border border-base-300 p-4">
+      <div className="rounded border border-base-300 bg-neutral p-4">
         <ContactDetails email={email} />
         <div className="w-9/10 divider mx-auto" />
         <AddressDetails address={combinedAddress} />
         <div className="w-9/10 divider mx-auto" />
         <ShippingMethodDetails />
       </div>
-      <h2 className="text-center text-h2">Payment</h2>
-      <div className="border border-base-300 ">
+      <h2 className="text-center text-h2 font-h2">Payment</h2>
+      <div className="border border-base-300 bg-neutral">
         <CardOptions />
-        <div className="bg-base-200">
+        <div className="text-center">
           <PaymentDetails />
         </div>
       </div>
