@@ -30,11 +30,11 @@ export const Logout: React.FC<{
   };
 
   return (
-    <div className="flex flex-row items-center" onClick={handleClick}>
-      <div className="mr-4 lg:hidden">
+    <div className="mt-2 flex flex-row items-center hover:cursor-pointer" onClick={handleClick}>
+      <div className="mr-4 text-secondary lg:hidden">
         <RiLogoutCircleFill />
       </div>
-      <p className="font-bold text-primary">Logout</p>
+      <li className="py-2 font-bold text-primary">Logout</li>
     </div>
   );
 };

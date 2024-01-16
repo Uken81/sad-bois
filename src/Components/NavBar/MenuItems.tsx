@@ -5,10 +5,10 @@ import { Dispatch, ReactNode, SetStateAction } from 'react';
 import { TiNews } from 'react-icons/ti';
 import { LiaMusicSolid } from 'react-icons/lia';
 import { PiShoppingCartBold } from 'react-icons/pi';
-import { CgProfile } from 'react-icons/cg';
 import { Login } from './Links/Login';
 import { HomeLink } from './Links/HomeLink';
 import { UserOptions } from './UserOptions';
+import { Profile } from './Links/Profile';
 
 interface LinkItemType {
   destination: string;
@@ -27,12 +27,7 @@ export const MenuItems: React.FC<{
   const standardLinks: LinkItemType[] = [
     { destination: 'news', text: 'News', icon: <TiNews /> },
     { destination: 'tour', text: 'Tour', icon: <LiaMusicSolid /> },
-    { destination: 'store', text: 'Swag', icon: <PiShoppingCartBold /> },
-    {
-      destination: userDetails ? `profile/${userDetails.email}` : 'login',
-      text: 'Profile',
-      icon: <CgProfile />
-    }
+    { destination: 'store', text: 'Swag', icon: <PiShoppingCartBold /> }
   ];
 
   return (
@@ -53,20 +48,23 @@ export const MenuItems: React.FC<{
           </div>
         );
       })}
-      <div
-        className="border-l-2 border-secondary pl-2 duration-500 hover:border-accent"
-        onClick={toggleDrawer}>
+      <div className="" onClick={toggleDrawer}>
         {userDetails ? (
           <>
-            <div className="lg:hidden">
+            <div className="mb-2 border-l-2 border-secondary pl-1 duration-500 hover:border-accent lg:hidden">
+              <Profile email={userDetails.email} />
+            </div>
+            <div className="border-l-2 border-secondary pl-1 duration-500 hover:border-accent lg:hidden">
               <Logout setUserDetails={setUserDetails} setShowModal={setShowModal} />
             </div>
-            <div className="hidden lg:block">
+            <div className="hidden border-l-2 border-secondary pl-1 duration-500 hover:border-accent lg:block">
               <UserOptions userDetailContext={userDetailsContext} setShowModal={setShowModal} />
             </div>
           </>
         ) : (
-          <Login icons={icons} />
+          <div className="border-l-2 border-secondary pl-1 duration-500 hover:border-accent">
+            <Login icons={icons} />
+          </div>
         )}
       </div>
     </>
