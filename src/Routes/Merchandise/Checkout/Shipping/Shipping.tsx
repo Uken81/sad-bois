@@ -21,14 +21,14 @@ export const Shipping: React.FC = () => {
 
   if (!customer) {
     //Change this to use Routers error page??
-    return <div className="no-data">No customer data available</div>;
+    return <div>No customer data available</div>;
   }
 
   const { email, address, suburb, state, postcode } = customer;
   const combinedAddress = `${address}, ${suburb}, ${state}, ${postcode}`;
 
   return (
-    <div className="mx-5">
+    <div className="mx-5 xl:mx-24">
       <div className="rounded border border-neutral-200 p-4">
         <ContactDetails email={email} />
         <div className="w-9/10 divider mx-auto" />

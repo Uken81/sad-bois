@@ -13,13 +13,16 @@ export const ShippingSelection: React.FC = () => {
         const formattedPrice = formatCurrency(option.shippingPrice);
         const formattedName = capitaliseWords(option.name);
         const isChecked = option.type === selectedShipping.type;
+
         return (
           <div
             key={option.type}
             className="my-5 flex justify-between"
             onClick={() => setSelectedShipping(option)}>
-            <input type="radio" name="radio-1" className="radio" checked={isChecked} />
-            <p>{formattedName}</p>
+            <div className="flex flex-row">
+              <input type="radio" name="radio-1" className="radio" checked={isChecked} />
+              <p className="ml-2">{formattedName}</p>
+            </div>
             <p className="font-bold">{formattedPrice}</p>
           </div>
         );
