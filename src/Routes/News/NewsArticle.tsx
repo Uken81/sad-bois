@@ -10,15 +10,17 @@ export const NewsArticle = () => {
   const formattedDate = format(new Date(date), 'dd/MM/yyyy');
 
   return (
-    <main className=" md:mx-24 lg:mx-48">
+    <main className=" md:mx-24 lg:mx-48 xl:mx-64">
       <h1 className="h1-font my-2  text-center md:m-4 md:text-5xl">{title}</h1>
-      <div className="block w-1/2 flex-row justify-between md:my-4 md:flex">
+      <div className="divider" />
+
+      <div className="mx-8 flex flex-row justify-between md:my-4">
         <div className="flex flex-row justify-center md:text-xl">
-          <p className="mr-2 font-bold text-accent">NEWS |</p>
+          <p className="mr-2 border-r px-1 font-bold text-accent">NEWS</p>
           <span className="text-gray-500">{formattedDate}</span>
         </div>
-        <div className="my-4 flex justify-center md:my-0">
-          <div className="hidden md:flex">
+        <div className="flex justify-center">
+          <div className="hidden md:block">
             <ShareButton />
           </div>
           <div className="md:hidden">
@@ -26,10 +28,11 @@ export const NewsArticle = () => {
           </div>
         </div>
       </div>
-      <figure>
+      <figure className="flex justify-center">
         <img className="my-4 h-96" src={`../../../public/Assets/News/${img}.png`} alt={title} />
       </figure>
-      <div className="my-4 p-4 font-serif text-lg leading-relaxed lg:text-2xl">{text}</div>
+      <div className="divider" />
+      <div className="my-4 px-8 font-mono text-lg leading-relaxed lg:text-2xl">{text}</div>
     </main>
   );
 };
