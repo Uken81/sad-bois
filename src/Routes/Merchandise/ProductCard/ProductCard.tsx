@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router';
-import { ProductType } from '../productsLoader';
+import { ProductType } from '../../../DataLoaders/productsLoader';
 import { convertNumberToBoolean } from '../../../Utils/convertNumberToBoolean';
 import { ItemImage } from './ItemImage';
 import { ItemInfo } from './ItemInfo';

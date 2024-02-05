@@ -1,5 +1,5 @@
 import { format } from 'date-fns';
-import { OrderType } from './ordersLoader';
+import { OrderType } from '../../DataLoaders/ordersLoader';
 
 export const Orders: React.FC<{ userOrders: OrderType[] | null }> = ({ userOrders }) => {
   if (!userOrders) {

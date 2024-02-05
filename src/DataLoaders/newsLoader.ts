@@ -1,4 +1,4 @@
-import { DataError } from '../../../Types/loaderTypes';
+import { DataError } from '../Types/loaderTypes';
 
 export interface Article {
   id: string;

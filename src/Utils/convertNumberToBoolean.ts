@@ -1,4 +1,4 @@
-import { dbBollean } from '../Routes/Merchandise/productsLoader';
+import { dbBollean } from '../DataLoaders/productsLoader';
 
 export const convertNumberToBoolean = (number: dbBollean) => {
   if (number === 1) {

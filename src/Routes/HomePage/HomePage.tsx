@@ -1,7 +1,7 @@
 import { useLoaderData } from 'react-router';
 import { NewsPage } from '../News/NewsPage';
 import { Banner } from './Banner';
-import { HomepageLoader } from './homepageLoaders';
+import { HomepageLoader } from '../../DataLoaders/homepageLoaders';
 import { Tour } from '../Tour/Tour';
 import { SeeAllLink } from './SeeAllLink';
 import { NoNews } from '../News/NoNews';

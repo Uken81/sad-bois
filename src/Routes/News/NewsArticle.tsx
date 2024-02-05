@@ -1,5 +1,5 @@
 import { useLoaderData } from 'react-router';
-import { Article } from './DataLoaders/newsLoader';
+import { Article } from '../../DataLoaders/newsLoader';
 import { format } from 'date-fns';
 import { ShareButton } from '../../Components/Share/ShareButton';
 import { ShareOptions } from '../../Components/Share/ShareOptions';

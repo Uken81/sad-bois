@@ -1,6 +1,6 @@
 import { LoaderFunctionArgs } from 'react-router';
 import { Article } from './newsLoader';
-import { DataError } from '../../../Types/loaderTypes';
+import { DataError } from '../Types/loaderTypes';
 
 export const articleLoader = async (loader: LoaderFunctionArgs): Promise<Article | undefined> => {
   const id = loader.params.id;

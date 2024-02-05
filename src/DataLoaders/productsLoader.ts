@@ -1,4 +1,4 @@
-import { DataError } from '../../Types/loaderTypes';
+import { DataError } from '../Types/loaderTypes';
 
 type Category = 'clothing' | 'sticker' | 'coffee-mug' | 'misc';
 export type dbBollean = 0 | 1;

@@ -1,7 +1,7 @@
 import { useLoaderData } from 'react-router';
 import { Featured } from './Featured/Featured';
 import { Products } from './Products';
-import { MerchandiseType } from './productsLoader';
+import { MerchandiseType } from '../../DataLoaders/productsLoader';
 import { useState } from 'react';
 import { TransitionButtons } from './Featured/TransitionButtons';
 

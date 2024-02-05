@@ -8,16 +8,16 @@ import {
   createRoutesFromElements
 } from 'react-router-dom';
 import { Register } from './Routes/LoginPage/Register';
-import { productsLoader } from './Routes/Merchandise/productsLoader';
+import { productsLoader } from './DataLoaders/productsLoader';
 import { ProfilePage } from './Routes/ProfilePage/ProfilePage';
 import { NewsPage } from './Routes/News/NewsPage';
-import { newsLoader } from './Routes/News/DataLoaders/newsLoader';
+import { newsLoader } from './DataLoaders/newsLoader';
 import { NewsArticle } from './Routes/News/NewsArticle';
-import { articleLoader } from './Routes/News/DataLoaders/articleLoader';
-import { productLoader } from './Routes/Merchandise/Cart/productLoader';
+import { articleLoader } from './DataLoaders/articleLoader';
+import { productLoader } from './DataLoaders/productLoader';
 import { AddToCart } from './Routes/Merchandise/Cart/AddToCart/AddToCart';
-import { tourLoader } from './Routes/Tour/tourLoader';
-import { homepageLoader } from './Routes/HomePage/homepageLoaders';
+import { tourLoader } from './DataLoaders/tourLoader';
+import { homepageLoader } from './DataLoaders/homepageLoaders';
 import { Cart } from './Routes/Merchandise/Cart/Cart';
 import { CheckoutDetails } from './Routes/Merchandise/Checkout/CheckoutDetails';
 import { Shipping } from './Routes/Merchandise/Checkout/Shipping/Shipping';
@@ -27,7 +27,7 @@ import { Store } from './Routes/RouteWrappers/storeWrapper';
 import { Checkout } from './Routes/RouteWrappers/checkoutWrapper';
 import { PrivateRoute } from './Routes/RouteWrappers/privateRoute';
 import { OrderConfirmation } from './Routes/Merchandise/Checkout/OrderConfirmation/OrderConfirmation';
-import { ordersLoader } from './Routes/ProfilePage/ordersLoader';
+import { ordersLoader } from './DataLoaders/ordersLoader';
 import { Tour } from './Routes/Tour/Tour';
 import { LoginPage } from './Routes/LoginPage/LoginPage';
 

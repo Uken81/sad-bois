@@ -1,6 +1,6 @@
 import { useLoaderData, useNavigate } from 'react-router';
 import { capitaliseWords } from '../../Utils/capitaliseWords';
-import { Article } from './DataLoaders/newsLoader';
+import { Article } from '../../DataLoaders/newsLoader';
 import { format } from 'date-fns';
 import { ArticleLink } from './ArticleLink';
 

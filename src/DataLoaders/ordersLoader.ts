@@ -1,5 +1,5 @@
 import { LoaderFunctionArgs } from 'react-router';
-import { DataError } from '../../Types/loaderTypes';
+import { DataError } from '../Types/loaderTypes';
 export interface OrderType {
   orderId: string;
   customerEmail: string;

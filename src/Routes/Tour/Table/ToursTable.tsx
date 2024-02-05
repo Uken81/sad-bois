@@ -1,4 +1,4 @@
-import { TourType } from '../tourLoader';
+import { TourType } from '../../../DataLoaders/tourLoader';
 import { ColumnHeaders } from './ColumnHeaders';
 import { TableData } from './TableData';
 

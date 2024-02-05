@@ -1,5 +1,5 @@
 import { useLoaderData, useLocation } from 'react-router';
-import { TourType } from './tourLoader';
+import { TourType } from '../../DataLoaders/tourLoader';
 import { NoTour } from './NoTour';
 import { ToursTable } from './Table/ToursTable';
 

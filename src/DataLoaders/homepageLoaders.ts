@@ -1,6 +1,6 @@
-import { DataError } from '../../Types/loaderTypes';
-import { Article } from '../News/DataLoaders/newsLoader';
-import { TourType } from '../Tour/tourLoader';
+import { DataError } from '../Types/loaderTypes';
+import { Article } from './newsLoader';
+import { TourType } from './tourLoader';
 
 export interface HomepageLoader {
   latestNewsData: Article[];

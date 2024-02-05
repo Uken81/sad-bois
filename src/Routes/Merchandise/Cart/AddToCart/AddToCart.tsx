@@ -4,7 +4,7 @@ import { SizeSelectors } from './SizeSelectors';
 import { Quantity } from './Quantity';
 import { useEffectAfterMount } from '../../../../Hooks/useEffectAfterMount';
 import { saveOrUpdateSessionStorage } from '../../../../Utils/saveOrUpdateSessionStorage';
-import { ProductType } from '../../productsLoader';
+import { ProductType } from '../../../../DataLoaders/productsLoader';
 import shortid from 'shortid';
 import { ShareButton } from '../../../../Components/Share/ShareButton';
 import { CartContextType } from '../../../RouteWrappers/rootWrapper';

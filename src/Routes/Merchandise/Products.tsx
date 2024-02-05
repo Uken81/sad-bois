@@ -1,6 +1,6 @@
 import { useOutletContext } from 'react-router';
 import { StoreCategoryContextType } from '../RouteWrappers/storeWrapper';
-import { ProductType } from './productsLoader';
+import { ProductType } from '../../DataLoaders/productsLoader';
 import { ProductCard } from './ProductCard/ProductCard';
 
 export const Products: React.FC<{ regularProducts: ProductType[] }> = ({ regularProducts }) => {

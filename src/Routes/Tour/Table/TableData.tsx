@@ -1,5 +1,5 @@
 import { format } from 'date-fns';
-import { TourType } from '../tourLoader';
+import { TourType } from '../../../DataLoaders/tourLoader';
 
 export const TableData: React.FC<{ shows: TourType[] }> = ({ shows }) => {
   return (

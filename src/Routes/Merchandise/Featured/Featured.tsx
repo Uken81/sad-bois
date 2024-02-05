@@ -1,5 +1,5 @@
 import { useOutletContext } from 'react-router';
-import { ProductType } from '../productsLoader';
+import { ProductType } from '../../../DataLoaders/productsLoader';
 import { StoreCategoryContextType } from '../../RouteWrappers/storeWrapper';
 import { ProductCard } from '../ProductCard/ProductCard';
 
