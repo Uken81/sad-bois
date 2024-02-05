@@ -4,13 +4,11 @@ type Category = 'clothing' | 'sticker' | 'coffee-mug' | 'misc';
 export type dbBollean = 0 | 1;
 
 export interface ProductType {
-  //could add available countries, member exclusive
   id: string;
   category: Category;
   title: string;
   subtitle: string;
   price: number;
-  // applyMemberDiscount: boolean;
   img: string;
   isFeatured: dbBollean;
 }
@@ -22,8 +20,10 @@ export interface MerchandiseType {
 
 export const productsLoader = async (): Promise<MerchandiseType | undefined> => {
   try {
-    const resRegular = await fetch('http://localhost:2001/products');
-    const resFeatured = await fetch('http://localhost:2001/products/featured');
+    const resRegular = await fetch('https://sad-bois-backend-637e57975bd5.herokuapp.com/products');
+    const resFeatured = await fetch(
+      'https://sad-bois-backend-637e57975bd5.herokuapp.com/products/featured'
+    );
 
     if (!resRegular.ok) {
       const data: DataError = await resRegular.json();

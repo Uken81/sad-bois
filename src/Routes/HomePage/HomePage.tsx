@@ -8,8 +8,8 @@ import { NoNews } from '../News/NoNews';
 
 export const HomePage: React.FC = () => {
   const homepageLoader = useLoaderData() as HomepageLoader;
-  const latestNews = homepageLoader.latestNewsData;
-  const latestShows = homepageLoader.latestShowsData;
+  const latestNews = homepageLoader.latestNewsData.length ? homepageLoader.latestNewsData : null;
+  const latestShows = homepageLoader.latestShowsData.length ? homepageLoader.latestShowsData : null;
   return (
     <main className="mt-1 ">
       <Banner />
@@ -22,7 +22,7 @@ export const HomePage: React.FC = () => {
       </section>
       <div className="divider" />
       <section className="w-screen">
-        <Tour latest={latestShows} />
+        {latestShows ? <Tour latest={latestShows} /> : null}
         <div className="mb-4 mt-8 md:mr-12">
           <SeeAllLink destination="/tour" text="SEE ALL SHOWS" />
         </div>

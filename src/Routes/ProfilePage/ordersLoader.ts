@@ -14,7 +14,9 @@ export const ordersLoader = async (loader: LoaderFunctionArgs): Promise<OrderTyp
   const email = loader.params.email;
 
   try {
-    const response = await fetch(`http://localhost:2001/orders?email=${email}`);
+    const response = await fetch(
+      `https://sad-bois-backend-637e57975bd5.herokuapp.com/orders?email=${email}`
+    );
     if (!response.ok) {
       const data: DataError = await response.json();
       console.error(`Error fetching orders: ${data.error}`);

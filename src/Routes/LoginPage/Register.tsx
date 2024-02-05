@@ -48,7 +48,10 @@ export const Register: React.FC = () => {
     };
 
     try {
-      const response = await fetch('http://localhost:2001/auth/register', requestOptions);
+      const response = await fetch(
+        'https://sad-bois-backend-637e57975bd5.herokuapp.com/auth/register',
+        requestOptions
+      );
 
       if (!response.ok) {
         const data: FormErrorType = await response.json();

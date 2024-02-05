@@ -40,7 +40,9 @@ export const MenuItems: React.FC<{
         const { destination, text, icon } = link;
 
         return (
-          <div className="flex flex-row items-center border-l-2 border-secondary duration-500 hover:border-accent">
+          <div
+            key={destination}
+            className="flex flex-row items-center border-l-2 border-secondary duration-500 hover:border-accent">
             <div className="ml-1 text-secondary">{icons ? icon : null}</div>
             <li className="font-bold text-primary" onClick={toggleDrawer}>
               <Link to={`/${destination}`}>{text}</Link>

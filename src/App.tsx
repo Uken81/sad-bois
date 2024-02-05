@@ -29,7 +29,7 @@ import { PrivateRoute } from './Routes/RouteWrappers/privateRoute';
 import { OrderConfirmation } from './Routes/Merchandise/Checkout/OrderConfirmation/OrderConfirmation';
 import { ordersLoader } from './Routes/ProfilePage/ordersLoader';
 import { Tour } from './Routes/Tour/Tour';
-import { LoginPage } from './Routes/LoginPage/Login';
+import { LoginPage } from './Routes/LoginPage/LoginPage';
 
 function App() {
   const router = createBrowserRouter(

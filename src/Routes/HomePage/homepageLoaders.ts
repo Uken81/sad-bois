@@ -1,10 +1,10 @@
 import { DataError } from '../../Types/loaderTypes';
 import { Article } from '../News/DataLoaders/newsLoader';
-import { Tour } from '../Tour/tourLoader';
+import { TourType } from '../Tour/tourLoader';
 
 export interface HomepageLoader {
   latestNewsData: Article[];
-  latestShowsData: Tour[];
+  latestShowsData: TourType[];
 }
 
 export const homepageLoader = async () => {
@@ -16,7 +16,7 @@ export const homepageLoader = async () => {
 
 const latestNewsLoader = async (): Promise<Article[] | undefined> => {
   try {
-    const response = await fetch('http://localhost:2001/news/latest');
+    const response = await fetch('https://sad-bois-backend-637e57975bd5.herokuapp.com/news/latest');
     if (!response.ok) {
       const data: DataError = await response.json();
       console.error(`Error fetching latest news: ${data.error}`);
@@ -37,7 +37,7 @@ const latestNewsLoader = async (): Promise<Article[] | undefined> => {
 
 export const latestShowLoader = async () => {
   try {
-    const response = await fetch('http://localhost:2001/tour/latest');
+    const response = await fetch('https://sad-bois-backend-637e57975bd5.herokuapp.com/tour');
     if (!response.ok) {
       const data: DataError = await response.json();
       console.error(`Error fetching latest news: ${data.error}`);

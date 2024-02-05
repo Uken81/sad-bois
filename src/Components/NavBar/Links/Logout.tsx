@@ -15,7 +15,10 @@ export const Logout: React.FC<{
     };
 
     try {
-      const response = await fetch('http://localhost:2001/auth/logout', requestOptions);
+      const response = await fetch(
+        'https://sad-bois-backend-637e57975bd5.herokuapp.com/auth/logout',
+        requestOptions
+      );
 
       if (!response.ok || response === null) {
         throw new Error('Network response was not ok');

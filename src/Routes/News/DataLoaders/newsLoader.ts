@@ -10,8 +10,7 @@ export interface Article {
 
 export const newsLoader = async (): Promise<Article[] | undefined> => {
   try {
-    const response = await fetch('http://localhost:2001/news');
-    console.log('res', response);
+    const response = await fetch('https://sad-bois-backend-637e57975bd5.herokuapp.com/news');
     if (!response.ok) {
       const data: DataError = await response.json();
       throw new Error(`HTTP error! ${data.error}`);
@@ -21,8 +20,8 @@ export const newsLoader = async (): Promise<Article[] | undefined> => {
     return news;
   } catch (error) {
     if (error instanceof Error) {
-      console.error(error);
-      return;
+      console.error(`Error: ${error}`);
+      // return null;
     }
 
     console.error('An unexpected error occurred:', error);

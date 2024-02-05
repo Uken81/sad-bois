@@ -10,14 +10,13 @@ export interface TourType {
 
 export const tourLoader = async (): Promise<TourType[] | undefined> => {
   try {
-    const response = await fetch('http://localhost:2001/tour');
+    const response = await fetch('https://sad-bois-backend-637e57975bd5.herokuapp.com/tour');
     if (!response.ok) {
       const data: DataError = await response.json();
       throw new Error(`HTTP error! ${data.error}`);
     }
 
     const tour = await response.json();
-
     return tour;
   } catch (error) {
     if (error instanceof Error) {
