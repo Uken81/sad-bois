@@ -10,9 +10,9 @@ import * as Yup from 'yup';
 
 interface DetailsFormType {
   email: string;
-  emailoffers: boolean;
-  firstname: string;
-  lastname: string;
+  emailOffers: boolean;
+  firstName: string;
+  lastName: string;
   country: string;
   address: string;
   apartment: string;
@@ -41,6 +41,7 @@ export const CheckoutDetails = () => {
     values: DetailsFormType,
     setSubmitting: (isSubmitting: boolean) => void
   ) => {
+    console.log('test');
     setCustomer(values);
     saveOrUpdateSessionStorage('customer', values);
     setSubmitting(false);
@@ -49,9 +50,9 @@ export const CheckoutDetails = () => {
 
   const detailsFormSchema = Yup.object().shape({
     email: Yup.string().email('Invalid email address').required('Email is required'),
-    emailoffers: Yup.boolean(),
-    firstname: Yup.string().required('First Name is required'),
-    lastname: Yup.string().required('Last Name is required'),
+    emailOffers: Yup.boolean(),
+    firstName: Yup.string().required('First Name is required'),
+    lastName: Yup.string().required('Last Name is required'),
     country: Yup.string().required('Country is required'),
     address: Yup.string().required('Address is required'),
     apartment: Yup.string(),
@@ -68,10 +69,10 @@ export const CheckoutDetails = () => {
         validationSchema={detailsFormSchema}
         initialValues={{
           email: customer?.email ?? '',
-          emailoffers: customer?.emailoffers ?? false,
+          emailOffers: customer?.emailOffers ?? false,
           country: customer?.country ?? 'Australia',
-          firstname: customer?.firstname ?? '',
-          lastname: customer?.lastname ?? '',
+          firstName: customer?.firstName ?? '',
+          lastName: customer?.lastName ?? '',
           address: customer?.address ?? '',
           apartment: customer?.apartment ?? '',
           suburb: customer?.suburb ?? '',
@@ -101,8 +102,8 @@ export const CheckoutDetails = () => {
               ))}
             </CustomInput>
 
-            <CustomInput name="firstname" placeholder="First Name" />
-            <CustomInput name="lastname" placeholder="Last Name" />
+            <CustomInput name="firstName" placeholder="First Name" />
+            <CustomInput name="lastName" placeholder="Last Name" />
             <CustomInput name="address" type="address" placeholder="Shipping Adress" />
             <CustomInput name="apartment" placeholder="Apartment, suite, etc. (optional)" />
             <CustomInput name="suburb" placeholder="Suburb" />

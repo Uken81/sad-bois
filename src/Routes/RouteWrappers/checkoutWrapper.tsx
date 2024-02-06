@@ -10,9 +10,9 @@ import { OrderSummaryCollapse } from '../Merchandise/Checkout/OrderSummary/Order
 
 export interface CustomerType {
   email: string;
-  emailoffers: boolean;
-  firstname: string;
-  lastname: string;
+  emailOffers: boolean;
+  firstName: string;
+  lastName: string;
   country: string;
   address: string;
   apartment: string;
