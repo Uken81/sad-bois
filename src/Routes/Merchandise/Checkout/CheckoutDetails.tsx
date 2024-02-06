@@ -24,7 +24,6 @@ interface DetailsFormType {
 export const CheckoutDetails = () => {
   const { customer, setCustomer } = useOutletContext() as CustomerContextType;
   const getCustomer = useGetCustomer();
-
   const navigate = useNavigate();
   const countries = ['Australia'];
   const states = ['VIC', 'NSW', 'QLD', 'SA', 'WA', 'TAS', 'ACT', 'NT'];

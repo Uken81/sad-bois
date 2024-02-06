@@ -17,6 +17,7 @@ export interface CardDetailsFormType {
   expirationDate: string;
   securityCode: string;
 }
+
 export const PaymentDetails = () => {
   const outletContext = useOutletContext();
   const { customer, setCustomer } = outletContext as CustomerContextType;

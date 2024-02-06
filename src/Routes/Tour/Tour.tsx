@@ -9,7 +9,7 @@ export const Tour: React.FC<{ latest?: TourType[] }> = ({ latest }) => {
   const shows = latest || all;
   const location = useLocation();
   const variableHeight = location.pathname === '/tour' ? 'h-screen' : null;
-
+  console.log('shows', shows);
   if (!shows || shows.length === 0) {
     return <NoTour />;
   }

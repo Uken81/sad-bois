@@ -1,4 +1,5 @@
 import { DataError } from '../Types/loaderTypes';
+import humps from 'humps';
 
 export interface TourType {
   id: string;
@@ -17,7 +18,9 @@ export const tourLoader = async (): Promise<TourType[] | undefined> => {
     }
 
     const tour = await response.json();
-    return tour;
+    const camelisedTour = humps.camelizeKeys(tour) as TourType[];
+
+    return camelisedTour;
   } catch (error) {
     if (error instanceof Error) {
       console.error(error);
