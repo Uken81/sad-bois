@@ -17,7 +17,6 @@ export const Featured: React.FC<{
     <div className="carousel">
       {featuredProducts.map((item, index) => (
         <div
-          onClick={() => console.log('id', item.id)}
           key={item.id}
           className={`carousel-item flex justify-center transition-opacity duration-1000 ${
             index === activeIndex

@@ -1,13 +1,30 @@
 import { LoaderFunctionArgs } from 'react-router';
-import { MerchandiseType } from './productsLoader';
+import { ProductType } from './productsLoader';
+import { cameliseProductData } from './DataLoaderUtils/cameliseProductData';
 
-export const productLoader = async (loader: LoaderFunctionArgs): Promise<MerchandiseType> => {
+export const productLoader = async (
+  loader: LoaderFunctionArgs
+): Promise<ProductType | undefined> => {
   const id = loader.params.id;
-  const response = await fetch(
-    `https://sad-bois-backend-637e57975bd5.herokuapp.com/products/byId?id=${id}`
-  );
-  const selectedProduct = await response.json();
-  console.log('selectedPro', selectedProduct);
+  if (typeof id === 'undefined') {
+    throw new Error('Product ID was not provided');
+  }
 
-  return selectedProduct;
+  try {
+    const response = await fetch(
+      `https://sad-bois-backend-637e57975bd5.herokuapp.com/products/byId?id=${id}`
+    );
+
+    const selectedProduct: ProductType = await response.json();
+    const camelisedProduct = await cameliseProductData(selectedProduct);
+
+    return camelisedProduct;
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(error);
+      return;
+    }
+
+    console.error('An unexpected error occurred:', error);
+  }
 };

@@ -1,7 +1,7 @@
 import { DataError } from '../Types/loaderTypes';
+import { cameliseProductsData } from './DataLoaderUtils/cameliseProductsData';
 
 type Category = 'clothing' | 'sticker' | 'coffee-mug' | 'misc';
-export type dbBollean = 0 | 1;
 
 export interface ProductType {
   id: string;
@@ -10,36 +10,32 @@ export interface ProductType {
   subtitle: string;
   price: number;
   img: string;
-  isFeatured: dbBollean;
+  isFeatured: boolean;
 }
 
 export interface MerchandiseType {
-  regular: ProductType[];
-  featured: ProductType[] | null;
+  camelisedRegularProducts: ProductType[] | undefined;
+  camelisedFeaturedProducts: ProductType[] | undefined;
 }
 
 export const productsLoader = async (): Promise<MerchandiseType | undefined> => {
   try {
-    const resRegular = await fetch('https://sad-bois-backend-637e57975bd5.herokuapp.com/products');
-    const resFeatured = await fetch(
+    const regular = await fetch('https://sad-bois-backend-637e57975bd5.herokuapp.com/products');
+    const featured = await fetch(
       'https://sad-bois-backend-637e57975bd5.herokuapp.com/products/featured'
     );
 
-    if (!resRegular.ok) {
-      const data: DataError = await resRegular.json();
+    if (!regular.ok || !featured.ok) {
+      const data: DataError = await regular.json();
       throw new Error(`HTTP error! ${data.error}`);
     }
+    const regularProducts: ProductType[] = await regular.json();
+    const featuredProducts: ProductType[] = await featured.json();
 
-    let featured: ProductType[] | null = null;
-    if (resFeatured.ok) {
-      featured = await resFeatured.json();
-    } else {
-      console.error('Failed to fetch featured products');
-    }
+    const camelisedRegularProducts = await cameliseProductsData(regularProducts);
+    const camelisedFeaturedProducts = await cameliseProductsData(featuredProducts);
 
-    const regular: ProductType[] = await resRegular.json();
-
-    return { regular, featured };
+    return { camelisedRegularProducts, camelisedFeaturedProducts };
   } catch (error) {
     if (error instanceof Error) {
       console.error(error);

@@ -1,4 +1,5 @@
 import { DataError } from '../Types/loaderTypes';
+import { cameliseNewsData } from './DataLoaderUtils/cameliseNewsData';
 
 export interface Article {
   id: string;
@@ -17,11 +18,13 @@ export const newsLoader = async (): Promise<Article[] | undefined> => {
     }
 
     const news: Article[] = await response.json();
-    return news;
+    const camelisedNews = await cameliseNewsData(news);
+
+    return camelisedNews;
   } catch (error) {
     if (error instanceof Error) {
       console.error(`Error: ${error}`);
-      // return null;
+      throw new Error(`${error}`);
     }
 
     console.error('An unexpected error occurred:', error);

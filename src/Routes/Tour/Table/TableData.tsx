@@ -7,7 +7,6 @@ export const TableData: React.FC<{ shows: TourType[] }> = ({ shows }) => {
       {shows.map((show) => {
         const { id, date, location, venue, ticketStatus } = show;
         const formattedDate = format(new Date(date), 'dd/MM/yyyy');
-        console.log('shows1', shows);
 
         return (
           <tr key={id} className="whitespace-normal text-center text-xs text-yellow-500">

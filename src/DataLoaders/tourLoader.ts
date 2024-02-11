@@ -1,5 +1,5 @@
 import { DataError } from '../Types/loaderTypes';
-import humps from 'humps';
+import { cameliseTourData } from './DataLoaderUtils/cameliseTourData';
 
 export interface TourType {
   id: string;
@@ -18,13 +18,13 @@ export const tourLoader = async (): Promise<TourType[] | undefined> => {
     }
 
     const tour = await response.json();
-    const camelisedTour = humps.camelizeKeys(tour) as TourType[];
+    const camelisedTour = await cameliseTourData(tour);
 
     return camelisedTour;
   } catch (error) {
     if (error instanceof Error) {
-      console.error(error);
-      return;
+      console.error(`Error: ${error}`);
+      throw new Error(`${error}`);
     }
 
     console.error('An unexpected error occurred:', error);

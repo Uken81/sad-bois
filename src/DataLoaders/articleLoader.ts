@@ -1,6 +1,7 @@
 import { LoaderFunctionArgs } from 'react-router';
 import { Article } from './newsLoader';
 import { DataError } from '../Types/loaderTypes';
+import { cameliseArticleData } from './DataLoaderUtils/cameliseArticleData';
 
 export const articleLoader = async (loader: LoaderFunctionArgs): Promise<Article | undefined> => {
   const id = loader.params.id;
@@ -16,7 +17,9 @@ export const articleLoader = async (loader: LoaderFunctionArgs): Promise<Article
     }
 
     const article: Article = await response.json();
-    return article;
+    const camelisedArticle = await cameliseArticleData(article);
+
+    return camelisedArticle;
   } catch (error) {
     if (error instanceof Error) {
       console.error(error);
