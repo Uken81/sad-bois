@@ -1,34 +1,42 @@
 import { Dispatch, SetStateAction } from 'react';
 import { ProductCategories } from '../../RouteWrappers/storeWrapper';
+import { useNavigate } from 'react-router';
 
 export const Categories: React.FC<{
   setSelectedCategory: Dispatch<SetStateAction<ProductCategories>>;
 }> = ({ setSelectedCategory }) => {
+  const navigate = useNavigate();
+
+  const changeCategory = (category: ProductCategories) => {
+    setSelectedCategory(category);
+    navigate(`/store/${category}`);
+  };
+
   return (
     <ul className="mt-5 flex flex-col justify-center gap-10 md:flex-row md:text-primary">
       <li
         className="cursor-pointer hover:text-accent hover:underline"
-        onClick={() => setSelectedCategory('all')}>
+        onClick={() => changeCategory('all')}>
         All
       </li>
       <li
         className="cursor-pointer hover:text-accent hover:underline"
-        onClick={() => setSelectedCategory!('clothing')}>
+        onClick={() => changeCategory('clothing')}>
         Clothing
       </li>
       <li
         className="cursor-pointer hover:text-accent hover:underline"
-        onClick={() => setSelectedCategory('coffee-mug')}>
+        onClick={() => changeCategory('coffee-mug')}>
         Coffee Mugs
       </li>
       <li
         className="cursor-pointer hover:text-accent hover:underline"
-        onClick={() => setSelectedCategory!('sticker')}>
+        onClick={() => changeCategory('sticker')}>
         Stickers
       </li>
       <li
         className="cursor-pointer hover:text-accent hover:underline"
-        onClick={() => setSelectedCategory!('misc')}>
+        onClick={() => changeCategory('misc')}>
         Misc
       </li>
     </ul>

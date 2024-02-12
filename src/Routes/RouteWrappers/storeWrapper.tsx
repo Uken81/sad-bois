@@ -1,6 +1,6 @@
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 import { Categories } from '../Merchandise/Categories/Categories';
-import { Outlet, useNavigate, useOutletContext } from 'react-router';
+import { Outlet, useOutletContext } from 'react-router';
 import { CartContextType } from './rootWrapper';
 import { CategoriesCollapse } from '../Merchandise/Categories/CategoriesCollapse';
 
@@ -8,17 +8,12 @@ export type ProductCategories = 'all' | 'clothing' | 'coffee-mug' | 'sticker' | 
 
 export interface StoreCategoryContextType {
   selectedCategory: ProductCategories | null;
-  setSelectedCategories: Dispatch<SetStateAction<StoreCategoryContextType | null>>;
+  setSelectedCategories: Dispatch<SetStateAction<ProductCategories | null>>;
 }
 
 export const Store: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<ProductCategories>('all');
   const { cart, setCart } = useOutletContext() as CartContextType;
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    navigate('/store');
-  }, [navigate, selectedCategory]);
 
   return (
     <>
@@ -29,7 +24,7 @@ export const Store: React.FC = () => {
         <CategoriesCollapse setSelectedCategory={setSelectedCategory} />
       </div>
       <div className="divider" />
-      <Outlet context={{ selectedCategory, setSelectedCategory, cart, setCart }} />
+      <Outlet context={{ selectedCategory, cart, setCart }} />
     </>
   );
 };

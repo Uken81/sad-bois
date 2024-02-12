@@ -41,7 +41,7 @@ function App() {
           <Route path="article/:id" element={<NewsArticle />} loader={articleLoader} />
         </Route>
         <Route path="tour" element={<Tour />} loader={tourLoader} />
-        <Route path="store" element={<Store />}>
+        <Route path="store/:category?" element={<Store />}>
           <Route index element={<Merchandise />} loader={productsLoader} />
           <Route path="add-to-cart/:id" element={<AddToCart />} loader={productLoader} />
           <Route path="view-cart" element={<Cart />} />

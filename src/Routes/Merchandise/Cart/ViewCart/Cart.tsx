@@ -26,12 +26,12 @@ export const Cart = () => {
         <Subtotal subtotal={cart?.subtotal} />
         <p>Taxes and shipping calculated at checkout</p>
       </div>
-      <div className="mb-10 flex flex-col items-center space-y-6">
-        <button className="btn" onClick={() => navigate('/store')}>
+      <div className="mb-10 mt-8 flex flex-col items-center space-y-6">
+        <button className="btn btn-secondary" onClick={() => navigate('/store')}>
           CONTINUE SHOPPING
         </button>
+        <ProceedToCheckout />
       </div>
-      <ProceedToCheckout />
     </main>
   );
 };

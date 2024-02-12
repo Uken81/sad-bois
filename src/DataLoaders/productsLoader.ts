@@ -1,3 +1,4 @@
+import { LoaderFunctionArgs } from 'react-router';
 import { DataError } from '../Types/loaderTypes';
 import { cameliseProductsData } from './DataLoaderUtils/cameliseProductsData';
 
@@ -18,9 +19,14 @@ export interface MerchandiseType {
   camelisedFeaturedProducts: ProductType[] | undefined;
 }
 
-export const productsLoader = async (): Promise<MerchandiseType | undefined> => {
+export const productsLoader = async (
+  loader: LoaderFunctionArgs
+): Promise<MerchandiseType | undefined> => {
   try {
-    const regular = await fetch('https://sad-bois-backend-637e57975bd5.herokuapp.com/products');
+    const category = loader.params.category;
+    const regular = await fetch(
+      `https://sad-bois-backend-637e57975bd5.herokuapp.com/products?category=${category}`
+    );
     const featured = await fetch(
       'https://sad-bois-backend-637e57975bd5.herokuapp.com/products/featured'
     );
