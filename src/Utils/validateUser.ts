@@ -24,8 +24,6 @@ export const validateUser = async (): Promise<boolean> => {
     }
 
     const data: ValidationResult = await response.json();
-    console.log('validationSuccess: ', data.validationSuccess);
-    console.log('validationMesage: ', data.message);
 
     return data.validationSuccess;
   } catch (error) {

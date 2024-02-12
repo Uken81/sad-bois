@@ -66,7 +66,6 @@ export const AddToCart: React.FC = () => {
 
   useEffectAfterMount(() => {
     if (cart) {
-      console.log('updateLocal');
       saveOrUpdateSessionStorage('cart', cart);
     }
   }, [cart]);

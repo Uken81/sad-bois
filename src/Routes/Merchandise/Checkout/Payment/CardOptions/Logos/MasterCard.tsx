@@ -1,13 +1,6 @@
 import { SVGProps } from 'react';
 const MasterCardLogo = (props: SVGProps<SVGSVGElement>) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    xmlSpace="preserve"
-    // style={{
-    //   enableBackground: 'new 0 0 152.4 108'
-    // }}
-    viewBox="0 0 152.4 108"
-    {...props}>
+  <svg xmlns="http://www.w3.org/2000/svg" xmlSpace="preserve" viewBox="0 0 152.4 108" {...props}>
     <path
       d="M0 0h152.4v108H0z"
       style={{

@@ -19,7 +19,7 @@ export const UserOptions: React.FC<{
       </div>
       <ul
         tabIndex={0}
-        className="menu dropdown-content z-[1] w-52 rounded-box bg-base-100 p-2 shadow">
+        className="menu dropdown-content z-[1] w-52 rounded-box bg-base-100 p-2 text-lg shadow">
         <li className="font-bold text-primary">
           <Link to={`/profile/${userDetails?.email}`}>Profile</Link>
         </li>

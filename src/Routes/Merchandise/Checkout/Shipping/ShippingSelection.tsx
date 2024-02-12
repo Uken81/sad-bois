@@ -15,12 +15,15 @@ export const ShippingSelection: React.FC = () => {
         const isChecked = option.type === selectedShipping.type;
 
         return (
-          <div
-            key={option.type}
-            className="my-5 flex justify-between"
-            onClick={() => setSelectedShipping(option)}>
+          <div key={option.type} className="my-5 flex justify-between">
             <div className="flex flex-row">
-              <input type="radio" name="radio-1" className="radio" checked={isChecked} />
+              <input
+                type="radio"
+                name="radio-1"
+                className="radio"
+                checked={isChecked}
+                onChange={() => setSelectedShipping(option)}
+              />
               <p className="ml-2">{formattedName}</p>
             </div>
             <p className="font-bold">{formattedPrice}</p>

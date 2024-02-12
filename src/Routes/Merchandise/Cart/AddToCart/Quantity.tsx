@@ -23,7 +23,6 @@ export const Quantity: React.FC<{
         type="text"
         id="numberInput"
         name="quantity-input"
-        defaultValue={1}
         value={quantity}
         onChange={(e) => handleChange(e)}
       />

@@ -9,9 +9,9 @@ export const PrivateRoute: React.FC<{ children: ReactNode }> = ({ children }) =>
   const checkAuth = async () => {
     try {
       const auth = await validateUser();
+      //Todo: display error message to user when auth is false.
       setIsValidated(auth);
     } catch (error) {
-      //Todo: display error message to user here
       console.error('Error validating user', error);
     } finally {
       setIsLoading(false);
@@ -22,9 +22,6 @@ export const PrivateRoute: React.FC<{ children: ReactNode }> = ({ children }) =>
     checkAuth();
   }, []);
 
-  useEffect(() => {
-    console.log('loading', isLoading);
-  });
   if (isLoading) {
     return <div>Loading.....</div>;
   }

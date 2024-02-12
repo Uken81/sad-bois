@@ -12,7 +12,7 @@ export const HomePage: React.FC = () => {
   const latestShows = homepageLoader.latestShowsData?.length
     ? homepageLoader.latestShowsData
     : null;
-  console.log('latSh', latestShows);
+
   return (
     <main className="mt-1 ">
       <Banner />

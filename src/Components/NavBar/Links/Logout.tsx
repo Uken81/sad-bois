@@ -37,7 +37,7 @@ export const Logout: React.FC<{
       <div className="mr-4 text-secondary lg:hidden">
         <RiLogoutCircleFill />
       </div>
-      <li className="py-2 font-bold text-primary">Logout</li>
+      <span className="py-2 font-bold text-primary">Logout</span>
     </div>
   );
 };

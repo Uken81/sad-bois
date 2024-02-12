@@ -5,7 +5,6 @@ import { UserContextType, UserType } from '../RouteWrappers/rootWrapper';
 
 export const ProfilePage: React.FC = () => {
   const userOrders = useLoaderData() as OrderType[] | null;
-  console.log('userOrders', userOrders);
   const { userDetails } = useOutletContext() as UserContextType;
   const { email, username } = userDetails as UserType;
 

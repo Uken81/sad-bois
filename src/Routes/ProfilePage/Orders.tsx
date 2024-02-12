@@ -6,7 +6,7 @@ export const Orders: React.FC<{ userOrders: OrderType[] | null }> = ({ userOrder
     return (
       <div>
         <h3>
-          You have not made any orders, visit the store to get your hands on some awesome swag!
+          You have not made any orders yet, visit the store to get your hands on some awesome swag!
         </h3>
       </div>
     );
@@ -17,7 +17,6 @@ export const Orders: React.FC<{ userOrders: OrderType[] | null }> = ({ userOrder
       <h1 className="text-h1">Orders</h1>
       {userOrders.map((order) => {
         const { orderId, dateOrdered, shippingType, totalCost } = order;
-        console.log('DATE', dateOrdered);
         const formattedDate = format(new Date(dateOrdered), 'dd/MM/yyyy');
 
         return (
