@@ -44,7 +44,6 @@ export const OrderSummary: React.FC<{ selectedShipping: ShippingOptionsType }> =
         );
       })}
       <PurchaseInfo cart={cart} selectedShipping={selectedShipping} />
-      {/* <h2>Discount Code Goes Here</h2> */}
     </aside>
   );
 };

@@ -4,6 +4,7 @@ import { formatCurrency } from '../../../Utils/currencyFormatter';
 import { useGetCart } from '../../../Hooks/useGetCart';
 import { CartContextType } from '../../RouteWrappers/rootWrapper';
 import { Modal } from '../../../Components/Modal';
+import { ProductOrder } from './AddToCart/AddToCart';
 
 export const Cart = () => {
   const { cart, setCart } = useOutletContext() as CartContextType;
@@ -11,7 +12,7 @@ export const Cart = () => {
   const [hasAgreed, setHasAgreed] = useState(false);
   const navigate = useNavigate();
   const getCart = useGetCart();
-  const formattedSubtotal = formatCurrency(cart?.subtotal ?? 0);
+  const formattedSubtotal = formatCurrency(cart?.subtotal ?? null);
 
   useEffect(() => {
     if (!cart) {
@@ -21,13 +22,14 @@ export const Cart = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const removeItems = (id: string) => {
-    const filteredArr = cart?.items?.filter((item) => item.orderId !== id) || [];
+  const removeItem = (productOrder: ProductOrder) => {
+    const { orderId, cost } = productOrder;
+    const filteredArr = cart?.items?.filter((item) => item.orderId !== orderId) || [];
 
     setCart((prev) => ({
       ...prev,
       items: filteredArr,
-      subtotal: prev?.subtotal || 0
+      subtotal: prev?.subtotal ? prev!.subtotal - cost : null
     }));
   };
 
@@ -59,11 +61,10 @@ export const Cart = () => {
               <p className="uppercase">{size}</p>
               <p
                 className="mt-4 font-bold hover:cursor-pointer hover:text-gray-400"
-                onClick={() => removeItems(orderId)}>
+                onClick={() => removeItem(item)}>
                 Remove
               </p>
             </div>
-            {/* <div className="w-full px-24"> */}
             <div className="w-1/2 md:w-1/4 lg:px-10 xl:px-14">
               <div className="flex justify-between">
                 <span>Price</span>
@@ -90,7 +91,11 @@ export const Cart = () => {
       </Modal>
       <div className="mb-10 flex flex-col items-center space-y-6">
         <div className="text-center">
-          <p className="text-lg font-bold">Subtotal {formattedSubtotal}</p>
+          {formattedSubtotal ? (
+            <p className="text-lg font-bold">Subtotal {formattedSubtotal}</p>
+          ) : (
+            <p className="text-lg font-bold text-red-500">Error calculating subtotal</p>
+          )}
           <p>Taxes and shipping calculated at checkout</p>
         </div>
         <button className="btn" onClick={() => navigate('/store')}>

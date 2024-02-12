@@ -15,7 +15,7 @@ export interface UserContextType {
 
 export interface CartType {
   items: ProductOrder[];
-  subtotal: number;
+  subtotal: number | null;
 }
 
 export interface CartContextType {

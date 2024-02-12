@@ -1,4 +1,4 @@
-import { CartType } from '../../../RouteWrappers/storeWrapper';
+import { CartType } from '../../../RouteWrappers/rootWrapper';
 import { ShippingOptionsType } from '../Shipping/shippingOptions';
 
 export const calculateTax = (cart: CartType | null, selectedShipping: ShippingOptionsType) => {
@@ -6,12 +6,12 @@ export const calculateTax = (cart: CartType | null, selectedShipping: ShippingOp
   const shippingPrice = selectedShipping?.shippingPrice;
 
   if (!subtotal) {
-    console.log('Cart subtotal is null or undefined');
+    console.error('Cart subtotal is null or undefined');
     return;
   }
 
   if (!shippingPrice) {
-    console.log('Shipping price is null or undefined');
+    console.error('Shipping price is null or undefined');
     return;
   }
 

@@ -52,9 +52,10 @@ export const AddToCart: React.FC = () => {
         };
       }
 
+      const recalculatedSubtotal = prevCart.subtotal ? prevCart.subtotal + price * quantity : null;
       return {
         items: [...prevCart.items, productOrder],
-        subtotal: prevCart.subtotal + price * quantity
+        subtotal: recalculatedSubtotal
       };
     });
   };

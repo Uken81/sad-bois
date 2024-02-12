@@ -1,4 +1,4 @@
-import { CartType } from '../../../RouteWrappers/storeWrapper';
+import { CartType } from '../../../RouteWrappers/rootWrapper';
 import { ShippingOptionsType } from '../Shipping/shippingOptions';
 
 export interface OrderDetailsType {
