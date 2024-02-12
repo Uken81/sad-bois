@@ -1,5 +1,5 @@
-import { formatCurrency } from '../../../../Utils/currencyFormatter';
-import { ProductOrder } from '../AddToCart/AddToCart';
+import { formatCurrency } from '../../../../../Utils/currencyFormatter';
+import { ProductOrder } from '../../AddToCart/AddToCart';
 
 export const PriceDetails: React.FC<{ productOrder: ProductOrder }> = ({ productOrder }) => {
   const { quantity, price, cost } = productOrder;
