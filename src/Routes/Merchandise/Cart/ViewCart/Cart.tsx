@@ -1,15 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useNavigate, useOutletContext } from 'react-router';
 import { useGetCart } from '../../../../Hooks/useGetCart';
 import { CartContextType } from '../../../RouteWrappers/rootWrapper';
-import { TermsModal } from './TermsModal';
 import { Subtotal } from './Subtotal';
 import { ItemOrderSummary } from './ItemOrderSummary/ItemOrderSummary';
 import { ProceedToCheckout } from './ProceedToCheckout/ProceedToCheckout';
 
 export const Cart = () => {
   const { cart, setCart } = useOutletContext() as CartContextType;
-  const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
   const getCart = useGetCart();
 
@@ -28,13 +26,12 @@ export const Cart = () => {
         <Subtotal subtotal={cart?.subtotal} />
         <p>Taxes and shipping calculated at checkout</p>
       </div>
-      <TermsModal showModal={showModal} setShowModal={setShowModal} />
       <div className="mb-10 flex flex-col items-center space-y-6">
         <button className="btn" onClick={() => navigate('/store')}>
           CONTINUE SHOPPING
         </button>
       </div>
-      <ProceedToCheckout setShowModal={setShowModal} />
+      <ProceedToCheckout />
     </main>
   );
 };
