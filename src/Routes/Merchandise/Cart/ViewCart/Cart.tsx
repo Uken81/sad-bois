@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useOutletContext } from 'react-router';
-import { formatCurrency } from '../../../Utils/currencyFormatter';
-import { useGetCart } from '../../../Hooks/useGetCart';
-import { CartContextType } from '../../RouteWrappers/rootWrapper';
-import { Modal } from '../../../Components/Modal';
-import { ProductOrder } from './AddToCart/AddToCart';
+import { formatCurrency } from '../../../../Utils/currencyFormatter';
+import { useGetCart } from '../../../../Hooks/useGetCart';
+import { CartContextType } from '../../../RouteWrappers/rootWrapper';
+import { RemoveItem } from './RemoveItem';
+import { TermsModal } from './TermsModal';
 
 export const Cart = () => {
   const { cart, setCart } = useOutletContext() as CartContextType;
@@ -21,17 +21,6 @@ export const Cart = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  const removeItem = (productOrder: ProductOrder) => {
-    const { orderId, cost } = productOrder;
-    const filteredArr = cart?.items?.filter((item) => item.orderId !== orderId) || [];
-
-    setCart((prev) => ({
-      ...prev,
-      items: filteredArr,
-      subtotal: prev?.subtotal ? prev!.subtotal - cost : null
-    }));
-  };
 
   const proceedToCheckout = () => {
     if (!hasAgreed) {
@@ -59,11 +48,7 @@ export const Cart = () => {
                 {name}
               </p>
               <p className="uppercase">{size}</p>
-              <p
-                className="mt-4 font-bold hover:cursor-pointer hover:text-gray-400"
-                onClick={() => removeItem(item)}>
-                Remove
-              </p>
+              <RemoveItem productOrder={item} />
             </div>
             <div className="w-1/2 md:w-1/4 lg:px-10 xl:px-14">
               <div className="flex justify-between">
@@ -83,12 +68,8 @@ export const Cart = () => {
           </div>
         );
       })}
-      <Modal id="terms-agreement" isOpen={showModal} setShowModal={setShowModal}>
-        <div className="text-center">
-          <p className="text-lg font-bold">Error Adding Items</p>
-          <p>You must agree to the terms and conditions.</p>
-        </div>
-      </Modal>
+
+      <TermsModal showModal={showModal} setShowModal={setShowModal} />
       <div className="mb-10 flex flex-col items-center space-y-6">
         <div className="text-center">
           {formattedSubtotal ? (

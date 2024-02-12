@@ -18,7 +18,7 @@ import { productLoader } from './DataLoaders/productLoader';
 import { AddToCart } from './Routes/Merchandise/Cart/AddToCart/AddToCart';
 import { tourLoader } from './DataLoaders/tourLoader';
 import { homepageLoader } from './DataLoaders/homepageLoaders';
-import { Cart } from './Routes/Merchandise/Cart/Cart';
+import { Cart } from './Routes/Merchandise/Cart/ViewCart/Cart';
 import { CheckoutDetails } from './Routes/Merchandise/Checkout/CheckoutDetails';
 import { Shipping } from './Routes/Merchandise/Checkout/Shipping/Shipping';
 import { Payment } from './Routes/Merchandise/Checkout/Payment/Payment';
