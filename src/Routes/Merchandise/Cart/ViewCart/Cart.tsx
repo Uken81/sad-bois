@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useOutletContext } from 'react-router';
-import { formatCurrency } from '../../../../Utils/currencyFormatter';
 import { useGetCart } from '../../../../Hooks/useGetCart';
 import { CartContextType } from '../../../RouteWrappers/rootWrapper';
 import { RemoveItem } from './RemoveItem';
 import { TermsModal } from './TermsModal';
+import { Subtotal } from './Subtotal';
+import { PriceDetails } from './PriceDetails';
 
 export const Cart = () => {
   const { cart, setCart } = useOutletContext() as CartContextType;
@@ -12,7 +13,6 @@ export const Cart = () => {
   const [hasAgreed, setHasAgreed] = useState(false);
   const navigate = useNavigate();
   const getCart = useGetCart();
-  const formattedSubtotal = formatCurrency(cart?.subtotal ?? null);
 
   useEffect(() => {
     if (!cart) {
@@ -34,8 +34,6 @@ export const Cart = () => {
     <div className="flex flex-col items-center">
       {cart?.items?.map((item) => {
         const { orderId, img, name, size, quantity, price, cost } = item;
-        const formattedPrice = formatCurrency(price);
-        const formattedCost = formatCurrency(cost);
 
         return (
           <div key={orderId} className="flex w-full flex-col items-center">
@@ -50,35 +48,18 @@ export const Cart = () => {
               <p className="uppercase">{size}</p>
               <RemoveItem productOrder={item} />
             </div>
-            <div className="w-1/2 md:w-1/4 lg:px-10 xl:px-14">
-              <div className="flex justify-between">
-                <span>Price</span>
-                <span>{formattedPrice}</span>
-              </div>
-              <div className="flex justify-between">
-                <span>Quantity</span>
-                <span>{quantity}</span>
-              </div>
-              <div className="flex justify-between">
-                <span>Cost</span>
-                <span>{formattedCost}</span>
-              </div>
-            </div>
+            <PriceDetails productOrder={item} />
             <div className="divider md:w-3/4 md:self-center lg:w-2/3 xl:w-1/3" />
           </div>
         );
       })}
+      <div className="text-center">
+        <Subtotal subtotal={cart?.subtotal} />
+        <p>Taxes and shipping calculated at checkout</p>
+      </div>
 
       <TermsModal showModal={showModal} setShowModal={setShowModal} />
       <div className="mb-10 flex flex-col items-center space-y-6">
-        <div className="text-center">
-          {formattedSubtotal ? (
-            <p className="text-lg font-bold">Subtotal {formattedSubtotal}</p>
-          ) : (
-            <p className="text-lg font-bold text-red-500">Error calculating subtotal</p>
-          )}
-          <p>Taxes and shipping calculated at checkout</p>
-        </div>
         <button className="btn" onClick={() => navigate('/store')}>
           CONTINUE SHOPPING
         </button>
