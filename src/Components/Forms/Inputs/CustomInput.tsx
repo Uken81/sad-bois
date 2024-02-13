@@ -30,9 +30,10 @@ export const CustomInput: React.FC<CustomInputProps & { error?: string | undefin
   children,
   ...props
 }) => {
-  //**Dont remove field from hook array as it needs to be in correct order!**
+  //**Dont remove field from hook array as it needs to be in correct order! Field?.name prevents ts no unused var error in build**
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [field, meta] = useField(props);
+  field?.name;
 
   const errorBorder = (meta.touched && meta.error) || error ? 'border-red-500' : null;
   return (

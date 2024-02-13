@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { HamburgerIcon } from './Links/HamburgerIcon';
 import { CartLink } from './Links/CartLink';
-import { CartType } from '../../Routes/RouteWrappers/RootWrapper';
+import { CartType } from '../../Routes/RouteWrappers/rootWrapper';
 import { HomeLink } from './Links/HomeLink';
 
 export const Menu: React.FC<{

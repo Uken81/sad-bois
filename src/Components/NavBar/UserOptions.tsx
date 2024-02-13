@@ -1,7 +1,7 @@
 import { CgProfile } from 'react-icons/cg';
 import { Link } from 'react-router-dom';
 import { Logout } from './Links/Logout';
-import { UserContextType } from '../../Routes/RouteWrappers/RootWrapper';
+import { UserContextType } from '../../Routes/RouteWrappers/rootWrapper';
 import { Dispatch, SetStateAction } from 'react';
 
 export const UserOptions: React.FC<{

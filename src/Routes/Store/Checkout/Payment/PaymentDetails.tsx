@@ -8,8 +8,8 @@ import { useNavigate, useOutletContext } from 'react-router';
 import {
   CustomerContextType,
   SelectedShippingContextType
-} from '../../../RouteWrappers/CheckoutWrapper';
-import { CartContextType } from '../../../RouteWrappers/RootWrapper';
+} from '../../../RouteWrappers/checkoutWrapper';
+import { CartContextType } from '../../../RouteWrappers/rootWrapper';
 
 export interface CardDetailsFormType {
   cardNumber: string;
