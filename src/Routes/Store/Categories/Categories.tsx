@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from 'react';
-import { ProductCategories } from '../../RouteWrappers/StoreWrapper';
+import { ProductCategories } from '../../RouteWrappers/storeWrapper';
 import { useNavigate } from 'react-router';
 
 export const Categories: React.FC<{

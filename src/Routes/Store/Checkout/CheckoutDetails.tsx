@@ -4,7 +4,7 @@ import { SubmitButton } from '../../../Components/Forms/SubmitButton';
 import { useNavigate, useOutletContext } from 'react-router';
 import { useEffect } from 'react';
 import { saveOrUpdateSessionStorage } from '../../../Utils/saveOrUpdateSessionStorage';
-import { CustomerContextType } from '../../RouteWrappers/CheckoutWrapper';
+import { CustomerContextType } from '../../RouteWrappers/checkoutWrapper';
 import { useGetCustomer } from '../../../Hooks/useGetCustomer';
 import * as Yup from 'yup';
 

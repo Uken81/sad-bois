@@ -1,5 +1,5 @@
 import { useOutletContext } from 'react-router';
-import { SelectedShippingContextType } from '../../../RouteWrappers/CheckoutWrapper';
+import { SelectedShippingContextType } from '../../../RouteWrappers/checkoutWrapper';
 import { capitaliseWords } from '../../../../Utils/capitaliseWords';
 import { formatCurrency } from '../../../../Utils/currencyFormatter';
 

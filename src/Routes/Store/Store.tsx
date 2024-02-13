@@ -3,7 +3,7 @@ import { MerchandiseType } from '../../DataLoaders/productsLoader';
 import { FeaturedCarousel } from './Featured/FeaturedCarousel';
 import { Products } from './Products';
 import { NoData } from '../../Components/NoData';
-import { StoreCategoryContextType } from '../RouteWrappers/StoreWrapper';
+import { StoreCategoryContextType } from '../RouteWrappers/storeWrapper';
 
 export const Store: React.FC = () => {
   const loaderData = useLoaderData() as MerchandiseType;

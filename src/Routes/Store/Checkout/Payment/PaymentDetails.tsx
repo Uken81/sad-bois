@@ -8,7 +8,7 @@ import { useNavigate, useOutletContext } from 'react-router';
 import {
   CustomerContextType,
   SelectedShippingContextType
-} from '../../../RouteWrappers/CheckoutWrapper';
+} from '../../../RouteWrappers/checkoutWrapper';
 import { CartContextType } from '../../../RouteWrappers/rootWrapper';
 
 export interface CardDetailsFormType {

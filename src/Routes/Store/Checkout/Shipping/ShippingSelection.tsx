@@ -1,7 +1,7 @@
 import { useOutletContext } from 'react-router';
 import { formatCurrency } from '../../../../Utils/currencyFormatter';
 import { shippingOptions } from './shippingOptions';
-import { SelectedShippingContextType } from '../../../RouteWrappers/CheckoutWrapper';
+import { SelectedShippingContextType } from '../../../RouteWrappers/checkoutWrapper';
 import { capitaliseWords } from '../../../../Utils/capitaliseWords';
 
 export const ShippingSelection: React.FC = () => {

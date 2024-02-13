@@ -22,13 +22,13 @@ import { CheckoutDetails } from './Routes/Store/Checkout/CheckoutDetails';
 import { Shipping } from './Routes/Store/Checkout/Shipping/Shipping';
 import { Payment } from './Routes/Store/Checkout/Payment/Payment';
 import { RootWrapper } from './Routes/RouteWrappers/rootWrapper';
-import { CheckoutWrapper } from './Routes/RouteWrappers/CheckoutWrapper';
+import { CheckoutWrapper } from './Routes/RouteWrappers/checkoutWrapper';
 import { OrderConfirmation } from './Routes/Store/Checkout/OrderConfirmation/OrderConfirmation';
 import { ordersLoader } from './DataLoaders/ordersLoader';
 import { Tour } from './Routes/Tour/Tour';
 import { LoginPage } from './Routes/LoginPage/LoginPage';
 import { Store } from './Routes/Store/Store';
-import { StoreWrapper } from './Routes/RouteWrappers/StoreWrapper';
+import { StoreWrapper } from './Routes/RouteWrappers/storeWrapper';
 import { PrivateRoute } from './Routes/RouteWrappers/PrivateRoute';
 
 function App() {
