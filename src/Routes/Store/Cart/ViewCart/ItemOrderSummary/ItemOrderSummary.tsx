@@ -1,4 +1,4 @@
-import { CartType } from '../../../../RouteWrappers/RootWrapper';
+import { CartType } from '../../../../RouteWrappers/rootWrapper';
 import { PriceDetails } from './PriceDetails';
 import { RemoveItem } from './RemoveItem';
 

@@ -1,4 +1,4 @@
-import { CartType, UserContextType } from '../../Routes/RouteWrappers/RootWrapper';
+import { CartType, UserContextType } from '../../Routes/RouteWrappers/rootWrapper';
 import { ReactNode, useState } from 'react';
 import { MenuItems } from './MenuItems';
 import { SideDrawer } from './SideDrawer';

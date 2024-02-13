@@ -1,6 +1,6 @@
 import { PiShoppingCartBold } from 'react-icons/pi';
 import { useNavigate } from 'react-router';
-import { CartType } from '../../../Routes/RouteWrappers/RootWrapper';
+import { CartType } from '../../../Routes/RouteWrappers/rootWrapper';
 
 export const CartLink: React.FC<{ cart: CartType | null }> = ({ cart }) => {
   const numberOfItems = cart?.items.length.toString();

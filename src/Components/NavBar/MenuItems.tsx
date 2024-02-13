@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { UserContextType } from '../../Routes/RouteWrappers/RootWrapper';
+import { UserContextType } from '../../Routes/RouteWrappers/rootWrapper';
 import { Logout } from './Links/Logout';
 import { Dispatch, ReactNode, SetStateAction } from 'react';
 import { TiNews } from 'react-icons/ti';

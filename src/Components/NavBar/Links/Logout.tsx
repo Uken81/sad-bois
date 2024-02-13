@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from 'react';
 import { useNavigate } from 'react-router';
-import { UserType } from '../../../Routes/RouteWrappers/RootWrapper';
+import { UserType } from '../../../Routes/RouteWrappers/rootWrapper';
 import { RiLogoutCircleFill } from 'react-icons/ri';
 
 export const Logout: React.FC<{
