@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction, useState } from 'react';
 import { Categories } from '../Store/Categories/Categories';
 import { Outlet, useOutletContext } from 'react-router';
-import { CartContextType } from './rootWrapper';
+import { CartContextType } from './RootWrapper';
 import { CategoriesCollapse } from '../Store/Categories/CategoriesCollapse';
 
 export type ProductCategories = 'all' | 'clothing' | 'coffee-mug' | 'sticker' | 'misc';

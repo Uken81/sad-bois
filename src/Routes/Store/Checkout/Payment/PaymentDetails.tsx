@@ -9,7 +9,7 @@ import {
   CustomerContextType,
   SelectedShippingContextType
 } from '../../../RouteWrappers/CheckoutWrapper';
-import { CartContextType } from '../../../RouteWrappers/rootWrapper';
+import { CartContextType } from '../../../RouteWrappers/RootWrapper';
 
 export interface CardDetailsFormType {
   cardNumber: string;

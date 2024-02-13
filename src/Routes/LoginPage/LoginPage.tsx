@@ -3,7 +3,7 @@ import * as Yup from 'yup';
 import { Formik } from 'formik';
 import { CustomInput } from '../../Components/Forms/Inputs/CustomInput';
 import { useState } from 'react';
-import { UserContextType, UserType } from '../RouteWrappers/rootWrapper';
+import { UserContextType, UserType } from '../RouteWrappers/RootWrapper';
 import { ErrorMessage, FormErrorType } from '../../Components/ErrorMessage';
 import { UserForm } from './UserForm';
 

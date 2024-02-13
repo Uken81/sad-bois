@@ -21,7 +21,7 @@ import { Cart } from './Routes/Store/Cart/ViewCart/Cart';
 import { CheckoutDetails } from './Routes/Store/Checkout/CheckoutDetails';
 import { Shipping } from './Routes/Store/Checkout/Shipping/Shipping';
 import { Payment } from './Routes/Store/Checkout/Payment/Payment';
-import { RootWrapper } from './Routes/RouteWrappers/rootWrapper';
+import { RootWrapper } from './Routes/RouteWrappers/RootWrapper';
 import { CheckoutWrapper } from './Routes/RouteWrappers/CheckoutWrapper';
 import { OrderConfirmation } from './Routes/Store/Checkout/OrderConfirmation/OrderConfirmation';
 import { ordersLoader } from './DataLoaders/ordersLoader';
