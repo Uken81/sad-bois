@@ -29,7 +29,7 @@ import { Tour } from './Routes/Tour/Tour';
 import { LoginPage } from './Routes/LoginPage/LoginPage';
 import { Store } from './Routes/Store/Store';
 import { StoreWrapper } from './Routes/RouteWrappers/storeWrapper';
-import { PrivateRoute } from './Routes/RouteWrappers/PrivateRoute';
+import { PrivateRoute } from './Routes/RouteWrappers/privateRoute';
 
 function App() {
   const router = createBrowserRouter(
