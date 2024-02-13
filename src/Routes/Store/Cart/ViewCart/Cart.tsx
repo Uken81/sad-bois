@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useNavigate, useOutletContext } from 'react-router';
 import { useGetCart } from '../../../../Hooks/useGetCart';
-import { CartContextType } from '../../../RouteWrappers/RootWrapper';
+import { CartContextType } from '../../../RouteWrappers/rootWrapper';
 import { Subtotal } from './Subtotal';
 import { ItemOrderSummary } from './ItemOrderSummary/ItemOrderSummary';
 import { ProceedToCheckout } from './ProceedToCheckout/ProceedToCheckout';
