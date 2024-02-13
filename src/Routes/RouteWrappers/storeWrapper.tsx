@@ -1,8 +1,8 @@
 import { Dispatch, SetStateAction, useState } from 'react';
-import { Categories } from '../Merchandise/Categories/Categories';
+import { Categories } from '../Store/Categories/Categories';
 import { Outlet, useOutletContext } from 'react-router';
 import { CartContextType } from './rootWrapper';
-import { CategoriesCollapse } from '../Merchandise/Categories/CategoriesCollapse';
+import { CategoriesCollapse } from '../Store/Categories/CategoriesCollapse';
 
 export type ProductCategories = 'all' | 'clothing' | 'coffee-mug' | 'sticker' | 'misc';
 
@@ -11,7 +11,7 @@ export interface StoreCategoryContextType {
   setSelectedCategories: Dispatch<SetStateAction<ProductCategories | null>>;
 }
 
-export const Store: React.FC = () => {
+export const StoreWrapper: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<ProductCategories>('all');
   const { cart, setCart } = useOutletContext() as CartContextType;
 

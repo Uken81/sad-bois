@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router';
 import { Navbar } from '../../Components/NavBar/Navbar';
 import { Dispatch, SetStateAction, useState } from 'react';
-import { ProductOrder } from '../Merchandise/Cart/AddToCart/AddToCart';
+import { ProductOrder } from '../Store/Cart/AddToCart/AddToCart';
 
 export interface UserType {
   email: string;
@@ -23,7 +23,7 @@ export interface CartContextType {
   setCart: Dispatch<SetStateAction<CartType | null>>;
 }
 
-export const Root: React.FC = () => {
+export const RootWrapper: React.FC = () => {
   const [userDetails, setUserDetails] = useState<UserType | null>(null);
   const [cart, setCart] = useState<CartType | null>(null);
 

@@ -1,12 +1,9 @@
 import { Dispatch, SetStateAction, useState } from 'react';
-import {
-  ShippingOptionsType,
-  shippingOptions
-} from '../Merchandise/Checkout/Shipping/shippingOptions';
+import { ShippingOptionsType, shippingOptions } from '../Store/Checkout/Shipping/shippingOptions';
 import { Outlet, useOutletContext } from 'react-router';
-import { OrderSummary } from '../Merchandise/Checkout/OrderSummary/OrderSummary';
+import { OrderSummary } from '../Store/Checkout/OrderSummary/OrderSummary';
 import { CartContextType } from './rootWrapper';
-import { OrderSummaryCollapse } from '../Merchandise/Checkout/OrderSummary/OrderSummaryCollapse';
+import { OrderSummaryCollapse } from '../Store/Checkout/OrderSummary/OrderSummaryCollapse';
 
 export interface CustomerType {
   email: string;
@@ -31,7 +28,7 @@ export interface SelectedShippingContextType {
   setSelectedShipping: Dispatch<SetStateAction<ShippingOptionsType | null>>;
 }
 
-export const Checkout = () => {
+export const CheckoutWrapper = () => {
   const { cart, setCart } = useOutletContext() as CartContextType;
   const [customer, setCustomer] = useState<CustomerType | null>(null);
   const [selectedShipping, setSelectedShipping] = useState<ShippingOptionsType>(shippingOptions[0]);

@@ -1,5 +1,4 @@
 import { HomePage } from './Routes/HomePage/HomePage';
-import { Merchandise } from './Routes/Merchandise/Merchandise';
 import ErrorPage from './Routes/ErrorPage/ErrorPage';
 import {
   Route,
@@ -15,37 +14,38 @@ import { newsLoader } from './DataLoaders/newsLoader';
 import { NewsArticle } from './Routes/News/NewsArticle';
 import { articleLoader } from './DataLoaders/articleLoader';
 import { productLoader } from './DataLoaders/productLoader';
-import { AddToCart } from './Routes/Merchandise/Cart/AddToCart/AddToCart';
+import { AddToCart } from './Routes/Store/Cart/AddToCart/AddToCart';
 import { tourLoader } from './DataLoaders/tourLoader';
 import { homepageLoader } from './DataLoaders/homepageLoaders';
-import { Cart } from './Routes/Merchandise/Cart/ViewCart/Cart';
-import { CheckoutDetails } from './Routes/Merchandise/Checkout/CheckoutDetails';
-import { Shipping } from './Routes/Merchandise/Checkout/Shipping/Shipping';
-import { Payment } from './Routes/Merchandise/Checkout/Payment/Payment';
-import { Root } from './Routes/RouteWrappers/rootWrapper';
-import { Store } from './Routes/RouteWrappers/storeWrapper';
-import { Checkout } from './Routes/RouteWrappers/checkoutWrapper';
+import { Cart } from './Routes/Store/Cart/ViewCart/Cart';
+import { CheckoutDetails } from './Routes/Store/Checkout/CheckoutDetails';
+import { Shipping } from './Routes/Store/Checkout/Shipping/Shipping';
+import { Payment } from './Routes/Store/Checkout/Payment/Payment';
+import { RootWrapper } from './Routes/RouteWrappers/rootWrapper';
+import { CheckoutWrapper } from './Routes/RouteWrappers/checkoutWrapper';
 import { PrivateRoute } from './Routes/RouteWrappers/privateRoute';
-import { OrderConfirmation } from './Routes/Merchandise/Checkout/OrderConfirmation/OrderConfirmation';
+import { OrderConfirmation } from './Routes/Store/Checkout/OrderConfirmation/OrderConfirmation';
 import { ordersLoader } from './DataLoaders/ordersLoader';
 import { Tour } from './Routes/Tour/Tour';
 import { LoginPage } from './Routes/LoginPage/LoginPage';
+import { StoreWrapper } from './Routes/RouteWrappers/storeWrapper';
+import { Store } from './Routes/Store/Store';
 
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route path="/" element={<Root />} errorElement={<ErrorPage />}>
+      <Route path="/" element={<RootWrapper />} errorElement={<ErrorPage />}>
         <Route index element={<HomePage />} loader={homepageLoader} />
         <Route path="news">
           <Route index element={<NewsPage />} loader={newsLoader} />
           <Route path="article/:id" element={<NewsArticle />} loader={articleLoader} />
         </Route>
         <Route path="tour" element={<Tour />} loader={tourLoader} />
-        <Route path="store/:category?" element={<Store />}>
-          <Route index element={<Merchandise />} loader={productsLoader} />
+        <Route path="store/:category?" element={<StoreWrapper />}>
+          <Route index element={<Store />} loader={productsLoader} />
           <Route path="add-to-cart/:id" element={<AddToCart />} loader={productLoader} />
           <Route path="view-cart" element={<Cart />} />
-          <Route path="checkout" element={<Checkout />}>
+          <Route path="checkout" element={<CheckoutWrapper />}>
             <Route path="details" element={<CheckoutDetails />} />
             <Route path="shipping" element={<Shipping />} />
             <Route path="payment" element={<Payment />} />

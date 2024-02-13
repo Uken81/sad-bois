@@ -5,7 +5,7 @@ import { Products } from './Products';
 import { NoData } from '../../Components/NoData';
 import { StoreCategoryContextType } from '../RouteWrappers/storeWrapper';
 
-export const Merchandise: React.FC = () => {
+export const Store: React.FC = () => {
   const loaderData = useLoaderData() as MerchandiseType;
   const { selectedCategory } = useOutletContext() as StoreCategoryContextType;
   const featuredProducts = loaderData.camelisedFeaturedProducts?.length
