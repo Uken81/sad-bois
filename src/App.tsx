@@ -21,15 +21,15 @@ import { Cart } from './Routes/Store/Cart/ViewCart/Cart';
 import { CheckoutDetails } from './Routes/Store/Checkout/CheckoutDetails';
 import { Shipping } from './Routes/Store/Checkout/Shipping/Shipping';
 import { Payment } from './Routes/Store/Checkout/Payment/Payment';
-import { RootWrapper } from './Routes/RouteWrappers/rootWrapper';
-import { CheckoutWrapper } from './Routes/RouteWrappers/checkoutWrapper';
-import { PrivateRoute } from './Routes/RouteWrappers/privateRoute';
+import { RootWrapper } from './Routes/RouteWrappers/RootWrapper';
+import { CheckoutWrapper } from './Routes/RouteWrappers/CheckoutWrapper';
 import { OrderConfirmation } from './Routes/Store/Checkout/OrderConfirmation/OrderConfirmation';
 import { ordersLoader } from './DataLoaders/ordersLoader';
 import { Tour } from './Routes/Tour/Tour';
 import { LoginPage } from './Routes/LoginPage/LoginPage';
-import { StoreWrapper } from './Routes/RouteWrappers/storeWrapper';
 import { Store } from './Routes/Store/Store';
+import { StoreWrapper } from './Routes/RouteWrappers/StoreWrapper';
+import { PrivateRoute } from './Routes/RouteWrappers/PrivateRoute';
 
 function App() {
   const router = createBrowserRouter(

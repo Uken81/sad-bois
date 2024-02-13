@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { ShippingOptionsType } from '../Shipping/shippingOptions';
 import { useOutletContext } from 'react-router';
 import { useGetCart } from '../../../../Hooks/useGetCart';
-import { CartContextType } from '../../../RouteWrappers/rootWrapper';
+import { CartContextType } from '../../../RouteWrappers/RootWrapper';
 import { ProductImage } from './ProductImage';
 import { ProductInfo } from './ProductInfo';
 import { PurchaseInfo } from './PurchaseInfo';

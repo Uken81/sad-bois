@@ -22,7 +22,7 @@ const ErrorText: React.FC<{ error: string | undefined; touched: boolean }> = ({
     return null;
   }
 
-  return <div className="text-lg text-red-500 mt-2">{error}</div>;
+  return <div className="mt-2 text-lg text-red-500">{error}</div>;
 };
 
 export const CustomInput: React.FC<CustomInputProps & { error?: string | undefined }> = ({
@@ -38,7 +38,7 @@ export const CustomInput: React.FC<CustomInputProps & { error?: string | undefin
   return (
     <>
       <Field
-        className={`input input-bordered w-full max-w-xs text-lg bg-black text-white ${errorBorder} border-4 mt-4`}
+        className={`input input-bordered w-full max-w-xs bg-black text-lg text-white ${errorBorder} mt-4 border-4`}
         name={props.name}
         type={props.type}
         placeholder={props.placeholder}

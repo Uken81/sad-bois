@@ -7,7 +7,7 @@ import { saveOrUpdateSessionStorage } from '../../../../Utils/saveOrUpdateSessio
 import { ProductType } from '../../../../DataLoaders/productsLoader';
 import shortid from 'shortid';
 import { ShareButton } from '../../../../Components/Share/ShareButton';
-import { CartContextType } from '../../../RouteWrappers/rootWrapper';
+import { CartContextType } from '../../../RouteWrappers/RootWrapper';
 import { ShareOptions } from '../../../../Components/Share/ShareOptions';
 import { AddButton } from './AddButton';
 

@@ -1,4 +1,4 @@
-import { CartType } from '../../../RouteWrappers/rootWrapper';
+import { CartType } from '../../../RouteWrappers/RootWrapper';
 import { ShippingOptionsType } from '../Shipping/shippingOptions';
 
 export interface OrderDetailsType {
@@ -11,7 +11,6 @@ export const calculateOrderTotal = (orderDetails: OrderDetailsType) => {
   const subtotal = orderDetails.cart?.subtotal;
   const shippingPrice = orderDetails.selectedShipping?.shippingPrice;
   const tax = orderDetails.tax;
-  console.log('orderdeets', subtotal, shippingPrice, tax);
 
   if (!subtotal) {
     console.log('Subtotal is null or undefined');
