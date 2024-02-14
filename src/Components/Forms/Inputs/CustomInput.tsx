@@ -47,7 +47,9 @@ export const CustomInput: React.FC<CustomInputProps & { error?: string | undefin
         as={props.as}>
         {children}
       </Field>
-      <ErrorText error={meta.error || error} touched={meta.touched} />
+      <div className="w-full text-left">
+        <ErrorText error={meta.error || error} touched={meta.touched} />
+      </div>
     </>
   );
 };
