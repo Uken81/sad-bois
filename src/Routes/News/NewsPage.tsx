@@ -25,7 +25,7 @@ export const NewsPage: React.FC<{ latest?: Article[] }> = ({ latest }) => {
                 className="card w-72 bg-base-300 shadow-sm shadow-neutral-500 lg:w-80 xl:w-96"
                 onClick={() => navigate(`/news/article/${id}`)}>
                 <figure>
-                  <img src={`../../../public/Assets/News/${img}.png`} alt={title} />
+                  <img src={`/Assets/News/${img}.png`} alt={title} />
                 </figure>
                 <div className="card-body">
                   <div className="flex items-center">

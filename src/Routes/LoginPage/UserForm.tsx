@@ -20,7 +20,7 @@ export const UserForm = <T,>({
   return (
     <div className={`flex flex-col ${backgroundGradient} h-screen items-center`}>
       <div>
-        <img src="../public/Assets/logo1.png" className="mx-auto my-5"></img>
+        <img src="/Assets/logo1.png" className="mx-auto my-5"></img>
       </div>
       <Form className="card my-5 bg-neutral shadow-sm shadow-slate-200 md:w-96">
         <div className="card card-body items-center">

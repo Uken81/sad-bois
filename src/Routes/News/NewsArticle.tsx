@@ -29,7 +29,7 @@ export const NewsArticle = () => {
         </div>
       </div>
       <figure className="flex justify-center">
-        <img className="my-4 h-96" src={`../../../public/Assets/News/${img}.png`} alt={title} />
+        <img className="my-4 h-96" src={`/Assets/News/${img}.png`} alt={title} />
       </figure>
       <div className="divider" />
       <div className="my-4 px-8 font-mono text-lg leading-relaxed lg:text-2xl">{text}</div>
