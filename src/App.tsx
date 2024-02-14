@@ -11,7 +11,7 @@ import { productsLoader } from './DataLoaders/productsLoader';
 import { ProfilePage } from './Routes/ProfilePage/ProfilePage';
 import { NewsPage } from './Routes/News/NewsPage';
 import { newsLoader } from './DataLoaders/newsLoader';
-import { NewsArticle } from './Routes/News/NewsArticle';
+import { NewsArticle } from './Routes/News/NewsArticle/NewsArticle';
 import { articleLoader } from './DataLoaders/articleLoader';
 import { productLoader } from './DataLoaders/productLoader';
 import { AddToCart } from './Routes/Store/Cart/AddToCart/AddToCart';
