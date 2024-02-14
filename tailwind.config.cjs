@@ -25,6 +25,7 @@ module.exports = {
     themes: [
       {
         cupcake: {
+          // eslint-disable-next-line @typescript-eslint/no-var-requires
           ...require('daisyui/src/theming/themes')['business']
         }
       }
