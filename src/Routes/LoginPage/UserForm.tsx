@@ -1,8 +1,9 @@
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { SubmitButton } from '../../Components/Forms/SubmitButton';
 import { Form, FormikProps } from 'formik';
 import { ReactNode } from 'react';
 import { capitaliseWords } from '../../Utils/capitaliseWords';
+import { SignupLink } from './SignupLink';
 
 export const UserForm = <T,>({
   children,
@@ -20,20 +21,13 @@ export const UserForm = <T,>({
   return (
     <div className={`flex flex-col ${backgroundGradient} h-screen items-center`}>
       <div>
-        <img src="/Assets/logo1.png" className="mx-auto my-5"></img>
+        <img src="/Assets/logo1.png" className="mx-auto my-5 max-h-40"></img>
       </div>
       <Form className="card my-5 bg-neutral shadow-sm shadow-slate-200 md:w-96">
         <div className="card card-body items-center">
           <h1 className="text-center text-h1 font-h1">{capitaliseWords(title)}</h1>
           {children}
-          {isLoginPage ? (
-            <div className="text-center">
-              <span className="text-sm">Dont have an account? </span>
-              <Link className="link-hover text-sm text-blue-600" to="/register">
-                Sign up
-              </Link>
-            </div>
-          ) : null}
+          {isLoginPage ? <SignupLink /> : null}
           <div className="my-2">
             <SubmitButton isSubmitting={formik.isSubmitting} />
           </div>
