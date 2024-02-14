@@ -19,7 +19,7 @@ export const Store: React.FC = () => {
 
   return (
     <main>
-      <h1 className="text-center text-h1 font-h1">Sad Boi Swag</h1>
+      <h1 className="text-center text-h1 font-h1 md:text-6xl">Sad Boi Swag</h1>
       {displayFeatured ? <FeaturedCarousel featuredProducts={featuredProducts} /> : null}
       {regularProducts ? (
         <Products regularProducts={regularProducts} />

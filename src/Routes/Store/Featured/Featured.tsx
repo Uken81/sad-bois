@@ -1,5 +1,5 @@
 import { ProductType } from '../../../DataLoaders/productsLoader';
-import { ProductCard } from '../ProductCard/ProductCard';
+import { FeaturedProductCard } from './FeaturedProductCard/FeaturedProductCard';
 
 export const Featured: React.FC<{
   featuredProducts: ProductType[] | null;
@@ -15,7 +15,7 @@ export const Featured: React.FC<{
               ? 'pointer-events-auto opacity-100'
               : 'pointer-events-none opacity-0'
           } absolute inset-0 w-full`}>
-          <ProductCard product={item} />
+          <FeaturedProductCard product={item} />
         </div>
       ))}
     </div>

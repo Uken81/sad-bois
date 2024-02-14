@@ -10,7 +10,7 @@ export const FeaturedCarousel: React.FC<{ featuredProducts: ProductType[] }> = (
 
   return (
     <>
-      <div className="relative mb-5 mt-10 h-96">
+      <div className="relative mb-5 h-72 md:mx-52 md:mt-20 lg:mx-72 xl:mx-96">
         <Featured featuredProducts={featuredProducts} activeIndex={activeIndex} />
       </div>
       <TransitionButtons
