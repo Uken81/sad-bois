@@ -3230,10 +3230,6 @@ details.collapse summary::-webkit-details-marker {
   margin-top: 2rem;
 }
 
-.mb-40 {
-  margin-bottom: 10rem;
-}
-
 .inline-block {
   display: inline-block;
 }
@@ -3302,12 +3298,12 @@ details.collapse summary::-webkit-details-marker {
   height: 100vh;
 }
 
-.max-h-96 {
-  max-height: 24rem;
-}
-
 .max-h-40 {
   max-height: 10rem;
+}
+
+.max-h-96 {
+  max-height: 24rem;
 }
 
 .min-h-full {
