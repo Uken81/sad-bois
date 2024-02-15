@@ -4,7 +4,7 @@ export const ChangeDetails: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <p className="change-details" onClick={() => navigate('/store/checkout/details')}>
+    <p className="hover:cursor-pointer" onClick={() => navigate('/store/checkout/details')}>
       Change
     </p>
   );

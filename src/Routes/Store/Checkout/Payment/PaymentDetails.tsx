@@ -28,7 +28,6 @@ export const PaymentDetails = () => {
 
   const validationSchema = Yup.object().shape({
     cardNumber: Yup.string()
-      //TODO: Investigate using regex for more detailed validaion.
       .length(16, 'Card number must be 16 digits')
       .required('Card number is required'),
     nameOnCard: Yup.string().required('Name on card is required'),
@@ -44,7 +43,6 @@ export const PaymentDetails = () => {
     values: CardDetailsFormType,
     setSubmitting: (isSubmitting: boolean) => void
   ) => {
-    console.log('CardValues', values);
     const requestOptions: RequestInit = {
       method: 'POST',
       body: JSON.stringify({ formValues: values, customer, cart, selectedShipping }),
@@ -65,7 +63,6 @@ export const PaymentDetails = () => {
         throw new Error(`Network response was not ok: ${data.message}`);
       }
       const data = await response.json();
-      console.log('OS', data.orderSummary);
       const { customerEmail, orderId } = data.orderSummary;
       setCustomer(null);
       setCart(null);
@@ -76,11 +73,13 @@ export const PaymentDetails = () => {
       if (error instanceof Error) {
         console.error(error);
         setSubmitting(false);
+        setError({ type: 'server', message: 'Error connecting to server' });
         return;
       }
 
       console.error('An unexpected error occurred:', error);
       setSubmitting(false);
+      setError({ type: 'server', message: 'Error connecting to server' });
     }
   };
 
@@ -89,6 +88,7 @@ export const PaymentDetails = () => {
   const isEpirationDateError = error?.type === 'cardExpiration';
   const isSecurityCodeError = error?.type === 'cardSecurityCode';
   const isNetworkError = error?.type === 'network' || false;
+  const isServerError = error?.type === 'server' || false;
 
   return (
     <Formik
@@ -97,21 +97,15 @@ export const PaymentDetails = () => {
         cardNumber: '5688276923105021',
         nameOnCard: 'Mr Test',
         expirationDate: '11/24',
-        securityCode: '666'
+        securityCode: '111'
       }}
-      // initialValues={{
-      //   cardNumber: '',
-      //   nameOnCard: '',
-      //   expirationDate: '',
-      //   securityCode: ''
-      // }}
       onSubmit={(values, { setSubmitting }) => {
         handleSubmit(values, setSubmitting);
       }}>
       {(formik) => (
         <Form className="px-4">
           <ErrorMessage
-            display={isNetworkError}
+            display={isNetworkError || isServerError}
             variant="error"
             message={error?.message ?? null}
             setError={setError}

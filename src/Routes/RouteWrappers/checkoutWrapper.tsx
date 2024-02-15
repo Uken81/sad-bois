@@ -33,7 +33,6 @@ export const CheckoutWrapper = () => {
   const [customer, setCustomer] = useState<CustomerType | null>(null);
   const [selectedShipping, setSelectedShipping] = useState<ShippingOptionsType>(shippingOptions[0]);
 
-  console.log('selectedShipping', selectedShipping);
   return (
     <div className="flex w-screen flex-col md:flex-row">
       <div className="mx-4 md:hidden md:w-1/2">

@@ -40,7 +40,6 @@ export const CheckoutDetails = () => {
     values: DetailsFormType,
     setSubmitting: (isSubmitting: boolean) => void
   ) => {
-    console.log('test');
     setCustomer(values);
     saveOrUpdateSessionStorage('customer', values);
     setSubmitting(false);
@@ -86,12 +85,6 @@ export const CheckoutDetails = () => {
           <Form className="flex w-full flex-col items-center justify-center text-center">
             <h2 className="text-h2 font-h2">Contact</h2>
             <CustomInput name="email" type="email" placeholder="Email" />
-            {/* <CustomInput
-              name="emailoffers"
-              type="checkbox"
-              placeholder="Email me with news and offers"
-            /> */}
-
             <h2 className="my-2 text-h2 font-h2">Shipping address</h2>
             <CustomInput name="country" as="select" placeholder="Country">
               {countries.map((name) => (
@@ -100,7 +93,6 @@ export const CheckoutDetails = () => {
                 </option>
               ))}
             </CustomInput>
-
             <CustomInput name="firstName" placeholder="First Name" />
             <CustomInput name="lastName" placeholder="Last Name" />
             <CustomInput name="address" type="address" placeholder="Shipping Adress" />

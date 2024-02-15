@@ -11,6 +11,7 @@ export interface FormErrorType extends GeneralErrorType {
     | 'duplicateEmail'
     | 'password'
     | 'network'
+    | 'server'
     | 'cardNumber'
     | 'nameOnCard'
     | 'cardExpiration'
@@ -35,7 +36,7 @@ export const ErrorMessage: React.FC<{
     <div role="alert" className={`alert alert-${variant} max-w-lg`} onClick={() => setError(null)}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        className="ml-auto h-6 w-6 shrink-0 stroke-current"
+        className="ml-auto h-6 w-6 shrink-0 stroke-current  hover:cursor-pointer"
         fill="none"
         viewBox="0 0 24 24">
         <path
@@ -46,7 +47,7 @@ export const ErrorMessage: React.FC<{
         />
       </svg>
       <div>
-        <h3 className="font-bold">Please refresh page or try again later</h3>
+        <h3 className="font-bold text-red-500">Please refresh page or try again later</h3>
         <div className="text-xs">{capitalisedMessage}</div>
       </div>
     </div>
