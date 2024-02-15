@@ -8,8 +8,8 @@ export const Products: React.FC<{ regularProducts: ProductType[]; loadingCategor
   return (
     <>
       {loadingCategory ? (
-        <div className="my-10 text-center text-4xl">
-          <p>Loading.....</p>
+        <div className="mt-10 flex h-24 justify-center">
+          <span className="loading loading-dots loading-lg"></span>
         </div>
       ) : (
         <div className="my-14 grid grid-cols-1 justify-items-center gap-6 md:mx-16 md:grid-cols-2 md:gap-6 lg:grid-cols-3 lg:gap-10 xl:mx-40 xl:gap-12">
