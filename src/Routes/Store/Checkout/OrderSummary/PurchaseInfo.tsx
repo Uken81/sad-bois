@@ -12,7 +12,7 @@ export const PurchaseInfo: React.FC<{
   const [orderTotal, setOrderTotal] = useState<string | null>(null);
   const [tax, setTax] = useState<number | null>(null);
 
-  const formattedTax = formatCurrency(tax);
+  const formattedTax = tax ? formatCurrency(tax) : null;
   const formattedSubtotal = formatCurrency(cart?.subtotal ?? null);
   const formattedShippingCost = formatCurrency(selectedShipping.shippingPrice);
 
