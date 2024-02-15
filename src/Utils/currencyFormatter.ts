@@ -13,7 +13,6 @@ const currencyFormatter = new Intl.NumberFormat('en-US', {
 
 export const formatCurrency = (value: number | null) => {
   if (!value) {
-    console.log('errorVal', value);
     console.error('invalid value');
     return;
   }
