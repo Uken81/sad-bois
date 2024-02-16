@@ -2,6 +2,7 @@ import { Outlet } from 'react-router';
 import { Navbar } from '../../Components/NavBar/Navbar';
 import { Dispatch, SetStateAction, useState } from 'react';
 import { ProductOrder } from '../Store/Cart/AddToCart/AddToCart';
+import { ScrollRestoration } from 'react-router-dom';
 
 export interface UserType {
   email: string;
@@ -31,6 +32,7 @@ export const RootWrapper: React.FC = () => {
     <>
       <Navbar userDetailsContext={{ userDetails, setUserDetails }} cart={cart}>
         <Outlet context={{ userDetails, setUserDetails, cart, setCart }} />
+        <ScrollRestoration />
       </Navbar>
     </>
   );
