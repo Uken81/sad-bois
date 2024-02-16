@@ -64,7 +64,7 @@ export const CheckoutDetails = () => {
       <Formik
         validationSchema={detailsFormSchema}
         initialValues={{
-          email: customer?.email ?? 'test@testmail,com',
+          email: customer?.email ?? 'test@testmail.com',
           country: customer?.country ?? 'Australia',
           firstName: customer?.firstName ?? 'Test',
           lastName: customer?.lastName ?? 'User',
