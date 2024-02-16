@@ -28,5 +28,4 @@ If you are developing a production application, we recommend updating the config
 
 # sad-bois
 
-Click here to view backend Repo
-[Related Project](https://github.com/Uken81/sad-bois-backend)
+Click here to view [sad-bois-server](https://github.com/Uken81/sad-bois-backend)
