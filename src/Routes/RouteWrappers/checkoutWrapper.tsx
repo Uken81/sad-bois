@@ -7,7 +7,6 @@ import { OrderSummaryCollapse } from '../Store/Checkout/OrderSummary/OrderSummar
 
 export interface CustomerType {
   email: string;
-  emailOffers: boolean;
   firstName: string;
   lastName: string;
   country: string;

@@ -10,7 +10,6 @@ import * as Yup from 'yup';
 
 interface DetailsFormType {
   email: string;
-  emailOffers: boolean;
   firstName: string;
   lastName: string;
   country: string;
@@ -48,7 +47,6 @@ export const CheckoutDetails = () => {
 
   const detailsFormSchema = Yup.object().shape({
     email: Yup.string().email('Invalid email address').required('Email is required'),
-    emailOffers: Yup.boolean(),
     firstName: Yup.string().required('First Name is required'),
     lastName: Yup.string().required('Last Name is required'),
     country: Yup.string().required('Country is required'),
@@ -66,16 +64,15 @@ export const CheckoutDetails = () => {
       <Formik
         validationSchema={detailsFormSchema}
         initialValues={{
-          email: customer?.email ?? '',
-          emailOffers: customer?.emailOffers ?? false,
+          email: customer?.email ?? 'test@testmail,com',
           country: customer?.country ?? 'Australia',
-          firstName: customer?.firstName ?? '',
-          lastName: customer?.lastName ?? '',
-          address: customer?.address ?? '',
+          firstName: customer?.firstName ?? 'Test',
+          lastName: customer?.lastName ?? 'User',
+          address: customer?.address ?? '123 Test Street',
           apartment: customer?.apartment ?? '',
-          suburb: customer?.suburb ?? '',
+          suburb: customer?.suburb ?? 'Pretendville',
           state: customer?.state ?? 'VIC',
-          postcode: customer?.postcode ?? ''
+          postcode: customer?.postcode ?? '0000'
         }}
         enableReinitialize
         onSubmit={(values, { setSubmitting }) => {
@@ -86,7 +83,7 @@ export const CheckoutDetails = () => {
             <h2 className="text-h2 font-h2">Contact</h2>
             <CustomInput name="email" type="email" placeholder="Email" />
             <h2 className="my-2 text-h2 font-h2">Shipping address</h2>
-            <CustomInput name="country" as="select" placeholder="Country">
+            <CustomInput name="country" as="select" placeholder="Countr">
               {countries.map((name) => (
                 <option key={name} value={name}>
                   {name}
@@ -98,7 +95,7 @@ export const CheckoutDetails = () => {
             <CustomInput name="address" type="address" placeholder="Shipping Adress" />
             <CustomInput name="apartment" placeholder="Apartment, suite, etc. (optional)" />
             <CustomInput name="suburb" placeholder="Suburb" />
-            <CustomInput name="state" as="select" placeholder="Country">
+            <CustomInput name="state" as="select" placeholder="State">
               {states.map((name) => (
                 <option key={name} value={name}>
                   {name}
