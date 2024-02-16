@@ -3,7 +3,6 @@ import ErrorPage from './Routes/ErrorPage/ErrorPage';
 import {
   Route,
   RouterProvider,
-  ScrollRestoration,
   createBrowserRouter,
   createRoutesFromElements
 } from 'react-router-dom';
@@ -64,7 +63,6 @@ function App() {
           }
           loader={ordersLoader}
         />
-        <Route element={<ScrollRestoration />} />
       </Route>
     )
   );
