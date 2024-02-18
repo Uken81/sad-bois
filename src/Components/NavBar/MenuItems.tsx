@@ -26,8 +26,8 @@ export const MenuItems: React.FC<{
 
   const standardLinks: LinkItemType[] = [
     { destination: 'news', text: 'News', icon: <TiNews /> },
-    { destination: 'tour', text: 'Tour', icon: <LiaMusicSolid /> },
-    { destination: 'store', text: 'Swag', icon: <PiShoppingCartBold /> }
+    { destination: 'store', text: 'Swag', icon: <PiShoppingCartBold /> },
+    { destination: 'tour', text: 'Tour', icon: <LiaMusicSolid /> }
   ];
 
   return (
