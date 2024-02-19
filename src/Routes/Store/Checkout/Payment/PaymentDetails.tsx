@@ -10,6 +10,7 @@ import {
   SelectedShippingContextType
 } from '../../../RouteWrappers/checkoutWrapper';
 import { CartContextType } from '../../../RouteWrappers/rootWrapper';
+import { serverUrl } from '../../../../Server/serverUrl';
 
 export interface CardDetailsFormType {
   cardNumber: string;
@@ -53,10 +54,7 @@ export const PaymentDetails = () => {
     };
 
     try {
-      const response = await fetch(
-        'https://sad-bois-backend-637e57975bd5.herokuapp.com/process-order',
-        requestOptions
-      );
+      const response = await fetch(`${serverUrl}/process-order`, requestOptions);
       if (!response.ok) {
         const data: FormErrorType = await response.json();
         setError({ type: data.type, message: data.message });

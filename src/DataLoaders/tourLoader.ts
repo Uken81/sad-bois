@@ -1,3 +1,4 @@
+import { serverUrl } from '../Server/serverUrl';
 import { DataError } from '../Types/loaderTypes';
 import { cameliseTourData } from './DataLoaderUtils/cameliseTourData';
 
@@ -11,7 +12,7 @@ export interface TourType {
 
 export const tourLoader = async (): Promise<TourType[] | undefined> => {
   try {
-    const response = await fetch('https://sad-bois-backend-637e57975bd5.herokuapp.com/tour');
+    const response = await fetch(`${serverUrl}/tour`);
     if (!response.ok) {
       const data: DataError = await response.json();
       throw new Error(`HTTP error! ${data.error}`);

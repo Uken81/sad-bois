@@ -1,6 +1,7 @@
 import { LoaderFunctionArgs } from 'react-router';
 import { DataError } from '../Types/loaderTypes';
 import { cameliseProductsData } from './DataLoaderUtils/cameliseProductsData';
+import { serverUrl } from '../Server/serverUrl';
 
 type Category = 'clothing' | 'sticker' | 'coffee-mug' | 'misc';
 
@@ -24,12 +25,8 @@ export const productsLoader = async (
 ): Promise<MerchandiseType | undefined> => {
   try {
     const category = loader.params.category;
-    const regular = await fetch(
-      `https://sad-bois-backend-637e57975bd5.herokuapp.com/products?category=${category}`
-    );
-    const featured = await fetch(
-      'https://sad-bois-backend-637e57975bd5.herokuapp.com/products/featured'
-    );
+    const regular = await fetch(`${serverUrl}/products?category=${category}`);
+    const featured = await fetch(`${serverUrl}/products/featured`);
 
     if (!regular.ok || !featured.ok) {
       const data: DataError = await regular.json();

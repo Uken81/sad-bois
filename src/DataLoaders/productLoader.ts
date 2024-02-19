@@ -1,6 +1,7 @@
 import { LoaderFunctionArgs } from 'react-router';
 import { ProductType } from './productsLoader';
 import { cameliseProductData } from './DataLoaderUtils/cameliseProductData';
+import { serverUrl } from '../Server/serverUrl';
 
 export const productLoader = async (
   loader: LoaderFunctionArgs
@@ -11,9 +12,7 @@ export const productLoader = async (
   }
 
   try {
-    const response = await fetch(
-      `https://sad-bois-backend-637e57975bd5.herokuapp.com/products/byId?id=${id}`
-    );
+    const response = await fetch(`${serverUrl}/products/byId?id=${id}`);
 
     const selectedProduct: ProductType = await response.json();
     const camelisedProduct = await cameliseProductData(selectedProduct);

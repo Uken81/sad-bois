@@ -2,14 +2,13 @@ import { LoaderFunctionArgs } from 'react-router';
 import { Article } from './newsLoader';
 import { DataError } from '../Types/loaderTypes';
 import { cameliseArticleData } from './DataLoaderUtils/cameliseArticleData';
+import { serverUrl } from '../Server/serverUrl';
 
 export const articleLoader = async (loader: LoaderFunctionArgs): Promise<Article | undefined> => {
   const id = loader.params.id;
 
   try {
-    const response = await fetch(
-      `https://sad-bois-backend-637e57975bd5.herokuapp.com/news/byId?id=${id}`
-    );
+    const response = await fetch(`${serverUrl}/news/byId?id=${id}`);
     if (!response.ok) {
       const data: DataError = await response.json();
       console.error(`Error fetching article: ${data.error}`);

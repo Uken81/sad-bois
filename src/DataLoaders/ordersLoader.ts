@@ -1,6 +1,7 @@
 import { LoaderFunctionArgs } from 'react-router';
 import { DataError } from '../Types/loaderTypes';
 import { cameliseOrdersData } from './DataLoaderUtils/cameliseOrdersData';
+import { serverUrl } from '../Server/serverUrl';
 export interface OrderType {
   orderId: string;
   customerEmail: string;
@@ -14,9 +15,7 @@ export interface OrderType {
 export const ordersLoader = async (loader: LoaderFunctionArgs): Promise<OrderType[] | null> => {
   try {
     const email = loader.params.email;
-    const response = await fetch(
-      `https://sad-bois-backend-637e57975bd5.herokuapp.com/orders?email=${email}`
-    );
+    const response = await fetch(`${serverUrl}/orders?email=${email}`);
 
     if (!response.ok) {
       const data: DataError = await response.json();

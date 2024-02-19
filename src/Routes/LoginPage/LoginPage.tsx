@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { UserContextType, UserType } from '../RouteWrappers/rootWrapper';
 import { ErrorMessage, FormErrorType } from '../../Components/ErrorMessage';
 import { UserForm } from './UserForm';
+import { serverUrl } from '../../Server/serverUrl';
 
 interface LoginFormValues {
   email: string;
@@ -43,10 +44,7 @@ export const LoginPage: React.FC = () => {
     };
 
     try {
-      const response = await fetch(
-        'https://sad-bois-backend-637e57975bd5.herokuapp.com/auth/login',
-        requestOptions
-      );
+      const response = await fetch(`${serverUrl}/auth/login`, requestOptions);
       if (!response.ok) {
         const data: FormErrorType = await response.json();
         setError({ type: data.type, message: data.message });

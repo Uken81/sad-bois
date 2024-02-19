@@ -1,3 +1,4 @@
+import { serverUrl } from '../Server/serverUrl';
 import { DataError } from '../Types/loaderTypes';
 import { cameliseNewsData } from './DataLoaderUtils/cameliseNewsData';
 
@@ -11,7 +12,7 @@ export interface Article {
 
 export const newsLoader = async (): Promise<Article[] | undefined> => {
   try {
-    const response = await fetch('https://sad-bois-backend-637e57975bd5.herokuapp.com/news');
+    const response = await fetch(`${serverUrl}/news`);
     if (!response.ok) {
       const data: DataError = await response.json();
       throw new Error(`HTTP error! ${data.error}`);

@@ -16,7 +16,6 @@ export const homepageLoader = async () => {
 
   return { latestNewsData, latestShowsData };
 };
-console.log('server_url', serverUrl);
 const latestNewsLoader = async (): Promise<Article[] | null | undefined> => {
   try {
     const response = await fetch(`${serverUrl}/news/latest`);

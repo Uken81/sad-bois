@@ -5,6 +5,7 @@ import { CustomInput } from '../../Components/Forms/Inputs/CustomInput';
 import { useState } from 'react';
 import { ErrorMessage, FormErrorType } from '../../Components/ErrorMessage';
 import { UserForm } from './UserForm';
+import { serverUrl } from '../../Server/serverUrl';
 
 interface RegisterFormValues {
   email: string;
@@ -48,10 +49,7 @@ export const Register: React.FC = () => {
     };
 
     try {
-      const response = await fetch(
-        'https://sad-bois-backend-637e57975bd5.herokuapp.com/auth/register',
-        requestOptions
-      );
+      const response = await fetch(`${serverUrl}/auth/register`, requestOptions);
 
       if (!response.ok) {
         const data: FormErrorType = await response.json();
