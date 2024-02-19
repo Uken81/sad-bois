@@ -9,7 +9,7 @@ export const ProductImage: React.FC<{ imageSrc: string; quantity: number }> = ({
       </span>
       <img
         className="grid h-32 w-44 place-items-center bg-secondary p-1"
-        src={`/Assets/Products/${imageSrc}`}></img>
+        src={`/Assets/Products/${imageSrc}.png`}></img>
     </div>
   );
 };

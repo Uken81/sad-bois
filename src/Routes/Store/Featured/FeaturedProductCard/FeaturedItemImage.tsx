@@ -6,7 +6,7 @@ export const FeaturedItemImage: React.FC<{ id: string; img: string }> = ({ id, i
   return (
     <figure className="w-1/2">
       <img
-        src={`/Assets/Products/${img}`}
+        src={`/Assets/Products/${img}.png`}
         className="h-full w-full object-contain"
         onClick={() => navigate(`/store/add-to-cart/${id}`)}
       />

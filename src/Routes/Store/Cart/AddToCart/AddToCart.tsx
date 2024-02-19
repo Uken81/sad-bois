@@ -74,7 +74,7 @@ export const AddToCart: React.FC = () => {
   return (
     <div className="flex h-full flex-col items-center gap-4 md:mx-24 md:my-24 md:flex-row md:gap-0 xl:mx-64">
       <div className="flex h-full w-1/2 justify-center">
-        <img src={`/Assets/Products/${img}`} className="h-48 md:h-96" />
+        <img src={`/Assets/Products/${img}.png`} className="h-48 md:h-96" />
       </div>
       <div className="align-middle md:flex md:w-1/2 md:flex-col md:space-y-10">
         <div className="text-center md:space-y-2">

@@ -11,7 +11,7 @@ export const ItemOrderSummary: React.FC<{ cart: CartType | null }> = ({ cart }) 
         return (
           <div key={orderId} className="flex w-full flex-col items-center">
             <div className="m-2">
-              <img src={`/Assets/Products/${img}`} className="h-24" />
+              <img src={`/Assets/Products/${img}.png`} className="h-24" />
             </div>
             <div className="my-4 text-center ">
               <p className="text-lg font-bold text-secondary [text-shadow:0px_0px_1px_#ffffff]">
