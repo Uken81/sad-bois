@@ -1,3 +1,4 @@
+import { serverUrl } from '../Server/serverUrl';
 import { DataError } from '../Types/loaderTypes';
 import { cameliseNewsData } from './DataLoaderUtils/cameliseNewsData';
 import { cameliseTourData } from './DataLoaderUtils/cameliseTourData';
@@ -15,10 +16,10 @@ export const homepageLoader = async () => {
 
   return { latestNewsData, latestShowsData };
 };
-
+console.log('server_url', serverUrl);
 const latestNewsLoader = async (): Promise<Article[] | null | undefined> => {
   try {
-    const response = await fetch('https://sad-bois-backend-637e57975bd5.herokuapp.com/news/latest');
+    const response = await fetch(`${serverUrl}/news/latest`);
     if (!response.ok) {
       const data: DataError = await response.json();
       console.error(`Error fetching latest news: ${data.error}`);
@@ -42,7 +43,7 @@ const latestNewsLoader = async (): Promise<Article[] | null | undefined> => {
 
 export const latestShowLoader = async (): Promise<TourType[] | null | undefined> => {
   try {
-    const response = await fetch('https://sad-bois-backend-637e57975bd5.herokuapp.com/tour/latest');
+    const response = await fetch(`${serverUrl}/tour/latest`);
     if (!response.ok) {
       const data: DataError = await response.json();
       console.error(`Error fetching latest news: ${data.error}`);
@@ -50,6 +51,7 @@ export const latestShowLoader = async (): Promise<TourType[] | null | undefined>
     }
 
     const latestShows: TourType[] = await response.json();
+    console.log('latestShows', latestShows);
     const camelisedLatestShows = cameliseTourData(latestShows);
 
     return camelisedLatestShows;
