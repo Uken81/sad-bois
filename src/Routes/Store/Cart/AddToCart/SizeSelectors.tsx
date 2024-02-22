@@ -1,11 +1,10 @@
 import { Dispatch } from 'react';
 
 export const SizeSelectors: React.FC<{
-  size: string;
-  setSize: Dispatch<React.SetStateAction<string>>;
-  display: boolean;
-}> = ({ size, setSize, display }) => {
-  return display ? (
+  size: string | null;
+  setSize: Dispatch<React.SetStateAction<string | null>>;
+}> = ({ size, setSize }) => {
+  return size ? (
     <div className="flex flex-row">
       <div className="flex w-fit flex-col text-center">
         <label

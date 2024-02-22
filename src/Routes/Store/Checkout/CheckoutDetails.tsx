@@ -3,9 +3,9 @@ import { CustomInput } from '../../../Components/Forms/Inputs/CustomInput';
 import { SubmitButton } from '../../../Components/Forms/SubmitButton';
 import { useNavigate, useOutletContext } from 'react-router';
 import { useEffect } from 'react';
-import { saveOrUpdateSessionStorage } from '../../../Utils/saveOrUpdateSessionStorage';
 import { CustomerContextType } from '../../RouteWrappers/checkoutWrapper';
 import { useGetCustomer } from '../../../Hooks/useGetCustomer';
+import { updateSessionStorage } from '../../../Utils/saveOrUpdateSessionStorage';
 import * as Yup from 'yup';
 
 interface DetailsFormType {
@@ -40,7 +40,7 @@ export const CheckoutDetails = () => {
     setSubmitting: (isSubmitting: boolean) => void
   ) => {
     setCustomer(values);
-    saveOrUpdateSessionStorage('customer', values);
+    updateSessionStorage('customer', values);
     setSubmitting(false);
     navigate('/store/checkout/shipping');
   };

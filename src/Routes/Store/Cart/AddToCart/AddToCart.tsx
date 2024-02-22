@@ -3,20 +3,20 @@ import { useState } from 'react';
 import { SizeSelectors } from './SizeSelectors';
 import { Quantity } from './Quantity';
 import { useEffectAfterMount } from '../../../../Hooks/useEffectAfterMount';
-import { saveOrUpdateSessionStorage } from '../../../../Utils/saveOrUpdateSessionStorage';
 import { ProductType } from '../../../../DataLoaders/productsLoader';
 import shortid from 'shortid';
 import { ShareButton } from '../../../../Components/Share/ShareButton';
 import { CartContextType } from '../../../RouteWrappers/rootWrapper';
 import { ShareOptions } from '../../../../Components/Share/ShareOptions';
 import { AddButton } from './AddButton';
+import { updateSessionStorage } from '../../../../Utils/saveOrUpdateSessionStorage';
 
 export interface ProductOrder {
   orderId: string;
   productId: string;
   name: string;
   img: string;
-  size?: string;
+  size?: string | null;
   price: number;
   quantity: number;
   cost: number;
@@ -26,10 +26,9 @@ export const AddToCart: React.FC = () => {
   const loaderData = useLoaderData() as ProductType;
   const { id, img, title, subtitle, price, category } = loaderData;
   const { cart, setCart } = useOutletContext() as CartContextType;
-  const [size, setSize] = useState<string>('l');
+  const [size, setSize] = useState<string | null>(category === 'clothing' ? 'l' : null);
   const [quantity, setQuantity] = useState(1);
   const [isAdded, setIsAdded] = useState<boolean>(false);
-  const displayDropdown = category === 'clothing';
 
   const addProduct = async () => {
     const orderId = shortid.generate();
@@ -67,7 +66,7 @@ export const AddToCart: React.FC = () => {
 
   useEffectAfterMount(() => {
     if (cart) {
-      saveOrUpdateSessionStorage('cart', cart);
+      updateSessionStorage('cart', cart);
     }
   }, [cart]);
 
@@ -84,7 +83,7 @@ export const AddToCart: React.FC = () => {
         </div>
         <div className="flex flex-col items-center gap-6">
           <p className="text-secondary">Shipping calculated at checkout</p>
-          <SizeSelectors size={size} setSize={setSize} display={displayDropdown} />
+          <SizeSelectors size={size} setSize={setSize} />
           <Quantity quantity={quantity} setQuantity={setQuantity} />
           <AddButton isAdded={isAdded} handleSubmit={handleSubmit} />
         </div>

@@ -4,7 +4,7 @@
  * @param {unknown} value - the data to be saved under the key name.
  */
 
-export const saveOrUpdateSessionStorage = (key: string, value: unknown) => {
+export const updateSessionStorage = (key: string, value: unknown) => {
   const stringifiedData = JSON.stringify(value);
   sessionStorage.setItem(key, stringifiedData);
 };
