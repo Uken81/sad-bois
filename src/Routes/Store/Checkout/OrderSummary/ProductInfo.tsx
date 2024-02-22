@@ -1,6 +1,6 @@
 import { formatCurrency } from '../../../../Utils/currencyFormatter';
 
-export const ProductInfo: React.FC<{ name: string; size?: string; cost: number }> = ({
+export const ProductInfo: React.FC<{ name: string; size?: string | null; cost: number }> = ({
   name,
   size,
   cost
