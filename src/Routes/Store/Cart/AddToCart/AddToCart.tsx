@@ -51,7 +51,9 @@ export const AddToCart: React.FC = () => {
         };
       }
 
-      const recalculatedSubtotal = prevCart.subtotal ? prevCart.subtotal + price * quantity : null;
+      const recalculatedSubtotal = prevCart.subtotal
+        ? prevCart.subtotal + price * quantity
+        : price * quantity;
       return {
         items: [...prevCart.items, productOrder],
         subtotal: recalculatedSubtotal
