@@ -50,7 +50,6 @@ export const latestShowLoader = async (): Promise<TourType[] | null | undefined>
     }
 
     const latestShows: TourType[] = await response.json();
-    console.log('latestShows', latestShows);
     const camelisedLatestShows = cameliseTourData(latestShows);
 
     return camelisedLatestShows;

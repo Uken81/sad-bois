@@ -38,7 +38,6 @@ export const Register: React.FC = () => {
     values: RegisterFormValues,
     setSubmitting: (isSubmitting: boolean) => void
   ) => {
-    console.log('values', values);
     const requestOptions: RequestInit = {
       method: 'POST',
       body: JSON.stringify(values),

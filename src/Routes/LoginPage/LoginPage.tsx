@@ -20,7 +20,7 @@ export const LoginPage: React.FC = () => {
   const navigate = useNavigate();
 
   //Todo: Change these inital values to test user when about to publish.
-  const initialValues = { email: registeredEmail || '', password: '12345' };
+  const initialValues = { email: registeredEmail || 'test@testmail.com', password: '12345' };
 
   const validationSchema = Yup.object({
     email: Yup.string().email('Invalid email address').required('Required'),
