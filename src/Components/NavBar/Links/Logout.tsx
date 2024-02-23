@@ -2,6 +2,7 @@ import { Dispatch, SetStateAction } from 'react';
 import { useNavigate } from 'react-router';
 import { UserType } from '../../../Routes/RouteWrappers/rootWrapper';
 import { RiLogoutCircleFill } from 'react-icons/ri';
+import { serverUrl } from '../../../Server/serverUrl';
 
 export const Logout: React.FC<{
   setUserDetails: Dispatch<SetStateAction<UserType | null>>;
@@ -15,10 +16,7 @@ export const Logout: React.FC<{
     };
 
     try {
-      const response = await fetch(
-        'https://sad-bois-backend-637e57975bd5.herokuapp.com/auth/logout',
-        requestOptions
-      );
+      const response = await fetch(`${serverUrl}/auth/logout`, requestOptions);
 
       if (!response.ok || response === null) {
         throw new Error('Network response was not ok');

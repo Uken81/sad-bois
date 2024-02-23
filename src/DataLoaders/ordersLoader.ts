@@ -24,7 +24,7 @@ export const ordersLoader = async (loader: LoaderFunctionArgs): Promise<OrderTyp
     }
 
     const customerOrders: OrderType[] = await response.json();
-    if (customerOrders.length === 0) {
+    if (!customerOrders.length) {
       return null;
     }
 
