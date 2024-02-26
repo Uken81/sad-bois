@@ -10,7 +10,6 @@ interface CustomInputProps {
   placeholder?: string;
   inputMode?: InputMode;
   children?: ReactNode;
-  // error?: string | null;
   id?: string;
 }
 

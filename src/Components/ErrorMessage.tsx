@@ -1,21 +1,9 @@
 import { Dispatch, SetStateAction } from 'react';
 import { capitaliseWords } from '../Utils/capitaliseWords';
+import { FormErrorType } from '../Types/errorTypes';
 
 export interface GeneralErrorType {
   message: string;
-}
-
-export interface FormErrorType extends GeneralErrorType {
-  type?:
-    | 'email'
-    | 'duplicateEmail'
-    | 'password'
-    | 'network'
-    | 'server'
-    | 'cardNumber'
-    | 'nameOnCard'
-    | 'cardExpiration'
-    | 'cardSecurityCode';
 }
 
 type VariantType = 'error' | 'warning';

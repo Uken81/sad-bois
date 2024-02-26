@@ -1,6 +1,6 @@
 import { LoaderFunctionArgs } from 'react-router';
 import { Article } from './newsLoader';
-import { DataError } from '../Types/loaderTypes';
+import { DataError } from '../Types/errorTypes';
 import { cameliseArticleData } from './DataLoaderUtils/cameliseArticleData';
 import { serverUrl } from '../Server/serverUrl';
 
@@ -10,9 +10,9 @@ export const articleLoader = async (loader: LoaderFunctionArgs): Promise<Article
   try {
     const response = await fetch(`${serverUrl}/news/byId?id=${id}`);
     if (!response.ok) {
-      const data: DataError = await response.json();
-      console.error(`Error fetching article: ${data.error}`);
-      throw new Error(`HTTP error! ${data.error}`);
+      const dataError: DataError = await response.json();
+      console.error(`Error fetching article: ${dataError.message}`);
+      throw new Error(`HTTP error! ${dataError.message}`);
     }
 
     const article: Article = await response.json();

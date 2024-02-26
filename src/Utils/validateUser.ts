@@ -3,6 +3,7 @@
  */
 
 import { serverUrl } from '../Server/serverUrl';
+import { DataError } from '../Types/errorTypes';
 
 interface ValidationResult {
   validationSuccess: boolean;
@@ -19,7 +20,8 @@ export const validateUser = async (): Promise<boolean> => {
     const response = await fetch(`${serverUrl}/auth/validate`, requestOptions);
 
     if (!response.ok) {
-      throw new Error('Network response was not ok');
+      const dataError: DataError = await response.json();
+      throw new Error(`Network response was not ok: ${dataError.message}`);
     }
 
     const data: ValidationResult = await response.json();

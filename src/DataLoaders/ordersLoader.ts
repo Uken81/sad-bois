@@ -1,5 +1,5 @@
 import { LoaderFunctionArgs } from 'react-router';
-import { DataError } from '../Types/loaderTypes';
+import { DataError } from '../Types/errorTypes';
 import { cameliseOrdersData } from './DataLoaderUtils/cameliseOrdersData';
 import { serverUrl } from '../Server/serverUrl';
 export interface OrderType {

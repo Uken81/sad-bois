@@ -1,5 +1,5 @@
 import { serverUrl } from '../Server/serverUrl';
-import { DataError } from '../Types/loaderTypes';
+import { DataError } from '../Types/errorTypes';
 import { cameliseNewsData } from './DataLoaderUtils/cameliseNewsData';
 import { cameliseTourData } from './DataLoaderUtils/cameliseTourData';
 import { Article } from './newsLoader';

@@ -4,9 +4,10 @@ import { Formik } from 'formik';
 import { CustomInput } from '../../Components/Forms/Inputs/CustomInput';
 import { useState } from 'react';
 import { UserContextType, UserType } from '../RouteWrappers/rootWrapper';
-import { ErrorMessage, FormErrorType } from '../../Components/ErrorMessage';
+import { ErrorMessage } from '../../Components/ErrorMessage';
 import { UserForm } from './UserForm';
 import { serverUrl } from '../../Server/serverUrl';
+import { FormErrorType } from '../../Types/errorTypes';
 
 interface LoginFormValues {
   email: string;
@@ -46,11 +47,11 @@ export const LoginPage: React.FC = () => {
     try {
       const response = await fetch(`${serverUrl}/auth/login`, requestOptions);
       if (!response.ok) {
-        const data: FormErrorType = await response.json();
-        setError({ type: data.type, message: data.message });
+        const dataError: FormErrorType = await response.json();
+        setError({ type: dataError.type, message: dataError.message });
         setSubmitting(false);
 
-        throw new Error('Network response was not ok');
+        throw new Error(`Network response was not ok: ${dataError.message}`);
       }
 
       const data = await response.json();
@@ -61,13 +62,13 @@ export const LoginPage: React.FC = () => {
       navigate('/');
     } catch (error) {
       if (error instanceof TypeError && error.message === 'Failed to fetch') {
-        setError({ type: 'network', message: 'Network error: Failed to connect' });
+        setError({ type: 'network', message: `Network error: ${error}` });
         setSubmitting(false);
         return;
       }
 
       if (error instanceof Error) {
-        console.error('error: ', error);
+        console.error(error);
         setSubmitting(false);
         return;
       }

@@ -3,9 +3,10 @@ import * as Yup from 'yup';
 import { Formik } from 'formik';
 import { CustomInput } from '../../Components/Forms/Inputs/CustomInput';
 import { useState } from 'react';
-import { ErrorMessage, FormErrorType } from '../../Components/ErrorMessage';
+import { ErrorMessage } from '../../Components/ErrorMessage';
 import { UserForm } from './UserForm';
 import { serverUrl } from '../../Server/serverUrl';
+import { FormErrorType } from '../../Types/errorTypes';
 
 interface RegisterFormValues {
   email: string;
@@ -51,33 +52,35 @@ export const Register: React.FC = () => {
       const response = await fetch(`${serverUrl}/auth/register`, requestOptions);
 
       if (!response.ok) {
-        const data: FormErrorType = await response.json();
-        if (data.type === 'duplicateEmail') {
+        const dataError: FormErrorType = await response.json();
+        if (dataError.type === 'existing_email') {
           const registeredEmail = values.email;
           navigate(`/login/${registeredEmail}`);
         }
 
-        setError({ type: data.type, message: data.message });
+        setError({ type: dataError.type, message: dataError.message });
         setSubmitting(false);
 
-        throw new Error('Network response was not ok');
+        throw new Error(`Network response was not ok: ${dataError.message}`);
       }
       setSubmitting(false);
       navigate('/');
     } catch (error) {
       if (error instanceof TypeError && error.message === 'Failed to fetch') {
-        setError({ type: 'network', message: 'Network error: Failed to connect' });
+        setError({ type: 'network', message: 'Network error' });
         setSubmitting(false);
         return;
       }
 
       if (error instanceof Error) {
-        console.error('error: ', error);
+        console.error(error);
+        setError({ type: 'network', message: `${error}` });
         setSubmitting(false);
         return;
       }
 
       console.error('An unexpected error occurred:', error);
+      setError({ type: 'network', message: 'An unexpected error occurred' });
       setSubmitting(false);
     }
   };

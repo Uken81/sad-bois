@@ -1,5 +1,5 @@
 import { serverUrl } from '../Server/serverUrl';
-import { DataError } from '../Types/loaderTypes';
+import { DataError } from '../Types/errorTypes';
 import { cameliseTourData } from './DataLoaderUtils/cameliseTourData';
 
 export interface TourType {
