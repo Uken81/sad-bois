@@ -6,10 +6,8 @@ import { LatestShows } from './LatestShows';
 
 export const HomePage: React.FC = () => {
   const homepageLoader = useLoaderData() as HomepageLoader;
-  const latestNews = homepageLoader.latestNewsData?.length ? homepageLoader.latestNewsData : null;
-  const latestShows = homepageLoader.latestShowsData?.length
-    ? homepageLoader.latestShowsData
-    : null;
+  const latestNews = homepageLoader.latestNewsData ?? null;
+  const latestShows = homepageLoader.latestShowsData ?? null;
 
   return (
     <main className="mt-1 ">

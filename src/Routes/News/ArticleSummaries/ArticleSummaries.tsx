@@ -4,9 +4,12 @@ import { useNavigate } from 'react-router';
 import { capitaliseWords } from '../../../Utils/capitaliseWords';
 import { ArticleLink } from './ArticleLink';
 
-export const ArticleSummaries: React.FC<{ articles: Article[] }> = ({ articles }) => {
+export const ArticleSummaries: React.FC<{ articles: Article[]; isLatest: boolean }> = ({
+  articles,
+  isLatest
+}) => {
   const navigate = useNavigate();
-  const dateHeading = articles.length === 3 ? 'LATEST NEWS' : 'NEWS';
+  const dateHeading = isLatest ? 'LATEST NEWS' : 'NEWS';
 
   return (
     <>

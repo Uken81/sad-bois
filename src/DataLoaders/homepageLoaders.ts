@@ -1,5 +1,5 @@
 import { serverUrl } from '../Server/serverUrl';
-import { DataError } from '../Types/errorTypes';
+import { throwDataError } from '../Utils/throwDataError';
 import { cameliseNewsData } from './DataLoaderUtils/cameliseNewsData';
 import { cameliseTourData } from './DataLoaderUtils/cameliseTourData';
 import { Article } from './newsLoader';
@@ -20,12 +20,14 @@ const latestNewsLoader = async (): Promise<Article[] | null | undefined> => {
   try {
     const response = await fetch(`${serverUrl}/news/latest`);
     if (!response.ok) {
-      const data: DataError = await response.json();
-      console.error(`Error fetching latest news: ${data.error}`);
-      return;
+      await throwDataError(response);
     }
 
     const latestNews: Article[] = await response.json();
+    if (!latestNews.length) {
+      return null;
+    }
+
     const camelisedLatestNews = cameliseNewsData(latestNews);
 
     return camelisedLatestNews;
@@ -44,18 +46,20 @@ export const latestShowLoader = async (): Promise<TourType[] | null | undefined>
   try {
     const response = await fetch(`${serverUrl}/tour/latest`);
     if (!response.ok) {
-      const data: DataError = await response.json();
-      console.error(`Error fetching latest news: ${data.error}`);
-      return;
+      await throwDataError(response);
     }
 
     const latestShows: TourType[] = await response.json();
+    if (!latestShows.length) {
+      return null;
+    }
+
     const camelisedLatestShows = cameliseTourData(latestShows);
 
     return camelisedLatestShows;
   } catch (error) {
     if (error instanceof Error) {
-      console.error(`Error: ${error}`);
+      console.error(error);
       return null;
     }
 

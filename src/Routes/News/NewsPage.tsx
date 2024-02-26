@@ -5,14 +5,14 @@ import { ArticleSummaries } from './ArticleSummaries/ArticleSummaries';
 
 export const NewsPage: React.FC<{ latest?: Article[] }> = ({ latest }) => {
   const loaderData = useLoaderData() as Article[];
-  const all = loaderData;
-  const articles = latest || all;
+  const isLatest = latest ? true : false;
+  const articles = latest || loaderData;
 
   return (
     <>
-      {articles.length ? (
+      {articles ? (
         <main className="mx-auto my-10 grid grid-cols-1 justify-items-center gap-6 md:grid-cols-3 md:gap-6 lg:gap-8 xl:gap-10">
-          <ArticleSummaries articles={articles} />
+          <ArticleSummaries articles={articles} isLatest={isLatest} />
         </main>
       ) : (
         <main>
