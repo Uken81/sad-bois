@@ -1,7 +1,8 @@
 import { LoaderFunctionArgs } from 'react-router';
-import { DataError } from '../Types/errorTypes';
 import { cameliseOrdersData } from './DataLoaderUtils/cameliseOrdersData';
 import { serverUrl } from '../Server/serverUrl';
+import { throwDataError } from '../Utils/throwDataError';
+
 export interface OrderType {
   orderId: string;
   customerEmail: string;
@@ -15,12 +16,14 @@ export interface OrderType {
 export const ordersLoader = async (loader: LoaderFunctionArgs): Promise<OrderType[] | null> => {
   try {
     const email = loader.params.email;
+    if (!email) {
+      throw new Error('Missing required param: email');
+    }
+
     const response = await fetch(`${serverUrl}/orders?email=${email}`);
 
     if (!response.ok) {
-      const data: DataError = await response.json();
-      console.error(`Error fetching orders: ${data.error}`);
-      throw new Error(`HTTP error! ${data.error}`);
+      await throwDataError(response);
     }
 
     const customerOrders: OrderType[] = await response.json();
@@ -34,10 +37,10 @@ export const ordersLoader = async (loader: LoaderFunctionArgs): Promise<OrderTyp
   } catch (error) {
     if (error instanceof Error) {
       console.error(error);
-      return null;
+      throw new Error(`${error}`);
     }
 
     console.error('An unexpected error occurred:', error);
-    return null;
+    throw new Error(`${error}`);
   }
 };
