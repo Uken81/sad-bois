@@ -1,7 +1,7 @@
 import { LoaderFunctionArgs } from 'react-router';
-import { DataError } from '../Types/errorTypes';
 import { cameliseProductsData } from './DataLoaderUtils/cameliseProductsData';
 import { serverUrl } from '../Server/serverUrl';
+import { throwDataError } from '../Utils/throwDataError';
 
 type Category = 'clothing' | 'sticker' | 'coffee-mug' | 'misc';
 
@@ -16,8 +16,8 @@ export interface ProductType {
 }
 
 export interface MerchandiseType {
-  camelisedRegularProducts: ProductType[] | undefined;
-  camelisedFeaturedProducts: ProductType[] | undefined;
+  camelisedRegularProducts: ProductType[] | null;
+  camelisedFeaturedProducts: ProductType[] | null;
 }
 
 export const productsLoader = async (
@@ -28,23 +28,35 @@ export const productsLoader = async (
     const regular = await fetch(`${serverUrl}/products?category=${category}`);
     const featured = await fetch(`${serverUrl}/products/featured`);
 
-    if (!regular.ok || !featured.ok) {
-      const data: DataError = await regular.json();
-      throw new Error(`HTTP error! ${data.error}`);
+    if (!regular.ok) {
+      await throwDataError(regular);
     }
+
+    if (!featured.ok) {
+      await throwDataError(featured);
+    }
+
     const regularProducts: ProductType[] = await regular.json();
     const featuredProducts: ProductType[] = await featured.json();
 
-    const camelisedRegularProducts = await cameliseProductsData(regularProducts);
-    const camelisedFeaturedProducts = await cameliseProductsData(featuredProducts);
+    let camelisedRegularProducts = await cameliseProductsData(regularProducts);
+    if (!camelisedRegularProducts?.length) {
+      camelisedRegularProducts = null;
+    }
+
+    let camelisedFeaturedProducts = await cameliseProductsData(featuredProducts);
+    if (!camelisedFeaturedProducts?.length) {
+      camelisedFeaturedProducts = null;
+    }
 
     return { camelisedRegularProducts, camelisedFeaturedProducts };
   } catch (error) {
     if (error instanceof Error) {
       console.error(error);
-      return;
+      throw new Error(`${error}`);
     }
 
     console.error('An unexpected error occurred:', error);
+    throw new Error(`${error}`);
   }
 };

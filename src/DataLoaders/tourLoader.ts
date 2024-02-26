@@ -27,7 +27,7 @@ export const tourLoader = async (): Promise<TourType[] | null | undefined> => {
     return camelisedTour;
   } catch (error) {
     if (error instanceof Error) {
-      console.error(`Error: ${error}`);
+      console.error(error);
       throw new Error(`${error}`);
     }
 

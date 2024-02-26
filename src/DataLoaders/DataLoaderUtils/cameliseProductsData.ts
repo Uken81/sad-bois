@@ -3,6 +3,10 @@ import * as yup from 'yup';
 import { ProductType } from '../productsLoader';
 
 export const cameliseProductsData = async (products: ProductType[]) => {
+  if (!products) {
+    return null;
+  }
+
   const productsTypeSchema = yup.array().of(
     yup.object({
       id: yup.string().required(),
