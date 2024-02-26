@@ -1,5 +1,5 @@
 import { serverUrl } from '../Server/serverUrl';
-import { DataError } from '../Types/errorTypes';
+import { throwDataError } from '../Utils/throwDataError';
 import { cameliseTourData } from './DataLoaderUtils/cameliseTourData';
 
 export interface TourType {
@@ -10,15 +10,18 @@ export interface TourType {
   ticketStatus: 'pending' | 'onsale' | 'postponed';
 }
 
-export const tourLoader = async (): Promise<TourType[] | undefined> => {
+export const tourLoader = async (): Promise<TourType[] | null | undefined> => {
   try {
     const response = await fetch(`${serverUrl}/tour`);
     if (!response.ok) {
-      const data: DataError = await response.json();
-      throw new Error(`HTTP error! ${data.error}`);
+      await throwDataError(response);
     }
 
-    const tour = await response.json();
+    const tour: TourType[] = await response.json();
+    if (!tour.length) {
+      return null;
+    }
+
     const camelisedTour = await cameliseTourData(tour);
 
     return camelisedTour;
@@ -29,5 +32,6 @@ export const tourLoader = async (): Promise<TourType[] | undefined> => {
     }
 
     console.error('An unexpected error occurred:', error);
+    throw new Error(`${error}`);
   }
 };
