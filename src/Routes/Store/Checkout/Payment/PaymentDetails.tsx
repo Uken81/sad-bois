@@ -3,7 +3,7 @@ import { CustomInput } from '../../../../Components/Forms/Inputs/CustomInput';
 import { SubmitButton } from '../../../../Components/Forms/SubmitButton';
 import * as Yup from 'yup';
 import { useState } from 'react';
-import { ErrorMessage, FormErrorType } from '../../../../Components/ErrorMessage';
+import { ErrorMessage } from '../../../../Components/ErrorMessage';
 import { useNavigate, useOutletContext } from 'react-router';
 import {
   CustomerContextType,
@@ -11,6 +11,7 @@ import {
 } from '../../../RouteWrappers/checkoutWrapper';
 import { CartContextType } from '../../../RouteWrappers/rootWrapper';
 import { serverUrl } from '../../../../Server/serverUrl';
+import { FormErrorType } from '../../../../Types/errorTypes';
 
 export interface CardDetailsFormType {
   cardNumber: string;
