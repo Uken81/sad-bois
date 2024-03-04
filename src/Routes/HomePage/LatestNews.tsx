@@ -7,7 +7,7 @@ export const LatestNews: React.FC<{ latestNews: Article[] | null }> = ({ latestN
   return (
     <>
       {latestNews ? (
-        <section className="mx-8">
+        <section className="xl:mx-4">
           <NewsPage latest={latestNews} />
           <div className="mr-4 xl:mr-36">
             <SeeAllLink destination="/news" text="SEE ALL NEWS" />

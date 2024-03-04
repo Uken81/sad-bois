@@ -35,7 +35,9 @@ export const ArticleSummaries: React.FC<{ articles: Article[]; isLatest: boolean
                 <span className="">{formattedDate}</span>
               </div>
               <h3 className="card-title text-primary">{capitaliseWords(title)}</h3>
-              <ArticleLink id={id} />
+              <div className="mt-auto">
+                <ArticleLink id={id} />
+              </div>
             </div>
           </div>
         );
