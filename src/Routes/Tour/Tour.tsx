@@ -12,7 +12,7 @@ export const Tour: React.FC<{ latest?: TourType[] }> = ({ latest }) => {
     <>
       {shows ? (
         <main
-          className={`flex flex-col bg-stadium bg-cover bg-no-repeat align-middle ${variableHeight}`}>
+          className={`flex h-[700px] flex-col bg-stadium bg-cover bg-no-repeat align-middle ${variableHeight}`}>
           <h1 className="mt-2 text-center text-h1 font-h1 tracking-wide text-secondary [text-shadow:1px_1px_2px_#ffffff]">
             THE SAD BOIS UPCOMING SHOWS
           </h1>

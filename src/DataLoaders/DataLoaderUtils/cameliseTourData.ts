@@ -10,8 +10,8 @@ export const cameliseTourData = async (tour: TourType[]) => {
       location: yup.string().required(),
       venue: yup.string().required(),
       ticketStatus: yup
-        .mixed<'pending' | 'onsale' | 'postponed'>()
-        .oneOf(['pending', 'onsale', 'postponed'])
+        .mixed<'pending' | 'on sale' | 'postponed' | 'sold-out'>()
+        .oneOf(['pending', 'on sale', 'postponed', 'sold-out'])
         .required()
     })
   );

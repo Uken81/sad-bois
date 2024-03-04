@@ -9,7 +9,7 @@ export const LatestShows: React.FC<{ latestShows: TourType[] | null }> = ({ late
       {latestShows ? (
         <section className="w-screen">
           <Tour latest={latestShows} />
-          <div className="mb-4 mt-8 md:mr-12">
+          <div className="mb-4 mt-8 md:mr-12 xl:mr-36">
             <SeeAllLink destination="/tour" text="SEE ALL SHOWS" />
           </div>
           <div className="divider" />

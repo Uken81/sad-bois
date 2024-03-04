@@ -7,7 +7,7 @@ export interface TourType {
   date: Date;
   location: string;
   venue: string;
-  ticketStatus: 'pending' | 'onsale' | 'postponed';
+  ticketStatus: 'pending' | 'on sale' | 'postponed' | 'sold-out';
 }
 
 export const tourLoader = async (): Promise<TourType[] | null | undefined> => {
