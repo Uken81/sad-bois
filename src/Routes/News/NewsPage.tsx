@@ -11,7 +11,7 @@ export const NewsPage: React.FC<{ latest?: Article[] }> = ({ latest }) => {
   return (
     <>
       {articles ? (
-        <main className="mx-auto my-10 grid grid-cols-1 justify-items-center gap-6 md:grid-cols-3 md:gap-6 lg:gap-8 xl:mx-36">
+        <main className="md:gap-18 mx-auto my-10 grid grid-cols-1 justify-items-center gap-6 md:grid-cols-3 xl:mx-56">
           <ArticleSummaries articles={articles} isLatest={isLatest} />
         </main>
       ) : (

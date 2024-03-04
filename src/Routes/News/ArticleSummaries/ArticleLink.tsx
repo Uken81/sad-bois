@@ -4,7 +4,7 @@ export const ArticleLink: React.FC<{ id: string }> = ({ id }) => {
   const navigate = useNavigate();
 
   return (
-    <div className="card-actions mr-auto mt-2 w-1/2 border-b border-l border-black duration-300 hover:bg-secondary hover:text-primary ">
+    <div className="btn card-actions btn-sm mr-auto mt-2 w-1/2 rounded-full border-accent bg-opacity-0 hover:border-white hover:bg-secondary">
       <p
         className="px-1 text-lg hover:cursor-pointer"
         onClick={() => navigate(`/news/article/${id}`)}>

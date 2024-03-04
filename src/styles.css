@@ -3252,16 +3252,16 @@ details.collapse summary::-webkit-details-marker {
   margin-top: 1.25rem;
 }
 
+.mt-6 {
+  margin-top: 1.5rem;
+}
+
 .mt-8 {
   margin-top: 2rem;
 }
 
 .mt-auto {
   margin-top: auto;
-}
-
-.mt-6 {
-  margin-top: 1.5rem;
 }
 
 .inline-block {
@@ -3344,8 +3344,16 @@ details.collapse summary::-webkit-details-marker {
   height: 100vh;
 }
 
+.h-36 {
+  height: 9rem;
+}
+
 .max-h-96 {
   max-height: 24rem;
+}
+
+.max-h-72 {
+  max-height: 18rem;
 }
 
 .min-h-full {
@@ -3405,12 +3413,21 @@ details.collapse summary::-webkit-details-marker {
   width: 100vw;
 }
 
-.w-1\/4 {
-  width: 25%;
+.w-24 {
+  width: 6rem;
 }
 
-.w-1\/3 {
-  width: 33.333333%;
+.w-60 {
+  width: 15rem;
+}
+
+.w-min {
+  width: -moz-min-content;
+  width: min-content;
+}
+
+.w-64 {
+  width: 16rem;
 }
 
 .max-w-lg {
@@ -3479,6 +3496,10 @@ details.collapse summary::-webkit-details-marker {
 
 .gap-6 {
   gap: 1.5rem;
+}
+
+.gap-0 {
+  gap: 0px;
 }
 
 .space-x-2 > :not([hidden]) ~ :not([hidden]) {
@@ -3633,6 +3654,16 @@ details.collapse summary::-webkit-details-marker {
   border-color: rgb(255 255 255 / var(--tw-border-opacity));
 }
 
+.border-red-200 {
+  --tw-border-opacity: 1;
+  border-color: rgb(254 202 202 / var(--tw-border-opacity));
+}
+
+.border-accent {
+  --tw-border-opacity: 1;
+  border-color: var(--fallback-a,oklch(var(--a)/var(--tw-border-opacity)));
+}
+
 .bg-accent {
   --tw-bg-opacity: 1;
   background-color: var(--fallback-a,oklch(var(--a)/var(--tw-bg-opacity)));
@@ -3683,6 +3714,10 @@ details.collapse summary::-webkit-details-marker {
   background-color: rgb(254 252 232 / var(--tw-bg-opacity));
 }
 
+.bg-opacity-0 {
+  --tw-bg-opacity: 0;
+}
+
 .bg-banner {
   background-image: url("/Assets/Banners/banner1.png");
 }
@@ -3707,10 +3742,6 @@ details.collapse summary::-webkit-details-marker {
 
 .bg-cover {
   background-size: cover;
-}
-
-.bg-contain {
-  background-size: contain;
 }
 
 .bg-center {
@@ -3752,6 +3783,10 @@ details.collapse summary::-webkit-details-marker {
 
 .p-6 {
   padding: 1.5rem;
+}
+
+.p-8 {
+  padding: 2rem;
 }
 
 .px-1 {
@@ -4358,6 +4393,11 @@ a {
   border-color: var(--fallback-a,oklch(var(--a)/var(--tw-border-opacity)));
 }
 
+.hover\:border-white:hover {
+  --tw-border-opacity: 1;
+  border-color: rgb(255 255 255 / var(--tw-border-opacity));
+}
+
 .hover\:bg-secondary:hover {
   --tw-bg-opacity: 1;
   background-color: var(--fallback-s,oklch(var(--s)/var(--tw-bg-opacity)));
@@ -4483,10 +4523,6 @@ a {
     width: 24rem;
   }
 
-  .md\:w-1\/3 {
-    width: 33.333333%;
-  }
-
   .md\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -4513,6 +4549,18 @@ a {
 
   .md\:gap-6 {
     gap: 1.5rem;
+  }
+
+  .md\:gap-8 {
+    gap: 2rem;
+  }
+
+  .md\:gap-10 {
+    gap: 2.5rem;
+  }
+
+  .md\:gap-24 {
+    gap: 6rem;
   }
 
   .md\:space-y-10 > :not([hidden]) ~ :not([hidden]) {
@@ -4610,6 +4658,10 @@ a {
     gap: 2rem;
   }
 
+  .lg\:gap-0 {
+    gap: 0px;
+  }
+
   .lg\:bg-contain {
     background-size: contain;
   }
@@ -4641,6 +4693,11 @@ a {
     margin-right: 9rem;
   }
 
+  .xl\:mx-4 {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
   .xl\:mx-40 {
     margin-left: 10rem;
     margin-right: 10rem;
@@ -4656,17 +4713,13 @@ a {
     margin-right: 24rem;
   }
 
-  .xl\:mx-4 {
-    margin-left: 1rem;
-    margin-right: 1rem;
+  .xl\:mx-56 {
+    margin-left: 14rem;
+    margin-right: 14rem;
   }
 
   .xl\:mr-36 {
     margin-right: 9rem;
-  }
-
-  .xl\:mr-32 {
-    margin-right: 8rem;
   }
 
   .xl\:w-1\/3 {
