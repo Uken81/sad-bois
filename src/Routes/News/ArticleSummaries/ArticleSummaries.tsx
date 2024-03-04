@@ -22,8 +22,12 @@ export const ArticleSummaries: React.FC<{ articles: Article[]; isLatest: boolean
             key={id}
             className="card w-72 bg-base-300 shadow-sm shadow-neutral-500 hover:cursor-pointer lg:w-80 xl:w-96"
             onClick={() => navigate(`/news/article/${id}`)}>
-            <figure className="max-h-96">
-              <img src={`/Assets/News/${img}.png`} alt={title} />
+            <figure>
+              <img
+                src={`/Assets/News/${img}.png`}
+                className="mt-2 h-56 object-contain"
+                alt={title}
+              />
             </figure>
             <div className="card-body">
               <div className="flex items-center">
