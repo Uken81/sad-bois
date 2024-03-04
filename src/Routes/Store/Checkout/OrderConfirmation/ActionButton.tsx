@@ -17,7 +17,9 @@ export const ActionButton: React.FC = () => {
       ) : (
         <div className="my-2">
           <h3 className="text-h3">View orders in profile page?</h3>
-          <button className="btn btn-accent mt-2" onClick={() => navigate('/profile')}>
+          <button
+            className="btn btn-accent mt-2"
+            onClick={() => navigate(`/profile/${userDetails.email}`)}>
             View Orders
           </button>
         </div>
