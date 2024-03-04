@@ -1,6 +1,6 @@
 import { Form, Formik } from 'formik';
-import { CustomInput } from '../../../../Components/Forms/Inputs/CustomInput';
-import { SubmitButton } from '../../../../Components/Forms/SubmitButton';
+import { CustomInput } from '../../../../Components/FormComponents/Inputs/CustomInput';
+import { SubmitButton } from '../../../../Components/FormComponents/SubmitButton';
 import * as Yup from 'yup';
 import { useState } from 'react';
 import { ErrorMessage } from '../../../../Components/ErrorMessage';

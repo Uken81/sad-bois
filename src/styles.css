@@ -3328,10 +3328,6 @@ details.collapse summary::-webkit-details-marker {
   height: 100vh;
 }
 
-.h-36 {
-  height: 9rem;
-}
-
 .max-h-96 {
   max-height: 24rem;
 }
@@ -3391,18 +3387,6 @@ details.collapse summary::-webkit-details-marker {
 
 .w-screen {
   width: 100vw;
-}
-
-.w-36 {
-  width: 9rem;
-}
-
-.w-24 {
-  width: 6rem;
-}
-
-.w-32 {
-  width: 8rem;
 }
 
 .max-w-lg {
@@ -3582,6 +3566,10 @@ details.collapse summary::-webkit-details-marker {
   border-right-width: 1px;
 }
 
+.border-r-2 {
+  border-right-width: 2px;
+}
+
 .border-none {
   border-style: none;
 }
@@ -3614,6 +3602,11 @@ details.collapse summary::-webkit-details-marker {
 .border-secondary {
   --tw-border-opacity: 1;
   border-color: var(--fallback-s,oklch(var(--s)/var(--tw-border-opacity)));
+}
+
+.border-white {
+  --tw-border-opacity: 1;
+  border-color: rgb(255 255 255 / var(--tw-border-opacity));
 }
 
 .bg-accent {
@@ -3666,11 +3659,6 @@ details.collapse summary::-webkit-details-marker {
   background-color: rgb(254 252 232 / var(--tw-bg-opacity));
 }
 
-.bg-red-300 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(252 165 165 / var(--tw-bg-opacity));
-}
-
 .bg-banner {
   background-image: url("/Assets/Banners/banner1.png");
 }
@@ -3680,7 +3668,7 @@ details.collapse summary::-webkit-details-marker {
 }
 
 .bg-stadium {
-  background-image: url("/Assets/Banners/stadium2.jpeg");
+  background-image: url("/Assets/Banners/stadium.jpeg");
 }
 
 .from-black {
@@ -3714,11 +3702,6 @@ details.collapse summary::-webkit-details-marker {
      object-fit: contain;
 }
 
-.object-cover {
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-
 .p-0 {
   padding: 0px;
 }
@@ -3741,10 +3724,6 @@ details.collapse summary::-webkit-details-marker {
 
 .p-6 {
   padding: 1.5rem;
-}
-
-.p-24 {
-  padding: 6rem;
 }
 
 .px-1 {
@@ -3784,6 +3763,14 @@ details.collapse summary::-webkit-details-marker {
 
 .pl-1 {
   padding-left: 0.25rem;
+}
+
+.pl-2 {
+  padding-left: 0.5rem;
+}
+
+.pr-2 {
+  padding-right: 0.5rem;
 }
 
 .pr-4 {
@@ -3979,16 +3966,6 @@ details.collapse summary::-webkit-details-marker {
 .shadow-slate-200 {
   --tw-shadow-color: #e2e8f0;
   --tw-shadow: var(--tw-shadow-colored);
-}
-
-.brightness-0 {
-  --tw-brightness: brightness(0);
-  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
-}
-
-.invert {
-  --tw-invert: invert(100%);
-  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
 .filter {
@@ -4657,5 +4634,12 @@ a {
   .xl\:px-14 {
     padding-left: 3.5rem;
     padding-right: 3.5rem;
+  }
+}
+
+@media (min-width: 1536px) {
+  .\32xl\:mx-48 {
+    margin-left: 12rem;
+    margin-right: 12rem;
   }
 }

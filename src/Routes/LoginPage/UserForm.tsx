@@ -1,5 +1,5 @@
 import { useLocation } from 'react-router-dom';
-import { SubmitButton } from '../../Components/Forms/SubmitButton';
+import { SubmitButton } from '../../Components/FormComponents/SubmitButton';
 import { Form, FormikProps } from 'formik';
 import { ReactNode } from 'react';
 import { capitaliseWords } from '../../Utils/capitaliseWords';

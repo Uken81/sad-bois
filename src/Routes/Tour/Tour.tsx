@@ -6,7 +6,7 @@ import { NoData } from '../../Components/NoData';
 export const Tour: React.FC<{ latest?: TourType[] }> = ({ latest }) => {
   const loaderData = useLoaderData() as TourType[];
   const shows = latest || loaderData;
-  const variableHeight = latest ? 'h-screen' : null;
+  const variableHeight = latest ? null : 'h-screen';
 
   return (
     <>

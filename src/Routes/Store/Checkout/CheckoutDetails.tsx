@@ -1,6 +1,6 @@
 import { Formik, Form } from 'formik';
-import { CustomInput } from '../../../Components/Forms/Inputs/CustomInput';
-import { SubmitButton } from '../../../Components/Forms/SubmitButton';
+import { CustomInput } from '../../../Components/FormComponents/Inputs/CustomInput';
+import { SubmitButton } from '../../../Components/FormComponents/SubmitButton';
 import { useNavigate, useOutletContext } from 'react-router';
 import { useEffect } from 'react';
 import { CustomerContextType } from '../../RouteWrappers/checkoutWrapper';

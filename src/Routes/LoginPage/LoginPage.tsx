@@ -1,7 +1,7 @@
 import { useNavigate, useOutletContext, useParams } from 'react-router';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
-import { CustomInput } from '../../Components/Forms/Inputs/CustomInput';
+import { CustomInput } from '../../Components/FormComponents/Inputs/CustomInput';
 import { useState } from 'react';
 import { UserContextType, UserType } from '../RouteWrappers/rootWrapper';
 import { ErrorMessage } from '../../Components/ErrorMessage';

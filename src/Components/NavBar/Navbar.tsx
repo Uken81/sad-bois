@@ -46,9 +46,6 @@ export const Navbar: React.FC<{
           setShowModal={setShowModal}
         />
         <div className="divider" />
-        {/* <div className="p-10">
-          <img src="../public/Assets/logo1.png" />
-        </div> */}
       </SideDrawer>
     </div>
   );
