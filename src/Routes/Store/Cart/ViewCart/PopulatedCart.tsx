@@ -1,14 +1,14 @@
 import { useNavigate } from 'react-router';
-import { CartType } from '../../../../RouteWrappers/rootWrapper';
-import { ProceedToCheckout } from '../ProceedToCheckout/ProceedToCheckout';
-import { Subtotal } from '../Subtotal';
-import { ItemOrderSummary } from './ItemOrderSummary';
+import { CartType } from '../../../RouteWrappers/rootWrapper';
+import { ProceedToCheckout } from './ProceedToCheckout/ProceedToCheckout';
+import { Subtotal } from './Subtotal';
+import { OrderItemsSummary } from './OrderItemsSummary/OrderItemsSummary';
 
 export const PopulatedCart: React.FC<{ cart: CartType | null }> = ({ cart }) => {
   const navigate = useNavigate();
   return (
     <main className="flex flex-col items-center">
-      <ItemOrderSummary cart={cart} />
+      <OrderItemsSummary cart={cart} />
       <div className="text-center">
         <Subtotal subtotal={cart?.subtotal} />
         <p>Taxes and shipping calculated at checkout</p>

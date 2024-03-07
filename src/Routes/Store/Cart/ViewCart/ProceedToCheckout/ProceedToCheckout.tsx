@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { TermsCheckout } from './TermsCheckbox';
-import { TermsModal } from '../TermsModal';
+import { TermsModal } from '../CartModals/TermsModal';
 
 export const ProceedToCheckout: React.FC = () => {
   const [hasAgreed, setHasAgreed] = useState(false);

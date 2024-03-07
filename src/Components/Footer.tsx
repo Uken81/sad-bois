@@ -3,7 +3,7 @@ import { CgCopyright } from 'react-icons/cg';
 
 export const Footer: React.FC = () => {
   return (
-    <section className="mt-5">
+    <footer className="mt-auto">
       <ul className="flex flex-row items-center justify-center bg-secondary text-sm text-white ">
         <li className="py-2 text-sm">
           <HomeLink textSize="sm" />
@@ -19,6 +19,6 @@ export const Footer: React.FC = () => {
           <span className="pl-2">All rights reserved</span>
         </li>
       </ul>
-    </section>
+    </footer>
   );
 };

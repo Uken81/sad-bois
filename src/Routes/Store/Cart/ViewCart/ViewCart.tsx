@@ -2,10 +2,10 @@ import { useEffect } from 'react';
 import { useOutletContext } from 'react-router';
 import { useGetCart } from '../../../../Hooks/useGetCart';
 import { CartContextType } from '../../../RouteWrappers/rootWrapper';
-import { PopulatedCart } from './ItemOrderSummary/PopulatedCart';
-import { EmptyCart } from './ItemOrderSummary/EmptyCart';
+import { PopulatedCart } from './PopulatedCart';
+import { EmptyCart } from './EmptyCart';
 
-export const Cart = () => {
+export const ViewCart: React.FC = () => {
   const { cart, setCart } = useOutletContext() as CartContextType;
   const getCart = useGetCart();
 

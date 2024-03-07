@@ -2,7 +2,7 @@ import { CartType } from '../../../../RouteWrappers/rootWrapper';
 import { PriceDetails } from './PriceDetails';
 import { RemoveItem } from './RemoveItem';
 
-export const ItemOrderSummary: React.FC<{ cart: CartType | null }> = ({ cart }) => {
+export const OrderItemsSummary: React.FC<{ cart: CartType | null }> = ({ cart }) => {
   return (
     <>
       {cart?.items?.map((item) => {

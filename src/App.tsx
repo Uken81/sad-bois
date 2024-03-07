@@ -17,7 +17,6 @@ import { productLoader } from './DataLoaders/productLoader';
 import { AddToCart } from './Routes/Store/Cart/AddToCart/AddToCart';
 import { tourLoader } from './DataLoaders/tourLoader';
 import { homepageLoader } from './DataLoaders/homepageLoaders';
-import { Cart } from './Routes/Store/Cart/ViewCart/Cart';
 import { CheckoutDetails } from './Routes/Store/Checkout/CheckoutDetails';
 import { Shipping } from './Routes/Store/Checkout/Shipping/Shipping';
 import { Payment } from './Routes/Store/Checkout/Payment/Payment';
@@ -30,6 +29,7 @@ import { LoginPage } from './Routes/LoginPage/LoginPage';
 import { Store } from './Routes/Store/Store';
 import { StoreWrapper } from './Routes/RouteWrappers/storeWrapper';
 import { PrivateRoute } from './Routes/RouteWrappers/privateRoute';
+import { ViewCart } from './Routes/Store/Cart/ViewCart/ViewCart';
 
 function App() {
   const router = createBrowserRouter(
@@ -44,7 +44,7 @@ function App() {
         <Route path="store/:category?" element={<StoreWrapper />}>
           <Route index element={<Store />} loader={productsLoader} />
           <Route path="add-to-cart/:id" element={<AddToCart />} loader={productLoader} />
-          <Route path="view-cart" element={<Cart />} />
+          <Route path="view-cart" element={<ViewCart />} />
           <Route path="checkout" element={<CheckoutWrapper />}>
             <Route path="details" element={<CheckoutDetails />} />
             <Route path="shipping" element={<Shipping />} />

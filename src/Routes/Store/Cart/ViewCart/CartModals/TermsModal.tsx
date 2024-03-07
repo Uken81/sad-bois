@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from 'react';
-import { Modal } from '../../../../Components/Modal';
+import { Modal } from '../../../../../Components/Modal';
 
 export const TermsModal: React.FC<{
   showModal: boolean;
