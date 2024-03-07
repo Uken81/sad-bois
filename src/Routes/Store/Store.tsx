@@ -30,7 +30,7 @@ export const Store: React.FC = () => {
       {regularProducts ? (
         <Products regularProducts={regularProducts} loadingCategory={loadingCategory} />
       ) : (
-        <NoData title="Server Error: Could Not Find Products" />
+        <NoData title="Could Not Find Products" />
       )}
     </main>
   );

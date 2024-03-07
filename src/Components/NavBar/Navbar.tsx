@@ -32,7 +32,7 @@ export const Navbar: React.FC<{
         checked={isDrawerOpen}
         onChange={toggleDrawer}
       />
-      <div className="drawer-content flex flex-col">
+      <div className="drawer-content flex min-h-screen flex-col">
         <Menu cart={cart}>
           <MenuItems userDetailsContext={userDetailsContext} setShowModal={setShowModal} />
         </Menu>

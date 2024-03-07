@@ -9,7 +9,7 @@ export const ProfilePage: React.FC = () => {
   const { email, username } = userDetails as UserType;
 
   return (
-    <main className="h-screen">
+    <main>
       <div className="bg-accent p-4">
         <h1 className="text-h1 font-h1">{username}</h1>
         <h3 className="text-h3 font-h3">{email}</h3>
