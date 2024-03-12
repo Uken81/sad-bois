@@ -20,24 +20,22 @@ export const ArticleSummaries: React.FC<{ articles: Article[]; isLatest: boolean
         return (
           <div
             key={id}
-            className="flex w-72 flex-col space-y-10 align-middle hover:cursor-pointer"
+            className="flex w-72 flex-col space-y-8 align-middle hover:cursor-pointer"
             onClick={() => navigate(`/news/article/${id}`)}>
             <figure>
-              <img
-                src={`/Assets/News/${img}.png`}
-                className="mt-2 max-h-72  w-full  "
-                alt={title}
-              />
+              <img src={`/Assets/News/${img}.png`} className="mt-2 max-h-72  w-full" alt={title} />
             </figure>
             <div className="">
-              <div className="h-36">
+              <div className="h-24 md:h-32">
                 <div className="flex items-center">
                   <span className="mr-2 font-bold">{dateHeading}:</span>
                   <span className="">{formattedDate}</span>
                 </div>
-                <h3 className="card-title text-primary">{capitaliseWords(title)}</h3>
+                <h3 className="card-title text-base text-primary lg:text-xl lg:leading-7">
+                  {capitaliseWords(title)}
+                </h3>
               </div>
-              <div className="mt-auto">
+              <div className="mt-auto hidden md:block">
                 <ArticleLink id={id} />
               </div>
             </div>

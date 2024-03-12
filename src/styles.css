@@ -3380,6 +3380,10 @@ details.collapse summary::-webkit-details-marker {
   max-height: 24rem;
 }
 
+.max-h-64 {
+  max-height: 16rem;
+}
+
 .min-h-full {
   min-height: 100%;
 }
@@ -3439,6 +3443,10 @@ details.collapse summary::-webkit-details-marker {
 
 .w-screen {
   width: 100vw;
+}
+
+.w-64 {
+  width: 16rem;
 }
 
 .max-w-lg {
@@ -3537,6 +3545,12 @@ details.collapse summary::-webkit-details-marker {
   --tw-space-y-reverse: 0;
   margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
+}
+
+.space-y-8 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(2rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(2rem * var(--tw-space-y-reverse));
 }
 
 .divide-y > :not([hidden]) ~ :not([hidden]) {
@@ -3706,6 +3720,11 @@ details.collapse summary::-webkit-details-marker {
 .bg-yellow-50 {
   --tw-bg-opacity: 1;
   background-color: rgb(254 252 232 / var(--tw-bg-opacity));
+}
+
+.bg-red-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(252 165 165 / var(--tw-bg-opacity));
 }
 
 .bg-opacity-0 {
@@ -3881,6 +3900,11 @@ details.collapse summary::-webkit-details-marker {
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
+}
+
+.text-base {
+  font-size: 1rem;
+  line-height: 1.5rem;
 }
 
 .font-bold {
@@ -4389,6 +4413,11 @@ a {
   background-color: rgb(234 179 8 / var(--tw-bg-opacity));
 }
 
+.hover\:bg-primary:hover {
+  --tw-bg-opacity: 1;
+  background-color: var(--fallback-p,oklch(var(--p)/var(--tw-bg-opacity)));
+}
+
 .hover\:text-accent:hover {
   --tw-text-opacity: 1;
   color: var(--fallback-a,oklch(var(--a)/var(--tw-text-opacity)));
@@ -4416,6 +4445,16 @@ a {
 @media (min-width: 640px) {
   .sm\:hidden {
     display: none;
+  }
+
+  .sm\:text-sm {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+
+  .sm\:text-base {
+    font-size: 1rem;
+    line-height: 1.5rem;
   }
 }
 
@@ -4483,6 +4522,14 @@ a {
     height: 24rem;
   }
 
+  .md\:h-32 {
+    height: 8rem;
+  }
+
+  .md\:max-h-72 {
+    max-height: 18rem;
+  }
+
   .md\:w-1\/2 {
     width: 50%;
   }
@@ -4497,6 +4544,10 @@ a {
 
   .md\:w-96 {
     width: 24rem;
+  }
+
+  .md\:w-72 {
+    width: 18rem;
   }
 
   .md\:grid-cols-2 {
@@ -4525,6 +4576,10 @@ a {
 
   .md\:gap-6 {
     gap: 1.5rem;
+  }
+
+  .md\:gap-8 {
+    gap: 2rem;
   }
 
   .md\:space-y-10 > :not([hidden]) ~ :not([hidden]) {
@@ -4606,12 +4661,22 @@ a {
     width: 66.666667%;
   }
 
+  .lg\:w-72 {
+    width: 18rem;
+  }
+
   .lg\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .lg\:gap-10 {
     gap: 2.5rem;
+  }
+
+  .lg\:space-y-10 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-y-reverse: 0;
+    margin-top: calc(2.5rem * calc(1 - var(--tw-space-y-reverse)));
+    margin-bottom: calc(2.5rem * var(--tw-space-y-reverse));
   }
 
   .lg\:bg-contain {
@@ -4631,6 +4696,15 @@ a {
   .lg\:text-4xl {
     font-size: 2.25rem;
     line-height: 2.5rem;
+  }
+
+  .lg\:text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+
+  .lg\:leading-7 {
+    line-height: 1.75rem;
   }
 }
 
@@ -4665,6 +4739,11 @@ a {
     margin-right: 24rem;
   }
 
+  .xl\:mx-48 {
+    margin-left: 12rem;
+    margin-right: 12rem;
+  }
+
   .xl\:mr-36 {
     margin-right: 9rem;
   }
@@ -4687,5 +4766,10 @@ a {
   .\32xl\:mx-48 {
     margin-left: 12rem;
     margin-right: 12rem;
+  }
+
+  .\32xl\:mx-56 {
+    margin-left: 14rem;
+    margin-right: 14rem;
   }
 }

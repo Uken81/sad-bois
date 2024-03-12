@@ -8,17 +8,13 @@ export const NewsPage: React.FC<{ latest?: Article[] }> = ({ latest }) => {
   const isLatest = latest ? true : false;
   const articles = latest || loaderData;
 
-  return (
-    <>
-      {articles ? (
-        <main className="md:gap-18 mx-auto my-10 grid grid-cols-1 justify-items-center gap-6 md:grid-cols-3 xl:mx-56">
-          <ArticleSummaries articles={articles} isLatest={isLatest} />
-        </main>
-      ) : (
-        <main>
-          <NoData title="No News Articles Found" />
-        </main>
-      )}
-    </>
+  return articles ? (
+    <main className="my-10 grid grid-cols-1 justify-items-center gap-6 md:grid-cols-3 md:gap-8 xl:mx-48 2xl:mx-56">
+      <ArticleSummaries articles={articles} isLatest={isLatest} />
+    </main>
+  ) : (
+    <main>
+      <NoData title="No News Articles Found" />
+    </main>
   );
 };
