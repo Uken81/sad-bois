@@ -20,10 +20,10 @@ export const ArticleSummaries: React.FC<{ articles: Article[]; isLatest: boolean
         return (
           <div
             key={id}
-            className="flex w-72 flex-col space-y-8 align-middle hover:cursor-pointer"
+            className="flex w-60 flex-col space-y-8 align-middle hover:cursor-pointer md:w-72"
             onClick={() => navigate(`/news/article/${id}`)}>
             <figure>
-              <img src={`/Assets/News/${img}.png`} className="mt-2 max-h-72  w-full" alt={title} />
+              <img src={`/Assets/News/${img}.png`} className="mt-2 max-h-72  w-full" />
             </figure>
             <div className="">
               <div className="h-24 md:h-32">
