@@ -11,7 +11,5 @@ export const useGetCustomer = () => {
       const parsedCustomer = JSON.parse(sessionCustomer);
       return parsedCustomer;
     }
-
-    console.log('Session customer is undefined.');
   };
 };

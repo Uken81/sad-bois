@@ -1,10 +1,10 @@
-import { LoaderFunctionArgs } from 'react-router';
 import { cameliseOrdersData } from './DataLoaderUtils/cameliseOrdersData';
 import { serverUrl } from '../Server/serverUrl';
 import { throwDataError } from '../Utils/throwDataError';
 
 export interface OrderType {
   orderId: string;
+  customerId: string;
   customerEmail: string;
   shippingDetails: string;
   orderedProducts: string;
@@ -13,14 +13,13 @@ export interface OrderType {
   totalCost: string;
 }
 
-export const ordersLoader = async (loader: LoaderFunctionArgs): Promise<OrderType[] | null> => {
+export const ordersLoader = async (): Promise<OrderType[] | null> => {
   try {
-    const email = loader.params.email;
-    if (!email) {
-      throw new Error('Missing required param: email');
-    }
-
-    const response = await fetch(`${serverUrl}/orders?email=${email}`);
+    const requestOptions: RequestInit = {
+      method: 'GET',
+      credentials: 'include'
+    };
+    const response = await fetch(`${serverUrl}/orders`, requestOptions);
 
     if (!response.ok) {
       await throwDataError(response);

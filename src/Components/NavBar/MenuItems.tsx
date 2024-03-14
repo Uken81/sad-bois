@@ -50,11 +50,11 @@ export const MenuItems: React.FC<{
           </div>
         );
       })}
-      <div className="" onClick={toggleDrawer}>
+      <div onClick={toggleDrawer}>
         {userDetails ? (
           <>
             <div className="mb-2 border-l-2 border-secondary pl-1 duration-500 hover:border-accent lg:hidden">
-              <Profile email={userDetails.email} />
+              <Profile />
             </div>
             <div className="border-l-2 border-secondary pl-1 duration-500 hover:border-accent lg:hidden">
               <Logout setUserDetails={setUserDetails} setShowModal={setShowModal} />
