@@ -30,6 +30,9 @@ import { Store } from './Routes/Store/Store';
 import { StoreWrapper } from './Routes/RouteWrappers/storeWrapper';
 import { PrivateRoute } from './Routes/RouteWrappers/privateRoute';
 import { ViewCart } from './Routes/Store/Cart/ViewCart/ViewCart';
+import { TicketQuantity } from './Routes/Tour/Tickets/TicketQuantity/TicketQuantity';
+import { TourWrapper } from './Routes/RouteWrappers/TourWrapper';
+import { showLoader } from './DataLoaders/showLoader';
 
 function App() {
   const router = createBrowserRouter(
@@ -40,7 +43,10 @@ function App() {
           <Route index element={<NewsPage />} loader={newsLoader} />
           <Route path="article/:id" element={<NewsArticle />} loader={articleLoader} />
         </Route>
-        <Route path="tour" element={<Tour />} loader={tourLoader} />
+        <Route path="tour" element={<TourWrapper />}>
+          <Route index element={<Tour />} loader={tourLoader} />
+          <Route path="ticket-quantity/:id" element={<TicketQuantity />} loader={showLoader} />
+        </Route>
         <Route path="store/:category?" element={<StoreWrapper />}>
           <Route index element={<Store />} loader={productsLoader} />
           <Route path="add-to-cart/:id" element={<AddToCart />} loader={productLoader} />

@@ -1,7 +1,10 @@
 import { format } from 'date-fns';
-import { TourType } from '../../../DataLoaders/tourLoader';
+import { useNavigate } from 'react-router';
+import { TourType } from '../../RouteWrappers/TourWrapper';
 
 export const TableData: React.FC<{ shows: TourType[] }> = ({ shows }) => {
+  const navigate = useNavigate();
+
   return (
     <>
       {shows.map((show) => {
@@ -16,7 +19,11 @@ export const TableData: React.FC<{ shows: TourType[] }> = ({ shows }) => {
             <td
               className="cursor-pointer px-2 py-2 text-yellow-500 underline duration-500 hover:bg-yellow-500 hover:text-black md:text-lg"
               onClick={() => console.log('test')}>
-              <div className="border-black hover:md:border-l-2">{ticketStatus}</div>
+              <div
+                className="border-black hover:md:border-l-2"
+                onClick={() => navigate(`/tour/ticket-quantity/${id}`)}>
+                {ticketStatus}
+              </div>
             </td>
           </tr>
         );

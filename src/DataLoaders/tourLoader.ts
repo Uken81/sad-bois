@@ -1,14 +1,7 @@
+import { TourType } from '../Routes/RouteWrappers/TourWrapper';
 import { serverUrl } from '../Server/serverUrl';
 import { throwDataError } from '../Utils/throwDataError';
 import { cameliseTourData } from './DataLoaderUtils/cameliseTourData';
-
-export interface TourType {
-  id: string;
-  date: Date;
-  location: string;
-  venue: string;
-  ticketStatus: 'pending' | 'on sale' | 'postponed' | 'sold-out';
-}
 
 export const tourLoader = async (): Promise<TourType[] | null | undefined> => {
   try {
