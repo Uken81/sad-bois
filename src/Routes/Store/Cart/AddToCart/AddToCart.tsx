@@ -4,68 +4,29 @@ import { SizeSelectors } from './SizeSelectors';
 import { Quantity } from './Quantity';
 import { useEffectAfterMount } from '../../../../Hooks/useEffectAfterMount';
 import { ProductType } from '../../../../DataLoaders/productsLoader';
-import shortid from 'shortid';
 import { ShareButton } from '../../../../Components/Share/ShareButton';
 import { CartContextType } from '../../../RouteWrappers/rootWrapper';
 import { ShareOptions } from '../../../../Components/Share/ShareOptions';
 import { AddButton } from './AddButton';
 import { updateSessionStorage } from '../../../../Utils/saveOrUpdateSessionStorage';
-
-export interface ProductOrder {
-  orderId: string;
-  productId: string;
-  name: string;
-  img: string;
-  size?: string | null;
-  price: number;
-  quantity: number;
-  cost: number;
-}
+import { useAddStoreItem } from '../../../../Hooks/useAddStoreItem';
 
 export const AddToCart: React.FC = () => {
-  const loaderData = useLoaderData() as ProductType;
-  const { id, img, title, subtitle, price, category } = loaderData;
-  const { cart, setCart } = useOutletContext() as CartContextType;
+  const product = useLoaderData() as ProductType;
+  const { img, title, subtitle, price, category } = product;
+  const { cart } = useOutletContext() as CartContextType;
+  const addProduct = useAddStoreItem();
   const [size, setSize] = useState<string | null>(category === 'clothing' ? 'l' : null);
   const [quantity, setQuantity] = useState(1);
   const [isAdded, setIsAdded] = useState<boolean>(false);
 
-  const addProduct = async () => {
-    const orderId = shortid.generate();
-    const productOrder: ProductOrder = {
-      orderId,
-      productId: id,
-      name: subtitle,
-      img,
-      size,
-      quantity,
-      price,
-      cost: price * quantity
-    };
-
-    setCart((prevCart) => {
-      if (!prevCart) {
-        return {
-          items: [productOrder],
-          subtotal: price * quantity
-        };
-      }
-
-      const recalculatedSubtotal = prevCart.subtotal
-        ? prevCart.subtotal + price * quantity
-        : price * quantity;
-      return {
-        items: [...prevCart.items, productOrder],
-        subtotal: recalculatedSubtotal
-      };
-    });
-  };
-
   const handleSubmit = () => {
     setIsAdded(true);
-    addProduct();
+    addProduct(product, quantity, size);
   };
 
+  //do i need this? if so can i move it to next screen??
+  //Also rename file name to match function name.
   useEffectAfterMount(() => {
     if (cart) {
       updateSessionStorage('cart', cart);
@@ -77,6 +38,7 @@ export const AddToCart: React.FC = () => {
       <div className="flex h-full w-1/2 justify-center">
         <img src={`/Assets/Products/${img}.png`} className="h-48 md:h-96" />
       </div>
+      {/*this can possibly be shared with AddTicketToCart*/}
       <div className="align-middle md:flex md:w-1/2 md:flex-col md:space-y-10">
         <div className="text-center md:space-y-2">
           <h1 className="h1-font md:text-5xl">{title}</h1>

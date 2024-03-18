@@ -1,4 +1,5 @@
-import { Outlet } from 'react-router';
+import { Outlet, useOutletContext } from 'react-router';
+import { CartContextType } from './rootWrapper';
 
 export interface TourType {
   id: string;
@@ -9,5 +10,7 @@ export interface TourType {
 }
 
 export const TourWrapper: React.FC = () => {
-  return <Outlet />;
+  const { cart, setCart } = useOutletContext() as CartContextType;
+
+  return <Outlet context={{ cart, setCart }} />;
 };

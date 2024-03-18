@@ -22,8 +22,7 @@ export const OrderSummary: React.FC<{ selectedShipping: ShippingOptionsType }> =
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  //Todo: Not working as intended, review
-  if (!cart || cart.items.length === 0) {
+  if (!cart || !cart.items.length) {
     return (
       <div className="h-28 font-mono font-bold">
         <p>Cart is empty.</p>

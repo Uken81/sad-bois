@@ -30,7 +30,7 @@ import { Store } from './Routes/Store/Store';
 import { StoreWrapper } from './Routes/RouteWrappers/storeWrapper';
 import { PrivateRoute } from './Routes/RouteWrappers/privateRoute';
 import { ViewCart } from './Routes/Store/Cart/ViewCart/ViewCart';
-import { TicketQuantity } from './Routes/Tour/Tickets/TicketQuantity/TicketQuantity';
+import { AddTicketToCart } from './Routes/Tour/Tickets/TicketQuantity/AddTicketToCart';
 import { TourWrapper } from './Routes/RouteWrappers/TourWrapper';
 import { showLoader } from './DataLoaders/showLoader';
 
@@ -45,7 +45,7 @@ function App() {
         </Route>
         <Route path="tour" element={<TourWrapper />}>
           <Route index element={<Tour />} loader={tourLoader} />
-          <Route path="ticket-quantity/:id" element={<TicketQuantity />} loader={showLoader} />
+          <Route path="ticket-quantity/:id" element={<AddTicketToCart />} loader={showLoader} />
         </Route>
         <Route path="store/:category?" element={<StoreWrapper />}>
           <Route index element={<Store />} loader={productsLoader} />
