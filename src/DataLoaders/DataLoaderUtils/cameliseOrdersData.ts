@@ -6,6 +6,7 @@ export const cameliseOrdersData = async (orders: OrderType[]) => {
   const ordersTypeSchema = yup.array().of(
     yup.object({
       orderId: yup.string().required(),
+      customerId: yup.string().required(),
       customerEmail: yup.string().required(),
       shippingDetails: yup.string().required(),
       orderedProducts: yup.string().required(),
@@ -25,6 +26,7 @@ export const cameliseOrdersData = async (orders: OrderType[]) => {
 
     const newArray: OrderType[] = validatedData.map((item: OrderType) => ({
       orderId: item.orderId,
+      customerId: item.customerId,
       customerEmail: item.customerEmail,
       shippingDetails: item.shippingDetails,
       orderedProducts: item.orderedProducts,
