@@ -4,6 +4,7 @@ import shortid from 'shortid';
 import { ProductType } from '../DataLoaders/productsLoader';
 import { TourType } from '../Routes/RouteWrappers/TourWrapper';
 import { useEffect } from 'react';
+import { ItemOrderData } from '../Components/AddToCart/AddButton';
 
 export interface ProductOrder {
   orderId: string;
@@ -27,12 +28,12 @@ export const useAddStoreItem = () => {
     return (item as ProductType).category !== undefined;
   }
 
-  // Type guard function for TourType
   function isTourType(item: ProductType | TourType): item is TourType {
     return (item as TourType).venue !== undefined;
   }
 
-  const addItem = (item: ProductType | TourType, quantity: number, size?: string | null) => {
+  const addItem = (itemOrderData: ItemOrderData) => {
+    const { item, quantity, size } = itemOrderData;
     const orderId = shortid.generate();
     let productOrder: ProductOrder;
     if (isProductType(item)) {
@@ -52,11 +53,11 @@ export const useAddStoreItem = () => {
     } else if (isTourType(item)) {
       console.log('isShow');
       const { id, date, venue } = item;
-      //Todo: Add price to db!!, Add error if status is not on sale??
+      //Todo: Add price to db!!, Add error if status is not 'on sale'??
       const price = 119.99;
       productOrder = {
         orderId,
-        //Todo: create product id for all tickets in one
+        //Todo: create product id for all tickets in one product in db.
         productId: id,
         name: `${venue} | ${date}`,
         img: 'merch3',

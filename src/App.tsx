@@ -14,7 +14,6 @@ import { newsLoader } from './DataLoaders/newsLoader';
 import { NewsArticle } from './Routes/News/NewsArticle/NewsArticle';
 import { articleLoader } from './DataLoaders/articleLoader';
 import { productLoader } from './DataLoaders/productLoader';
-import { AddToCart } from './Routes/Store/Cart/AddToCart/AddToCart';
 import { tourLoader } from './DataLoaders/tourLoader';
 import { homepageLoader } from './DataLoaders/homepageLoaders';
 import { CheckoutDetails } from './Routes/Store/Checkout/CheckoutDetails';
@@ -30,9 +29,10 @@ import { Store } from './Routes/Store/Store';
 import { StoreWrapper } from './Routes/RouteWrappers/storeWrapper';
 import { PrivateRoute } from './Routes/RouteWrappers/privateRoute';
 import { ViewCart } from './Routes/Store/Cart/ViewCart/ViewCart';
-import { AddTicketToCart } from './Routes/Tour/Tickets/TicketQuantity/AddTicketToCart';
+import { AddTicketToCart } from './Routes/Tour/Tickets/AddTicket/AddTicketToCart';
 import { TourWrapper } from './Routes/RouteWrappers/TourWrapper';
 import { showLoader } from './DataLoaders/showLoader';
+import { AddProductToCart } from './Routes/Store/Cart/AddProductToCart/AddProductToCart';
 
 function App() {
   const router = createBrowserRouter(
@@ -45,11 +45,11 @@ function App() {
         </Route>
         <Route path="tour" element={<TourWrapper />}>
           <Route index element={<Tour />} loader={tourLoader} />
-          <Route path="ticket-quantity/:id" element={<AddTicketToCart />} loader={showLoader} />
+          <Route path="add-ticket/:id" element={<AddTicketToCart />} loader={showLoader} />
         </Route>
         <Route path="store/:category?" element={<StoreWrapper />}>
           <Route index element={<Store />} loader={productsLoader} />
-          <Route path="add-to-cart/:id" element={<AddToCart />} loader={productLoader} />
+          <Route path="add-to-cart/:id" element={<AddProductToCart />} loader={productLoader} />
           <Route path="view-cart" element={<ViewCart />} />
           <Route path="checkout" element={<CheckoutWrapper />}>
             <Route path="details" element={<CheckoutDetails />} />

@@ -1,28 +1,26 @@
 import { useLoaderData, useOutletContext } from 'react-router';
 import { useState } from 'react';
 import { SizeSelectors } from './SizeSelectors';
-import { Quantity } from './Quantity';
+import { Quantity } from '../../../../Components/AddToCart/Quantity';
 import { useEffectAfterMount } from '../../../../Hooks/useEffectAfterMount';
 import { ProductType } from '../../../../DataLoaders/productsLoader';
 import { ShareButton } from '../../../../Components/Share/ShareButton';
 import { CartContextType } from '../../../RouteWrappers/rootWrapper';
 import { ShareOptions } from '../../../../Components/Share/ShareOptions';
-import { AddButton } from './AddButton';
+import { AddButton, ItemOrderData } from '../../../../Components/AddToCart/AddButton';
 import { updateSessionStorage } from '../../../../Utils/saveOrUpdateSessionStorage';
-import { useAddStoreItem } from '../../../../Hooks/useAddStoreItem';
 
-export const AddToCart: React.FC = () => {
+export const AddProductToCart: React.FC = () => {
   const product = useLoaderData() as ProductType;
   const { img, title, subtitle, price, category } = product;
   const { cart } = useOutletContext() as CartContextType;
-  const addProduct = useAddStoreItem();
   const [size, setSize] = useState<string | null>(category === 'clothing' ? 'l' : null);
   const [quantity, setQuantity] = useState(1);
-  const [isAdded, setIsAdded] = useState<boolean>(false);
 
-  const handleSubmit = () => {
-    setIsAdded(true);
-    addProduct(product, quantity, size);
+  const itemOrderData: ItemOrderData = {
+    item: product,
+    quantity,
+    size
   };
 
   //do i need this? if so can i move it to next screen??
@@ -49,9 +47,8 @@ export const AddToCart: React.FC = () => {
           <p className="text-secondary">Shipping calculated at checkout</p>
           <SizeSelectors size={size} setSize={setSize} />
           <Quantity quantity={quantity} setQuantity={setQuantity} />
-          <AddButton isAdded={isAdded} handleSubmit={handleSubmit} />
+          <AddButton itemOrderData={itemOrderData} />
         </div>
-        {isAdded ? <p className="mt-1 text-center font-mono">Item added to cart</p> : null}
         <div className="my-4 flex justify-center md:my-0">
           <div className="hidden md:flex">
             <ShareButton />

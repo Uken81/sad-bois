@@ -21,7 +21,7 @@ export const TableData: React.FC<{ shows: TourType[] }> = ({ shows }) => {
               onClick={() => console.log('test')}>
               <div
                 className="border-black hover:md:border-l-2"
-                onClick={() => navigate(`/tour/ticket-quantity/${id}`)}>
+                onClick={() => navigate(`/tour/add-ticket/${id}`)}>
                 {ticketStatus}
               </div>
             </td>
