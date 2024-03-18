@@ -7,7 +7,8 @@ export const TicketQuantity: React.FC = () => {
   const { date, location, venue, ticketStatus } = show;
   console.log('show', show);
 
-  if (['pending' || 'postponed' || 'sold-out'].includes(ticketStatus)) {
+  if (['pending', 'postponed', 'sold-out'].includes(ticketStatus)) {
+    console.log('test');
     return <UnavailableShow status={ticketStatus} />;
   }
 
