@@ -1,5 +1,5 @@
 import { useLoaderData } from 'react-router';
-import { UnavailableShow } from '../Unavalable show';
+import { UnavailableShow } from '../UnavailableShow';
 import { TourType } from '../../../RouteWrappers/TourWrapper';
 
 export const TicketQuantity: React.FC = () => {
