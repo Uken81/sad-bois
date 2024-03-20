@@ -3,6 +3,7 @@ import { useAddStoreItem } from '../../Hooks/useAddStoreItem';
 import { ProductType } from '../../DataLoaders/productsLoader';
 import { TourType } from '../../Routes/RouteWrappers/TourWrapper';
 import { useState } from 'react';
+import { FixedErrorMessage } from '../ErrorMessages/FixedErrorMessage';
 
 export interface ItemOrderData {
   item: ProductType | TourType;
@@ -43,24 +44,7 @@ export const AddToCart: React.FC<{ itemOrderData: ItemOrderData }> = ({ itemOrde
   return (
     <div>
       {isError ? (
-        <div role="alert" className="alert alert-error">
-          <div className="flex flex-row">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6 shrink-0 stroke-current"
-              fill="none"
-              viewBox="0 0 24 24">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
-              />
-            </svg>
-            <span>Error! Unable to add item</span>
-          </div>
-          <p>Please refresh page or contact support</p>
-        </div>
+        <FixedErrorMessage message="Error! Unable to add item" />
       ) : (
         <AddButton isAdded={isAdded} handleClick={handleClick} />
       )}
