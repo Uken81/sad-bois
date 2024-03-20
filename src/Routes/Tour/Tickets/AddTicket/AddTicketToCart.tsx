@@ -4,15 +4,14 @@ import { TourType } from '../../../RouteWrappers/TourWrapper';
 import { Quantity } from '../../../../Components/AddToCart/Quantity';
 import { useState } from 'react';
 import { AddButton, ItemOrderData } from '../../../../Components/AddToCart/AddButton';
+import { format } from 'date-fns';
 
 export const AddTicketToCart: React.FC = () => {
   const show = useLoaderData() as TourType;
-  const { venue, ticketStatus } = show;
+  const { location, date, venue, ticketStatus } = show;
   const [quantity, setQuantity] = useState(1);
-  console.log('show', show);
 
   if (['pending', 'postponed', 'sold-out'].includes(ticketStatus)) {
-    console.log('test');
     return <UnavailableShow status={ticketStatus} />;
   }
 
@@ -21,11 +20,22 @@ export const AddTicketToCart: React.FC = () => {
     quantity
   };
 
+  const formattedDate = format(new Date(date), 'dd/MM/yyyy');
+
   return (
-    <main>
-      <p>{venue} |</p>
-      <Quantity quantity={quantity} setQuantity={setQuantity} />
-      <AddButton itemOrderData={itemOrderData} />
+    <main className="flex flex-col items-center space-y-8 ">
+      <div className="mt-8 md:mt-24">
+        <h1 className="text-h1 font-h1">The Sad Bois</h1>
+        <h2 className="text-h2 font-h2">{venue}</h2>
+        <h3 className="text-h3 font-h3">
+          {location}, {formattedDate} 7:30pm
+        </h3>
+      </div>
+      <div className="flex w-screen flex-col items-center space-y-2">
+        <p>General Admission: $119.99</p>
+        <Quantity quantity={quantity} setQuantity={setQuantity} />
+        <AddButton itemOrderData={itemOrderData} />
+      </div>
     </main>
   );
 };

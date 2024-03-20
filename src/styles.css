@@ -3486,6 +3486,10 @@ details.collapse summary::-webkit-details-marker {
   place-items: center;
 }
 
+.content-center {
+  align-content: center;
+}
+
 .items-center {
   align-items: center;
 }
@@ -3542,6 +3546,12 @@ details.collapse summary::-webkit-details-marker {
   --tw-space-y-reverse: 0;
   margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
+}
+
+.space-y-8 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(2rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(2rem * var(--tw-space-y-reverse));
 }
 
 .divide-y > :not([hidden]) ~ :not([hidden]) {
@@ -4477,6 +4487,10 @@ a {
     margin-top: 5rem;
   }
 
+  .md\:mt-24 {
+    margin-top: 6rem;
+  }
+
   .md\:block {
     display: block;
   }
@@ -4507,6 +4521,18 @@ a {
 
   .md\:w-96 {
     width: 24rem;
+  }
+
+  .md\:w-full {
+    width: 100%;
+  }
+
+  .md\:w-0 {
+    width: 0px;
+  }
+
+  .md\:w-24 {
+    width: 6rem;
   }
 
   .md\:grid-cols-2 {

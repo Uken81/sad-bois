@@ -3,12 +3,12 @@ import { CartContextType } from '../Routes/RouteWrappers/rootWrapper';
 import shortid from 'shortid';
 import { ProductType } from '../DataLoaders/productsLoader';
 import { TourType } from '../Routes/RouteWrappers/TourWrapper';
-import { useEffect } from 'react';
 import { ItemOrderData } from '../Components/AddToCart/AddButton';
+import { format } from 'date-fns';
 
 export interface ProductOrder {
   orderId: string;
-  productId: string | null;
+  productId: string | null | number;
   name: string;
   img: string;
   size?: string | null;
@@ -18,11 +18,7 @@ export interface ProductOrder {
 }
 
 export const useAddStoreItem = () => {
-  const { cart, setCart } = useOutletContext() as CartContextType;
-  //Todo: delete effect
-  useEffect(() => {
-    console.log('Cart', cart);
-  }, [cart]);
+  const { setCart } = useOutletContext() as CartContextType;
 
   function isProductType(item: ProductType | TourType): item is ProductType {
     return (item as ProductType).category !== undefined;
@@ -37,7 +33,6 @@ export const useAddStoreItem = () => {
     const orderId = shortid.generate();
     let productOrder: ProductOrder;
     if (isProductType(item)) {
-      console.log('isProduct');
       const { id, img, subtitle, price } = item;
 
       productOrder = {
@@ -51,16 +46,14 @@ export const useAddStoreItem = () => {
         cost: price * quantity
       };
     } else if (isTourType(item)) {
-      console.log('isShow');
-      const { id, date, venue } = item;
-      //Todo: Add price to db!!, Add error if status is not 'on sale'??
+      const { date, venue } = item;
+      const formattedDate = format(new Date(date), 'dd/MM/yyyy');
       const price = 119.99;
       productOrder = {
         orderId,
-        //Todo: create product id for all tickets in one product in db.
-        productId: id,
-        name: `${venue} | ${date}`,
-        img: 'merch3',
+        productId: 1,
+        name: `${venue} | ${formattedDate}`,
+        img: 'merch14',
         quantity,
         price,
         cost: price * quantity
