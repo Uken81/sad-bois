@@ -1,71 +1,30 @@
 import { useLoaderData, useOutletContext } from 'react-router';
 import { useState } from 'react';
 import { SizeSelectors } from './SizeSelectors';
-import { Quantity } from './Quantity';
+import { Quantity } from '../../../../Components/AddToCart/Quantity';
 import { useEffectAfterMount } from '../../../../Hooks/useEffectAfterMount';
 import { ProductType } from '../../../../DataLoaders/productsLoader';
-import shortid from 'shortid';
 import { ShareButton } from '../../../../Components/Share/ShareButton';
 import { CartContextType } from '../../../RouteWrappers/rootWrapper';
 import { ShareOptions } from '../../../../Components/Share/ShareOptions';
-import { AddButton } from './AddButton';
+import { AddToCart, ItemOrderData } from '../../../../Components/AddToCart/AddToCart';
 import { updateSessionStorage } from '../../../../Utils/saveOrUpdateSessionStorage';
 
-export interface ProductOrder {
-  orderId: string;
-  productId: string;
-  name: string;
-  img: string;
-  size?: string | null;
-  price: number;
-  quantity: number;
-  cost: number;
-}
-
-export const AddToCart: React.FC = () => {
-  const loaderData = useLoaderData() as ProductType;
-  const { id, img, title, subtitle, price, category } = loaderData;
-  const { cart, setCart } = useOutletContext() as CartContextType;
+export const AddProductToCart: React.FC = () => {
+  const product = useLoaderData() as ProductType;
+  const { img, title, subtitle, price, category } = product;
+  const { cart } = useOutletContext() as CartContextType;
   const [size, setSize] = useState<string | null>(category === 'clothing' ? 'l' : null);
   const [quantity, setQuantity] = useState(1);
-  const [isAdded, setIsAdded] = useState<boolean>(false);
 
-  const addProduct = async () => {
-    const orderId = shortid.generate();
-    const productOrder: ProductOrder = {
-      orderId,
-      productId: id,
-      name: subtitle,
-      img,
-      size,
-      quantity,
-      price,
-      cost: price * quantity
-    };
-
-    setCart((prevCart) => {
-      if (!prevCart) {
-        return {
-          items: [productOrder],
-          subtotal: price * quantity
-        };
-      }
-
-      const recalculatedSubtotal = prevCart.subtotal
-        ? prevCart.subtotal + price * quantity
-        : price * quantity;
-      return {
-        items: [...prevCart.items, productOrder],
-        subtotal: recalculatedSubtotal
-      };
-    });
+  const itemOrderData: ItemOrderData = {
+    item: product,
+    quantity,
+    size
   };
 
-  const handleSubmit = () => {
-    setIsAdded(true);
-    addProduct();
-  };
-
+  //do i need this? if so can i move it to next screen??
+  //Also rename file name to match function name.
   useEffectAfterMount(() => {
     if (cart) {
       updateSessionStorage('cart', cart);
@@ -77,6 +36,7 @@ export const AddToCart: React.FC = () => {
       <div className="flex h-full w-1/2 justify-center">
         <img src={`/Assets/Products/${img}.png`} className="h-48 md:h-96" />
       </div>
+      {/*this can possibly be shared with AddTicketToCart*/}
       <div className="align-middle md:flex md:w-1/2 md:flex-col md:space-y-10">
         <div className="text-center md:space-y-2">
           <h1 className="h1-font md:text-5xl">{title}</h1>
@@ -87,9 +47,8 @@ export const AddToCart: React.FC = () => {
           <p className="text-secondary">Shipping calculated at checkout</p>
           <SizeSelectors size={size} setSize={setSize} />
           <Quantity quantity={quantity} setQuantity={setQuantity} />
-          <AddButton isAdded={isAdded} handleSubmit={handleSubmit} />
+          <AddToCart itemOrderData={itemOrderData} />
         </div>
-        {isAdded ? <p className="mt-1 text-center font-mono">Item added to cart</p> : null}
         <div className="my-4 flex justify-center md:my-0">
           <div className="hidden md:flex">
             <ShareButton />

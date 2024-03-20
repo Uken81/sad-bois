@@ -1,7 +1,7 @@
 import { useLoaderData } from 'react-router';
-import { TourType } from '../../DataLoaders/tourLoader';
 import { ToursTable } from './Table/ToursTable';
 import { NoData } from '../../Components/NoData';
+import { TourType } from '../RouteWrappers/TourWrapper';
 
 export const Tour: React.FC<{ latest?: TourType[] }> = ({ latest }) => {
   const loaderData = useLoaderData() as TourType[];
