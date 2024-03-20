@@ -1,6 +1,6 @@
 import { CartContextType } from '../../../../RouteWrappers/RootWrapper';
-import { ProductOrder } from '../../AddProductToCart/AddProductToCart';
 import { useOutletContext } from 'react-router';
+import { ProductOrder } from '../../AddProductToCart/createProductOrder';
 
 export const RemoveItem: React.FC<{ productOrder: ProductOrder }> = ({ productOrder }) => {
   const { cart, setCart } = useOutletContext() as CartContextType;

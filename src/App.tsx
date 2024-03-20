@@ -20,7 +20,6 @@ import { CheckoutDetails } from './Routes/Store/Checkout/CheckoutDetails';
 import { Shipping } from './Routes/Store/Checkout/Shipping/Shipping';
 import { Payment } from './Routes/Store/Checkout/Payment/Payment';
 import { RootWrapper } from './Routes/RouteWrappers/RootWrapper';
-import { CheckoutWrapper } from './Routes/RouteWrappers/CheckoutWrapper';
 import { OrderConfirmation } from './Routes/Store/Checkout/OrderConfirmation/OrderConfirmation';
 import { ordersLoader } from './DataLoaders/ordersLoader';
 import { Tour } from './Routes/Tour/Tour';
@@ -32,7 +31,8 @@ import { AddTicketToCart } from './Routes/Tour/Tickets/AddTicket/AddTicketToCart
 import { TourWrapper } from './Routes/RouteWrappers/TourWrapper';
 import { showLoader } from './DataLoaders/showLoader';
 import { AddProductToCart } from './Routes/Store/Cart/AddProductToCart/AddProductToCart';
-import { PrivateRoute } from './Routes/RouteWrappers/privateRoute';
+import { PrivateRoute } from './Routes/RouteWrappers/PrivateRoute';
+import { CheckoutWrapper } from './Routes/RouteWrappers/CheckoutWrapper';
 
 function App() {
   const router = createBrowserRouter(

@@ -2,7 +2,7 @@ import { LoaderFunctionArgs } from 'react-router';
 import { TourType } from '../Routes/RouteWrappers/TourWrapper';
 import { serverUrl } from '../Server/serverUrl';
 import { throwDataError } from '../Utils/throwDataError';
-import { cameliseShowData } from './DataLoaderUtils/CameliseShowData';
+import { cameliseShowData } from './DataLoaderUtils/cameliseShowData';
 
 export const showLoader = async (loader: LoaderFunctionArgs): Promise<TourType | undefined> => {
   try {

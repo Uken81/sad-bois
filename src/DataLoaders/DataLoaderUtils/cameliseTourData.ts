@@ -1,6 +1,6 @@
 import { camelizeKeys } from 'humps';
 import * as yup from 'yup';
-import { TourType } from '../tourLoader';
+import { TourType } from '../../Routes/RouteWrappers/TourWrapper';
 
 export const cameliseTourData = async (tour: TourType[]) => {
   const TourTypeSchema = yup.array().of(

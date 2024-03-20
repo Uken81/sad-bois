@@ -1,5 +1,5 @@
 import { NoData } from '../../Components/NoData';
-import { TourType } from '../../DataLoaders/tourLoader';
+import { TourType } from '../RouteWrappers/TourWrapper';
 import { Tour } from '../Tour/Tour';
 import { SeeAllLink } from './SeeAllLink';
 

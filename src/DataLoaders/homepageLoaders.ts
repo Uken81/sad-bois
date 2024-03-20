@@ -1,9 +1,9 @@
+import { TourType } from '../Routes/RouteWrappers/TourWrapper';
 import { serverUrl } from '../Server/serverUrl';
 import { throwDataError } from '../Utils/throwDataError';
 import { cameliseNewsData } from './DataLoaderUtils/cameliseNewsData';
 import { cameliseTourData } from './DataLoaderUtils/cameliseTourData';
 import { Article } from './newsLoader';
-import { TourType } from './tourLoader';
 
 export interface HomepageLoader {
   latestNewsData: Article[] | undefined;
