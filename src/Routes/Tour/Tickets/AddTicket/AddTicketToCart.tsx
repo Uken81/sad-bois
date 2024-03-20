@@ -3,7 +3,7 @@ import { UnavailableShow } from '../UnavailableShow';
 import { TourType } from '../../../RouteWrappers/TourWrapper';
 import { Quantity } from '../../../../Components/AddToCart/Quantity';
 import { useState } from 'react';
-import { AddButton, ItemOrderData } from '../../../../Components/AddToCart/AddButton';
+import { AddToCart, ItemOrderData } from '../../../../Components/AddToCart/AddToCart';
 import { format } from 'date-fns';
 
 export const AddTicketToCart: React.FC = () => {
@@ -34,7 +34,7 @@ export const AddTicketToCart: React.FC = () => {
       <div className="flex w-screen flex-col items-center space-y-2">
         <p>General Admission: $119.99</p>
         <Quantity quantity={quantity} setQuantity={setQuantity} />
-        <AddButton itemOrderData={itemOrderData} />
+        <AddToCart itemOrderData={itemOrderData} />
       </div>
     </main>
   );

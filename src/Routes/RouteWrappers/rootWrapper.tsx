@@ -3,7 +3,7 @@ import { Navbar } from '../../Components/NavBar/Navbar';
 import { Dispatch, SetStateAction, useState } from 'react';
 import { ScrollRestoration } from 'react-router-dom';
 import { Footer } from '../../Components/Footer';
-import { ProductOrder } from '../../Hooks/useAddStoreItem';
+import { ProductOrder } from '../Store/Cart/AddProductToCart/createProductOrder';
 
 export interface UserType {
   email: string;

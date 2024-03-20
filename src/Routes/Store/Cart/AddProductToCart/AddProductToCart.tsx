@@ -7,7 +7,7 @@ import { ProductType } from '../../../../DataLoaders/productsLoader';
 import { ShareButton } from '../../../../Components/Share/ShareButton';
 import { CartContextType } from '../../../RouteWrappers/rootWrapper';
 import { ShareOptions } from '../../../../Components/Share/ShareOptions';
-import { AddButton, ItemOrderData } from '../../../../Components/AddToCart/AddButton';
+import { AddToCart, ItemOrderData } from '../../../../Components/AddToCart/AddToCart';
 import { updateSessionStorage } from '../../../../Utils/saveOrUpdateSessionStorage';
 
 export const AddProductToCart: React.FC = () => {
@@ -47,7 +47,7 @@ export const AddProductToCart: React.FC = () => {
           <p className="text-secondary">Shipping calculated at checkout</p>
           <SizeSelectors size={size} setSize={setSize} />
           <Quantity quantity={quantity} setQuantity={setQuantity} />
-          <AddButton itemOrderData={itemOrderData} />
+          <AddToCart itemOrderData={itemOrderData} />
         </div>
         <div className="my-4 flex justify-center md:my-0">
           <div className="hidden md:flex">
