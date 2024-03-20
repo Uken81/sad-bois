@@ -42,9 +42,23 @@ html {
   -moz-tab-size: 4;
   /* 3 */
   -o-tab-size: 4;
-     tab-size: 4;
+  tab-size: 4;
   /* 3 */
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family:
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    'Helvetica Neue',
+    Arial,
+    'Noto Sans',
+    sans-serif,
+    'Apple Color Emoji',
+    'Segoe UI Emoji',
+    'Segoe UI Symbol',
+    'Noto Color Emoji';
   /* 4 */
   font-feature-settings: normal;
   /* 5 */
@@ -85,7 +99,7 @@ Add the correct text decoration in Chrome, Edge, and Safari.
 
 abbr:where([title]) {
   -webkit-text-decoration: underline dotted;
-          text-decoration: underline dotted;
+  text-decoration: underline dotted;
 }
 
 /*
@@ -131,7 +145,8 @@ code,
 kbd,
 samp,
 pre {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
+    'Courier New', monospace;
   /* 1 */
   font-feature-settings: normal;
   /* 2 */
@@ -372,7 +387,8 @@ textarea {
 2. Set the default placeholder color to the user's configured gray 400 color.
 */
 
-input::-moz-placeholder, textarea::-moz-placeholder {
+input::-moz-placeholder,
+textarea::-moz-placeholder {
   opacity: 1;
   /* 1 */
   color: #9ca3af;
@@ -392,7 +408,7 @@ Set the default cursor for buttons.
 */
 
 button,
-[role="button"] {
+[role='button'] {
   cursor: pointer;
 }
 
@@ -442,8 +458,8 @@ video {
 
 :root,
 [data-theme] {
-  background-color: var(--fallback-b1,oklch(var(--b1)/1));
-  color: var(--fallback-bc,oklch(var(--bc)/1));
+  background-color: var(--fallback-b1, oklch(var(--b1) / 1));
+  color: var(--fallback-bc, oklch(var(--bc) / 1));
 }
 
 @supports not (color: oklch(0 0 0)) {
@@ -516,7 +532,7 @@ html {
   --wac: 0.154965 0.023141 81.519177;
   --erc: 0.903221 0.029356 29.674507;
   --animation-btn: 0.25s;
-  --animation-input: .2s;
+  --animation-input: 0.2s;
   --btn-focus-scale: 0.95;
   --border-btn: 1px;
   --tab-border: 1px;
@@ -531,11 +547,13 @@ html {
   --wa: 0.774824 0.115704 81.519177;
   --er: 0.516105 0.14678 29.674507;
   --rounded-box: 0.25rem;
-  --rounded-btn: .125rem;
-  --rounded-badge: .125rem;
+  --rounded-btn: 0.125rem;
+  --rounded-badge: 0.125rem;
 }
 
-*, ::before, ::after {
+*,
+::before,
+::after {
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
   --tw-translate-x: 0;
@@ -647,19 +665,19 @@ html {
   border-radius: var(--rounded-box, 1rem);
   border-width: 1px;
   --tw-border-opacity: 1;
-  border-color: var(--fallback-b2,oklch(var(--b2)/var(--tw-border-opacity)));
+  border-color: var(--fallback-b2, oklch(var(--b2) / var(--tw-border-opacity)));
   padding: 1rem;
   --tw-text-opacity: 1;
-  color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
-  --alert-bg: var(--fallback-b2,oklch(var(--b2)/1));
-  --alert-bg-mix: var(--fallback-b1,oklch(var(--b1)/1));
+  color: var(--fallback-bc, oklch(var(--bc) / var(--tw-text-opacity)));
+  --alert-bg: var(--fallback-b2, oklch(var(--b2) / 1));
+  --alert-bg-mix: var(--fallback-b1, oklch(var(--b1) / 1));
   background-color: var(--alert-bg);
 }
 
 @media (min-width: 640px) {
   .alert {
     grid-auto-flow: column;
-    grid-template-columns: auto minmax(auto,1fr);
+    grid-template-columns: auto minmax(auto, 1fr);
     justify-items: start;
     text-align: start;
   }
@@ -675,9 +693,33 @@ html {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+  transition-property:
+    color,
+    background-color,
+    border-color,
+    text-decoration-color,
+    fill,
+    stroke,
+    opacity,
+    box-shadow,
+    transform,
+    filter,
+    -webkit-backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke,
+    opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-property:
+    color,
+    background-color,
+    border-color,
+    text-decoration-color,
+    fill,
+    stroke,
+    opacity,
+    box-shadow,
+    transform,
+    filter,
+    backdrop-filter,
+    -webkit-backdrop-filter;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
   transition-duration: 200ms;
@@ -691,41 +733,41 @@ html {
   border-radius: var(--rounded-badge, 1.9rem);
   border-width: 1px;
   --tw-border-opacity: 1;
-  border-color: var(--fallback-b2,oklch(var(--b2)/var(--tw-border-opacity)));
+  border-color: var(--fallback-b2, oklch(var(--b2) / var(--tw-border-opacity)));
   --tw-bg-opacity: 1;
-  background-color: var(--fallback-b1,oklch(var(--b1)/var(--tw-bg-opacity)));
+  background-color: var(--fallback-b1, oklch(var(--b1) / var(--tw-bg-opacity)));
   --tw-text-opacity: 1;
-  color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
+  color: var(--fallback-bc, oklch(var(--bc) / var(--tw-text-opacity)));
 }
 
-@media (hover:hover) {
+@media (hover: hover) {
   .link-hover:hover {
     text-decoration-line: underline;
   }
 
   .label a:hover {
     --tw-text-opacity: 1;
-    color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
+    color: var(--fallback-bc, oklch(var(--bc) / var(--tw-text-opacity)));
   }
 
   .menu li > *:not(ul):not(.menu-title):not(details):active,
-.menu li > *:not(ul):not(.menu-title):not(details).active,
-.menu li > details > summary:active {
+  .menu li > *:not(ul):not(.menu-title):not(details).active,
+  .menu li > details > summary:active {
     --tw-bg-opacity: 1;
-    background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
+    background-color: var(--fallback-n, oklch(var(--n) / var(--tw-bg-opacity)));
     --tw-text-opacity: 1;
-    color: var(--fallback-nc,oklch(var(--nc)/var(--tw-text-opacity)));
+    color: var(--fallback-nc, oklch(var(--nc) / var(--tw-text-opacity)));
   }
 
   .radio-primary:hover {
     --tw-border-opacity: 1;
-    border-color: var(--fallback-p,oklch(var(--p)/var(--tw-border-opacity)));
+    border-color: var(--fallback-p, oklch(var(--p) / var(--tw-border-opacity)));
   }
 
   .table tr.hover:hover,
   .table tr.hover:nth-child(even):hover {
     --tw-bg-opacity: 1;
-    background-color: var(--fallback-b2,oklch(var(--b2)/var(--tw-bg-opacity)));
+    background-color: var(--fallback-b2, oklch(var(--b2) / var(--tw-bg-opacity)));
   }
 }
 
@@ -736,8 +778,8 @@ html {
   flex-shrink: 0;
   cursor: pointer;
   -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  -moz-user-select: none;
+  user-select: none;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
@@ -758,19 +800,20 @@ html {
   animation: button-pop var(--animation-btn, 0.25s) ease-out;
   transition-property: color, background-color, border-color, opacity, box-shadow, transform;
   --tw-text-opacity: 1;
-  color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
+  color: var(--fallback-bc, oklch(var(--bc) / var(--tw-text-opacity)));
   --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-  outline-color: var(--fallback-bc,oklch(var(--bc)/1));
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000),
+    var(--tw-shadow);
+  outline-color: var(--fallback-bc, oklch(var(--bc) / 1));
   background-color: oklch(var(--btn-color, var(--b2)) / var(--tw-bg-opacity));
   --tw-bg-opacity: 1;
   --tw-border-opacity: 1;
 }
 
 .btn-disabled,
-  .btn[disabled],
-  .btn:disabled {
+.btn[disabled],
+.btn:disabled {
   pointer-events: none;
 }
 
@@ -787,16 +830,16 @@ html {
   padding: 0px;
 }
 
-:where(.btn:is(input[type="checkbox"])),
-:where(.btn:is(input[type="radio"])) {
+:where(.btn:is(input[type='checkbox'])),
+:where(.btn:is(input[type='radio'])) {
   width: auto;
   -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
-.btn:is(input[type="checkbox"]):after,
-.btn:is(input[type="radio"]):after {
+.btn:is(input[type='checkbox']):after,
+.btn:is(input[type='radio']):after {
   --tw-content: attr(aria-label);
   content: var(--tw-content);
 }
@@ -844,16 +887,16 @@ html {
 
 .card.image-full:before {
   position: relative;
-  content: "";
+  content: '';
   z-index: 10;
   border-radius: var(--rounded-box, 1rem);
   --tw-bg-opacity: 1;
-  background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
+  background-color: var(--fallback-n, oklch(var(--n) / var(--tw-bg-opacity)));
   opacity: 0.75;
 }
 
 .card.image-full:before,
-    .card.image-full > * {
+.card.image-full > * {
   grid-column-start: 1;
   grid-row-start: 1;
 }
@@ -861,14 +904,14 @@ html {
 .card.image-full > figure img {
   height: 100%;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 
 .card.image-full > .card-body {
   position: relative;
   z-index: 20;
   --tw-text-opacity: 1;
-  color: var(--fallback-nc,oklch(var(--nc)/var(--tw-text-opacity)));
+  color: var(--fallback-nc, oklch(var(--nc) / var(--tw-text-opacity)));
 }
 
 .carousel {
@@ -897,17 +940,17 @@ html {
 
 .checkbox {
   flex-shrink: 0;
-  --chkbg: var(--fallback-bc,oklch(var(--bc)/1));
-  --chkfg: var(--fallback-b1,oklch(var(--b1)/1));
+  --chkbg: var(--fallback-bc, oklch(var(--bc) / 1));
+  --chkfg: var(--fallback-b1, oklch(var(--b1) / 1));
   height: 1.5rem;
   width: 1.5rem;
   cursor: pointer;
   -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   border-radius: var(--rounded-btn, 0.5rem);
   border-width: 1px;
-  border-color: var(--fallback-bc,oklch(var(--bc)/var(--tw-border-opacity)));
+  border-color: var(--fallback-bc, oklch(var(--bc) / var(--tw-border-opacity)));
   --tw-border-opacity: 0.2;
 }
 
@@ -926,18 +969,18 @@ html {
 }
 
 .collapse-title,
-.collapse > input[type="checkbox"],
-.collapse > input[type="radio"],
+.collapse > input[type='checkbox'],
+.collapse > input[type='radio'],
 .collapse-content {
   grid-column-start: 1;
   grid-row-start: 1;
 }
 
-.collapse > input[type="checkbox"],
-.collapse > input[type="radio"] {
+.collapse > input[type='checkbox'],
+.collapse > input[type='radio'] {
   -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   opacity: 0;
 }
 
@@ -947,7 +990,8 @@ html {
   grid-row-start: 2;
   min-height: 0px;
   transition: visibility 0.2s;
-  transition: padding 0.2s ease-out,
+  transition:
+    padding 0.2s ease-out,
     background-color 0.2s ease-out;
   padding-left: 1rem;
   padding-right: 1rem;
@@ -960,16 +1004,16 @@ html {
   grid-template-rows: auto 1fr;
 }
 
-.collapse:not(.collapse-close):has(> input[type="checkbox"]:checked),
-.collapse:not(.collapse-close):has(> input[type="radio"]:checked) {
+.collapse:not(.collapse-close):has(> input[type='checkbox']:checked),
+.collapse:not(.collapse-close):has(> input[type='radio']:checked) {
   grid-template-rows: auto 1fr;
 }
 
 .collapse[open] > .collapse-content,
 .collapse-open > .collapse-content,
 .collapse:focus:not(.collapse-close) > .collapse-content,
-.collapse:not(.collapse-close) > input[type="checkbox"]:checked ~ .collapse-content,
-.collapse:not(.collapse-close) > input[type="radio"]:checked ~ .collapse-content {
+.collapse:not(.collapse-close) > input[type='checkbox']:checked ~ .collapse-content,
+.collapse:not(.collapse-close) > input[type='radio']:checked ~ .collapse-content {
   visibility: visible;
   min-height: -moz-fit-content;
   min-height: fit-content;
@@ -987,13 +1031,13 @@ html {
 }
 
 .divider:before,
-  .divider:after {
+.divider:after {
   height: 0.125rem;
   width: 100%;
   flex-grow: 1;
   --tw-content: '';
   content: var(--tw-content);
-  background-color: var(--fallback-bc,oklch(var(--bc)/0.1));
+  background-color: var(--fallback-bc, oklch(var(--bc) / 0.1));
 }
 
 .drawer {
@@ -1054,7 +1098,7 @@ html {
   transform: translateX(-100%);
 }
 
-[dir="rtl"] .drawer-side > *:not(.drawer-overlay) {
+[dir='rtl'] .drawer-side > *:not(.drawer-overlay) {
   transform: translateX(100%);
 }
 
@@ -1063,8 +1107,8 @@ html {
   height: 0px;
   width: 0px;
   -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   opacity: 0;
 }
 
@@ -1090,7 +1134,7 @@ html {
   transform: translateX(100%);
 }
 
-[dir="rtl"] .drawer-end .drawer-toggle ~ .drawer-side > *:not(.drawer-overlay) {
+[dir='rtl'] .drawer-end .drawer-toggle ~ .drawer-side > *:not(.drawer-overlay) {
   transform: translateX(-100%);
 }
 
@@ -1116,12 +1160,38 @@ html {
   visibility: hidden;
   opacity: 0;
   transform-origin: top;
-  --tw-scale-x: .95;
-  --tw-scale-y: .95;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+  --tw-scale-x: 0.95;
+  --tw-scale-y: 0.95;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate))
+    skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x))
+    scaleY(var(--tw-scale-y));
+  transition-property:
+    color,
+    background-color,
+    border-color,
+    text-decoration-color,
+    fill,
+    stroke,
+    opacity,
+    box-shadow,
+    transform,
+    filter,
+    -webkit-backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke,
+    opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-property:
+    color,
+    background-color,
+    border-color,
+    text-decoration-color,
+    fill,
+    stroke,
+    opacity,
+    box-shadow,
+    transform,
+    filter,
+    backdrop-filter,
+    -webkit-backdrop-filter;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
   transition-duration: 200ms;
@@ -1182,23 +1252,23 @@ html {
 
   .btn:hover {
     --tw-border-opacity: 1;
-    border-color: var(--fallback-b3,oklch(var(--b3)/var(--tw-border-opacity)));
+    border-color: var(--fallback-b3, oklch(var(--b3) / var(--tw-border-opacity)));
     --tw-bg-opacity: 1;
-    background-color: var(--fallback-b3,oklch(var(--b3)/var(--tw-bg-opacity)));
+    background-color: var(--fallback-b3, oklch(var(--b3) / var(--tw-bg-opacity)));
   }
 
   @supports (color: color-mix(in oklab, black, black)) {
     .btn:hover {
       background-color: color-mix(
-            in oklab,
-            oklch(var(--btn-color, var(--b2)) / var(--tw-bg-opacity, 1)) 90%,
-            black
-          );
+        in oklab,
+        oklch(var(--btn-color, var(--b2)) / var(--tw-bg-opacity, 1)) 90%,
+        black
+      );
       border-color: color-mix(
-            in oklab,
-            oklch(var(--btn-color, var(--b2)) / var(--tw-border-opacity, 1)) 90%,
-            black
-          );
+        in oklab,
+        oklch(var(--btn-color, var(--b2)) / var(--tw-border-opacity, 1)) 90%,
+        black
+      );
     }
   }
 
@@ -1220,66 +1290,79 @@ html {
 
   @supports (color: oklch(0 0 0)) {
     .btn-ghost:hover {
-      background-color: var(--fallback-bc,oklch(var(--bc)/0.2));
+      background-color: var(--fallback-bc, oklch(var(--bc) / 0.2));
     }
   }
 
   .btn-outline.btn-secondary:hover {
     --tw-text-opacity: 1;
-    color: var(--fallback-sc,oklch(var(--sc)/var(--tw-text-opacity)));
+    color: var(--fallback-sc, oklch(var(--sc) / var(--tw-text-opacity)));
   }
 
   @supports (color: color-mix(in oklab, black, black)) {
     .btn-outline.btn-secondary:hover {
-      background-color: color-mix(in oklab, var(--fallback-s,oklch(var(--s)/1)) 90%, black);
-      border-color: color-mix(in oklab, var(--fallback-s,oklch(var(--s)/1)) 90%, black);
+      background-color: color-mix(in oklab, var(--fallback-s, oklch(var(--s) / 1)) 90%, black);
+      border-color: color-mix(in oklab, var(--fallback-s, oklch(var(--s) / 1)) 90%, black);
     }
   }
 
   .btn-outline.btn-accent:hover {
     --tw-text-opacity: 1;
-    color: var(--fallback-ac,oklch(var(--ac)/var(--tw-text-opacity)));
+    color: var(--fallback-ac, oklch(var(--ac) / var(--tw-text-opacity)));
   }
 
   @supports (color: color-mix(in oklab, black, black)) {
     .btn-outline.btn-accent:hover {
-      background-color: color-mix(in oklab, var(--fallback-a,oklch(var(--a)/1)) 90%, black);
-      border-color: color-mix(in oklab, var(--fallback-a,oklch(var(--a)/1)) 90%, black);
+      background-color: color-mix(in oklab, var(--fallback-a, oklch(var(--a) / 1)) 90%, black);
+      border-color: color-mix(in oklab, var(--fallback-a, oklch(var(--a) / 1)) 90%, black);
     }
   }
 
   .btn-disabled:hover,
-    .btn[disabled]:hover,
-    .btn:disabled:hover {
+  .btn[disabled]:hover,
+  .btn:disabled:hover {
     --tw-border-opacity: 0;
-    background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
+    background-color: var(--fallback-n, oklch(var(--n) / var(--tw-bg-opacity)));
     --tw-bg-opacity: 0.2;
-    color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
+    color: var(--fallback-bc, oklch(var(--bc) / var(--tw-text-opacity)));
     --tw-text-opacity: 0.2;
   }
 
   @supports (color: color-mix(in oklab, black, black)) {
-    .btn:is(input[type="checkbox"]:checked):hover, .btn:is(input[type="radio"]:checked):hover {
-      background-color: color-mix(in oklab, var(--fallback-p,oklch(var(--p)/1)) 90%, black);
-      border-color: color-mix(in oklab, var(--fallback-p,oklch(var(--p)/1)) 90%, black);
+    .btn:is(input[type='checkbox']:checked):hover,
+    .btn:is(input[type='radio']:checked):hover {
+      background-color: color-mix(in oklab, var(--fallback-p, oklch(var(--p) / 1)) 90%, black);
+      border-color: color-mix(in oklab, var(--fallback-p, oklch(var(--p) / 1)) 90%, black);
     }
   }
 
   .dropdown.dropdown-hover:hover .dropdown-content {
     --tw-scale-x: 1;
     --tw-scale-y: 1;
-    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate))
+      skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x))
+      scaleY(var(--tw-scale-y));
   }
 
-  :where(.menu li:not(.menu-title):not(.disabled) > *:not(ul):not(details):not(.menu-title)):not(.active):hover, :where(.menu li:not(.menu-title):not(.disabled) > details > summary:not(.menu-title)):not(.active):hover {
+  :where(.menu li:not(.menu-title):not(.disabled) > *:not(ul):not(details):not(.menu-title)):not(
+      .active
+    ):hover,
+  :where(.menu li:not(.menu-title):not(.disabled) > details > summary:not(.menu-title)):not(
+      .active
+    ):hover {
     cursor: pointer;
     outline: 2px solid transparent;
     outline-offset: 2px;
   }
 
   @supports (color: oklch(0 0 0)) {
-    :where(.menu li:not(.menu-title):not(.disabled) > *:not(ul):not(details):not(.menu-title)):not(.active):hover, :where(.menu li:not(.menu-title):not(.disabled) > details > summary:not(.menu-title)):not(.active):hover {
-      background-color: var(--fallback-bc,oklch(var(--bc)/0.1));
+    :where(.menu li:not(.menu-title):not(.disabled) > *:not(ul):not(details):not(.menu-title)):not(
+        .active
+      ):hover,
+    :where(.menu li:not(.menu-title):not(.disabled) > details > summary:not(.menu-title)):not(
+        .active
+      ):hover {
+      background-color: var(--fallback-bc, oklch(var(--bc) / 0.1));
     }
   }
 }
@@ -1294,7 +1377,7 @@ html {
   grid-auto-flow: row;
   place-items: start;
   -moz-column-gap: 1rem;
-       column-gap: 1rem;
+  column-gap: 1rem;
   row-gap: 2.5rem;
   font-size: 0.875rem;
   line-height: 1.25rem;
@@ -1324,8 +1407,8 @@ html {
 .label {
   display: flex;
   -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  -moz-user-select: none;
+  user-select: none;
   align-items: center;
   justify-content: space-between;
   padding-left: 0.25rem;
@@ -1344,15 +1427,17 @@ html {
 .indicator :where(.indicator-item) {
   z-index: 1;
   position: absolute;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate))
+    skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x))
+    scaleY(var(--tw-scale-y));
   white-space: nowrap;
 }
 
 .input {
   flex-shrink: 1;
   -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   height: 3rem;
   padding-left: 1rem;
   padding-right: 1rem;
@@ -1363,7 +1448,7 @@ html {
   border-width: 1px;
   border-color: transparent;
   --tw-bg-opacity: 1;
-  background-color: var(--fallback-b1,oklch(var(--b1)/var(--tw-bg-opacity)));
+  background-color: var(--fallback-b1, oklch(var(--b1) / var(--tw-bg-opacity)));
 }
 
 .join {
@@ -1380,7 +1465,7 @@ html {
 }
 
 .join .join-item:not(:first-child):not(:last-child),
-  .join *:not(:first-child):not(:last-child) .join-item {
+.join *:not(:first-child):not(:last-child) .join-item {
   border-start-end-radius: 0;
   border-end-end-radius: 0;
   border-end-start-radius: 0;
@@ -1388,31 +1473,31 @@ html {
 }
 
 .join .join-item:first-child:not(:last-child),
-  .join *:first-child:not(:last-child) .join-item {
+.join *:first-child:not(:last-child) .join-item {
   border-start-end-radius: 0;
   border-end-end-radius: 0;
 }
 
 .join .dropdown .join-item:first-child:not(:last-child),
-  .join *:first-child:not(:last-child) .dropdown .join-item {
+.join *:first-child:not(:last-child) .dropdown .join-item {
   border-start-end-radius: inherit;
   border-end-end-radius: inherit;
 }
 
 .join :where(.join-item:first-child:not(:last-child)),
-  .join :where(*:first-child:not(:last-child) .join-item) {
+.join :where(*:first-child:not(:last-child) .join-item) {
   border-end-start-radius: inherit;
   border-start-start-radius: inherit;
 }
 
 .join .join-item:last-child:not(:first-child),
-  .join *:last-child:not(:first-child) .join-item {
+.join *:last-child:not(:first-child) .join-item {
   border-end-start-radius: 0;
   border-start-start-radius: 0;
 }
 
 .join :where(.join-item:last-child:not(:first-child)),
-  .join :where(*:last-child:not(:first-child) .join-item) {
+.join :where(*:last-child:not(:first-child) .join-item) {
   border-start-end-radius: inherit;
   border-end-end-radius: inherit;
 }
@@ -1455,7 +1540,7 @@ html {
 }
 
 .menu :where(li:not(.menu-title) > *:not(ul):not(details):not(.menu-title)),
-  .menu :where(li:not(.menu-title) > details > summary:not(.menu-title)) {
+.menu :where(li:not(.menu-title) > details > summary:not(.menu-title)) {
   display: grid;
   grid-auto-flow: column;
   align-content: flex-start;
@@ -1463,16 +1548,16 @@ html {
   gap: 0.5rem;
   grid-auto-columns: minmax(auto, max-content) auto max-content;
   -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  -moz-user-select: none;
+  user-select: none;
 }
 
 .menu li.disabled {
   cursor: not-allowed;
   -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
-  color: var(--fallback-bc,oklch(var(--bc)/0.3));
+  -moz-user-select: none;
+  user-select: none;
+  color: var(--fallback-bc, oklch(var(--bc) / 0.3));
 }
 
 .menu :where(li > .menu-dropdown:not(.menu-dropdown-show)) {
@@ -1552,19 +1637,45 @@ html {
   grid-row-start: 1;
   width: 91.666667%;
   max-width: 32rem;
-  --tw-scale-x: .9;
-  --tw-scale-y: .9;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  --tw-scale-x: 0.9;
+  --tw-scale-y: 0.9;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate))
+    skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x))
+    scaleY(var(--tw-scale-y));
   border-bottom-right-radius: var(--rounded-box, 1rem);
   border-bottom-left-radius: var(--rounded-box, 1rem);
   border-top-left-radius: var(--rounded-box, 1rem);
   border-top-right-radius: var(--rounded-box, 1rem);
   --tw-bg-opacity: 1;
-  background-color: var(--fallback-b1,oklch(var(--b1)/var(--tw-bg-opacity)));
+  background-color: var(--fallback-b1, oklch(var(--b1) / var(--tw-bg-opacity)));
   padding: 1.5rem;
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+  transition-property:
+    color,
+    background-color,
+    border-color,
+    text-decoration-color,
+    fill,
+    stroke,
+    opacity,
+    box-shadow,
+    transform,
+    filter,
+    -webkit-backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke,
+    opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-property:
+    color,
+    background-color,
+    border-color,
+    text-decoration-color,
+    fill,
+    stroke,
+    opacity,
+    box-shadow,
+    transform,
+    filter,
+    backdrop-filter,
+    -webkit-backdrop-filter;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
   transition-duration: 200ms;
@@ -1572,7 +1683,6 @@ html {
   overflow-y: auto;
   overscroll-behavior: contain;
 }
-
 
 .\!modal:target,
 .modal-toggle:checked + .\!modal,
@@ -1590,7 +1700,6 @@ html {
   visibility: visible;
   opacity: 1;
 }
-
 
 .\!modal:target,
 .modal-toggle:checked + .\!modal,
@@ -1632,11 +1741,11 @@ html {
   width: 1.5rem;
   cursor: pointer;
   -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   border-radius: 9999px;
   border-width: 1px;
-  border-color: var(--fallback-bc,oklch(var(--bc)/var(--tw-border-opacity)));
+  border-color: var(--fallback-bc, oklch(var(--bc) / var(--tw-border-opacity)));
   --tw-border-opacity: 0.2;
 }
 
@@ -1644,11 +1753,11 @@ html {
   display: inline-flex;
   cursor: pointer;
   -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  -moz-user-select: none;
+  user-select: none;
   -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   height: 3rem;
   min-height: 3rem;
   padding-left: 1rem;
@@ -1660,12 +1769,14 @@ html {
   border-width: 1px;
   border-color: transparent;
   --tw-bg-opacity: 1;
-  background-color: var(--fallback-b1,oklch(var(--b1)/var(--tw-bg-opacity)));
+  background-color: var(--fallback-b1, oklch(var(--b1) / var(--tw-bg-opacity)));
   background-image: linear-gradient(45deg, transparent 50%, currentColor 50%),
     linear-gradient(135deg, currentColor 50%, transparent 50%);
-  background-position: calc(100% - 20px) calc(1px + 50%),
+  background-position:
+    calc(100% - 20px) calc(1px + 50%),
     calc(100% - 16.1px) calc(1px + 50%);
-  background-size: 4px 4px,
+  background-size:
+    4px 4px,
     4px 4px;
   background-repeat: no-repeat;
 }
@@ -1688,7 +1799,7 @@ html {
   top: 0px;
   z-index: 1;
   --tw-bg-opacity: 1;
-  background-color: var(--fallback-b1,oklch(var(--b1)/var(--tw-bg-opacity)));
+  background-color: var(--fallback-b1, oklch(var(--b1) / var(--tw-bg-opacity)));
 }
 
 .table :where(.table-pin-rows tfoot tr) {
@@ -1696,7 +1807,7 @@ html {
   bottom: 0px;
   z-index: 1;
   --tw-bg-opacity: 1;
-  background-color: var(--fallback-b1,oklch(var(--b1)/var(--tw-bg-opacity)));
+  background-color: var(--fallback-b1, oklch(var(--b1) / var(--tw-bg-opacity)));
 }
 
 .table :where(.table-pin-cols tr th) {
@@ -1704,25 +1815,33 @@ html {
   left: 0px;
   right: 0px;
   --tw-bg-opacity: 1;
-  background-color: var(--fallback-b1,oklch(var(--b1)/var(--tw-bg-opacity)));
+  background-color: var(--fallback-b1, oklch(var(--b1) / var(--tw-bg-opacity)));
+}
+
+.alert-error {
+  border-color: var(--fallback-er, oklch(var(--er) / 0.2));
+  --tw-text-opacity: 1;
+  color: var(--fallback-erc, oklch(var(--erc) / var(--tw-text-opacity)));
+  --alert-bg: var(--fallback-er, oklch(var(--er) / 1));
+  --alert-bg-mix: var(--fallback-b1, oklch(var(--b1) / 1));
 }
 
 .badge-primary {
   --tw-border-opacity: 1;
-  border-color: var(--fallback-p,oklch(var(--p)/var(--tw-border-opacity)));
+  border-color: var(--fallback-p, oklch(var(--p) / var(--tw-border-opacity)));
   --tw-bg-opacity: 1;
-  background-color: var(--fallback-p,oklch(var(--p)/var(--tw-bg-opacity)));
+  background-color: var(--fallback-p, oklch(var(--p) / var(--tw-bg-opacity)));
   --tw-text-opacity: 1;
-  color: var(--fallback-pc,oklch(var(--pc)/var(--tw-text-opacity)));
+  color: var(--fallback-pc, oklch(var(--pc) / var(--tw-text-opacity)));
 }
 
 .badge-accent {
   --tw-border-opacity: 1;
-  border-color: var(--fallback-a,oklch(var(--a)/var(--tw-border-opacity)));
+  border-color: var(--fallback-a, oklch(var(--a) / var(--tw-border-opacity)));
   --tw-bg-opacity: 1;
-  background-color: var(--fallback-a,oklch(var(--a)/var(--tw-bg-opacity)));
+  background-color: var(--fallback-a, oklch(var(--a) / var(--tw-bg-opacity)));
   --tw-text-opacity: 1;
-  color: var(--fallback-ac,oklch(var(--ac)/var(--tw-text-opacity)));
+  color: var(--fallback-ac, oklch(var(--ac) / var(--tw-text-opacity)));
 }
 
 .badge-outline {
@@ -1734,42 +1853,42 @@ html {
 
 .badge-outline.badge-neutral {
   --tw-text-opacity: 1;
-  color: var(--fallback-n,oklch(var(--n)/var(--tw-text-opacity)));
+  color: var(--fallback-n, oklch(var(--n) / var(--tw-text-opacity)));
 }
 
 .badge-outline.badge-primary {
   --tw-text-opacity: 1;
-  color: var(--fallback-p,oklch(var(--p)/var(--tw-text-opacity)));
+  color: var(--fallback-p, oklch(var(--p) / var(--tw-text-opacity)));
 }
 
 .badge-outline.badge-secondary {
   --tw-text-opacity: 1;
-  color: var(--fallback-s,oklch(var(--s)/var(--tw-text-opacity)));
+  color: var(--fallback-s, oklch(var(--s) / var(--tw-text-opacity)));
 }
 
 .badge-outline.badge-accent {
   --tw-text-opacity: 1;
-  color: var(--fallback-a,oklch(var(--a)/var(--tw-text-opacity)));
+  color: var(--fallback-a, oklch(var(--a) / var(--tw-text-opacity)));
 }
 
 .badge-outline.badge-info {
   --tw-text-opacity: 1;
-  color: var(--fallback-in,oklch(var(--in)/var(--tw-text-opacity)));
+  color: var(--fallback-in, oklch(var(--in) / var(--tw-text-opacity)));
 }
 
 .badge-outline.badge-success {
   --tw-text-opacity: 1;
-  color: var(--fallback-su,oklch(var(--su)/var(--tw-text-opacity)));
+  color: var(--fallback-su, oklch(var(--su) / var(--tw-text-opacity)));
 }
 
 .badge-outline.badge-warning {
   --tw-text-opacity: 1;
-  color: var(--fallback-wa,oklch(var(--wa)/var(--tw-text-opacity)));
+  color: var(--fallback-wa, oklch(var(--wa) / var(--tw-text-opacity)));
 }
 
 .badge-outline.badge-error {
   --tw-text-opacity: 1;
-  color: var(--fallback-er,oklch(var(--er)/var(--tw-text-opacity)));
+  color: var(--fallback-er, oklch(var(--er) / var(--tw-text-opacity)));
 }
 
 .btm-nav > * .label {
@@ -1778,7 +1897,7 @@ html {
 }
 
 .btn:active:hover,
-  .btn:active:focus {
+.btn:active:focus {
   animation: button-pop 0s ease-out;
   transform: scale(var(--btn-focus-scale, 0.97));
 }
@@ -1801,50 +1920,50 @@ html {
 @supports (color: color-mix(in oklab, black, black)) {
   .btn-active {
     background-color: color-mix(
-          in oklab,
-          oklch(var(--btn-color, var(--b3)) / var(--tw-bg-opacity, 1)) 90%,
-          black
-        );
+      in oklab,
+      oklch(var(--btn-color, var(--b3)) / var(--tw-bg-opacity, 1)) 90%,
+      black
+    );
     border-color: color-mix(
-          in oklab,
-          oklch(var(--btn-color, var(--b3)) / var(--tw-border-opacity, 1)) 90%,
-          black
-        );
+      in oklab,
+      oklch(var(--btn-color, var(--b3)) / var(--tw-border-opacity, 1)) 90%,
+      black
+    );
   }
 
   .btn-outline.btn-primary.btn-active {
-    background-color: color-mix(in oklab, var(--fallback-p,oklch(var(--p)/1)) 90%, black);
-    border-color: color-mix(in oklab, var(--fallback-p,oklch(var(--p)/1)) 90%, black);
+    background-color: color-mix(in oklab, var(--fallback-p, oklch(var(--p) / 1)) 90%, black);
+    border-color: color-mix(in oklab, var(--fallback-p, oklch(var(--p) / 1)) 90%, black);
   }
 
   .btn-outline.btn-secondary.btn-active {
-    background-color: color-mix(in oklab, var(--fallback-s,oklch(var(--s)/1)) 90%, black);
-    border-color: color-mix(in oklab, var(--fallback-s,oklch(var(--s)/1)) 90%, black);
+    background-color: color-mix(in oklab, var(--fallback-s, oklch(var(--s) / 1)) 90%, black);
+    border-color: color-mix(in oklab, var(--fallback-s, oklch(var(--s) / 1)) 90%, black);
   }
 
   .btn-outline.btn-accent.btn-active {
-    background-color: color-mix(in oklab, var(--fallback-a,oklch(var(--a)/1)) 90%, black);
-    border-color: color-mix(in oklab, var(--fallback-a,oklch(var(--a)/1)) 90%, black);
+    background-color: color-mix(in oklab, var(--fallback-a, oklch(var(--a) / 1)) 90%, black);
+    border-color: color-mix(in oklab, var(--fallback-a, oklch(var(--a) / 1)) 90%, black);
   }
 
   .btn-outline.btn-success.btn-active {
-    background-color: color-mix(in oklab, var(--fallback-su,oklch(var(--su)/1)) 90%, black);
-    border-color: color-mix(in oklab, var(--fallback-su,oklch(var(--su)/1)) 90%, black);
+    background-color: color-mix(in oklab, var(--fallback-su, oklch(var(--su) / 1)) 90%, black);
+    border-color: color-mix(in oklab, var(--fallback-su, oklch(var(--su) / 1)) 90%, black);
   }
 
   .btn-outline.btn-info.btn-active {
-    background-color: color-mix(in oklab, var(--fallback-in,oklch(var(--in)/1)) 90%, black);
-    border-color: color-mix(in oklab, var(--fallback-in,oklch(var(--in)/1)) 90%, black);
+    background-color: color-mix(in oklab, var(--fallback-in, oklch(var(--in) / 1)) 90%, black);
+    border-color: color-mix(in oklab, var(--fallback-in, oklch(var(--in) / 1)) 90%, black);
   }
 
   .btn-outline.btn-warning.btn-active {
-    background-color: color-mix(in oklab, var(--fallback-wa,oklch(var(--wa)/1)) 90%, black);
-    border-color: color-mix(in oklab, var(--fallback-wa,oklch(var(--wa)/1)) 90%, black);
+    background-color: color-mix(in oklab, var(--fallback-wa, oklch(var(--wa) / 1)) 90%, black);
+    border-color: color-mix(in oklab, var(--fallback-wa, oklch(var(--wa) / 1)) 90%, black);
   }
 
   .btn-outline.btn-error.btn-active {
-    background-color: color-mix(in oklab, var(--fallback-er,oklch(var(--er)/1)) 90%, black);
-    border-color: color-mix(in oklab, var(--fallback-er,oklch(var(--er)/1)) 90%, black);
+    background-color: color-mix(in oklab, var(--fallback-er, oklch(var(--er) / 1)) 90%, black);
+    border-color: color-mix(in oklab, var(--fallback-er, oklch(var(--er) / 1)) 90%, black);
   }
 }
 
@@ -1866,20 +1985,21 @@ html {
 
 .btn-secondary {
   --tw-text-opacity: 1;
-  color: var(--fallback-sc,oklch(var(--sc)/var(--tw-text-opacity)));
-  outline-color: var(--fallback-s,oklch(var(--s)/1));
+  color: var(--fallback-sc, oklch(var(--sc) / var(--tw-text-opacity)));
+  outline-color: var(--fallback-s, oklch(var(--s) / 1));
 }
 
 .btn-accent {
   --tw-text-opacity: 1;
-  color: var(--fallback-ac,oklch(var(--ac)/var(--tw-text-opacity)));
-  outline-color: var(--fallback-a,oklch(var(--a)/1));
+  color: var(--fallback-ac, oklch(var(--ac) / var(--tw-text-opacity)));
+  outline-color: var(--fallback-a, oklch(var(--a) / 1));
 }
 
 .btn.glass {
   --tw-shadow: 0 0 #0000;
   --tw-shadow-colored: 0 0 #0000;
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000),
+    var(--tw-shadow);
   outline-color: currentColor;
 }
 
@@ -1895,13 +2015,14 @@ html {
   color: currentColor;
   --tw-shadow: 0 0 #0000;
   --tw-shadow-colored: 0 0 #0000;
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000),
+    var(--tw-shadow);
   outline-color: currentColor;
 }
 
 .btn-ghost.btn-active {
   border-color: transparent;
-  background-color: var(--fallback-bc,oklch(var(--bc)/0.2));
+  background-color: var(--fallback-bc, oklch(var(--bc) / 0.2));
 }
 
 .btn-link.btn-active {
@@ -1912,80 +2033,81 @@ html {
 
 .btn-outline.btn-active {
   --tw-border-opacity: 1;
-  border-color: var(--fallback-bc,oklch(var(--bc)/var(--tw-border-opacity)));
+  border-color: var(--fallback-bc, oklch(var(--bc) / var(--tw-border-opacity)));
   --tw-bg-opacity: 1;
-  background-color: var(--fallback-bc,oklch(var(--bc)/var(--tw-bg-opacity)));
+  background-color: var(--fallback-bc, oklch(var(--bc) / var(--tw-bg-opacity)));
   --tw-text-opacity: 1;
-  color: var(--fallback-b1,oklch(var(--b1)/var(--tw-text-opacity)));
+  color: var(--fallback-b1, oklch(var(--b1) / var(--tw-text-opacity)));
 }
 
 .btn-outline.btn-primary.btn-active {
   --tw-text-opacity: 1;
-  color: var(--fallback-pc,oklch(var(--pc)/var(--tw-text-opacity)));
+  color: var(--fallback-pc, oklch(var(--pc) / var(--tw-text-opacity)));
 }
 
 .btn-outline.btn-secondary {
   --tw-text-opacity: 1;
-  color: var(--fallback-s,oklch(var(--s)/var(--tw-text-opacity)));
+  color: var(--fallback-s, oklch(var(--s) / var(--tw-text-opacity)));
 }
 
 .btn-outline.btn-secondary.btn-active {
   --tw-text-opacity: 1;
-  color: var(--fallback-sc,oklch(var(--sc)/var(--tw-text-opacity)));
+  color: var(--fallback-sc, oklch(var(--sc) / var(--tw-text-opacity)));
 }
 
 .btn-outline.btn-accent {
   --tw-text-opacity: 1;
-  color: var(--fallback-a,oklch(var(--a)/var(--tw-text-opacity)));
+  color: var(--fallback-a, oklch(var(--a) / var(--tw-text-opacity)));
 }
 
 .btn-outline.btn-accent.btn-active {
   --tw-text-opacity: 1;
-  color: var(--fallback-ac,oklch(var(--ac)/var(--tw-text-opacity)));
+  color: var(--fallback-ac, oklch(var(--ac) / var(--tw-text-opacity)));
 }
 
 .btn-outline.btn-success.btn-active {
   --tw-text-opacity: 1;
-  color: var(--fallback-suc,oklch(var(--suc)/var(--tw-text-opacity)));
+  color: var(--fallback-suc, oklch(var(--suc) / var(--tw-text-opacity)));
 }
 
 .btn-outline.btn-info.btn-active {
   --tw-text-opacity: 1;
-  color: var(--fallback-inc,oklch(var(--inc)/var(--tw-text-opacity)));
+  color: var(--fallback-inc, oklch(var(--inc) / var(--tw-text-opacity)));
 }
 
 .btn-outline.btn-warning.btn-active {
   --tw-text-opacity: 1;
-  color: var(--fallback-wac,oklch(var(--wac)/var(--tw-text-opacity)));
+  color: var(--fallback-wac, oklch(var(--wac) / var(--tw-text-opacity)));
 }
 
 .btn-outline.btn-error.btn-active {
   --tw-text-opacity: 1;
-  color: var(--fallback-erc,oklch(var(--erc)/var(--tw-text-opacity)));
+  color: var(--fallback-erc, oklch(var(--erc) / var(--tw-text-opacity)));
 }
 
 .btn.btn-disabled,
-  .btn[disabled],
-  .btn:disabled {
+.btn[disabled],
+.btn:disabled {
   --tw-border-opacity: 0;
-  background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
+  background-color: var(--fallback-n, oklch(var(--n) / var(--tw-bg-opacity)));
   --tw-bg-opacity: 0.2;
-  color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
+  color: var(--fallback-bc, oklch(var(--bc) / var(--tw-text-opacity)));
   --tw-text-opacity: 0.2;
 }
 
-.btn:is(input[type="checkbox"]:checked),
-.btn:is(input[type="radio"]:checked) {
+.btn:is(input[type='checkbox']:checked),
+.btn:is(input[type='radio']:checked) {
   --tw-border-opacity: 1;
-  border-color: var(--fallback-p,oklch(var(--p)/var(--tw-border-opacity)));
+  border-color: var(--fallback-p, oklch(var(--p) / var(--tw-border-opacity)));
   --tw-bg-opacity: 1;
-  background-color: var(--fallback-p,oklch(var(--p)/var(--tw-bg-opacity)));
+  background-color: var(--fallback-p, oklch(var(--p) / var(--tw-bg-opacity)));
   --tw-text-opacity: 1;
-  color: var(--fallback-pc,oklch(var(--pc)/var(--tw-text-opacity)));
+  color: var(--fallback-pc, oklch(var(--pc) / var(--tw-text-opacity)));
 }
 
-.btn:is(input[type="checkbox"]:checked):focus-visible, .btn:is(input[type="radio"]:checked):focus-visible {
-  outline-color: var(--fallback-p,oklch(var(--p)/1));
+.btn:is(input[type='checkbox']:checked):focus-visible,
+.btn:is(input[type='radio']:checked):focus-visible {
+  outline-color: var(--fallback-p, oklch(var(--p) / 1));
 }
 
 @keyframes button-pop {
@@ -2026,7 +2148,7 @@ html {
 .card.bordered {
   border-width: 1px;
   --tw-border-opacity: 1;
-  border-color: var(--fallback-b2,oklch(var(--b2)/var(--tw-border-opacity)));
+  border-color: var(--fallback-b2, oklch(var(--b2) / var(--tw-border-opacity)));
 }
 
 .card.compact .card-body {
@@ -2061,43 +2183,43 @@ html {
   outline-style: solid;
   outline-width: 2px;
   outline-offset: 2px;
-  outline-color: var(--fallback-bc,oklch(var(--bc)/1));
+  outline-color: var(--fallback-bc, oklch(var(--bc) / 1));
 }
 
 .checkbox:checked,
-  .checkbox[checked="true"],
-  .checkbox[aria-checked="true"] {
+.checkbox[checked='true'],
+.checkbox[aria-checked='true'] {
   background-repeat: no-repeat;
   animation: checkmark var(--animation-input, 0.2s) ease-out;
   background-color: var(--chkbg);
   background-image: linear-gradient(-45deg, transparent 65%, var(--chkbg) 65.99%),
-      linear-gradient(45deg, transparent 75%, var(--chkbg) 75.99%),
-      linear-gradient(-45deg, var(--chkbg) 40%, transparent 40.99%),
-      linear-gradient(
-        45deg,
-        var(--chkbg) 30%,
-        var(--chkfg) 30.99%,
-        var(--chkfg) 40%,
-        transparent 40.99%
-      ),
-      linear-gradient(-45deg, var(--chkfg) 50%, var(--chkbg) 50.99%);
+    linear-gradient(45deg, transparent 75%, var(--chkbg) 75.99%),
+    linear-gradient(-45deg, var(--chkbg) 40%, transparent 40.99%),
+    linear-gradient(
+      45deg,
+      var(--chkbg) 30%,
+      var(--chkfg) 30.99%,
+      var(--chkfg) 40%,
+      transparent 40.99%
+    ),
+    linear-gradient(-45deg, var(--chkfg) 50%, var(--chkbg) 50.99%);
 }
 
 .checkbox:indeterminate {
   --tw-bg-opacity: 1;
-  background-color: var(--fallback-bc,oklch(var(--bc)/var(--tw-bg-opacity)));
+  background-color: var(--fallback-bc, oklch(var(--bc) / var(--tw-bg-opacity)));
   background-repeat: no-repeat;
   animation: checkmark var(--animation-input, 0.2s) ease-out;
   background-image: linear-gradient(90deg, transparent 80%, var(--chkbg) 80%),
-      linear-gradient(-90deg, transparent 80%, var(--chkbg) 80%),
-      linear-gradient(0deg, var(--chkbg) 43%, var(--chkfg) 43%, var(--chkfg) 57%, var(--chkbg) 57%);
+    linear-gradient(-90deg, transparent 80%, var(--chkbg) 80%),
+    linear-gradient(0deg, var(--chkbg) 43%, var(--chkfg) 43%, var(--chkfg) 57%, var(--chkbg) 57%);
 }
 
 .checkbox:disabled {
   cursor: not-allowed;
   border-color: transparent;
   --tw-bg-opacity: 1;
-  background-color: var(--fallback-bc,oklch(var(--bc)/var(--tw-bg-opacity)));
+  background-color: var(--fallback-bc, oklch(var(--bc) / var(--tw-bg-opacity)));
   opacity: 0.2;
 }
 
@@ -2134,16 +2256,16 @@ details.collapse summary::-webkit-details-marker {
   outline-style: solid;
   outline-width: 2px;
   outline-offset: 2px;
-  outline-color: var(--fallback-bc,oklch(var(--bc)/1));
+  outline-color: var(--fallback-bc, oklch(var(--bc) / 1));
 }
 
 .collapse:has(.collapse-title:focus-visible),
-.collapse:has(> input[type="checkbox"]:focus-visible),
-.collapse:has(> input[type="radio"]:focus-visible) {
+.collapse:has(> input[type='checkbox']:focus-visible),
+.collapse:has(> input[type='radio']:focus-visible) {
   outline-style: solid;
   outline-width: 2px;
   outline-offset: 2px;
-  outline-color: var(--fallback-bc,oklch(var(--bc)/1));
+  outline-color: var(--fallback-bc, oklch(var(--bc) / 1));
 }
 
 .collapse-arrow > .collapse-title:after {
@@ -2153,7 +2275,9 @@ details.collapse summary::-webkit-details-marker {
   width: 0.5rem;
   --tw-translate-y: -100%;
   --tw-rotate: 45deg;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate))
+    skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x))
+    scaleY(var(--tw-scale-y));
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
@@ -2161,7 +2285,7 @@ details.collapse summary::-webkit-details-marker {
   transition-duration: 0.2s;
   top: 50%;
   inset-inline-end: 1.4rem;
-  content: "";
+  content: '';
   transform-origin: 75% 75%;
   box-shadow: 2px 2px;
   pointer-events: none;
@@ -2178,12 +2302,12 @@ details.collapse summary::-webkit-details-marker {
   transition-duration: 300ms;
   top: 0.9rem;
   inset-inline-end: 1.4rem;
-  content: "+";
+  content: '+';
   pointer-events: none;
 }
 
-.collapse:not(.collapse-open):not(.collapse-close) > input[type="checkbox"],
-.collapse:not(.collapse-open):not(.collapse-close) > input[type="radio"]:not(:checked),
+.collapse:not(.collapse-open):not(.collapse-close) > input[type='checkbox'],
+.collapse:not(.collapse-open):not(.collapse-close) > input[type='radio']:not(:checked),
 .collapse:not(.collapse-open):not(.collapse-close) > .collapse-title {
   cursor: pointer;
 }
@@ -2196,14 +2320,14 @@ details.collapse summary::-webkit-details-marker {
   position: relative;
 }
 
-:where(.collapse > input[type="checkbox"]),
-:where(.collapse > input[type="radio"]) {
+:where(.collapse > input[type='checkbox']),
+:where(.collapse > input[type='radio']) {
   z-index: 1;
 }
 
 .collapse-title,
-:where(.collapse > input[type="checkbox"]),
-:where(.collapse > input[type="radio"]) {
+:where(.collapse > input[type='checkbox']),
+:where(.collapse > input[type='radio']) {
   width: 100%;
   padding: 1rem;
   padding-inline-end: 3rem;
@@ -2214,29 +2338,32 @@ details.collapse summary::-webkit-details-marker {
 .collapse[open] > :where(.collapse-content),
 .collapse-open > :where(.collapse-content),
 .collapse:focus:not(.collapse-close) > :where(.collapse-content),
-.collapse:not(.collapse-close) > :where(input[type="checkbox"]:checked ~ .collapse-content),
-.collapse:not(.collapse-close) > :where(input[type="radio"]:checked ~ .collapse-content) {
+.collapse:not(.collapse-close) > :where(input[type='checkbox']:checked ~ .collapse-content),
+.collapse:not(.collapse-close) > :where(input[type='radio']:checked ~ .collapse-content) {
   padding-bottom: 1rem;
-  transition: padding 0.2s ease-out,
+  transition:
+    padding 0.2s ease-out,
     background-color 0.2s ease-out;
 }
 
 .collapse[open].collapse-arrow > .collapse-title:after,
 .collapse-open.collapse-arrow > .collapse-title:after,
 .collapse-arrow:focus:not(.collapse-close) > .collapse-title:after,
-.collapse-arrow:not(.collapse-close) > input[type="checkbox"]:checked ~ .collapse-title:after,
-.collapse-arrow:not(.collapse-close) > input[type="radio"]:checked ~ .collapse-title:after {
+.collapse-arrow:not(.collapse-close) > input[type='checkbox']:checked ~ .collapse-title:after,
+.collapse-arrow:not(.collapse-close) > input[type='radio']:checked ~ .collapse-title:after {
   --tw-translate-y: -50%;
   --tw-rotate: 225deg;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate))
+    skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x))
+    scaleY(var(--tw-scale-y));
 }
 
 .collapse[open].collapse-plus > .collapse-title:after,
 .collapse-open.collapse-plus > .collapse-title:after,
 .collapse-plus:focus:not(.collapse-close) > .collapse-title:after,
-.collapse-plus:not(.collapse-close) > input[type="checkbox"]:checked ~ .collapse-title:after,
-.collapse-plus:not(.collapse-close) > input[type="radio"]:checked ~ .collapse-title:after {
-  content: "−";
+.collapse-plus:not(.collapse-close) > input[type='checkbox']:checked ~ .collapse-title:after,
+.collapse-plus:not(.collapse-close) > input[type='radio']:checked ~ .collapse-title:after {
+  content: '−';
 }
 
 .divider:not(:empty) {
@@ -2258,14 +2385,16 @@ details.collapse summary::-webkit-details-marker {
 .dropdown:focus-within .dropdown-content {
   --tw-scale-x: 1;
   --tw-scale-y: 1;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate))
+    skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x))
+    scaleY(var(--tw-scale-y));
 }
 
 .label-text {
   font-size: 0.875rem;
   line-height: 1.25rem;
   --tw-text-opacity: 1;
-  color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
+  color: var(--fallback-bc, oklch(var(--bc) / var(--tw-text-opacity)));
 }
 
 .input input:focus {
@@ -2278,39 +2407,41 @@ details.collapse summary::-webkit-details-marker {
 }
 
 .input-bordered {
-  border-color: var(--fallback-bc,oklch(var(--bc)/0.2));
+  border-color: var(--fallback-bc, oklch(var(--bc) / 0.2));
 }
 
 .input:focus,
-  .input:focus-within {
+.input:focus-within {
   box-shadow: none;
-  border-color: var(--fallback-bc,oklch(var(--bc)/0.2));
+  border-color: var(--fallback-bc, oklch(var(--bc) / 0.2));
   outline-style: solid;
   outline-width: 2px;
   outline-offset: 2px;
-  outline-color: var(--fallback-bc,oklch(var(--bc)/0.2));
+  outline-color: var(--fallback-bc, oklch(var(--bc) / 0.2));
 }
 
 .input-disabled,
-  .input:disabled,
-  .input[disabled] {
+.input:disabled,
+.input[disabled] {
   cursor: not-allowed;
   --tw-border-opacity: 1;
-  border-color: var(--fallback-b2,oklch(var(--b2)/var(--tw-border-opacity)));
+  border-color: var(--fallback-b2, oklch(var(--b2) / var(--tw-border-opacity)));
   --tw-bg-opacity: 1;
-  background-color: var(--fallback-b2,oklch(var(--b2)/var(--tw-bg-opacity)));
-  color: var(--fallback-bc,oklch(var(--bc)/0.4));
+  background-color: var(--fallback-b2, oklch(var(--b2) / var(--tw-bg-opacity)));
+  color: var(--fallback-bc, oklch(var(--bc) / 0.4));
 }
 
-.input-disabled::-moz-placeholder, .input:disabled::-moz-placeholder, .input[disabled]::-moz-placeholder {
-  color: var(--fallback-bc,oklch(var(--bc)/var(--tw-placeholder-opacity)));
+.input-disabled::-moz-placeholder,
+.input:disabled::-moz-placeholder,
+.input[disabled]::-moz-placeholder {
+  color: var(--fallback-bc, oklch(var(--bc) / var(--tw-placeholder-opacity)));
   --tw-placeholder-opacity: 0.2;
 }
 
 .input-disabled::placeholder,
-  .input:disabled::placeholder,
-  .input[disabled]::placeholder {
-  color: var(--fallback-bc,oklch(var(--bc)/var(--tw-placeholder-opacity)));
+.input:disabled::placeholder,
+.input[disabled]::placeholder {
+  color: var(--fallback-bc, oklch(var(--bc) / var(--tw-placeholder-opacity)));
   --tw-placeholder-opacity: 0.2;
 }
 
@@ -2341,18 +2472,18 @@ details.collapse summary::-webkit-details-marker {
   width: 1.5rem;
   background-color: currentColor;
   -webkit-mask-size: 100%;
-          mask-size: 100%;
+  mask-size: 100%;
   -webkit-mask-repeat: no-repeat;
-          mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
   -webkit-mask-position: center;
-          mask-position: center;
+  mask-position: center;
   -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='24' height='24' stroke='%23000' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cstyle%3E.spinner_V8m1%7Btransform-origin:center;animation:spinner_zKoa 2s linear infinite%7D.spinner_V8m1 circle%7Bstroke-linecap:round;animation:spinner_YpZS 1.5s ease-out infinite%7D%40keyframes spinner_zKoa%7B100%25%7Btransform:rotate(360deg)%7D%7D%40keyframes spinner_YpZS%7B0%25%7Bstroke-dasharray:0 150;stroke-dashoffset:0%7D47.5%25%7Bstroke-dasharray:42 150;stroke-dashoffset:-16%7D95%25%2C100%25%7Bstroke-dasharray:42 150;stroke-dashoffset:-59%7D%7D%3C%2Fstyle%3E%3Cg class='spinner_V8m1'%3E%3Ccircle cx='12' cy='12' r='9.5' fill='none' stroke-width='3'%3E%3C%2Fcircle%3E%3C%2Fg%3E%3C%2Fsvg%3E");
-          mask-image: url("data:image/svg+xml,%3Csvg width='24' height='24' stroke='%23000' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cstyle%3E.spinner_V8m1%7Btransform-origin:center;animation:spinner_zKoa 2s linear infinite%7D.spinner_V8m1 circle%7Bstroke-linecap:round;animation:spinner_YpZS 1.5s ease-out infinite%7D%40keyframes spinner_zKoa%7B100%25%7Btransform:rotate(360deg)%7D%7D%40keyframes spinner_YpZS%7B0%25%7Bstroke-dasharray:0 150;stroke-dashoffset:0%7D47.5%25%7Bstroke-dasharray:42 150;stroke-dashoffset:-16%7D95%25%2C100%25%7Bstroke-dasharray:42 150;stroke-dashoffset:-59%7D%7D%3C%2Fstyle%3E%3Cg class='spinner_V8m1'%3E%3Ccircle cx='12' cy='12' r='9.5' fill='none' stroke-width='3'%3E%3C%2Fcircle%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg width='24' height='24' stroke='%23000' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cstyle%3E.spinner_V8m1%7Btransform-origin:center;animation:spinner_zKoa 2s linear infinite%7D.spinner_V8m1 circle%7Bstroke-linecap:round;animation:spinner_YpZS 1.5s ease-out infinite%7D%40keyframes spinner_zKoa%7B100%25%7Btransform:rotate(360deg)%7D%7D%40keyframes spinner_YpZS%7B0%25%7Bstroke-dasharray:0 150;stroke-dashoffset:0%7D47.5%25%7Bstroke-dasharray:42 150;stroke-dashoffset:-16%7D95%25%2C100%25%7Bstroke-dasharray:42 150;stroke-dashoffset:-59%7D%7D%3C%2Fstyle%3E%3Cg class='spinner_V8m1'%3E%3Ccircle cx='12' cy='12' r='9.5' fill='none' stroke-width='3'%3E%3C%2Fcircle%3E%3C%2Fg%3E%3C%2Fsvg%3E");
 }
 
 .loading-dots {
   -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cstyle%3E.spinner_qM83%7Banimation:spinner_8HQG 1.05s infinite%7D.spinner_oXPr%7Banimation-delay:.1s%7D.spinner_ZTLf%7Banimation-delay:.2s%7D@keyframes spinner_8HQG%7B0%25,57.14%25%7Banimation-timing-function:cubic-bezier(0.33,.66,.66,1);transform:translate(0)%7D28.57%25%7Banimation-timing-function:cubic-bezier(0.33,0,.66,.33);transform:translateY(-6px)%7D100%25%7Btransform:translate(0)%7D%7D%3C/style%3E%3Ccircle class='spinner_qM83' cx='4' cy='12' r='3'/%3E%3Ccircle class='spinner_qM83 spinner_oXPr' cx='12' cy='12' r='3'/%3E%3Ccircle class='spinner_qM83 spinner_ZTLf' cx='20' cy='12' r='3'/%3E%3C/svg%3E");
-          mask-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cstyle%3E.spinner_qM83%7Banimation:spinner_8HQG 1.05s infinite%7D.spinner_oXPr%7Banimation-delay:.1s%7D.spinner_ZTLf%7Banimation-delay:.2s%7D@keyframes spinner_8HQG%7B0%25,57.14%25%7Banimation-timing-function:cubic-bezier(0.33,.66,.66,1);transform:translate(0)%7D28.57%25%7Banimation-timing-function:cubic-bezier(0.33,0,.66,.33);transform:translateY(-6px)%7D100%25%7Btransform:translate(0)%7D%7D%3C/style%3E%3Ccircle class='spinner_qM83' cx='4' cy='12' r='3'/%3E%3Ccircle class='spinner_qM83 spinner_oXPr' cx='12' cy='12' r='3'/%3E%3Ccircle class='spinner_qM83 spinner_ZTLf' cx='20' cy='12' r='3'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cstyle%3E.spinner_qM83%7Banimation:spinner_8HQG 1.05s infinite%7D.spinner_oXPr%7Banimation-delay:.1s%7D.spinner_ZTLf%7Banimation-delay:.2s%7D@keyframes spinner_8HQG%7B0%25,57.14%25%7Banimation-timing-function:cubic-bezier(0.33,.66,.66,1);transform:translate(0)%7D28.57%25%7Banimation-timing-function:cubic-bezier(0.33,0,.66,.33);transform:translateY(-6px)%7D100%25%7Btransform:translate(0)%7D%7D%3C/style%3E%3Ccircle class='spinner_qM83' cx='4' cy='12' r='3'/%3E%3Ccircle class='spinner_qM83 spinner_oXPr' cx='12' cy='12' r='3'/%3E%3Ccircle class='spinner_qM83 spinner_ZTLf' cx='20' cy='12' r='3'/%3E%3C/svg%3E");
 }
 
 .loading-lg {
@@ -2361,7 +2492,7 @@ details.collapse summary::-webkit-details-marker {
 
 :where(.menu li:empty) {
   --tw-bg-opacity: 1;
-  background-color: var(--fallback-bc,oklch(var(--bc)/var(--tw-bg-opacity)));
+  background-color: var(--fallback-bc, oklch(var(--bc) / var(--tw-bg-opacity)));
   opacity: 0.1;
   margin: 0.5rem 1rem;
   height: 1px;
@@ -2374,9 +2505,9 @@ details.collapse summary::-webkit-details-marker {
   top: 0.75rem;
   width: 1px;
   --tw-bg-opacity: 1;
-  background-color: var(--fallback-bc,oklch(var(--bc)/var(--tw-bg-opacity)));
+  background-color: var(--fallback-bc, oklch(var(--bc) / var(--tw-bg-opacity)));
   opacity: 0.1;
-  content: "";
+  content: '';
 }
 
 .menu :where(li:not(.menu-title) > *:not(ul):not(details):not(.menu-title)),
@@ -2387,25 +2518,61 @@ details.collapse summary::-webkit-details-marker {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   text-align: start;
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+  transition-property:
+    color,
+    background-color,
+    border-color,
+    text-decoration-color,
+    fill,
+    stroke,
+    opacity,
+    box-shadow,
+    transform,
+    filter,
+    -webkit-backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke,
+    opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-property:
+    color,
+    background-color,
+    border-color,
+    text-decoration-color,
+    fill,
+    stroke,
+    opacity,
+    box-shadow,
+    transform,
+    filter,
+    backdrop-filter,
+    -webkit-backdrop-filter;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
   transition-duration: 200ms;
   text-wrap: balance;
 }
 
-:where(.menu li:not(.menu-title):not(.disabled) > *:not(ul):not(details):not(.menu-title)):not(summary):not(.active).focus,
-  :where(.menu li:not(.menu-title):not(.disabled) > *:not(ul):not(details):not(.menu-title)):not(summary):not(.active):focus,
-  :where(.menu li:not(.menu-title):not(.disabled) > *:not(ul):not(details):not(.menu-title)):is(summary):not(.active):focus-visible,
-  :where(.menu li:not(.menu-title):not(.disabled) > details > summary:not(.menu-title)):not(summary):not(.active).focus,
-  :where(.menu li:not(.menu-title):not(.disabled) > details > summary:not(.menu-title)):not(summary):not(.active):focus,
-  :where(.menu li:not(.menu-title):not(.disabled) > details > summary:not(.menu-title)):is(summary):not(.active):focus-visible {
+:where(.menu li:not(.menu-title):not(.disabled) > *:not(ul):not(details):not(.menu-title)):not(
+    summary
+  ):not(.active).focus,
+:where(.menu li:not(.menu-title):not(.disabled) > *:not(ul):not(details):not(.menu-title)):not(
+    summary
+  ):not(.active):focus,
+:where(.menu li:not(.menu-title):not(.disabled) > *:not(ul):not(details):not(.menu-title)):is(
+    summary
+  ):not(.active):focus-visible,
+:where(.menu li:not(.menu-title):not(.disabled) > details > summary:not(.menu-title)):not(
+    summary
+  ):not(.active).focus,
+:where(.menu li:not(.menu-title):not(.disabled) > details > summary:not(.menu-title)):not(
+    summary
+  ):not(.active):focus,
+:where(.menu li:not(.menu-title):not(.disabled) > details > summary:not(.menu-title)):is(
+    summary
+  ):not(.active):focus-visible {
   cursor: pointer;
-  background-color: var(--fallback-bc,oklch(var(--bc)/0.1));
+  background-color: var(--fallback-bc, oklch(var(--bc) / 0.1));
   --tw-text-opacity: 1;
-  color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
+  color: var(--fallback-bc, oklch(var(--bc) / var(--tw-text-opacity)));
   outline: 2px solid transparent;
   outline-offset: 2px;
 }
@@ -2414,9 +2581,9 @@ details.collapse summary::-webkit-details-marker {
 .menu li > *:not(ul):not(.menu-title):not(details).active,
 .menu li > details > summary:active {
   --tw-bg-opacity: 1;
-  background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
+  background-color: var(--fallback-n, oklch(var(--n) / var(--tw-bg-opacity)));
   --tw-text-opacity: 1;
-  color: var(--fallback-nc,oklch(var(--nc)/var(--tw-text-opacity)));
+  color: var(--fallback-nc, oklch(var(--nc) / var(--tw-text-opacity)));
 }
 
 .menu :where(li > details > summary)::-webkit-details-marker {
@@ -2434,7 +2601,7 @@ details.collapse summary::-webkit-details-marker {
   transition-property: transform, margin-top;
   transition-duration: 0.3s;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  content: "";
+  content: '';
   transform-origin: 75% 75%;
   box-shadow: 2px 2px;
   pointer-events: none;
@@ -2469,20 +2636,22 @@ details.collapse summary::-webkit-details-marker {
   text-overflow: ellipsis;
   white-space: nowrap;
   --tw-bg-opacity: 1;
-  background-color: var(--fallback-b2,oklch(var(--b2)/var(--tw-bg-opacity)));
+  background-color: var(--fallback-b2, oklch(var(--b2) / var(--tw-bg-opacity)));
   padding-left: 2rem;
   direction: ltr;
 }
 
 .mockup-browser .mockup-browser-toolbar .input:before {
-  content: "";
+  content: '';
   position: absolute;
   left: 0.5rem;
   top: 50%;
   aspect-ratio: 1 / 1;
   height: 0.75rem;
   --tw-translate-y: -50%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate))
+    skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x))
+    scaleY(var(--tw-scale-y));
   border-radius: 9999px;
   border-width: 2px;
   border-color: currentColor;
@@ -2490,14 +2659,16 @@ details.collapse summary::-webkit-details-marker {
 }
 
 .mockup-browser .mockup-browser-toolbar .input:after {
-  content: "";
+  content: '';
   position: absolute;
   left: 1.25rem;
   top: 50%;
   height: 0.5rem;
   --tw-translate-y: 25%;
   --tw-rotate: -45deg;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate))
+    skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x))
+    scaleY(var(--tw-scale-y));
   border-radius: 9999px;
   border-width: 1px;
   border-color: currentColor;
@@ -2505,19 +2676,19 @@ details.collapse summary::-webkit-details-marker {
 }
 
 .\!modal:not(dialog:not(.modal-open)),
-  .\!modal::backdrop {
+.\!modal::backdrop {
   background-color: #0006 !important;
   animation: modal-pop 0.2s ease-out !important;
 }
 
 .modal:not(dialog:not(.modal-open)),
-  .modal::backdrop {
+.modal::backdrop {
   background-color: #0006;
   animation: modal-pop 0.2s ease-out;
 }
 
 .\!modal:not(dialog:not(.modal-open)),
-  .\!modal::backdrop {
+.\!modal::backdrop {
   background-color: #0006 !important;
   animation: modal-pop 0.2s ease-out !important;
 }
@@ -2529,9 +2700,10 @@ details.collapse summary::-webkit-details-marker {
   --tw-translate-y: 0px;
   --tw-scale-x: 1;
   --tw-scale-y: 1;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate))
+    skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x))
+    scaleY(var(--tw-scale-y));
 }
-
 
 .modal-toggle:checked + .\!modal .modal-box,
 .\!modal:target .modal-box,
@@ -2539,7 +2711,9 @@ details.collapse summary::-webkit-details-marker {
   --tw-translate-y: 0px !important;
   --tw-scale-x: 1 !important;
   --tw-scale-y: 1 !important;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y)) !important;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate))
+    skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x))
+    scaleY(var(--tw-scale-y)) !important;
 }
 
 @keyframes modal-pop {
@@ -2562,37 +2736,38 @@ details.collapse summary::-webkit-details-marker {
   outline-style: solid;
   outline-width: 2px;
   outline-offset: 2px;
-  outline-color: var(--fallback-bc,oklch(var(--bc)/1));
+  outline-color: var(--fallback-bc, oklch(var(--bc) / 1));
 }
 
 .radio:checked,
-  .radio[aria-checked="true"] {
+.radio[aria-checked='true'] {
   --tw-bg-opacity: 1;
-  background-color: var(--fallback-bc,oklch(var(--bc)/var(--tw-bg-opacity)));
+  background-color: var(--fallback-bc, oklch(var(--bc) / var(--tw-bg-opacity)));
   background-image: none;
   animation: radiomark var(--animation-input, 0.2s) ease-out;
-  box-shadow: 0 0 0 4px var(--fallback-b1,oklch(var(--b1)/1)) inset,
-      0 0 0 4px var(--fallback-b1,oklch(var(--b1)/1)) inset;
+  box-shadow:
+    0 0 0 4px var(--fallback-b1, oklch(var(--b1) / 1)) inset,
+    0 0 0 4px var(--fallback-b1, oklch(var(--b1) / 1)) inset;
 }
 
 .radio-primary {
   --chkbg: var(--p);
   --tw-border-opacity: 1;
-  border-color: var(--fallback-p,oklch(var(--p)/var(--tw-border-opacity)));
+  border-color: var(--fallback-p, oklch(var(--p) / var(--tw-border-opacity)));
 }
 
 .radio-primary:focus-visible {
-  outline-color: var(--fallback-p,oklch(var(--p)/1));
+  outline-color: var(--fallback-p, oklch(var(--p) / 1));
 }
 
 .radio-primary:checked,
-    .radio-primary[aria-checked="true"] {
+.radio-primary[aria-checked='true'] {
   --tw-border-opacity: 1;
-  border-color: var(--fallback-p,oklch(var(--p)/var(--tw-border-opacity)));
+  border-color: var(--fallback-p, oklch(var(--p) / var(--tw-border-opacity)));
   --tw-bg-opacity: 1;
-  background-color: var(--fallback-p,oklch(var(--p)/var(--tw-bg-opacity)));
+  background-color: var(--fallback-p, oklch(var(--p) / var(--tw-bg-opacity)));
   --tw-text-opacity: 1;
-  color: var(--fallback-pc,oklch(var(--pc)/var(--tw-text-opacity)));
+  color: var(--fallback-pc, oklch(var(--pc) / var(--tw-text-opacity)));
 }
 
 .radio:disabled {
@@ -2602,18 +2777,21 @@ details.collapse summary::-webkit-details-marker {
 
 @keyframes radiomark {
   0% {
-    box-shadow: 0 0 0 12px var(--fallback-b1,oklch(var(--b1)/1)) inset,
-      0 0 0 12px var(--fallback-b1,oklch(var(--b1)/1)) inset;
+    box-shadow:
+      0 0 0 12px var(--fallback-b1, oklch(var(--b1) / 1)) inset,
+      0 0 0 12px var(--fallback-b1, oklch(var(--b1) / 1)) inset;
   }
 
   50% {
-    box-shadow: 0 0 0 3px var(--fallback-b1,oklch(var(--b1)/1)) inset,
-      0 0 0 3px var(--fallback-b1,oklch(var(--b1)/1)) inset;
+    box-shadow:
+      0 0 0 3px var(--fallback-b1, oklch(var(--b1) / 1)) inset,
+      0 0 0 3px var(--fallback-b1, oklch(var(--b1) / 1)) inset;
   }
 
   100% {
-    box-shadow: 0 0 0 4px var(--fallback-b1,oklch(var(--b1)/1)) inset,
-      0 0 0 4px var(--fallback-b1,oklch(var(--b1)/1)) inset;
+    box-shadow:
+      0 0 0 4px var(--fallback-b1, oklch(var(--b1) / 1)) inset,
+      0 0 0 4px var(--fallback-b1, oklch(var(--b1) / 1)) inset;
   }
 }
 
@@ -2633,45 +2811,48 @@ details.collapse summary::-webkit-details-marker {
 
 .select:focus {
   box-shadow: none;
-  border-color: var(--fallback-bc,oklch(var(--bc)/0.2));
+  border-color: var(--fallback-bc, oklch(var(--bc) / 0.2));
   outline-style: solid;
   outline-width: 2px;
   outline-offset: 2px;
-  outline-color: var(--fallback-bc,oklch(var(--bc)/0.2));
+  outline-color: var(--fallback-bc, oklch(var(--bc) / 0.2));
 }
 
 .select-disabled,
-  .select:disabled,
-  .select[disabled] {
+.select:disabled,
+.select[disabled] {
   cursor: not-allowed;
   --tw-border-opacity: 1;
-  border-color: var(--fallback-b2,oklch(var(--b2)/var(--tw-border-opacity)));
+  border-color: var(--fallback-b2, oklch(var(--b2) / var(--tw-border-opacity)));
   --tw-bg-opacity: 1;
-  background-color: var(--fallback-b2,oklch(var(--b2)/var(--tw-bg-opacity)));
+  background-color: var(--fallback-b2, oklch(var(--b2) / var(--tw-bg-opacity)));
   --tw-text-opacity: 0.2;
 }
 
-.select-disabled::-moz-placeholder, .select:disabled::-moz-placeholder, .select[disabled]::-moz-placeholder {
-  color: var(--fallback-bc,oklch(var(--bc)/var(--tw-placeholder-opacity)));
+.select-disabled::-moz-placeholder,
+.select:disabled::-moz-placeholder,
+.select[disabled]::-moz-placeholder {
+  color: var(--fallback-bc, oklch(var(--bc) / var(--tw-placeholder-opacity)));
   --tw-placeholder-opacity: 0.2;
 }
 
 .select-disabled::placeholder,
-  .select:disabled::placeholder,
-  .select[disabled]::placeholder {
-  color: var(--fallback-bc,oklch(var(--bc)/var(--tw-placeholder-opacity)));
+.select:disabled::placeholder,
+.select[disabled]::placeholder {
+  color: var(--fallback-bc, oklch(var(--bc) / var(--tw-placeholder-opacity)));
   --tw-placeholder-opacity: 0.2;
 }
 
 .select-multiple,
-  .select[multiple],
-  .select[size].select:not([size="1"]) {
+.select[multiple],
+.select[size].select:not([size='1']) {
   background-image: none;
   padding-right: 1rem;
 }
 
-[dir="rtl"] .select {
-  background-position: calc(0% + 12px) calc(1px + 50%),
+[dir='rtl'] .select {
+  background-position:
+    calc(0% + 12px) calc(1px + 50%),
     calc(0% + 16px) calc(1px + 50%);
 }
 
@@ -2685,7 +2866,7 @@ details.collapse summary::-webkit-details-marker {
   }
 }
 
-:is([dir="rtl"] .table) {
+:is([dir='rtl'] .table) {
   text-align: right;
 }
 
@@ -2698,17 +2879,17 @@ details.collapse summary::-webkit-details-marker {
 }
 
 .table tr.active,
-  .table tr.active:nth-child(even),
-  .table-zebra tbody tr:nth-child(even) {
+.table tr.active:nth-child(even),
+.table-zebra tbody tr:nth-child(even) {
   --tw-bg-opacity: 1;
-  background-color: var(--fallback-b2,oklch(var(--b2)/var(--tw-bg-opacity)));
+  background-color: var(--fallback-b2, oklch(var(--b2) / var(--tw-bg-opacity)));
 }
 
 .table :where(thead, tbody) :where(tr:not(:last-child)),
-    .table :where(thead, tbody) :where(tr:first-child:last-child) {
+.table :where(thead, tbody) :where(tr:first-child:last-child) {
   border-bottom-width: 1px;
   --tw-border-opacity: 1;
-  border-bottom-color: var(--fallback-b2,oklch(var(--b2)/var(--tw-border-opacity)));
+  border-bottom-color: var(--fallback-b2, oklch(var(--b2) / var(--tw-border-opacity)));
 }
 
 .table :where(thead, tfoot) {
@@ -2716,7 +2897,7 @@ details.collapse summary::-webkit-details-marker {
   font-size: 0.75rem;
   line-height: 1rem;
   font-weight: 700;
-  color: var(--fallback-bc,oklch(var(--bc)/0.6));
+  color: var(--fallback-bc, oklch(var(--bc) / 0.6));
 }
 
 @keyframes toast-pop {
@@ -2732,12 +2913,34 @@ details.collapse summary::-webkit-details-marker {
 }
 
 .glass,
-  .glass.btn-active {
+.glass.btn-active {
   border: none;
   -webkit-backdrop-filter: blur(var(--glass-blur, 40px));
-          backdrop-filter: blur(var(--glass-blur, 40px));
+  backdrop-filter: blur(var(--glass-blur, 40px));
   background-color: transparent;
   background-image: linear-gradient(
+      135deg,
+      rgb(255 255 255 / var(--glass-opacity, 30%)) 0%,
+      rgb(0 0 0 / 0%) 100%
+    ),
+    linear-gradient(
+      var(--glass-reflex-degree, 100deg),
+      rgb(255 255 255 / var(--glass-reflex-opacity, 10%)) 25%,
+      rgb(0 0 0 / 0%) 25%
+    );
+  box-shadow:
+    0 0 0 1px rgb(255 255 255 / var(--glass-border-opacity, 10%)) inset,
+    0 0 0 2px rgb(0 0 0 / 5%);
+  text-shadow: 0 1px rgb(0 0 0 / var(--glass-text-shadow-opacity, 5%));
+}
+
+@media (hover: hover) {
+  .glass.btn-active {
+    border: none;
+    -webkit-backdrop-filter: blur(var(--glass-blur, 40px));
+    backdrop-filter: blur(var(--glass-blur, 40px));
+    background-color: transparent;
+    background-image: linear-gradient(
         135deg,
         rgb(255 255 255 / var(--glass-opacity, 30%)) 0%,
         rgb(0 0 0 / 0%) 100%
@@ -2747,29 +2950,9 @@ details.collapse summary::-webkit-details-marker {
         rgb(255 255 255 / var(--glass-reflex-opacity, 10%)) 25%,
         rgb(0 0 0 / 0%) 25%
       );
-  box-shadow: 0 0 0 1px rgb(255 255 255 / var(--glass-border-opacity, 10%)) inset,
+    box-shadow:
+      0 0 0 1px rgb(255 255 255 / var(--glass-border-opacity, 10%)) inset,
       0 0 0 2px rgb(0 0 0 / 5%);
-  text-shadow: 0 1px rgb(0 0 0 / var(--glass-text-shadow-opacity, 5%));
-}
-
-@media (hover: hover) {
-  .glass.btn-active {
-    border: none;
-    -webkit-backdrop-filter: blur(var(--glass-blur, 40px));
-            backdrop-filter: blur(var(--glass-blur, 40px));
-    background-color: transparent;
-    background-image: linear-gradient(
-          135deg,
-          rgb(255 255 255 / var(--glass-opacity, 30%)) 0%,
-          rgb(0 0 0 / 0%) 100%
-        ),
-        linear-gradient(
-          var(--glass-reflex-degree, 100deg),
-          rgb(255 255 255 / var(--glass-reflex-opacity, 10%)) 25%,
-          rgb(0 0 0 / 0%) 25%
-        );
-    box-shadow: 0 0 0 1px rgb(255 255 255 / var(--glass-border-opacity, 10%)) inset,
-        0 0 0 2px rgb(0 0 0 / 5%);
     text-shadow: 0 1px rgb(0 0 0 / var(--glass-text-shadow-opacity, 5%));
   }
 }
@@ -2871,7 +3054,7 @@ details.collapse summary::-webkit-details-marker {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 
 .drawer-open > .drawer-toggle {
@@ -2891,7 +3074,7 @@ details.collapse summary::-webkit-details-marker {
   transform: translateX(0%);
 }
 
-[dir="rtl"] .drawer-open > .drawer-toggle ~ .drawer-side > *:not(.drawer-overlay) {
+[dir='rtl'] .drawer-open > .drawer-toggle ~ .drawer-side > *:not(.drawer-overlay) {
   transform: translateX(0%);
 }
 
@@ -2907,69 +3090,91 @@ details.collapse summary::-webkit-details-marker {
   top: 0px;
   --tw-translate-y: -50%;
   --tw-translate-x: 50%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate))
+    skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x))
+    scaleY(var(--tw-scale-y));
 }
 
-:is([dir="rtl"] .indicator :where(.indicator-item)) {
+:is([dir='rtl'] .indicator :where(.indicator-item)) {
   --tw-translate-x: -50%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate))
+    skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x))
+    scaleY(var(--tw-scale-y));
 }
 
 .indicator :where(.indicator-item.indicator-start) {
   inset-inline-end: auto;
   inset-inline-start: 0px;
   --tw-translate-x: -50%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate))
+    skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x))
+    scaleY(var(--tw-scale-y));
 }
 
-:is([dir="rtl"] .indicator :where(.indicator-item.indicator-start)) {
+:is([dir='rtl'] .indicator :where(.indicator-item.indicator-start)) {
   --tw-translate-x: 50%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate))
+    skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x))
+    scaleY(var(--tw-scale-y));
 }
 
 .indicator :where(.indicator-item.indicator-center) {
   inset-inline-end: 50%;
   inset-inline-start: 50%;
   --tw-translate-x: -50%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate))
+    skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x))
+    scaleY(var(--tw-scale-y));
 }
 
-:is([dir="rtl"] .indicator :where(.indicator-item.indicator-center)) {
+:is([dir='rtl'] .indicator :where(.indicator-item.indicator-center)) {
   --tw-translate-x: 50%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate))
+    skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x))
+    scaleY(var(--tw-scale-y));
 }
 
 .indicator :where(.indicator-item.indicator-end) {
   inset-inline-end: 0px;
   inset-inline-start: auto;
   --tw-translate-x: 50%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate))
+    skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x))
+    scaleY(var(--tw-scale-y));
 }
 
-:is([dir="rtl"] .indicator :where(.indicator-item.indicator-end)) {
+:is([dir='rtl'] .indicator :where(.indicator-item.indicator-end)) {
   --tw-translate-x: -50%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate))
+    skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x))
+    scaleY(var(--tw-scale-y));
 }
 
 .indicator :where(.indicator-item.indicator-bottom) {
   bottom: 0px;
   top: auto;
   --tw-translate-y: 50%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate))
+    skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x))
+    scaleY(var(--tw-scale-y));
 }
 
 .indicator :where(.indicator-item.indicator-middle) {
   bottom: 50%;
   top: 50%;
   --tw-translate-y: -50%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate))
+    skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x))
+    scaleY(var(--tw-scale-y));
 }
 
 .indicator :where(.indicator-item.indicator-top) {
   bottom: auto;
   top: 0px;
   --tw-translate-y: -50%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate))
+    skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x))
+    scaleY(var(--tw-scale-y));
 }
 
 .join.join-vertical {
@@ -2977,7 +3182,7 @@ details.collapse summary::-webkit-details-marker {
 }
 
 .join.join-vertical .join-item:first-child:not(:last-child),
-  .join.join-vertical *:first-child:not(:last-child) .join-item {
+.join.join-vertical *:first-child:not(:last-child) .join-item {
   border-end-start-radius: 0;
   border-end-end-radius: 0;
   border-start-start-radius: inherit;
@@ -2985,7 +3190,7 @@ details.collapse summary::-webkit-details-marker {
 }
 
 .join.join-vertical .join-item:last-child:not(:first-child),
-  .join.join-vertical *:last-child:not(:first-child) .join-item {
+.join.join-vertical *:last-child:not(:first-child) .join-item {
   border-start-start-radius: 0;
   border-start-end-radius: 0;
   border-end-start-radius: inherit;
@@ -2997,7 +3202,7 @@ details.collapse summary::-webkit-details-marker {
 }
 
 .join.join-horizontal .join-item:first-child:not(:last-child),
-  .join.join-horizontal *:first-child:not(:last-child) .join-item {
+.join.join-horizontal *:first-child:not(:last-child) .join-item {
   border-end-end-radius: 0;
   border-start-end-radius: 0;
   border-end-start-radius: inherit;
@@ -3005,7 +3210,7 @@ details.collapse summary::-webkit-details-marker {
 }
 
 .join.join-horizontal .join-item:last-child:not(:first-child),
-  .join.join-horizontal *:last-child:not(:first-child) .join-item {
+.join.join-horizontal *:last-child:not(:first-child) .join-item {
   border-end-start-radius: 0;
   border-start-start-radius: 0;
   border-end-end-radius: inherit;
@@ -3073,10 +3278,12 @@ details.collapse summary::-webkit-details-marker {
 :where(.menu-horizontal > li:not(.menu-title) > details > ul) {
   border-radius: var(--rounded-box, 1rem);
   --tw-bg-opacity: 1;
-  background-color: var(--fallback-b1,oklch(var(--b1)/var(--tw-bg-opacity)));
+  background-color: var(--fallback-b1, oklch(var(--b1) / var(--tw-bg-opacity)));
   --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-  --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color),
+    0 8px 10px -6px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000),
+    var(--tw-shadow);
 }
 
 .modal-top :where(.modal-box) {
@@ -3085,7 +3292,9 @@ details.collapse summary::-webkit-details-marker {
   --tw-translate-y: -2.5rem;
   --tw-scale-x: 1;
   --tw-scale-y: 1;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate))
+    skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x))
+    scaleY(var(--tw-scale-y));
   border-bottom-right-radius: var(--rounded-box, 1rem);
   border-bottom-left-radius: var(--rounded-box, 1rem);
   border-top-left-radius: 0px;
@@ -3096,9 +3305,11 @@ details.collapse summary::-webkit-details-marker {
   width: 91.666667%;
   max-width: 32rem;
   --tw-translate-y: 0px;
-  --tw-scale-x: .9;
-  --tw-scale-y: .9;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  --tw-scale-x: 0.9;
+  --tw-scale-y: 0.9;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate))
+    skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x))
+    scaleY(var(--tw-scale-y));
   border-top-left-radius: var(--rounded-box, 1rem);
   border-top-right-radius: var(--rounded-box, 1rem);
   border-bottom-right-radius: var(--rounded-box, 1rem);
@@ -3111,7 +3322,9 @@ details.collapse summary::-webkit-details-marker {
   --tw-translate-y: 2.5rem;
   --tw-scale-x: 1;
   --tw-scale-y: 1;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate))
+    skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x))
+    scaleY(var(--tw-scale-y));
   border-top-left-radius: var(--rounded-box, 1rem);
   border-top-right-radius: var(--rounded-box, 1rem);
   border-bottom-right-radius: 0px;
@@ -3486,6 +3699,10 @@ details.collapse summary::-webkit-details-marker {
   place-items: center;
 }
 
+.content-center {
+  align-content: center;
+}
+
 .items-center {
   align-items: center;
 }
@@ -3625,12 +3842,12 @@ details.collapse summary::-webkit-details-marker {
 
 .border-accent {
   --tw-border-opacity: 1;
-  border-color: var(--fallback-a,oklch(var(--a)/var(--tw-border-opacity)));
+  border-color: var(--fallback-a, oklch(var(--a) / var(--tw-border-opacity)));
 }
 
 .border-base-300 {
   --tw-border-opacity: 1;
-  border-color: var(--fallback-b3,oklch(var(--b3)/var(--tw-border-opacity)));
+  border-color: var(--fallback-b3, oklch(var(--b3) / var(--tw-border-opacity)));
 }
 
 .border-black {
@@ -3645,7 +3862,7 @@ details.collapse summary::-webkit-details-marker {
 
 .border-primary {
   --tw-border-opacity: 1;
-  border-color: var(--fallback-p,oklch(var(--p)/var(--tw-border-opacity)));
+  border-color: var(--fallback-p, oklch(var(--p) / var(--tw-border-opacity)));
 }
 
 .border-red-500 {
@@ -3655,7 +3872,7 @@ details.collapse summary::-webkit-details-marker {
 
 .border-secondary {
   --tw-border-opacity: 1;
-  border-color: var(--fallback-s,oklch(var(--s)/var(--tw-border-opacity)));
+  border-color: var(--fallback-s, oklch(var(--s) / var(--tw-border-opacity)));
 }
 
 .border-white {
@@ -3665,22 +3882,22 @@ details.collapse summary::-webkit-details-marker {
 
 .bg-accent {
   --tw-bg-opacity: 1;
-  background-color: var(--fallback-a,oklch(var(--a)/var(--tw-bg-opacity)));
+  background-color: var(--fallback-a, oklch(var(--a) / var(--tw-bg-opacity)));
 }
 
 .bg-base-100 {
   --tw-bg-opacity: 1;
-  background-color: var(--fallback-b1,oklch(var(--b1)/var(--tw-bg-opacity)));
+  background-color: var(--fallback-b1, oklch(var(--b1) / var(--tw-bg-opacity)));
 }
 
 .bg-base-200 {
   --tw-bg-opacity: 1;
-  background-color: var(--fallback-b2,oklch(var(--b2)/var(--tw-bg-opacity)));
+  background-color: var(--fallback-b2, oklch(var(--b2) / var(--tw-bg-opacity)));
 }
 
 .bg-base-300 {
   --tw-bg-opacity: 1;
-  background-color: var(--fallback-b3,oklch(var(--b3)/var(--tw-bg-opacity)));
+  background-color: var(--fallback-b3, oklch(var(--b3) / var(--tw-bg-opacity)));
 }
 
 .bg-black {
@@ -3690,17 +3907,17 @@ details.collapse summary::-webkit-details-marker {
 
 .bg-neutral {
   --tw-bg-opacity: 1;
-  background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
+  background-color: var(--fallback-n, oklch(var(--n) / var(--tw-bg-opacity)));
 }
 
 .bg-primary {
   --tw-bg-opacity: 1;
-  background-color: var(--fallback-p,oklch(var(--p)/var(--tw-bg-opacity)));
+  background-color: var(--fallback-p, oklch(var(--p) / var(--tw-bg-opacity)));
 }
 
 .bg-secondary {
   --tw-bg-opacity: 1;
-  background-color: var(--fallback-s,oklch(var(--s)/var(--tw-bg-opacity)));
+  background-color: var(--fallback-s, oklch(var(--s) / var(--tw-bg-opacity)));
 }
 
 .bg-white {
@@ -3718,7 +3935,7 @@ details.collapse summary::-webkit-details-marker {
 }
 
 .bg-banner {
-  background-image: url("/Assets/Banners/banner1.png");
+  background-image: url('/Assets/Banners/banner1.png');
 }
 
 .bg-gradient-to-b {
@@ -3726,7 +3943,7 @@ details.collapse summary::-webkit-details-marker {
 }
 
 .bg-stadium {
-  background-image: url("/Assets/Banners/stad3.jpeg");
+  background-image: url('/Assets/Banners/stad3.jpeg');
 }
 
 .from-black {
@@ -3757,7 +3974,7 @@ details.collapse summary::-webkit-details-marker {
 
 .object-contain {
   -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
 }
 
 .p-0 {
@@ -3849,7 +4066,8 @@ details.collapse summary::-webkit-details-marker {
 }
 
 .font-mono {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
+    'Courier New', monospace;
 }
 
 .text-2xl {
@@ -3943,12 +4161,12 @@ details.collapse summary::-webkit-details-marker {
 
 .text-accent {
   --tw-text-opacity: 1;
-  color: var(--fallback-a,oklch(var(--a)/var(--tw-text-opacity)));
+  color: var(--fallback-a, oklch(var(--a) / var(--tw-text-opacity)));
 }
 
 .text-base-100 {
   --tw-text-opacity: 1;
-  color: var(--fallback-b1,oklch(var(--b1)/var(--tw-text-opacity)));
+  color: var(--fallback-b1, oklch(var(--b1) / var(--tw-text-opacity)));
 }
 
 .text-gray-500 {
@@ -3958,7 +4176,7 @@ details.collapse summary::-webkit-details-marker {
 
 .text-primary {
   --tw-text-opacity: 1;
-  color: var(--fallback-p,oklch(var(--p)/var(--tw-text-opacity)));
+  color: var(--fallback-p, oklch(var(--p) / var(--tw-text-opacity)));
 }
 
 .text-red-500 {
@@ -3968,7 +4186,7 @@ details.collapse summary::-webkit-details-marker {
 
 .text-secondary {
   --tw-text-opacity: 1;
-  color: var(--fallback-s,oklch(var(--s)/var(--tw-text-opacity)));
+  color: var(--fallback-s, oklch(var(--s) / var(--tw-text-opacity)));
 }
 
 .text-white {
@@ -4000,25 +4218,30 @@ details.collapse summary::-webkit-details-marker {
 .shadow {
   --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000),
+    var(--tw-shadow);
 }
 
 .shadow-none {
   --tw-shadow: 0 0 #0000;
   --tw-shadow-colored: 0 0 #0000;
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000),
+    var(--tw-shadow);
 }
 
 .shadow-sm {
   --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000),
+    var(--tw-shadow);
 }
 
 .shadow-xl {
   --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-  --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color),
+    0 8px 10px -6px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000),
+    var(--tw-shadow);
 }
 
 .shadow-slate-200 {
@@ -4027,7 +4250,8 @@ details.collapse summary::-webkit-details-marker {
 }
 
 .filter {
-  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale)
+    var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
 .transition-opacity {
@@ -4073,216 +4297,216 @@ a {
 @media (hover: hover) {
   .hover\:btn-outline:hover:hover {
     --tw-border-opacity: 1;
-    border-color: var(--fallback-bc,oklch(var(--bc)/var(--tw-border-opacity)));
+    border-color: var(--fallback-bc, oklch(var(--bc) / var(--tw-border-opacity)));
     --tw-bg-opacity: 1;
-    background-color: var(--fallback-bc,oklch(var(--bc)/var(--tw-bg-opacity)));
+    background-color: var(--fallback-bc, oklch(var(--bc) / var(--tw-bg-opacity)));
     --tw-text-opacity: 1;
-    color: var(--fallback-b1,oklch(var(--b1)/var(--tw-text-opacity)));
+    color: var(--fallback-b1, oklch(var(--b1) / var(--tw-text-opacity)));
   }
 
   .hover\:btn-outline:hover.btn-primary:hover {
     --tw-text-opacity: 1;
-    color: var(--fallback-pc,oklch(var(--pc)/var(--tw-text-opacity)));
+    color: var(--fallback-pc, oklch(var(--pc) / var(--tw-text-opacity)));
   }
 
   @supports (color: color-mix(in oklab, black, black)) {
     .hover\:btn-outline:hover.btn-primary:hover {
-      background-color: color-mix(in oklab, var(--fallback-p,oklch(var(--p)/1)) 90%, black);
-      border-color: color-mix(in oklab, var(--fallback-p,oklch(var(--p)/1)) 90%, black);
+      background-color: color-mix(in oklab, var(--fallback-p, oklch(var(--p) / 1)) 90%, black);
+      border-color: color-mix(in oklab, var(--fallback-p, oklch(var(--p) / 1)) 90%, black);
     }
   }
 
   .hover\:btn-outline:hover.btn-primary:hover {
     --tw-text-opacity: 1;
-    color: var(--fallback-pc,oklch(var(--pc)/var(--tw-text-opacity)));
+    color: var(--fallback-pc, oklch(var(--pc) / var(--tw-text-opacity)));
   }
 
   @supports (color: color-mix(in oklab, black, black)) {
     .hover\:btn-outline:hover.btn-primary:hover {
-      background-color: color-mix(in oklab, var(--fallback-p,oklch(var(--p)/1)) 90%, black);
-      border-color: color-mix(in oklab, var(--fallback-p,oklch(var(--p)/1)) 90%, black);
+      background-color: color-mix(in oklab, var(--fallback-p, oklch(var(--p) / 1)) 90%, black);
+      border-color: color-mix(in oklab, var(--fallback-p, oklch(var(--p) / 1)) 90%, black);
     }
   }
 
   .hover\:btn-outline:hover.btn-secondary:hover {
     --tw-text-opacity: 1;
-    color: var(--fallback-sc,oklch(var(--sc)/var(--tw-text-opacity)));
+    color: var(--fallback-sc, oklch(var(--sc) / var(--tw-text-opacity)));
   }
 
   @supports (color: color-mix(in oklab, black, black)) {
     .hover\:btn-outline:hover.btn-secondary:hover {
-      background-color: color-mix(in oklab, var(--fallback-s,oklch(var(--s)/1)) 90%, black);
-      border-color: color-mix(in oklab, var(--fallback-s,oklch(var(--s)/1)) 90%, black);
+      background-color: color-mix(in oklab, var(--fallback-s, oklch(var(--s) / 1)) 90%, black);
+      border-color: color-mix(in oklab, var(--fallback-s, oklch(var(--s) / 1)) 90%, black);
     }
   }
 
   .hover\:btn-outline:hover.btn-secondary:hover {
     --tw-text-opacity: 1;
-    color: var(--fallback-sc,oklch(var(--sc)/var(--tw-text-opacity)));
+    color: var(--fallback-sc, oklch(var(--sc) / var(--tw-text-opacity)));
   }
 
   @supports (color: color-mix(in oklab, black, black)) {
     .hover\:btn-outline:hover.btn-secondary:hover {
-      background-color: color-mix(in oklab, var(--fallback-s,oklch(var(--s)/1)) 90%, black);
-      border-color: color-mix(in oklab, var(--fallback-s,oklch(var(--s)/1)) 90%, black);
+      background-color: color-mix(in oklab, var(--fallback-s, oklch(var(--s) / 1)) 90%, black);
+      border-color: color-mix(in oklab, var(--fallback-s, oklch(var(--s) / 1)) 90%, black);
     }
   }
 
   .hover\:btn-outline:hover.btn-accent:hover {
     --tw-text-opacity: 1;
-    color: var(--fallback-ac,oklch(var(--ac)/var(--tw-text-opacity)));
+    color: var(--fallback-ac, oklch(var(--ac) / var(--tw-text-opacity)));
   }
 
   @supports (color: color-mix(in oklab, black, black)) {
     .hover\:btn-outline:hover.btn-accent:hover {
-      background-color: color-mix(in oklab, var(--fallback-a,oklch(var(--a)/1)) 90%, black);
-      border-color: color-mix(in oklab, var(--fallback-a,oklch(var(--a)/1)) 90%, black);
+      background-color: color-mix(in oklab, var(--fallback-a, oklch(var(--a) / 1)) 90%, black);
+      border-color: color-mix(in oklab, var(--fallback-a, oklch(var(--a) / 1)) 90%, black);
     }
   }
 
   .hover\:btn-outline:hover.btn-accent:hover {
     --tw-text-opacity: 1;
-    color: var(--fallback-ac,oklch(var(--ac)/var(--tw-text-opacity)));
+    color: var(--fallback-ac, oklch(var(--ac) / var(--tw-text-opacity)));
   }
 
   @supports (color: color-mix(in oklab, black, black)) {
     .hover\:btn-outline:hover.btn-accent:hover {
-      background-color: color-mix(in oklab, var(--fallback-a,oklch(var(--a)/1)) 90%, black);
-      border-color: color-mix(in oklab, var(--fallback-a,oklch(var(--a)/1)) 90%, black);
+      background-color: color-mix(in oklab, var(--fallback-a, oklch(var(--a) / 1)) 90%, black);
+      border-color: color-mix(in oklab, var(--fallback-a, oklch(var(--a) / 1)) 90%, black);
     }
   }
 
   .hover\:btn-outline:hover.btn-success:hover {
     --tw-text-opacity: 1;
-    color: var(--fallback-suc,oklch(var(--suc)/var(--tw-text-opacity)));
+    color: var(--fallback-suc, oklch(var(--suc) / var(--tw-text-opacity)));
   }
 
   @supports (color: color-mix(in oklab, black, black)) {
     .hover\:btn-outline:hover.btn-success:hover {
-      background-color: color-mix(in oklab, var(--fallback-su,oklch(var(--su)/1)) 90%, black);
-      border-color: color-mix(in oklab, var(--fallback-su,oklch(var(--su)/1)) 90%, black);
+      background-color: color-mix(in oklab, var(--fallback-su, oklch(var(--su) / 1)) 90%, black);
+      border-color: color-mix(in oklab, var(--fallback-su, oklch(var(--su) / 1)) 90%, black);
     }
   }
 
   .hover\:btn-outline:hover.btn-success:hover {
     --tw-text-opacity: 1;
-    color: var(--fallback-suc,oklch(var(--suc)/var(--tw-text-opacity)));
+    color: var(--fallback-suc, oklch(var(--suc) / var(--tw-text-opacity)));
   }
 
   @supports (color: color-mix(in oklab, black, black)) {
     .hover\:btn-outline:hover.btn-success:hover {
-      background-color: color-mix(in oklab, var(--fallback-su,oklch(var(--su)/1)) 90%, black);
-      border-color: color-mix(in oklab, var(--fallback-su,oklch(var(--su)/1)) 90%, black);
+      background-color: color-mix(in oklab, var(--fallback-su, oklch(var(--su) / 1)) 90%, black);
+      border-color: color-mix(in oklab, var(--fallback-su, oklch(var(--su) / 1)) 90%, black);
     }
   }
 
   .hover\:btn-outline:hover.btn-info:hover {
     --tw-text-opacity: 1;
-    color: var(--fallback-inc,oklch(var(--inc)/var(--tw-text-opacity)));
+    color: var(--fallback-inc, oklch(var(--inc) / var(--tw-text-opacity)));
   }
 
   @supports (color: color-mix(in oklab, black, black)) {
     .hover\:btn-outline:hover.btn-info:hover {
-      background-color: color-mix(in oklab, var(--fallback-in,oklch(var(--in)/1)) 90%, black);
-      border-color: color-mix(in oklab, var(--fallback-in,oklch(var(--in)/1)) 90%, black);
+      background-color: color-mix(in oklab, var(--fallback-in, oklch(var(--in) / 1)) 90%, black);
+      border-color: color-mix(in oklab, var(--fallback-in, oklch(var(--in) / 1)) 90%, black);
     }
   }
 
   .hover\:btn-outline:hover.btn-info:hover {
     --tw-text-opacity: 1;
-    color: var(--fallback-inc,oklch(var(--inc)/var(--tw-text-opacity)));
+    color: var(--fallback-inc, oklch(var(--inc) / var(--tw-text-opacity)));
   }
 
   @supports (color: color-mix(in oklab, black, black)) {
     .hover\:btn-outline:hover.btn-info:hover {
-      background-color: color-mix(in oklab, var(--fallback-in,oklch(var(--in)/1)) 90%, black);
-      border-color: color-mix(in oklab, var(--fallback-in,oklch(var(--in)/1)) 90%, black);
+      background-color: color-mix(in oklab, var(--fallback-in, oklch(var(--in) / 1)) 90%, black);
+      border-color: color-mix(in oklab, var(--fallback-in, oklch(var(--in) / 1)) 90%, black);
     }
   }
 
   .hover\:btn-outline:hover.btn-warning:hover {
     --tw-text-opacity: 1;
-    color: var(--fallback-wac,oklch(var(--wac)/var(--tw-text-opacity)));
+    color: var(--fallback-wac, oklch(var(--wac) / var(--tw-text-opacity)));
   }
 
   @supports (color: color-mix(in oklab, black, black)) {
     .hover\:btn-outline:hover.btn-warning:hover {
-      background-color: color-mix(in oklab, var(--fallback-wa,oklch(var(--wa)/1)) 90%, black);
-      border-color: color-mix(in oklab, var(--fallback-wa,oklch(var(--wa)/1)) 90%, black);
+      background-color: color-mix(in oklab, var(--fallback-wa, oklch(var(--wa) / 1)) 90%, black);
+      border-color: color-mix(in oklab, var(--fallback-wa, oklch(var(--wa) / 1)) 90%, black);
     }
   }
 
   .hover\:btn-outline:hover.btn-warning:hover {
     --tw-text-opacity: 1;
-    color: var(--fallback-wac,oklch(var(--wac)/var(--tw-text-opacity)));
+    color: var(--fallback-wac, oklch(var(--wac) / var(--tw-text-opacity)));
   }
 
   @supports (color: color-mix(in oklab, black, black)) {
     .hover\:btn-outline:hover.btn-warning:hover {
-      background-color: color-mix(in oklab, var(--fallback-wa,oklch(var(--wa)/1)) 90%, black);
-      border-color: color-mix(in oklab, var(--fallback-wa,oklch(var(--wa)/1)) 90%, black);
+      background-color: color-mix(in oklab, var(--fallback-wa, oklch(var(--wa) / 1)) 90%, black);
+      border-color: color-mix(in oklab, var(--fallback-wa, oklch(var(--wa) / 1)) 90%, black);
     }
   }
 
   .hover\:btn-outline:hover.btn-error:hover {
     --tw-text-opacity: 1;
-    color: var(--fallback-erc,oklch(var(--erc)/var(--tw-text-opacity)));
+    color: var(--fallback-erc, oklch(var(--erc) / var(--tw-text-opacity)));
   }
 
   @supports (color: color-mix(in oklab, black, black)) {
     .hover\:btn-outline:hover.btn-error:hover {
-      background-color: color-mix(in oklab, var(--fallback-er,oklch(var(--er)/1)) 90%, black);
-      border-color: color-mix(in oklab, var(--fallback-er,oklch(var(--er)/1)) 90%, black);
+      background-color: color-mix(in oklab, var(--fallback-er, oklch(var(--er) / 1)) 90%, black);
+      border-color: color-mix(in oklab, var(--fallback-er, oklch(var(--er) / 1)) 90%, black);
     }
   }
 
   .hover\:btn-outline:hover.btn-error:hover {
     --tw-text-opacity: 1;
-    color: var(--fallback-erc,oklch(var(--erc)/var(--tw-text-opacity)));
+    color: var(--fallback-erc, oklch(var(--erc) / var(--tw-text-opacity)));
   }
 
   @supports (color: color-mix(in oklab, black, black)) {
     .hover\:btn-outline:hover.btn-error:hover {
-      background-color: color-mix(in oklab, var(--fallback-er,oklch(var(--er)/1)) 90%, black);
-      border-color: color-mix(in oklab, var(--fallback-er,oklch(var(--er)/1)) 90%, black);
+      background-color: color-mix(in oklab, var(--fallback-er, oklch(var(--er) / 1)) 90%, black);
+      border-color: color-mix(in oklab, var(--fallback-er, oklch(var(--er) / 1)) 90%, black);
     }
   }
 }
 
 @supports (color: color-mix(in oklab, black, black)) {
   .hover\:btn-outline:hover.btn-primary.btn-active {
-    background-color: color-mix(in oklab, var(--fallback-p,oklch(var(--p)/1)) 90%, black);
-    border-color: color-mix(in oklab, var(--fallback-p,oklch(var(--p)/1)) 90%, black);
+    background-color: color-mix(in oklab, var(--fallback-p, oklch(var(--p) / 1)) 90%, black);
+    border-color: color-mix(in oklab, var(--fallback-p, oklch(var(--p) / 1)) 90%, black);
   }
 
   .hover\:btn-outline:hover.btn-secondary.btn-active {
-    background-color: color-mix(in oklab, var(--fallback-s,oklch(var(--s)/1)) 90%, black);
-    border-color: color-mix(in oklab, var(--fallback-s,oklch(var(--s)/1)) 90%, black);
+    background-color: color-mix(in oklab, var(--fallback-s, oklch(var(--s) / 1)) 90%, black);
+    border-color: color-mix(in oklab, var(--fallback-s, oklch(var(--s) / 1)) 90%, black);
   }
 
   .hover\:btn-outline:hover.btn-accent.btn-active {
-    background-color: color-mix(in oklab, var(--fallback-a,oklch(var(--a)/1)) 90%, black);
-    border-color: color-mix(in oklab, var(--fallback-a,oklch(var(--a)/1)) 90%, black);
+    background-color: color-mix(in oklab, var(--fallback-a, oklch(var(--a) / 1)) 90%, black);
+    border-color: color-mix(in oklab, var(--fallback-a, oklch(var(--a) / 1)) 90%, black);
   }
 
   .hover\:btn-outline:hover.btn-success.btn-active {
-    background-color: color-mix(in oklab, var(--fallback-su,oklch(var(--su)/1)) 90%, black);
-    border-color: color-mix(in oklab, var(--fallback-su,oklch(var(--su)/1)) 90%, black);
+    background-color: color-mix(in oklab, var(--fallback-su, oklch(var(--su) / 1)) 90%, black);
+    border-color: color-mix(in oklab, var(--fallback-su, oklch(var(--su) / 1)) 90%, black);
   }
 
   .hover\:btn-outline:hover.btn-info.btn-active {
-    background-color: color-mix(in oklab, var(--fallback-in,oklch(var(--in)/1)) 90%, black);
-    border-color: color-mix(in oklab, var(--fallback-in,oklch(var(--in)/1)) 90%, black);
+    background-color: color-mix(in oklab, var(--fallback-in, oklch(var(--in) / 1)) 90%, black);
+    border-color: color-mix(in oklab, var(--fallback-in, oklch(var(--in) / 1)) 90%, black);
   }
 
   .hover\:btn-outline:hover.btn-warning.btn-active {
-    background-color: color-mix(in oklab, var(--fallback-wa,oklch(var(--wa)/1)) 90%, black);
-    border-color: color-mix(in oklab, var(--fallback-wa,oklch(var(--wa)/1)) 90%, black);
+    background-color: color-mix(in oklab, var(--fallback-wa, oklch(var(--wa) / 1)) 90%, black);
+    border-color: color-mix(in oklab, var(--fallback-wa, oklch(var(--wa) / 1)) 90%, black);
   }
 
   .hover\:btn-outline:hover.btn-error.btn-active {
-    background-color: color-mix(in oklab, var(--fallback-er,oklch(var(--er)/1)) 90%, black);
-    border-color: color-mix(in oklab, var(--fallback-er,oklch(var(--er)/1)) 90%, black);
+    background-color: color-mix(in oklab, var(--fallback-er, oklch(var(--er) / 1)) 90%, black);
+    border-color: color-mix(in oklab, var(--fallback-er, oklch(var(--er) / 1)) 90%, black);
   }
 }
 
@@ -4290,89 +4514,90 @@ a {
   border-color: currentColor;
   background-color: transparent;
   --tw-text-opacity: 1;
-  color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
+  color: var(--fallback-bc, oklch(var(--bc) / var(--tw-text-opacity)));
   --tw-shadow: 0 0 #0000;
   --tw-shadow-colored: 0 0 #0000;
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000),
+    var(--tw-shadow);
 }
 
 .hover\:btn-outline:hover.btn-active {
   --tw-border-opacity: 1;
-  border-color: var(--fallback-bc,oklch(var(--bc)/var(--tw-border-opacity)));
+  border-color: var(--fallback-bc, oklch(var(--bc) / var(--tw-border-opacity)));
   --tw-bg-opacity: 1;
-  background-color: var(--fallback-bc,oklch(var(--bc)/var(--tw-bg-opacity)));
+  background-color: var(--fallback-bc, oklch(var(--bc) / var(--tw-bg-opacity)));
   --tw-text-opacity: 1;
-  color: var(--fallback-b1,oklch(var(--b1)/var(--tw-text-opacity)));
+  color: var(--fallback-b1, oklch(var(--b1) / var(--tw-text-opacity)));
 }
 
 .hover\:btn-outline:hover.btn-primary {
   --tw-text-opacity: 1;
-  color: var(--fallback-p,oklch(var(--p)/var(--tw-text-opacity)));
+  color: var(--fallback-p, oklch(var(--p) / var(--tw-text-opacity)));
 }
 
 .hover\:btn-outline:hover.btn-primary.btn-active {
   --tw-text-opacity: 1;
-  color: var(--fallback-pc,oklch(var(--pc)/var(--tw-text-opacity)));
+  color: var(--fallback-pc, oklch(var(--pc) / var(--tw-text-opacity)));
 }
 
 .hover\:btn-outline:hover.btn-secondary {
   --tw-text-opacity: 1;
-  color: var(--fallback-s,oklch(var(--s)/var(--tw-text-opacity)));
+  color: var(--fallback-s, oklch(var(--s) / var(--tw-text-opacity)));
 }
 
 .hover\:btn-outline:hover.btn-secondary.btn-active {
   --tw-text-opacity: 1;
-  color: var(--fallback-sc,oklch(var(--sc)/var(--tw-text-opacity)));
+  color: var(--fallback-sc, oklch(var(--sc) / var(--tw-text-opacity)));
 }
 
 .hover\:btn-outline:hover.btn-accent {
   --tw-text-opacity: 1;
-  color: var(--fallback-a,oklch(var(--a)/var(--tw-text-opacity)));
+  color: var(--fallback-a, oklch(var(--a) / var(--tw-text-opacity)));
 }
 
 .hover\:btn-outline:hover.btn-accent.btn-active {
   --tw-text-opacity: 1;
-  color: var(--fallback-ac,oklch(var(--ac)/var(--tw-text-opacity)));
+  color: var(--fallback-ac, oklch(var(--ac) / var(--tw-text-opacity)));
 }
 
 .hover\:btn-outline:hover.btn-success {
   --tw-text-opacity: 1;
-  color: var(--fallback-su,oklch(var(--su)/var(--tw-text-opacity)));
+  color: var(--fallback-su, oklch(var(--su) / var(--tw-text-opacity)));
 }
 
 .hover\:btn-outline:hover.btn-success.btn-active {
   --tw-text-opacity: 1;
-  color: var(--fallback-suc,oklch(var(--suc)/var(--tw-text-opacity)));
+  color: var(--fallback-suc, oklch(var(--suc) / var(--tw-text-opacity)));
 }
 
 .hover\:btn-outline:hover.btn-info {
   --tw-text-opacity: 1;
-  color: var(--fallback-in,oklch(var(--in)/var(--tw-text-opacity)));
+  color: var(--fallback-in, oklch(var(--in) / var(--tw-text-opacity)));
 }
 
 .hover\:btn-outline:hover.btn-info.btn-active {
   --tw-text-opacity: 1;
-  color: var(--fallback-inc,oklch(var(--inc)/var(--tw-text-opacity)));
+  color: var(--fallback-inc, oklch(var(--inc) / var(--tw-text-opacity)));
 }
 
 .hover\:btn-outline:hover.btn-warning {
   --tw-text-opacity: 1;
-  color: var(--fallback-wa,oklch(var(--wa)/var(--tw-text-opacity)));
+  color: var(--fallback-wa, oklch(var(--wa) / var(--tw-text-opacity)));
 }
 
 .hover\:btn-outline:hover.btn-warning.btn-active {
   --tw-text-opacity: 1;
-  color: var(--fallback-wac,oklch(var(--wac)/var(--tw-text-opacity)));
+  color: var(--fallback-wac, oklch(var(--wac) / var(--tw-text-opacity)));
 }
 
 .hover\:btn-outline:hover.btn-error {
   --tw-text-opacity: 1;
-  color: var(--fallback-er,oklch(var(--er)/var(--tw-text-opacity)));
+  color: var(--fallback-er, oklch(var(--er) / var(--tw-text-opacity)));
 }
 
 .hover\:btn-outline:hover.btn-error.btn-active {
   --tw-text-opacity: 1;
-  color: var(--fallback-erc,oklch(var(--erc)/var(--tw-text-opacity)));
+  color: var(--fallback-erc, oklch(var(--erc) / var(--tw-text-opacity)));
 }
 
 .hover\:cursor-pointer:hover {
@@ -4381,7 +4606,7 @@ a {
 
 .hover\:border-accent:hover {
   --tw-border-opacity: 1;
-  border-color: var(--fallback-a,oklch(var(--a)/var(--tw-border-opacity)));
+  border-color: var(--fallback-a, oklch(var(--a) / var(--tw-border-opacity)));
 }
 
 .hover\:border-white:hover {
@@ -4391,7 +4616,7 @@ a {
 
 .hover\:bg-secondary:hover {
   --tw-bg-opacity: 1;
-  background-color: var(--fallback-s,oklch(var(--s)/var(--tw-bg-opacity)));
+  background-color: var(--fallback-s, oklch(var(--s) / var(--tw-bg-opacity)));
 }
 
 .hover\:bg-yellow-500:hover {
@@ -4401,7 +4626,7 @@ a {
 
 .hover\:text-accent:hover {
   --tw-text-opacity: 1;
-  color: var(--fallback-a,oklch(var(--a)/var(--tw-text-opacity)));
+  color: var(--fallback-a, oklch(var(--a) / var(--tw-text-opacity)));
 }
 
 .hover\:text-black:hover {
@@ -4477,6 +4702,10 @@ a {
     margin-top: 5rem;
   }
 
+  .md\:mt-24 {
+    margin-top: 6rem;
+  }
+
   .md\:block {
     display: block;
   }
@@ -4507,6 +4736,18 @@ a {
 
   .md\:w-96 {
     width: 24rem;
+  }
+
+  .md\:w-full {
+    width: 100%;
+  }
+
+  .md\:w-0 {
+    width: 0px;
+  }
+
+  .md\:w-24 {
+    width: 6rem;
   }
 
   .md\:grid-cols-2 {
@@ -4585,7 +4826,7 @@ a {
 
   .md\:text-primary {
     --tw-text-opacity: 1;
-    color: var(--fallback-p,oklch(var(--p)/var(--tw-text-opacity)));
+    color: var(--fallback-p, oklch(var(--p) / var(--tw-text-opacity)));
   }
 
   .hover\:md\:border-l-2:hover {
