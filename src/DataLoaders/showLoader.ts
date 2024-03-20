@@ -5,6 +5,7 @@ import { throwDataError } from '../Utils/throwDataError';
 import { cameliseShowData } from './DataLoaderUtils/cameliseShowData';
 
 export const showLoader = async (loader: LoaderFunctionArgs): Promise<TourType | undefined> => {
+  console.log('render');
   try {
     const id = loader.params.id;
     if (typeof id === 'undefined') {
