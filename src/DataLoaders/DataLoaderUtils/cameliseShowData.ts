@@ -3,6 +3,7 @@ import { TourType } from '../../Routes/RouteWrappers/TourWrapper';
 import * as yup from 'yup';
 
 export const cameliseShowData = async (show: TourType) => {
+  console.log('camelise');
   const showTypeSchema = yup.object({
     id: yup.string().required(),
     date: yup.date().required(),
