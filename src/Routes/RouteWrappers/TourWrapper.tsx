@@ -1,5 +1,5 @@
 import { Outlet, useOutletContext } from 'react-router';
-import { CartContextType } from './rootWrapper';
+import { CartContextType } from './RootWrapper';
 
 export interface TourType {
   id: string;

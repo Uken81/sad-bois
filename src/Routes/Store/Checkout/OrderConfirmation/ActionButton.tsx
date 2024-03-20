@@ -1,5 +1,5 @@
 import { useNavigate, useOutletContext } from 'react-router';
-import { UserContextType } from '../../../RouteWrappers/rootWrapper';
+import { UserContextType } from '../../../RouteWrappers/RootWrapper';
 
 export const ActionButton: React.FC = () => {
   const { userDetails } = useOutletContext() as UserContextType;

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { CartType } from '../../../RouteWrappers/rootWrapper';
+import { CartType } from '../../../RouteWrappers/RootWrapper';
 import { ShippingOptionsType } from '../Shipping/shippingOptions';
 import { calculateTax } from '../CostCalculators/calculateTax';
 import { calculateOrderTotal } from '../CostCalculators/CalculateOrderTotal';

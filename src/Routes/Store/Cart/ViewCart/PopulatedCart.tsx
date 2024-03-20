@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router';
-import { CartType } from '../../../RouteWrappers/rootWrapper';
+import { CartType } from '../../../RouteWrappers/RootWrapper';
 import { ProceedToCheckout } from './ProceedToCheckout/ProceedToCheckout';
 import { Subtotal } from './Subtotal';
 import { OrderItemsSummary } from './OrderItemsSummary/OrderItemsSummary';

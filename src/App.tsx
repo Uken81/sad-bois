@@ -19,20 +19,20 @@ import { homepageLoader } from './DataLoaders/homepageLoaders';
 import { CheckoutDetails } from './Routes/Store/Checkout/CheckoutDetails';
 import { Shipping } from './Routes/Store/Checkout/Shipping/Shipping';
 import { Payment } from './Routes/Store/Checkout/Payment/Payment';
-import { RootWrapper } from './Routes/RouteWrappers/rootWrapper';
-import { CheckoutWrapper } from './Routes/RouteWrappers/checkoutWrapper';
+import { RootWrapper } from './Routes/RouteWrappers/RootWrapper';
+import { CheckoutWrapper } from './Routes/RouteWrappers/CheckoutWrapper';
 import { OrderConfirmation } from './Routes/Store/Checkout/OrderConfirmation/OrderConfirmation';
 import { ordersLoader } from './DataLoaders/ordersLoader';
 import { Tour } from './Routes/Tour/Tour';
 import { LoginPage } from './Routes/LoginPage/LoginPage';
 import { Store } from './Routes/Store/Store';
-import { StoreWrapper } from './Routes/RouteWrappers/storeWrapper';
-import { PrivateRoute } from './Routes/RouteWrappers/privateRoute';
+import { StoreWrapper } from './Routes/RouteWrappers/StoreWrapper';
 import { ViewCart } from './Routes/Store/Cart/ViewCart/ViewCart';
 import { AddTicketToCart } from './Routes/Tour/Tickets/AddTicket/AddTicketToCart';
 import { TourWrapper } from './Routes/RouteWrappers/TourWrapper';
 import { showLoader } from './DataLoaders/showLoader';
 import { AddProductToCart } from './Routes/Store/Cart/AddProductToCart/AddProductToCart';
+import { PrivateRoute } from './Routes/RouteWrappers/privateRoute';
 
 function App() {
   const router = createBrowserRouter(

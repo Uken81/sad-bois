@@ -3,7 +3,7 @@ import { MerchandiseType } from '../../DataLoaders/productsLoader';
 import { FeaturedCarousel } from './Featured/FeaturedCarousel';
 import { Products } from './Products';
 import { NoData } from '../../Components/NoData';
-import { StoreCategoryContextType } from '../RouteWrappers/storeWrapper';
+import { StoreCategoryContextType } from '../RouteWrappers/StoreWrapper';
 import { useEffect, useState } from 'react';
 
 export const Store: React.FC = () => {

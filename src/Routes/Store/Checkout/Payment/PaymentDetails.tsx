@@ -8,8 +8,8 @@ import { useNavigate, useOutletContext } from 'react-router';
 import {
   CustomerContextType,
   SelectedShippingContextType
-} from '../../../RouteWrappers/checkoutWrapper';
-import { CartContextType } from '../../../RouteWrappers/rootWrapper';
+} from '../../../RouteWrappers/CheckoutWrapper';
+import { CartContextType } from '../../../RouteWrappers/RootWrapper';
 import { serverUrl } from '../../../../Server/serverUrl';
 import { FormErrorType } from '../../../../Types/errorTypes';
 

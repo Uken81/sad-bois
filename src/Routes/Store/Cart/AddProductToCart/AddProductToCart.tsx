@@ -5,7 +5,7 @@ import { Quantity } from '../../../../Components/AddToCart/Quantity';
 import { useEffectAfterMount } from '../../../../Hooks/useEffectAfterMount';
 import { ProductType } from '../../../../DataLoaders/productsLoader';
 import { ShareButton } from '../../../../Components/Share/ShareButton';
-import { CartContextType } from '../../../RouteWrappers/rootWrapper';
+import { CartContextType } from '../../../RouteWrappers/RootWrapper';
 import { ShareOptions } from '../../../../Components/Share/ShareOptions';
 import { AddToCart, ItemOrderData } from '../../../../Components/AddToCart/AddToCart';
 import { updateSessionStorage } from '../../../../Utils/saveOrUpdateSessionStorage';

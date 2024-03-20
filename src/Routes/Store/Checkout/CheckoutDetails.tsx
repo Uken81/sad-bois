@@ -3,7 +3,7 @@ import { CustomInput } from '../../../Components/FormComponents/Inputs/CustomInp
 import { SubmitButton } from '../../../Components/FormComponents/SubmitButton';
 import { useNavigate, useOutletContext } from 'react-router';
 import { useEffect } from 'react';
-import { CustomerContextType } from '../../RouteWrappers/checkoutWrapper';
+import { CustomerContextType } from '../../RouteWrappers/CheckoutWrapper';
 import { useGetCustomer } from '../../../Hooks/useGetCustomer';
 import { updateSessionStorage } from '../../../Utils/saveOrUpdateSessionStorage';
 import * as Yup from 'yup';

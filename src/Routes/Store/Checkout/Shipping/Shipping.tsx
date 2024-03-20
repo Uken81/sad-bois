@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useNavigate, useOutletContext } from 'react-router';
-import { CustomerContextType } from '../../../RouteWrappers/checkoutWrapper';
+import { CustomerContextType } from '../../../RouteWrappers/CheckoutWrapper';
 import { useGetCustomer } from '../../../../Hooks/useGetCustomer';
 import { ContactDetails } from '../CustomerDetails/ContactDetails';
 import { AddressDetails } from '../CustomerDetails/AdressDetails';

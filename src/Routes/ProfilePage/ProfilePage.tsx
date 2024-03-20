@@ -1,7 +1,7 @@
 import { useLoaderData, useOutletContext } from 'react-router';
 import { Orders } from './Orders';
 import { OrderType } from '../../DataLoaders/ordersLoader';
-import { UserContextType, UserType } from '../RouteWrappers/rootWrapper';
+import { UserContextType, UserType } from '../RouteWrappers/RootWrapper';
 
 export const ProfilePage: React.FC = () => {
   const userOrders = useLoaderData() as OrderType[] | null;

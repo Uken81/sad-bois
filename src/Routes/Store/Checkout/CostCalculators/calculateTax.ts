@@ -1,4 +1,4 @@
-import { CartType } from '../../../RouteWrappers/rootWrapper';
+import { CartType } from '../../../RouteWrappers/RootWrapper';
 import { ShippingOptionsType } from '../Shipping/shippingOptions';
 
 export const calculateTax = (cart: CartType | null, selectedShipping: ShippingOptionsType) => {

@@ -1,4 +1,4 @@
-import { CartContextType } from '../../../../RouteWrappers/rootWrapper';
+import { CartContextType } from '../../../../RouteWrappers/RootWrapper';
 import { ProductOrder } from '../../AddProductToCart/AddProductToCart';
 import { useOutletContext } from 'react-router';
 

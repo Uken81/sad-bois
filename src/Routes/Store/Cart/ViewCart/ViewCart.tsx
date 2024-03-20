@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useOutletContext } from 'react-router';
 import { useGetCart } from '../../../../Hooks/useGetCart';
-import { CartContextType } from '../../../RouteWrappers/rootWrapper';
+import { CartContextType } from '../../../RouteWrappers/RootWrapper';
 import { PopulatedCart } from './PopulatedCart';
 import { EmptyCart } from './EmptyCart';
 

@@ -1,5 +1,5 @@
 import { useOutletContext } from 'react-router';
-import { CartContextType } from '../Routes/RouteWrappers/rootWrapper';
+import { CartContextType } from '../Routes/RouteWrappers/RootWrapper';
 import { ItemOrderData } from '../Components/AddToCart/AddToCart';
 import { createProductOrder } from '../Routes/Store/Cart/AddProductToCart/createProductOrder';
 import { Dispatch, SetStateAction } from 'react';
