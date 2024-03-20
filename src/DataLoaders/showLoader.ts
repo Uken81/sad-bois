@@ -11,7 +11,7 @@ export const showLoader = async (loader: LoaderFunctionArgs): Promise<TourType |
     if (typeof id === 'undefined') {
       throw new Error('Show ID was not provided');
     }
-
+    //sdff
     const response = await fetch(`${serverUrl}/tour/byId?id=${id}`);
     if (!response.ok) {
       throwDataError(response);
