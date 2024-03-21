@@ -1,7 +1,8 @@
 import { LoaderFunctionArgs } from 'react-router';
-import { cameliseProductsData } from './DataLoaderUtils/cameliseProductsData';
 import { serverUrl } from '../Server/serverUrl';
 import { throwDataError } from '../Utils/throwDataError';
+import { cameliseAndValidate } from './DataLoaderUtils/cameliseAndValidate';
+import { productsTypeSchema } from './DataLoaderSchemas/dataLoaderSchemas';
 
 type Category = 'clothing' | 'sticker' | 'coffee-mug' | 'misc';
 
@@ -22,7 +23,7 @@ export interface MerchandiseType {
 
 export const productsLoader = async (
   loader: LoaderFunctionArgs
-): Promise<MerchandiseType | undefined> => {
+): Promise<MerchandiseType | null> => {
   try {
     const category = loader.params.category;
     const regular = await fetch(`${serverUrl}/products?category=${category}`);
@@ -39,12 +40,22 @@ export const productsLoader = async (
     const regularProducts: ProductType[] = await regular.json();
     const featuredProducts: ProductType[] = await featured.json();
 
-    let camelisedRegularProducts = await cameliseProductsData(regularProducts);
+    const camelisedRegularProducts = await cameliseAndValidate(regularProducts, productsTypeSchema);
     if (!camelisedRegularProducts?.length) {
-      camelisedRegularProducts = null;
+      //throw error here
+      // camelisedRegularProducts = null;
     }
 
-    let camelisedFeaturedProducts = await cameliseProductsData(featuredProducts);
+    // let camelisedFeaturedProducts = await cameliseProductsData(featuredProducts);
+    let camelisedFeaturedProducts: ProductType[] | null = await cameliseAndValidate(
+      featuredProducts,
+      productsTypeSchema
+    );
+    const test = [];
+    if (!test.length) {
+      console.error('Error: Empty featured products array.');
+      camelisedFeaturedProducts = null;
+    }
     if (!camelisedFeaturedProducts?.length) {
       camelisedFeaturedProducts = null;
     }

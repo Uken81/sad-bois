@@ -1,8 +1,8 @@
 import { TourType } from '../Routes/RouteWrappers/TourWrapper';
 import { serverUrl } from '../Server/serverUrl';
 import { throwDataError } from '../Utils/throwDataError';
-import { cameliseNewsData } from './DataLoaderUtils/cameliseNewsData';
-import { cameliseTourData } from './DataLoaderUtils/cameliseTourData';
+import { newsTypeSchema, tourTypeSchema } from './DataLoaderSchemas/dataLoaderSchemas';
+import { cameliseAndValidate } from './DataLoaderUtils/cameliseAndValidate';
 import { Article } from './newsLoader';
 
 export interface HomepageLoader {
@@ -28,7 +28,8 @@ const latestNewsLoader = async (): Promise<Article[] | null | undefined> => {
       return null;
     }
 
-    const camelisedLatestNews = cameliseNewsData(latestNews);
+    // const camelisedLatestNews = cameliseNewsData(latestNews);
+    const camelisedLatestNews = cameliseAndValidate(latestNews, newsTypeSchema);
 
     return camelisedLatestNews;
   } catch (error) {
@@ -54,7 +55,7 @@ export const latestShowLoader = async (): Promise<TourType[] | null | undefined>
       return null;
     }
 
-    const camelisedLatestShows = cameliseTourData(latestShows);
+    const camelisedLatestShows = cameliseAndValidate(latestShows, tourTypeSchema);
 
     return camelisedLatestShows;
   } catch (error) {

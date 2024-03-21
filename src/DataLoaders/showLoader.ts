@@ -2,7 +2,8 @@ import { LoaderFunctionArgs } from 'react-router';
 import { TourType } from '../Routes/RouteWrappers/TourWrapper';
 import { serverUrl } from '../Server/serverUrl';
 import { throwDataError } from '../Utils/throwDataError';
-import { cameliseShowData } from './DataLoaderUtils/cameliseShowData';
+import { cameliseAndValidate } from './DataLoaderUtils/cameliseAndValidate';
+import { showTypeSchema } from './DataLoaderSchemas/dataLoaderSchemas';
 
 export const showLoader = async (loader: LoaderFunctionArgs): Promise<TourType | undefined> => {
   try {
@@ -21,7 +22,9 @@ export const showLoader = async (loader: LoaderFunctionArgs): Promise<TourType |
       throw new Error('Empty response object');
     }
 
-    const camelisedShow = await cameliseShowData(selectedShow);
+    // const camelisedShow = await cameliseShowData(selectedShow);
+    const camelisedShow = await cameliseAndValidate(selectedShow, showTypeSchema);
+    console.log('camelisedShow', camelisedShow);
 
     return camelisedShow;
   } catch (error) {

@@ -1,7 +1,8 @@
 import { TourType } from '../Routes/RouteWrappers/TourWrapper';
 import { serverUrl } from '../Server/serverUrl';
 import { throwDataError } from '../Utils/throwDataError';
-import { cameliseTourData } from './DataLoaderUtils/cameliseTourData';
+import { tourTypeSchema } from './DataLoaderSchemas/dataLoaderSchemas';
+import { cameliseAndValidate } from './DataLoaderUtils/cameliseAndValidate';
 
 export const tourLoader = async (): Promise<TourType[] | null | undefined> => {
   try {
@@ -15,7 +16,8 @@ export const tourLoader = async (): Promise<TourType[] | null | undefined> => {
       return null;
     }
 
-    const camelisedTour = await cameliseTourData(tour);
+    // const camelisedTour = await cameliseTourData(tour);
+    const camelisedTour = await cameliseAndValidate(tour, tourTypeSchema);
 
     return camelisedTour;
   } catch (error) {

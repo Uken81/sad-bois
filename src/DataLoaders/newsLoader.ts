@@ -1,6 +1,7 @@
 import { serverUrl } from '../Server/serverUrl';
 import { throwDataError } from '../Utils/throwDataError';
-import { cameliseNewsData } from './DataLoaderUtils/cameliseNewsData';
+import { newsTypeSchema } from './DataLoaderSchemas/dataLoaderSchemas';
+import { cameliseAndValidate } from './DataLoaderUtils/cameliseAndValidate';
 
 export interface Article {
   id: string;
@@ -10,7 +11,7 @@ export interface Article {
   text: string;
 }
 
-export const newsLoader = async (): Promise<Article[] | null | undefined> => {
+export const newsLoader = async (): Promise<Article[] | null> => {
   try {
     const response = await fetch(`${serverUrl}/news`);
     if (!response.ok) {
@@ -22,7 +23,8 @@ export const newsLoader = async (): Promise<Article[] | null | undefined> => {
       return null;
     }
 
-    const camelisedNews = await cameliseNewsData(news);
+    const camelisedNews = await cameliseAndValidate(news, newsTypeSchema);
+    console.log('camelisedNews', camelisedNews);
 
     return camelisedNews;
   } catch (error) {

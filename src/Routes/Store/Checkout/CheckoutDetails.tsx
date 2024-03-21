@@ -3,10 +3,10 @@ import { CustomInput } from '../../../Components/FormComponents/Inputs/CustomInp
 import { SubmitButton } from '../../../Components/FormComponents/SubmitButton';
 import { useNavigate, useOutletContext } from 'react-router';
 import { useEffect } from 'react';
-import { CustomerContextType } from '../../RouteWrappers/CheckoutWrapper';
 import { useGetCustomer } from '../../../Hooks/useGetCustomer';
 import { updateSessionStorage } from '../../../Utils/saveOrUpdateSessionStorage';
 import * as Yup from 'yup';
+import { CustomerContextType } from '../../RouteWrappers/CheckoutWrapper';
 
 interface DetailsFormType {
   email: string;

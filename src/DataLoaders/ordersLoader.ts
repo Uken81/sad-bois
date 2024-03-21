@@ -1,6 +1,7 @@
-import { cameliseOrdersData } from './DataLoaderUtils/cameliseOrdersData';
 import { serverUrl } from '../Server/serverUrl';
 import { throwDataError } from '../Utils/throwDataError';
+import { cameliseAndValidate } from './DataLoaderUtils/cameliseAndValidate';
+import { ordersTypeSchema } from './DataLoaderSchemas/dataLoaderSchemas';
 
 export interface OrderType {
   orderId: string;
@@ -30,7 +31,9 @@ export const ordersLoader = async (): Promise<OrderType[] | null> => {
       return null;
     }
 
-    const camelisedOrders = await cameliseOrdersData(customerOrders);
+    // const camelisedOrders = await cameliseOrdersData(customerOrders);
+    const camelisedOrders = await cameliseAndValidate(customerOrders, ordersTypeSchema);
+    console.log('camelisedOrders', camelisedOrders);
 
     return camelisedOrders;
   } catch (error) {

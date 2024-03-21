@@ -1,8 +1,9 @@
 import { LoaderFunctionArgs } from 'react-router';
 import { ProductType } from './productsLoader';
-import { cameliseProductData } from './DataLoaderUtils/cameliseProductData';
 import { serverUrl } from '../Server/serverUrl';
 import { throwDataError } from '../Utils/throwDataError';
+import { cameliseAndValidate } from './DataLoaderUtils/cameliseAndValidate';
+import { productTypeSchema } from './DataLoaderSchemas/dataLoaderSchemas';
 
 export const productLoader = async (
   loader: LoaderFunctionArgs
@@ -23,7 +24,8 @@ export const productLoader = async (
       throw new Error('Empty response object');
     }
 
-    const camelisedProduct = await cameliseProductData(selectedProduct);
+    const camelisedProduct = await cameliseAndValidate(selectedProduct, productTypeSchema);
+    console.log('cameliseProduct', camelisedProduct);
 
     return camelisedProduct;
   } catch (error) {

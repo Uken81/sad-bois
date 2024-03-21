@@ -11,7 +11,7 @@ export const useAddStoreItem = () => {
     const { quantity } = itemOrderData;
     const productOrder = createProductOrder(itemOrderData);
 
-    if (!productOrder) {
+    if (!productOrder || !Object.keys(productOrder).length) {
       console.error('Failed to create product order');
       setIsError(true);
       return;

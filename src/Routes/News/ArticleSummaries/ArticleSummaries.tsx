@@ -23,7 +23,7 @@ export const ArticleSummaries: React.FC<{ articles: Article[]; isLatest: boolean
             key={id}
             className="flex w-60 flex-col space-y-8 align-middle hover:cursor-pointer md:w-72"
             onClick={() => navigate(`/news/article/${id}`)}>
-            <figure className="mt-2 h-72 max-h-72  w-full bg-base-300">
+            <figure className="mt-2  max-h-72 w-full bg-base-300">
               <ImageWithLoading
                 src={`/Assets/News/${img}.png`}
                 style={{ maxHeight: '18rem', width: '100%' }}
