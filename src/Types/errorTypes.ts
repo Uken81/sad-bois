@@ -1,4 +1,4 @@
-import { GeneralErrorType } from '../Components/ErrorMessage';
+import { GeneralErrorType } from '../Components/ErrorMessages/ErrorMessage';
 
 export interface DataError {
   message: string;

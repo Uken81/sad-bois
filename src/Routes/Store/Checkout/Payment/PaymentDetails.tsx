@@ -3,7 +3,7 @@ import { CustomInput } from '../../../../Components/FormComponents/Inputs/Custom
 import { SubmitButton } from '../../../../Components/FormComponents/SubmitButton';
 import * as Yup from 'yup';
 import { useState } from 'react';
-import { ErrorMessage } from '../../../../Components/ErrorMessage';
+import { ErrorMessage } from '../../../../Components/ErrorMessages/ErrorMessage';
 import { useNavigate, useOutletContext } from 'react-router';
 import {
   CustomerContextType,
