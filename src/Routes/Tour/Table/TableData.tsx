@@ -16,9 +16,7 @@ export const TableData: React.FC<{ shows: TourType[] }> = ({ shows }) => {
             <td className="px-1 py-2 md:text-lg">{formattedDate}</td>
             <td className="px-1 py-2 md:text-lg">{location}</td>
             <td className="px-1 py-2 md:text-lg">{venue}</td>
-            <td
-              className="cursor-pointer px-2 py-2 text-yellow-500 underline duration-500 hover:bg-yellow-500 hover:text-black md:text-lg"
-              onClick={() => console.log('test')}>
+            <td className="cursor-pointer px-2 py-2 text-yellow-500 underline duration-500 hover:bg-yellow-500 hover:text-black md:text-lg">
               <div
                 className="border-black hover:md:border-l-2"
                 onClick={() => navigate(`/tour/add-ticket/${id}`)}>

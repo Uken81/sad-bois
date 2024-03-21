@@ -40,6 +40,7 @@ export const createProductOrder = (itemOrderData: ItemOrderData) => {
       price,
       cost: price * quantity
     };
+    return productOrder;
   } else if (isTourType(item)) {
     const { date, venue } = item;
     const formattedDate = format(new Date(date), 'dd/MM/yyyy');
@@ -53,7 +54,6 @@ export const createProductOrder = (itemOrderData: ItemOrderData) => {
       price,
       cost: price * quantity
     };
-
     return productOrder;
   }
 };
