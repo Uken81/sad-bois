@@ -1,10 +1,14 @@
 import { LoaderFunctionArgs } from 'react-router';
 import { serverUrl } from '../Server/serverUrl';
-import { throwDataError } from '../Utils/throwDataError';
-import { cameliseAndValidate } from './DataLoaderUtils/cameliseAndValidate';
 import { productsTypeSchema } from './DataLoaderSchemas/dataLoaderSchemas';
+import { validateParams } from './DataLoaderUtils/validateParams';
+import { fetchLoaderData } from './DataLoaderUtils/fetchLoaderData';
+import { camelizeKeys } from 'humps';
+import { isEmptyArray } from '../Utils/Validation/isEmptyArray';
+import { validateData } from './DataLoaderUtils/validateData';
+import { isValidCategory } from '../Utils/Validation/isValidCategory';
 
-type Category = 'clothing' | 'sticker' | 'coffee-mug' | 'misc';
+export type Category = 'all' | 'clothing' | 'sticker' | 'coffee-mug' | 'misc';
 
 export interface ProductType {
   id: string;
@@ -17,50 +21,46 @@ export interface ProductType {
 }
 
 export interface MerchandiseType {
-  camelisedRegularProducts: ProductType[] | null;
-  camelisedFeaturedProducts: ProductType[] | null;
+  validatedRegularProducts: ProductType[] | null;
+  validatedFeaturedProducts: ProductType[] | null;
 }
 
 export const productsLoader = async (
   loader: LoaderFunctionArgs
 ): Promise<MerchandiseType | null> => {
   try {
-    const category = loader.params.category;
-    const regular = await fetch(`${serverUrl}/products?category=${category}`);
-    const featured = await fetch(`${serverUrl}/products/featured`);
-
-    if (!regular.ok) {
-      await throwDataError(regular);
+    const category = validateParams(loader.params.category);
+    if (!isValidCategory(category)) {
+      throw new Error(`Invalid category parameter '${category}' passed.`);
     }
 
-    if (!featured.ok) {
-      await throwDataError(featured);
+    const regularData: ProductType[] = await fetchLoaderData(
+      `${serverUrl}/products?category=${category}`
+    );
+
+    if (isEmptyArray(regularData)) {
+      throw new Error('Error: Empty response.');
     }
 
-    const regularProducts: ProductType[] = await regular.json();
-    const featuredProducts: ProductType[] = await featured.json();
-
-    const camelisedRegularProducts = await cameliseAndValidate(regularProducts, productsTypeSchema);
-    if (!camelisedRegularProducts?.length) {
-      //throw error here
-      // camelisedRegularProducts = null;
-    }
-
-    // let camelisedFeaturedProducts = await cameliseProductsData(featuredProducts);
-    let camelisedFeaturedProducts: ProductType[] | null = await cameliseAndValidate(
-      featuredProducts,
+    const camelisedRegularProducts = camelizeKeys(regularData) as ProductType[];
+    const validatedRegularProducts = await validateData(
+      camelisedRegularProducts,
       productsTypeSchema
     );
-    const test = [];
-    if (!test.length) {
-      console.error('Error: Empty featured products array.');
-      camelisedFeaturedProducts = null;
-    }
-    if (!camelisedFeaturedProducts?.length) {
-      camelisedFeaturedProducts = null;
+
+    const featuredData: ProductType[] = await fetchLoaderData(`${serverUrl}/products/featured`);
+
+    const camelisedFeaturedProducts = camelizeKeys(featuredData) as ProductType[];
+    let validatedFeaturedProducts: ProductType[] | null = await validateData(
+      camelisedFeaturedProducts,
+      productsTypeSchema
+    );
+
+    if (isEmptyArray(featuredData)) {
+      validatedFeaturedProducts = null;
     }
 
-    return { camelisedRegularProducts, camelisedFeaturedProducts };
+    return { validatedRegularProducts, validatedFeaturedProducts };
   } catch (error) {
     if (error instanceof Error) {
       console.error(error);

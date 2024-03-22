@@ -1,4 +1,4 @@
-import { formatCurrency } from '../../../Utils/currencyFormatter';
+import { formatCurrency } from '../../../Utils/Formatters/currencyFormatter';
 
 export const FeaturedItemInfo: React.FC<{ title: string; subtitle: string; price: number }> = ({
   title,

@@ -1,7 +1,7 @@
 import { format } from 'date-fns';
 import { Article } from '../../../DataLoaders/newsLoader';
 import { useNavigate } from 'react-router';
-import { capitaliseWords } from '../../../Utils/capitaliseWords';
+import { capitaliseWords } from '../../../Utils/Formatters/capitaliseWords';
 import { ArticleLink } from './ArticleLink';
 import { ImageWithLoading } from '../../../Components/ImageWithLoading';
 

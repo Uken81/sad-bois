@@ -2,8 +2,8 @@
  * A utility function that sends a request to the database to verify a valid user.
  */
 
-import { serverUrl } from '../Server/serverUrl';
-import { DataError } from '../Types/errorTypes';
+import { serverUrl } from '../../Server/serverUrl';
+import { DataError } from '../../Types/errorTypes';
 
 interface ValidationResult {
   validationSuccess: boolean;

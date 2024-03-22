@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from 'react';
-import { capitaliseWords } from '../../Utils/capitaliseWords';
+import { capitaliseWords } from '../../Utils/Formatters/capitaliseWords';
 import { FormErrorType } from '../../Types/errorTypes';
 
 export interface GeneralErrorType {

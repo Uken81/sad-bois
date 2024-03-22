@@ -1,28 +1,24 @@
 import { LoaderFunctionArgs } from 'react-router';
 import { Article } from './newsLoader';
 import { serverUrl } from '../Server/serverUrl';
-import { throwDataError } from '../Utils/throwDataError';
-import { cameliseAndValidate } from './DataLoaderUtils/cameliseAndValidate';
 import { articleTypeSchema } from './DataLoaderSchemas/dataLoaderSchemas';
 import { validateParams } from './DataLoaderUtils/validateParams';
+import { fetchLoaderData } from './DataLoaderUtils/fetchLoaderData';
+import { isEmptyObject } from '../Utils/Validation/isEmptyObject';
+import { camelizeKeys } from 'humps';
+import { validateData } from './DataLoaderUtils/validateData';
 
 export const articleLoader = async (loader: LoaderFunctionArgs): Promise<Article> => {
   try {
     const id = validateParams(loader.params.id);
-
-    const response = await fetch(`${serverUrl}/news/byId?id=${id}`);
-    if (!response.ok) {
-      await throwDataError(response);
+    const data: Article = await fetchLoaderData(`${serverUrl}/news/byId?id=${id}`);
+    if (isEmptyObject(data)) {
+      throw new Error('Error: Empty response.');
     }
+    const camelisedData = camelizeKeys(data) as Article;
+    const validatedArticle = await validateData(camelisedData, articleTypeSchema);
 
-    const article: Article = await response.json();
-    if (!Object.keys(article).length) {
-      throw new Error('Error: Empty response object');
-    }
-
-    const camelisedArticle = await cameliseAndValidate(article, articleTypeSchema);
-
-    return camelisedArticle;
+    return validatedArticle;
   } catch (error) {
     if (error instanceof Error) {
       console.error(error);

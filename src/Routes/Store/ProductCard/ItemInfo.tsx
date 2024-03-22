@@ -1,5 +1,5 @@
-import { capitaliseWords } from '../../../Utils/capitaliseWords';
-import { formatCurrency } from '../../../Utils/currencyFormatter';
+import { capitaliseWords } from '../../../Utils/Formatters/capitaliseWords';
+import { formatCurrency } from '../../../Utils/Formatters/currencyFormatter';
 
 export const ItemInfo: React.FC<{ title: string; subtitle: string; price: number }> = ({
   title,

@@ -1,32 +1,27 @@
 import { LoaderFunctionArgs } from 'react-router';
 import { TourType } from '../Routes/RouteWrappers/TourWrapper';
 import { serverUrl } from '../Server/serverUrl';
-import { throwDataError } from '../Utils/throwDataError';
-import { cameliseAndValidate } from './DataLoaderUtils/cameliseAndValidate';
 import { showTypeSchema } from './DataLoaderSchemas/dataLoaderSchemas';
+import { validateParams } from './DataLoaderUtils/validateParams';
+import { fetchLoaderData } from './DataLoaderUtils/fetchLoaderData';
+import { isEmptyObject } from '../Utils/Validation/isEmptyObject';
+import { camelizeKeys } from 'humps';
+import { validateData } from './DataLoaderUtils/validateData';
 
 export const showLoader = async (loader: LoaderFunctionArgs): Promise<TourType | undefined> => {
   try {
-    const id = loader.params.id;
-    if (typeof id === 'undefined') {
-      throw new Error('Show ID was not provided');
-    }
+    const id = validateParams(loader.params.id);
 
-    const response = await fetch(`${serverUrl}/tour/byId?id=${id}`);
-    if (!response.ok) {
-      throwDataError(response);
-    }
+    const data: TourType = await fetchLoaderData(`${serverUrl}/tour/byId?id=${id}`);
 
-    const selectedShow = await response.json();
-    if (!Object.keys(selectedShow).length) {
+    if (isEmptyObject(data)) {
       throw new Error('Empty response object');
     }
 
-    // const camelisedShow = await cameliseShowData(selectedShow);
-    const camelisedShow = await cameliseAndValidate(selectedShow, showTypeSchema);
-    console.log('camelisedShow', camelisedShow);
+    const camelisedShow = camelizeKeys(data) as TourType;
+    const validatedShow = await validateData(camelisedShow, showTypeSchema);
 
-    return camelisedShow;
+    return validatedShow;
   } catch (error) {
     if (error instanceof Error) {
       console.error(error);

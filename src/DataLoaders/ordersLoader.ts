@@ -1,7 +1,9 @@
 import { serverUrl } from '../Server/serverUrl';
-import { throwDataError } from '../Utils/throwDataError';
-import { cameliseAndValidate } from './DataLoaderUtils/cameliseAndValidate';
 import { ordersTypeSchema } from './DataLoaderSchemas/dataLoaderSchemas';
+import { fetchLoaderData } from './DataLoaderUtils/fetchLoaderData';
+import { isEmptyArray } from '../Utils/Validation/isEmptyArray';
+import { camelizeKeys } from 'humps';
+import { validateData } from './DataLoaderUtils/validateData';
 
 export interface OrderType {
   orderId: string;
@@ -20,22 +22,16 @@ export const ordersLoader = async (): Promise<OrderType[] | null> => {
       method: 'GET',
       credentials: 'include'
     };
-    const response = await fetch(`${serverUrl}/orders`, requestOptions);
+    const data: OrderType[] = await fetchLoaderData(`${serverUrl}/orders`, requestOptions);
 
-    if (!response.ok) {
-      await throwDataError(response);
-    }
-
-    const customerOrders: OrderType[] = await response.json();
-    if (!customerOrders.length) {
+    if (isEmptyArray(data)) {
       return null;
     }
 
-    // const camelisedOrders = await cameliseOrdersData(customerOrders);
-    const camelisedOrders = await cameliseAndValidate(customerOrders, ordersTypeSchema);
-    console.log('camelisedOrders', camelisedOrders);
+    const camelisedOrders = camelizeKeys(data) as OrderType[];
+    const orders = await validateData(camelisedOrders, ordersTypeSchema);
 
-    return camelisedOrders;
+    return orders;
   } catch (error) {
     if (error instanceof Error) {
       console.error(error);

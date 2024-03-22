@@ -10,8 +10,8 @@ export const Store: React.FC = () => {
   const loaderData = useLoaderData() as MerchandiseType;
   const { selectedCategory } = useOutletContext() as StoreCategoryContextType;
   const [loadingCategory, setloadingCategory] = useState(false);
-  const featuredProducts = loaderData.camelisedFeaturedProducts;
-  const regularProducts = loaderData.camelisedRegularProducts;
+  const featuredProducts = loaderData.validatedFeaturedProducts;
+  const regularProducts = loaderData.validatedRegularProducts;
   const displayFeatured = featuredProducts && featuredProducts.length && selectedCategory === 'all';
 
   //TODO: Find better way to handle category change or loading status than below side effects. Consider filtering returned products on Frontend again.

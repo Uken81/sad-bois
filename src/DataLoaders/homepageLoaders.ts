@@ -1,9 +1,11 @@
 import { TourType } from '../Routes/RouteWrappers/TourWrapper';
 import { serverUrl } from '../Server/serverUrl';
-import { throwDataError } from '../Utils/throwDataError';
+import { isEmptyArray } from '../Utils/Validation/isEmptyArray';
 import { newsTypeSchema, tourTypeSchema } from './DataLoaderSchemas/dataLoaderSchemas';
-import { cameliseAndValidate } from './DataLoaderUtils/cameliseAndValidate';
+import { validateData } from './DataLoaderUtils/validateData';
+import { fetchLoaderData } from './DataLoaderUtils/fetchLoaderData';
 import { Article } from './newsLoader';
+import { camelizeKeys } from 'humps';
 
 export interface HomepageLoader {
   latestNewsData: Article[] | undefined;
@@ -16,22 +18,17 @@ export const homepageLoader = async () => {
 
   return { latestNewsData, latestShowsData };
 };
-const latestNewsLoader = async (): Promise<Article[] | null | undefined> => {
+const latestNewsLoader = async (): Promise<Article[] | null> => {
   try {
-    const response = await fetch(`${serverUrl}/news/latest`);
-    if (!response.ok) {
-      await throwDataError(response);
-    }
-
-    const latestNews: Article[] = await response.json();
-    if (!latestNews.length) {
+    const data: Article[] = await fetchLoaderData(`${serverUrl}/news/latest`);
+    if (isEmptyArray(data)) {
       return null;
     }
 
-    // const camelisedLatestNews = cameliseNewsData(latestNews);
-    const camelisedLatestNews = cameliseAndValidate(latestNews, newsTypeSchema);
+    const camelisedData = camelizeKeys(data) as Article[];
+    const latestNews = await validateData(camelisedData, newsTypeSchema);
 
-    return camelisedLatestNews;
+    return latestNews;
   } catch (error) {
     if (error instanceof Error) {
       console.error(error);
@@ -43,21 +40,17 @@ const latestNewsLoader = async (): Promise<Article[] | null | undefined> => {
   }
 };
 
-export const latestShowLoader = async (): Promise<TourType[] | null | undefined> => {
+export const latestShowLoader = async (): Promise<TourType[] | null> => {
   try {
-    const response = await fetch(`${serverUrl}/tour/latest`);
-    if (!response.ok) {
-      await throwDataError(response);
-    }
-
-    const latestShows: TourType[] = await response.json();
-    if (!latestShows.length) {
+    const data: TourType[] = await fetchLoaderData(`${serverUrl}/tour/latest`);
+    if (isEmptyArray(data)) {
       return null;
     }
 
-    const camelisedLatestShows = cameliseAndValidate(latestShows, tourTypeSchema);
+    const camelisedData = camelizeKeys(data) as TourType[];
+    const latestShows = await validateData(camelisedData, tourTypeSchema);
 
-    return camelisedLatestShows;
+    return latestShows;
   } catch (error) {
     if (error instanceof Error) {
       console.error(error);

@@ -1,33 +1,26 @@
 import { LoaderFunctionArgs } from 'react-router';
 import { ProductType } from './productsLoader';
 import { serverUrl } from '../Server/serverUrl';
-import { throwDataError } from '../Utils/throwDataError';
-import { cameliseAndValidate } from './DataLoaderUtils/cameliseAndValidate';
+import { validateData } from './DataLoaderUtils/validateData';
 import { productTypeSchema } from './DataLoaderSchemas/dataLoaderSchemas';
+import { validateParams } from './DataLoaderUtils/validateParams';
+import { fetchLoaderData } from './DataLoaderUtils/fetchLoaderData';
+import { isEmptyObject } from '../Utils/Validation/isEmptyObject';
+import { camelizeKeys } from 'humps';
 
-export const productLoader = async (
-  loader: LoaderFunctionArgs
-): Promise<ProductType | undefined> => {
+export const productLoader = async (loader: LoaderFunctionArgs): Promise<ProductType> => {
   try {
-    const id = loader.params.id;
-    if (typeof id === 'undefined') {
-      throw new Error('Product ID was not provided');
+    const id = validateParams(loader.params.id);
+
+    const data: ProductType = await fetchLoaderData(`${serverUrl}/products/byId?id=${id}`);
+    if (isEmptyObject(data)) {
+      throw new Error('Error: Empty response.');
     }
 
-    const response = await fetch(`${serverUrl}/products/byId?id=${id}`);
-    if (!response.ok) {
-      throwDataError(response);
-    }
+    const camelisedProduct = camelizeKeys(data) as ProductType;
+    const orders = await validateData(camelisedProduct, productTypeSchema);
 
-    const selectedProduct: ProductType = await response.json();
-    if (!Object.keys(selectedProduct).length) {
-      throw new Error('Empty response object');
-    }
-
-    const camelisedProduct = await cameliseAndValidate(selectedProduct, productTypeSchema);
-    console.log('cameliseProduct', camelisedProduct);
-
-    return camelisedProduct;
+    return orders;
   } catch (error) {
     if (error instanceof Error) {
       console.error(error);

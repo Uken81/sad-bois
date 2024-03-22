@@ -1,5 +1,5 @@
 import { ReactNode, useEffect, useState } from 'react';
-import { validateUser } from '../../Utils/validateUser';
+import { validateUser } from '../../Utils/Validation/validateUser';
 import { Navigate } from 'react-router';
 
 export const PrivateRoute: React.FC<{ children: ReactNode }> = ({ children }) => {

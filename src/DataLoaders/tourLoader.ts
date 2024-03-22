@@ -1,25 +1,23 @@
+import { camelizeKeys } from 'humps';
 import { TourType } from '../Routes/RouteWrappers/TourWrapper';
 import { serverUrl } from '../Server/serverUrl';
-import { throwDataError } from '../Utils/throwDataError';
+import { isEmptyArray } from '../Utils/Validation/isEmptyArray';
 import { tourTypeSchema } from './DataLoaderSchemas/dataLoaderSchemas';
-import { cameliseAndValidate } from './DataLoaderUtils/cameliseAndValidate';
+import { fetchLoaderData } from './DataLoaderUtils/fetchLoaderData';
+import { validateData } from './DataLoaderUtils/validateData';
 
 export const tourLoader = async (): Promise<TourType[] | null | undefined> => {
   try {
-    const response = await fetch(`${serverUrl}/tour`);
-    if (!response.ok) {
-      await throwDataError(response);
-    }
+    const data: TourType[] = await fetchLoaderData(`${serverUrl}/tour`);
 
-    const tour: TourType[] = await response.json();
-    if (!tour.length) {
+    if (isEmptyArray(data)) {
       return null;
     }
 
-    // const camelisedTour = await cameliseTourData(tour);
-    const camelisedTour = await cameliseAndValidate(tour, tourTypeSchema);
+    const camelisedTour = camelizeKeys(data) as TourType[];
+    const validatedTour = await validateData(camelisedTour, tourTypeSchema);
 
-    return camelisedTour;
+    return validatedTour;
   } catch (error) {
     if (error instanceof Error) {
       console.error(error);

@@ -1,7 +1,9 @@
 import { serverUrl } from '../Server/serverUrl';
-import { throwDataError } from '../Utils/throwDataError';
+import { isEmptyArray } from '../Utils/Validation/isEmptyArray';
 import { newsTypeSchema } from './DataLoaderSchemas/dataLoaderSchemas';
-import { cameliseAndValidate } from './DataLoaderUtils/cameliseAndValidate';
+import { fetchLoaderData } from './DataLoaderUtils/fetchLoaderData';
+import { camelizeKeys } from 'humps';
+import { validateData } from './DataLoaderUtils/validateData';
 
 export interface Article {
   id: string;
@@ -13,20 +15,16 @@ export interface Article {
 
 export const newsLoader = async (): Promise<Article[] | null> => {
   try {
-    const response = await fetch(`${serverUrl}/news`);
-    if (!response.ok) {
-      await throwDataError(response);
-    }
+    const data: Article[] = await fetchLoaderData(`${serverUrl}/news`);
 
-    const news: Article[] = await response.json();
-    if (!news.length) {
+    if (isEmptyArray(data)) {
       return null;
     }
 
-    const camelisedNews = await cameliseAndValidate(news, newsTypeSchema);
-    console.log('camelisedNews', camelisedNews);
+    const camelisedData = camelizeKeys(data) as Article[];
+    const news = await validateData(camelisedData, newsTypeSchema);
 
-    return camelisedNews;
+    return news;
   } catch (error) {
     if (error instanceof Error) {
       console.error(error);
