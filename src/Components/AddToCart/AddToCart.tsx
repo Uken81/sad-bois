@@ -11,7 +11,7 @@ export interface ItemOrderData {
   size?: string | null;
 }
 
-const AddButton: React.FC<{ isAdded: boolean; handleClick: () => void }> = ({
+const ActionButton: React.FC<{ isAdded: boolean; handleClick: () => void }> = ({
   isAdded,
   handleClick
 }) => {
@@ -46,7 +46,7 @@ export const AddToCart: React.FC<{ itemOrderData: ItemOrderData }> = ({ itemOrde
       {isError ? (
         <FixedErrorMessage message="Error! Unable to add item" />
       ) : (
-        <AddButton isAdded={isAdded} handleClick={handleClick} />
+        <ActionButton isAdded={isAdded} handleClick={handleClick} />
       )}
     </div>
   );

@@ -9,7 +9,7 @@ export const OrderSummaryCollapse: React.FC<{
   const subtotalString = subtotal ? subtotal?.toString() : '';
 
   return (
-    <div className="">
+    <div>
       <MobileCollapse
         closedText="Show order summary"
         openText="Hide order summary"

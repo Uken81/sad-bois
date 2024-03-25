@@ -1,44 +1,61 @@
 import { Dispatch, SetStateAction } from 'react';
 import { ProductCategories } from '../../RouteWrappers/StoreWrapper';
 import { useNavigate } from 'react-router';
+import { Category } from '../../../DataLoaders/productsLoader';
+
+interface CategorySelector {
+  categoryName: Category;
+  text: string;
+}
 
 export const Categories: React.FC<{
+  selectedCategory: Category;
   setSelectedCategory: Dispatch<SetStateAction<ProductCategories>>;
-}> = ({ setSelectedCategory }) => {
+}> = ({ selectedCategory, setSelectedCategory }) => {
   const navigate = useNavigate();
 
-  const changeCategory = (category: ProductCategories) => {
+  const handleCategoryChange = (category: ProductCategories) => {
     setSelectedCategory(category);
     navigate(`/store/${category}`);
   };
 
+  const categorySelectors: CategorySelector[] = [
+    {
+      categoryName: 'all',
+      text: 'All'
+    },
+    {
+      categoryName: 'clothing',
+      text: 'Clothing'
+    },
+    {
+      categoryName: 'coffee-mug',
+      text: 'Coffee-mugs'
+    },
+    {
+      categoryName: 'sticker',
+      text: 'stickers'
+    },
+    {
+      categoryName: 'misc',
+      text: 'Misc'
+    }
+  ];
+
   return (
     <ul className="mt-5 flex flex-col justify-center gap-10 md:flex-row md:text-primary">
-      <li
-        className="cursor-pointer hover:text-accent hover:underline"
-        onClick={() => changeCategory('all')}>
-        All
-      </li>
-      <li
-        className="cursor-pointer hover:text-accent hover:underline"
-        onClick={() => changeCategory('clothing')}>
-        Clothing
-      </li>
-      <li
-        className="cursor-pointer hover:text-accent hover:underline"
-        onClick={() => changeCategory('coffee-mug')}>
-        Coffee Mugs
-      </li>
-      <li
-        className="cursor-pointer hover:text-accent hover:underline"
-        onClick={() => changeCategory('sticker')}>
-        Stickers
-      </li>
-      <li
-        className="cursor-pointer hover:text-accent hover:underline"
-        onClick={() => changeCategory('misc')}>
-        Misc
-      </li>
+      {categorySelectors.map((category, index) => {
+        return (
+          <li
+            key={index}
+            className={`cursor-pointer hover:text-accent hover:underline ${
+              selectedCategory === category.categoryName ? 'text-accent' : ''
+            }`}
+            onClick={() => handleCategoryChange(category.categoryName)}>
+            {category.text}
+          </li>
+        );
+      })}
     </ul>
   );
 };

@@ -18,10 +18,13 @@ export const StoreWrapper: React.FC = () => {
   return (
     <>
       <div className="hidden md:block">
-        <Categories setSelectedCategory={setSelectedCategory} />
+        <Categories selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
       </div>
       <div className="flex justify-center md:hidden">
-        <CategoriesCollapse setSelectedCategory={setSelectedCategory} />
+        <CategoriesCollapse
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
+        />
       </div>
       <div className="divider" />
       <Outlet context={{ selectedCategory, cart, setCart }} />
