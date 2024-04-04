@@ -4,8 +4,6 @@ import { Outlet, useOutletContext } from 'react-router';
 import { OrderSummary } from '../Store/Checkout/OrderSummary/OrderSummary';
 import { CartContextType } from './RootWrapper';
 import { OrderSummaryCollapse } from '../Store/Checkout/OrderSummary/OrderSummaryCollapse';
-import { CheckoutStageContext } from './StoreWrapper';
-import { useUpdateCheckoutProgression } from '../../Hooks/useUpdateCheckoutProgression';
 
 export interface CustomerType {
   email: string;
@@ -31,12 +29,8 @@ export interface SelectedShippingContextType {
 
 export const CheckoutWrapper = () => {
   const { cart, setCart } = useOutletContext() as CartContextType;
-  const { checkoutProgression, setCheckoutProgression } = useOutletContext() as CheckoutStageContext;
   const [customer, setCustomer] = useState<CustomerType | null>(null);
   const [selectedShipping, setSelectedShipping] = useState<ShippingOptionsType>(shippingOptions[0]);
-  const updateCheckoutProgression = useUpdateCheckoutProgression();
-
-  updateCheckoutProgression();
 
   const outletContextState = {
     selectedShipping,
@@ -44,9 +38,7 @@ export const CheckoutWrapper = () => {
     customer,
     setCustomer,
     cart,
-    setCart,
-    checkoutProgression,
-    setCheckoutProgression
+    setCart
   };
 
   return (

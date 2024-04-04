@@ -1,12 +1,10 @@
-import { useOutletContext } from 'react-router';
 import { useGetLocationsCheckoutStage } from './useGetLocationsCheckoutStage';
-import { CheckoutStageContext } from '../Routes/RouteWrappers/StoreWrapper';
+import { Dispatch, SetStateAction } from 'react';
 
 export const useUpdateCheckoutProgression = () => {
-  const { checkoutProgression, setCheckoutProgression } = useOutletContext() as CheckoutStageContext;
   const locationStage = useGetLocationsCheckoutStage() ?? 1;
 
-  const assignStage = () => {
+  const assignStage = (checkoutProgression: number, setCheckoutProgression: Dispatch<SetStateAction<number>>) => {
     if (!checkoutProgression) {
       return;
     }

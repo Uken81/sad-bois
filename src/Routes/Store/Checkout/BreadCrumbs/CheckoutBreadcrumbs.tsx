@@ -1,11 +1,17 @@
+import { useState } from 'react';
 import { useGetLocationsCheckoutStage } from '../../../../Hooks/useGetLocationsCheckoutStage';
 import { ActiveStages } from './ActiveStages';
 import { InactiveStages } from './InactiveStages';
+import { useUpdateCheckoutProgression } from '../../../../Hooks/useUpdateCheckoutProgression';
 
-export const CheckoutBreadcrumbs: React.FC<{ checkoutProgression: number }> = ({ checkoutProgression }) => {
+export const CheckoutBreadcrumbs: React.FC = () => {
   const locationsCheckoutStage = useGetLocationsCheckoutStage();
-  const displayBreadcrumbs = locationsCheckoutStage !== null;
+  const [checkoutProgression, setCheckoutProgression] = useState(1);
+  const updateCheckoutProgression = useUpdateCheckoutProgression();
 
+  updateCheckoutProgression(checkoutProgression, setCheckoutProgression);
+
+  const displayBreadcrumbs = locationsCheckoutStage !== null;
   return (
     <>
       {displayBreadcrumbs ? (
