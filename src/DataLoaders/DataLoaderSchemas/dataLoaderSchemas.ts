@@ -33,10 +33,7 @@ export const ordersTypeSchema = yup.array().of(
 
 export const productTypeSchema = yup.object({
   id: yup.string().required(),
-  category: yup
-    .mixed<'clothing' | 'sticker' | 'coffee-mug' | 'misc'>()
-    .oneOf(['clothing', 'sticker', 'coffee-mug', 'misc'])
-    .required(),
+  category: yup.mixed<'clothing' | 'stickers' | 'mugs' | 'misc'>().oneOf(['clothing', 'stickers', 'mugs', 'misc']).required(),
   title: yup.string().required(),
   subtitle: yup.string().required(),
   price: yup.number().required(),
@@ -47,10 +44,7 @@ export const productTypeSchema = yup.object({
 export const productsTypeSchema = yup.array().of(
   yup.object({
     id: yup.string().required(),
-    category: yup
-      .mixed<'clothing' | 'sticker' | 'coffee-mug' | 'misc'>()
-      .oneOf(['clothing', 'sticker', 'coffee-mug', 'misc'])
-      .required(),
+    category: yup.mixed<'clothing' | 'stickers' | 'mugs' | 'misc'>().oneOf(['clothing', 'stickers', 'mugs', 'misc']).required(),
     title: yup.string().required(),
     subtitle: yup.string().required(),
     price: yup.number().required(),
@@ -64,10 +58,7 @@ export const showTypeSchema = yup.object({
   date: yup.date().required(),
   location: yup.string().required(),
   venue: yup.string().required(),
-  ticketStatus: yup
-    .mixed<'pending' | 'on sale' | 'postponed' | 'sold-out'>()
-    .oneOf(['pending', 'on sale', 'postponed', 'sold-out'])
-    .required()
+  ticketStatus: yup.mixed<'pending' | 'on sale' | 'postponed' | 'sold-out'>().oneOf(['pending', 'on sale', 'postponed', 'sold-out']).required()
 });
 
 export const tourTypeSchema = yup.array().of(
@@ -76,9 +67,6 @@ export const tourTypeSchema = yup.array().of(
     date: yup.date().required(),
     location: yup.string().required(),
     venue: yup.string().required(),
-    ticketStatus: yup
-      .mixed<'pending' | 'on sale' | 'postponed' | 'sold-out'>()
-      .oneOf(['pending', 'on sale', 'postponed', 'sold-out'])
-      .required()
+    ticketStatus: yup.mixed<'pending' | 'on sale' | 'postponed' | 'sold-out'>().oneOf(['pending', 'on sale', 'postponed', 'sold-out']).required()
   })
 );

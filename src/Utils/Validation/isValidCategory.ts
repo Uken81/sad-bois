@@ -1,5 +1,5 @@
-import { Category } from '../../DataLoaders/productsLoader';
+import { ProductCategory } from '../../Routes/Store/Categories/CategorySelector';
 
-export const isValidCategory = (value: string): value is Category => {
-  return ['all', 'clothing', 'sticker', 'coffee-mug', 'misc'].includes(value);
+export const isValidCategory = (value: string): value is ProductCategory => {
+  return ['all', 'clothing', 'stickers', 'mugs', 'misc'].includes(value);
 };

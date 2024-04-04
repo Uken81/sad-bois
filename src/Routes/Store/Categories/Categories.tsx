@@ -1,58 +1,32 @@
 import { Dispatch, SetStateAction } from 'react';
-import { ProductCategories } from '../../RouteWrappers/StoreWrapper';
 import { useNavigate } from 'react-router';
-import { Category } from '../../../DataLoaders/productsLoader';
-
-interface CategorySelector {
-  categoryName: Category;
-  text: string;
-}
+import { capitaliseWords } from '../../../Utils/Formatters/capitaliseWords';
+import { ProductCategory } from './CategorySelector';
 
 export const Categories: React.FC<{
-  selectedCategory: Category;
-  setSelectedCategory: Dispatch<SetStateAction<ProductCategories>>;
+  selectedCategory: ProductCategory;
+  setSelectedCategory: Dispatch<SetStateAction<ProductCategory>>;
 }> = ({ selectedCategory, setSelectedCategory }) => {
   const navigate = useNavigate();
 
-  const handleCategoryChange = (category: ProductCategories) => {
+  const handleCategoryChange = (category: ProductCategory) => {
     setSelectedCategory(category);
     navigate(`/store/${category}`);
   };
 
-  const categorySelectors: CategorySelector[] = [
-    {
-      categoryName: 'all',
-      text: 'All'
-    },
-    {
-      categoryName: 'clothing',
-      text: 'Clothing'
-    },
-    {
-      categoryName: 'coffee-mug',
-      text: 'Coffee-mugs'
-    },
-    {
-      categoryName: 'sticker',
-      text: 'stickers'
-    },
-    {
-      categoryName: 'misc',
-      text: 'Misc'
-    }
-  ];
+  const categories: ProductCategory[] = ['all', 'clothing', 'mugs', 'stickers', 'misc'];
 
   return (
     <ul className="mt-5 flex flex-col justify-center gap-10 md:flex-row md:text-primary">
-      {categorySelectors.map((category, index) => {
+      {categories.map((category, index) => {
+        const linkText = capitaliseWords(category);
+
         return (
           <li
             key={index}
-            className={`cursor-pointer hover:text-accent hover:underline ${
-              selectedCategory === category.categoryName ? 'text-accent' : ''
-            }`}
-            onClick={() => handleCategoryChange(category.categoryName)}>
-            {category.text}
+            className={`cursor-pointer hover:text-accent hover:underline ${selectedCategory === category ? 'text-accent' : ''}`}
+            onClick={() => handleCategoryChange(category)}>
+            {linkText}
           </li>
         );
       })}

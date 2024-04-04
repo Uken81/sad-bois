@@ -1,29 +1,21 @@
 import { Dispatch, SetStateAction, useState } from 'react';
-import { Categories } from '../Store/Categories/Categories';
 import { Outlet, useOutletContext } from 'react-router';
 import { CartContextType } from './RootWrapper';
-import { CategoriesCollapse } from '../Store/Categories/CategoriesCollapse';
 import { CheckoutBreadcrumbs } from '../Store/Checkout/BreadCrumbs/CheckoutBreadcrumbs';
-
-export type ProductCategories = 'all' | 'clothing' | 'coffee-mug' | 'sticker' | 'misc';
+import { CategorySelector, ProductCategory } from '../Store/Categories/CategorySelector';
 
 export interface StoreCategoryContextType {
-  selectedCategory: ProductCategories | null;
-  setSelectedCategories: Dispatch<SetStateAction<ProductCategories | null>>;
+  selectedCategory: ProductCategory | null;
+  setSelectedCategories: Dispatch<SetStateAction<ProductCategory | null>>;
 }
 
 export const StoreWrapper: React.FC = () => {
   const { cart, setCart } = useOutletContext() as CartContextType;
-  const [selectedCategory, setSelectedCategory] = useState<ProductCategories>('all');
+  const [selectedCategory, setSelectedCategory] = useState<ProductCategory>('all');
 
   return (
     <>
-      <div className="hidden md:block">
-        <Categories selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
-      </div>
-      <div className="flex justify-center md:hidden">
-        <CategoriesCollapse selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
-      </div>
+      <CategorySelector selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
       <div className="divider" />
       <CheckoutBreadcrumbs />
       <Outlet context={{ selectedCategory, cart, setCart }} />
