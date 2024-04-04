@@ -16,9 +16,7 @@ export const PopulatedCart: React.FC<{ cart: CartType | null }> = ({ cart }) => 
         <p>Taxes and shipping calculated at checkout</p>
       </div>
       <div className="mb-10 mt-8 flex flex-col items-center space-y-6">
-        <button
-          className="btn btn-secondary"
-          onClick={() => navigate(`/store/${selectedCategory}`)}>
+        <button className="btn btn-secondary" onClick={() => navigate(`/store/${selectedCategory}`)}>
           CONTINUE SHOPPING
         </button>
         <ProceedToCheckout />

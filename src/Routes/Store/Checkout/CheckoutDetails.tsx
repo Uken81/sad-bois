@@ -3,10 +3,10 @@ import { CustomInput } from '../../../Components/FormComponents/Inputs/CustomInp
 import { SubmitButton } from '../../../Components/FormComponents/SubmitButton';
 import { useNavigate, useOutletContext } from 'react-router';
 import { useEffect } from 'react';
-import { useGetCustomer } from '../../../Hooks/useGetCustomer';
 import { updateSessionStorage } from '../../../Utils/saveOrUpdateSessionStorage';
 import * as Yup from 'yup';
 import { CustomerContextType } from '../../RouteWrappers/CheckoutWrapper';
+import { useGetSessionCustomer } from '../../../Hooks/useGetCustomer';
 
 interface DetailsFormType {
   email: string;
@@ -22,23 +22,20 @@ interface DetailsFormType {
 
 export const CheckoutDetails = () => {
   const { customer, setCustomer } = useOutletContext() as CustomerContextType;
-  const getCustomer = useGetCustomer();
+  const getSessionCustomer = useGetSessionCustomer();
   const navigate = useNavigate();
   const countries = ['Australia'];
   const states = ['VIC', 'NSW', 'QLD', 'SA', 'WA', 'TAS', 'ACT', 'NT'];
 
   useEffect(() => {
     if (!customer) {
-      const retrievedCustomer = getCustomer();
+      const retrievedCustomer = getSessionCustomer();
       setCustomer(retrievedCustomer);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleSubmit = async (
-    values: DetailsFormType,
-    setSubmitting: (isSubmitting: boolean) => void
-  ) => {
+  const handleSubmit = async (values: DetailsFormType, setSubmitting: (isSubmitting: boolean) => void) => {
     setCustomer(values);
     updateSessionStorage('customer', values);
     setSubmitting(false);

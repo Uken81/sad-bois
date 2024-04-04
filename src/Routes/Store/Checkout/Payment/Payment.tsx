@@ -1,28 +1,27 @@
 import { useOutletContext } from 'react-router';
-import { CustomerContextType } from '../../../RouteWrappers/CheckoutWrapper';
-import { useGetCustomer } from '../../../../Hooks/useGetCustomer';
+import { CustomerContextType, CustomerType } from '../../../RouteWrappers/CheckoutWrapper';
 import { PaymentDetails } from './PaymentDetails';
 import { useEffect } from 'react';
 import { ContactDetails } from '../CustomerDetails/ContactDetails';
 import { AddressDetails } from '../CustomerDetails/AdressDetails';
 import { ShippingMethodDetails } from '../CustomerDetails/ShippingMethodDetails';
 import { CardOptions } from './CardOptions/CardOptions';
+import { useGetSessionCustomer } from '../../../../Hooks/useGetCustomer';
 
 export const Payment: React.FC = () => {
   const outletContext = useOutletContext();
   const { customer, setCustomer } = outletContext as CustomerContextType;
-  const getCustomer = useGetCustomer();
+  const getSessionCustomer = useGetSessionCustomer();
 
   useEffect(() => {
     if (!customer) {
-      const retrievedCustomer = getCustomer();
+      const retrievedCustomer: CustomerType = getSessionCustomer();
       setCustomer(retrievedCustomer);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (!customer) {
-    //Change this to use Routers error page??
     return <div className="no-data">No customer data available</div>;
   }
 
