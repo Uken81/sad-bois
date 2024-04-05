@@ -2897,14 +2897,6 @@ details.collapse summary::-webkit-details-marker {
   font-size: 0.875rem;
 }
 
-.btn-lg {
-  height: 4rem;
-  min-height: 4rem;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-  font-size: 1.125rem;
-}
-
 .btn-square:where(.btn-xs) {
   height: 1.5rem;
   width: 1.5rem;
@@ -3364,6 +3356,10 @@ details.collapse summary::-webkit-details-marker {
   margin-left: 1rem;
 }
 
+.ml-5 {
+  margin-left: 1.25rem;
+}
+
 .ml-auto {
   margin-left: auto;
 }
@@ -3410,10 +3406,6 @@ details.collapse summary::-webkit-details-marker {
 
 .mt-auto {
   margin-top: auto;
-}
-
-.ml-5 {
-  margin-left: 1.25rem;
 }
 
 .block {
@@ -3565,6 +3557,22 @@ details.collapse summary::-webkit-details-marker {
   width: 100vw;
 }
 
+.w-96 {
+  width: 24rem;
+}
+
+.w-2\/3 {
+  width: 66.666667%;
+}
+
+.w-3\/4 {
+  width: 75%;
+}
+
+.w-4\/5 {
+  width: 80%;
+}
+
 .max-w-lg {
   max-width: 32rem;
 }
@@ -3587,18 +3595,6 @@ details.collapse summary::-webkit-details-marker {
 
 .cursor-pointer {
   cursor: pointer;
-}
-
-.cursor-none {
-  cursor: none;
-}
-
-.cursor-not-allowed {
-  cursor: not-allowed;
-}
-
-.cursor-text {
-  cursor: text;
 }
 
 .grid-cols-1 {
@@ -4099,16 +4095,6 @@ details.collapse summary::-webkit-details-marker {
 .text-yellow-500 {
   --tw-text-opacity: 1;
   color: rgb(234 179 8 / var(--tw-text-opacity));
-}
-
-.text-base-200 {
-  --tw-text-opacity: 1;
-  color: var(--fallback-b2,oklch(var(--b2)/var(--tw-text-opacity)));
-}
-
-.text-base-300 {
-  --tw-text-opacity: 1;
-  color: var(--fallback-b3,oklch(var(--b3)/var(--tw-text-opacity)));
 }
 
 .underline {
@@ -4651,6 +4637,10 @@ a {
     width: 24rem;
   }
 
+  .md\:w-\[400px\] {
+    width: 400px;
+  }
+
   .md\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -4669,6 +4659,10 @@ a {
 
   .md\:justify-end {
     justify-content: flex-end;
+  }
+
+  .md\:justify-center {
+    justify-content: center;
   }
 
   .md\:gap-0 {
@@ -4762,6 +4756,10 @@ a {
     width: 66.666667%;
   }
 
+  .lg\:w-\[500\] {
+    width: 500;
+  }
+
   .lg\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -4838,6 +4836,10 @@ a {
     width: 33.333333%;
   }
 
+  .xl\:w-1\/4 {
+    width: 25%;
+  }
+
   .xl\:gap-12 {
     gap: 3rem;
   }
@@ -4857,5 +4859,9 @@ a {
   .\32xl\:mx-56 {
     margin-left: 14rem;
     margin-right: 14rem;
+  }
+
+  .\32xl\:w-\[600px\] {
+    width: 600px;
   }
 }

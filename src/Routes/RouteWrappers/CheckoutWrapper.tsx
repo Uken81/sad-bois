@@ -43,13 +43,13 @@ export const CheckoutWrapper = () => {
 
   return (
     <div className="flex w-screen flex-col md:flex-row">
-      <div className="mx-4 md:hidden md:w-1/2">
+      <div className="mx-4 md:hidden ">
         <OrderSummaryCollapse selectedShipping={selectedShipping} subtotal={cart?.subtotal ?? null} />
       </div>
       <div className="mt-5 md:w-1/2">
         <Outlet context={outletContextState} />
       </div>
-      <div className="mx-4 hidden w-1/2 md:block">
+      <div className="hidden w-1/2 md:flex md:justify-center ">
         <OrderSummary selectedShipping={selectedShipping} />
       </div>
     </div>

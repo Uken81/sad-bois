@@ -57,7 +57,7 @@ export const CheckoutDetails = () => {
   });
 
   return (
-    <main className="flex ">
+    <main className="flex">
       <Formik
         validationSchema={detailsFormSchema}
         initialValues={{
@@ -76,11 +76,11 @@ export const CheckoutDetails = () => {
           handleSubmit(values, setSubmitting);
         }}>
         {(formik) => (
-          <Form className="flex w-full flex-col items-center justify-center text-center">
+          <Form className="flex w-full flex-col items-center justify-center">
             <h2 className="text-h2 font-h2">Contact</h2>
             <CustomInput name="email" type="email" placeholder="Email" />
             <h2 className="my-2 text-h2 font-h2">Shipping address</h2>
-            <CustomInput name="country" as="select" placeholder="Countr">
+            <CustomInput name="country" as="select" placeholder="Country">
               {countries.map((name) => (
                 <option key={name} value={name}>
                   {name}

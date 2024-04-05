@@ -13,10 +13,7 @@ interface CustomInputProps {
   id?: string;
 }
 
-const ErrorText: React.FC<{ error: string | undefined; touched: boolean }> = ({
-  error,
-  touched
-}) => {
+const ErrorText: React.FC<{ error: string | undefined; touched: boolean }> = ({ error, touched }) => {
   if (!error || !touched) {
     return null;
   }
@@ -24,11 +21,7 @@ const ErrorText: React.FC<{ error: string | undefined; touched: boolean }> = ({
   return <div className="mt-2 text-lg text-red-500">{error}</div>;
 };
 
-export const CustomInput: React.FC<CustomInputProps & { error?: string | undefined }> = ({
-  error,
-  children,
-  ...props
-}) => {
+export const CustomInput: React.FC<CustomInputProps & { error?: string | undefined }> = ({ error, children, ...props }) => {
   //**Dont remove field from hook array as it needs to be in correct order! Field?.name prevents ts no unused var error in build**
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [field, meta] = useField(props);
@@ -38,7 +31,7 @@ export const CustomInput: React.FC<CustomInputProps & { error?: string | undefin
   return (
     <>
       <Field
-        className={`input input-bordered w-full max-w-xs bg-black text-lg text-white ${errorBorder} mt-4 border-4`}
+        className={`input input-bordered w-4/5 bg-black text-lg text-white md:w-3/4 ${errorBorder} mt-4 border-4`}
         name={props.name}
         type={props.type}
         placeholder={props.placeholder}

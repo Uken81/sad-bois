@@ -5,13 +5,7 @@ import { ReactNode } from 'react';
 import { capitaliseWords } from '../../Utils/Formatters/capitaliseWords';
 import { SignupLink } from './SignupLink';
 
-export const UserForm = <T,>({
-  children,
-  formik
-}: {
-  children: ReactNode;
-  formik: FormikProps<T>;
-}) => {
+export const UserForm = <T,>({ children, formik }: { children: ReactNode; formik: FormikProps<T> }) => {
   const location = useLocation();
   const isLoginPage = /\/login(\/.*)?$/.test(location.pathname);
   const title = isLoginPage ? 'Login' : 'Sign Up';
@@ -20,7 +14,7 @@ export const UserForm = <T,>({
 
   return (
     <div className={`flex flex-col ${backgroundGradient} h-screen items-center justify-center`}>
-      <Form className="card my-5 bg-primary shadow-sm shadow-slate-200 md:w-96">
+      <Form className="card my-5 w-4/5 bg-primary shadow-sm shadow-slate-200 md:w-1/2 xl:w-1/3">
         <div className="card card-body items-center">
           <h1 className="text-center text-h1 font-h1 text-white">{capitaliseWords(title)}</h1>
           {children}
