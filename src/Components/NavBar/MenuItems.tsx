@@ -8,7 +8,7 @@ import { Login } from './Links/Login';
 import { HomeLink } from './Links/HomeLink';
 import { UserOptions } from './UserOptions';
 import { Profile } from './Links/Profile';
-import { useUserStore } from '../../Stores/userStore';
+import { useIsLoggedIn } from '../../Hooks/useIsLoggedIn';
 
 interface LinkItemType {
   destination: string;
@@ -21,7 +21,7 @@ export const MenuItems: React.FC<{
   icons?: boolean;
   setShowModal: Dispatch<SetStateAction<boolean>>;
 }> = ({ toggleDrawer, icons, setShowModal }) => {
-  const isLoggedIn = useUserStore((state) => state.isLoggedIn);
+  const isLoggedIn = useIsLoggedIn();
 
   const standardLinks: LinkItemType[] = [
     { destination: 'news', text: 'News', icon: <TiNews /> },

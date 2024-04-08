@@ -1,13 +1,14 @@
-import { useNavigate, useOutletContext, useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import { CustomInput } from '../../Components/FormComponents/Inputs/CustomInput';
 import { useState } from 'react';
-import { UserContextType, UserType } from '../RouteWrappers/RootWrapper';
 import { ErrorMessage } from '../../Components/ErrorMessages/ErrorMessage';
 import { UserForm } from './UserForm';
 import { serverUrl } from '../../Server/serverUrl';
 import { FormErrorType } from '../../Types/errorTypes';
+import { useUserStore } from '../../Stores/userStore';
+import { UserType } from '../../Types/types';
 
 interface LoginFormValues {
   email: string;
@@ -16,25 +17,18 @@ interface LoginFormValues {
 
 export const LoginPage: React.FC = () => {
   const { registeredEmail } = useParams();
-  const { setUserDetails } = useOutletContext() as UserContextType;
+  const addUser = useUserStore((state) => state.addUser);
   const [error, setError] = useState<FormErrorType | null>(null);
   const navigate = useNavigate();
 
-  //Todo: Change these inital values to test user when about to publish.
   const initialValues = { email: registeredEmail || 'test@testmail.com', password: '12345' };
 
   const validationSchema = Yup.object({
     email: Yup.string().email('Invalid email address').required('Required'),
-    password: Yup.string()
-      .min(5, 'Must be at least 5 characters')
-      .max(200, 'Must be 200 characters or less')
-      .required('Required')
+    password: Yup.string().min(5, 'Must be at least 5 characters').max(200, 'Must be 200 characters or less').required('Required')
   });
 
-  const handleSubmit = async (
-    values: LoginFormValues,
-    setSubmitting: (isSubmitting: boolean) => void
-  ) => {
+  const handleSubmit = async (values: LoginFormValues, setSubmitting: (isSubmitting: boolean) => void) => {
     const requestOptions: RequestInit = {
       method: 'POST',
       body: JSON.stringify(values),
@@ -55,9 +49,9 @@ export const LoginPage: React.FC = () => {
       }
 
       const data = await response.json();
-      const user: UserType = data.user;
-      setUserDetails({ email: user.email, username: user.username });
 
+      const user: UserType = data.user;
+      addUser(user);
       setSubmitting(false);
       navigate('/');
     } catch (error) {
@@ -92,24 +86,9 @@ export const LoginPage: React.FC = () => {
         }}>
         {(formik) => (
           <UserForm formik={formik}>
-            <ErrorMessage
-              display={isNetworkError}
-              variant="error"
-              message={error?.message ?? null}
-              setError={setError}
-            />
-            <CustomInput
-              name="email"
-              type="email"
-              placeholder="Email"
-              error={isEmailError ? error?.message : undefined}
-            />
-            <CustomInput
-              name="password"
-              type="password"
-              placeholder="Password"
-              error={isPasswordError ? error.message : undefined}
-            />
+            <ErrorMessage display={isNetworkError} variant="error" message={error?.message ?? null} setError={setError} />
+            <CustomInput name="email" type="email" placeholder="Email" error={isEmailError ? error?.message : undefined} />
+            <CustomInput name="password" type="password" placeholder="Password" error={isPasswordError ? error.message : undefined} />
           </UserForm>
         )}
       </Formik>
