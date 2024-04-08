@@ -7,5 +7,5 @@ export interface UserType {
 
 export interface CartType {
   items: ProductOrder[];
-  subtotal: number | null;
+  subtotal: number | null | undefined;
 }
