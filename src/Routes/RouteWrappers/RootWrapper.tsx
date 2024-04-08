@@ -11,10 +11,10 @@ export interface UserContextType {
   setUserDetails: Dispatch<SetStateAction<UserType | null>>;
 }
 
-export interface CartType {
-  items: ProductOrder[];
-  subtotal: number | null;
-}
+// export interface CartType {
+//   items: ProductOrder[];
+//   subtotal: number | null;
+// }
 
 export interface CartContextType {
   cart: CartType | null;

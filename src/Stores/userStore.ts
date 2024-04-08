@@ -15,5 +15,3 @@ export const useUserStore = create<UserState>()(
     resetUser: () => set(() => ({ user: null }))
   }))
 );
-
-// const useUserStore = create(devtools(bookStore));

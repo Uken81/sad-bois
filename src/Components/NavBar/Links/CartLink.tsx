@@ -1,12 +1,14 @@
 import { PiShoppingCartBold } from 'react-icons/pi';
 import { useNavigate } from 'react-router';
-import { CartType } from '../../../Routes/RouteWrappers/RootWrapper';
+import { useCartStore } from '../../../Stores/cartStore';
 
-export const CartLink: React.FC<{ cart: CartType | null }> = ({ cart }) => {
-  const numberOfItems = cart?.items.length.toString();
+export const CartLink: React.FC = () => {
+  const cart = useCartStore((state) => state.cart);
   const navigate = useNavigate();
+  const numberOfItems = cart?.items.length.toString();
+  const isCartEmpty = !!cart;
 
-  if (!cart || numberOfItems === '0') {
+  if (isCartEmpty) {
     return null;
   }
 
