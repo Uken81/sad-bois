@@ -27,7 +27,7 @@ export const RootWrapper: React.FC = () => {
 
   return (
     <>
-      <Navbar userDetailsContext={{ userDetails, setUserDetails }} cart={cart}>
+      <Navbar cart={cart}>
         <Outlet context={{ userDetails, setUserDetails, cart, setCart }} />
         <Footer />
         <ScrollRestoration />

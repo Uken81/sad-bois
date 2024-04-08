@@ -1,14 +1,15 @@
 import { Dispatch, SetStateAction } from 'react';
 import { useNavigate } from 'react-router';
-import { UserType } from '../../../Routes/RouteWrappers/RootWrapper';
 import { RiLogoutCircleFill } from 'react-icons/ri';
 import { serverUrl } from '../../../Server/serverUrl';
+import { useUserStore } from '../../../Stores/userStore';
 
 export const Logout: React.FC<{
-  setUserDetails: Dispatch<SetStateAction<UserType | null>>;
   setShowModal: Dispatch<SetStateAction<boolean>>;
-}> = ({ setUserDetails, setShowModal }) => {
+}> = ({ setShowModal }) => {
+  const resetUser = useUserStore((state) => state.resetUser);
   const navigate = useNavigate();
+
   const handleClick = async () => {
     const requestOptions: RequestInit = {
       method: 'GET',
@@ -22,7 +23,7 @@ export const Logout: React.FC<{
         throw new Error('Network response was not ok');
       }
 
-      setUserDetails(null);
+      resetUser();
       navigate('/');
     } catch (error) {
       console.error('Error logging out: ', error);

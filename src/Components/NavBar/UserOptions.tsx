@@ -1,15 +1,13 @@
 import { CgProfile } from 'react-icons/cg';
 import { Link } from 'react-router-dom';
 import { Logout } from './Links/Logout';
-import { UserContextType } from '../../Routes/RouteWrappers/RootWrapper';
 import { Dispatch, SetStateAction } from 'react';
+import { useUserStore } from '../../Stores/userStore';
 
 export const UserOptions: React.FC<{
-  userDetailContext: UserContextType;
   setShowModal: Dispatch<SetStateAction<boolean>>;
-}> = ({ userDetailContext, setShowModal }) => {
-  const { userDetails, setUserDetails } = userDetailContext;
-
+}> = ({ setShowModal }) => {
+  const user = useUserStore((state) => state.user);
   return (
     <div className="dropdown dropdown-end dropdown-bottom">
       <div tabIndex={0} role="button" className="btn m-1 border-none bg-base-300 shadow-none">
@@ -17,14 +15,12 @@ export const UserOptions: React.FC<{
           <CgProfile size="2rem" />
         </div>
       </div>
-      <ul
-        tabIndex={0}
-        className="menu dropdown-content z-[1] w-52 rounded-box bg-base-100 p-2 text-lg shadow">
+      <ul tabIndex={0} className="menu dropdown-content z-[1] w-52 rounded-box bg-base-100 p-2 text-lg shadow">
         <li className="font-bold text-primary">
-          <Link to={`/profile/${userDetails?.email}`}>Profile</Link>
+          <Link to={`/profile/${user?.email}`}>Profile</Link>
         </li>
         <li>
-          <Logout setUserDetails={setUserDetails} setShowModal={setShowModal} />
+          <Logout setShowModal={setShowModal} />
         </li>
       </ul>
     </div>

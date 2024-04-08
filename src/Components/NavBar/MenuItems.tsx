@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import { UserContextType } from '../../Routes/RouteWrappers/RootWrapper';
 import { Logout } from './Links/Logout';
 import { Dispatch, ReactNode, SetStateAction } from 'react';
 import { TiNews } from 'react-icons/ti';
@@ -9,6 +8,7 @@ import { Login } from './Links/Login';
 import { HomeLink } from './Links/HomeLink';
 import { UserOptions } from './UserOptions';
 import { Profile } from './Links/Profile';
+import { useUserStore } from '../../Stores/userStore';
 
 interface LinkItemType {
   destination: string;
@@ -17,12 +17,11 @@ interface LinkItemType {
 }
 
 export const MenuItems: React.FC<{
-  userDetailsContext: UserContextType;
   toggleDrawer?: () => void;
   icons?: boolean;
   setShowModal: Dispatch<SetStateAction<boolean>>;
-}> = ({ userDetailsContext, toggleDrawer, icons, setShowModal }) => {
-  const { userDetails, setUserDetails } = userDetailsContext;
+}> = ({ toggleDrawer, icons, setShowModal }) => {
+  const isLoggedIn = useUserStore((state) => state.isLoggedIn);
 
   const standardLinks: LinkItemType[] = [
     { destination: 'news', text: 'News', icon: <TiNews /> },
@@ -40,9 +39,7 @@ export const MenuItems: React.FC<{
         const { destination, text, icon } = link;
 
         return (
-          <div
-            key={destination}
-            className="flex flex-row items-center border-l-2 border-secondary duration-500 hover:border-accent">
+          <div key={destination} className="flex flex-row items-center border-l-2 border-secondary duration-500 hover:border-accent">
             <div className="ml-1 text-secondary">{icons ? icon : null}</div>
             <li className="font-bold text-primary" onClick={toggleDrawer}>
               <Link to={`/${destination}`}>{text}</Link>
@@ -51,16 +48,16 @@ export const MenuItems: React.FC<{
         );
       })}
       <div onClick={toggleDrawer}>
-        {userDetails ? (
+        {isLoggedIn ? (
           <>
             <div className="mb-2 border-l-2 border-secondary pl-1 duration-500 hover:border-accent lg:hidden">
               <Profile />
             </div>
             <div className="border-l-2 border-secondary pl-1 duration-500 hover:border-accent lg:hidden">
-              <Logout setUserDetails={setUserDetails} setShowModal={setShowModal} />
+              <Logout setShowModal={setShowModal} />
             </div>
             <div className="hidden border-l-2 border-secondary pl-1 duration-500 hover:border-accent lg:block">
-              <UserOptions userDetailContext={userDetailsContext} setShowModal={setShowModal} />
+              <UserOptions setShowModal={setShowModal} />
             </div>
           </>
         ) : (
