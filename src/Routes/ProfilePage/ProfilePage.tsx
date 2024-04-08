@@ -1,12 +1,12 @@
-import { useLoaderData, useOutletContext } from 'react-router';
+import { useLoaderData } from 'react-router';
 import { Orders } from './Orders';
 import { OrderType } from '../../DataLoaders/ordersLoader';
-import { UserContextType, UserType } from '../RouteWrappers/RootWrapper';
+import { useUserStore } from '../../Stores/userStore';
 
 export const ProfilePage: React.FC = () => {
   const userOrders = useLoaderData() as OrderType[] | null;
-  const { userDetails } = useOutletContext() as UserContextType;
-  const { email, username } = userDetails as UserType;
+  const email = useUserStore((state) => state.user?.email);
+  const username = useUserStore((state) => state.user?.username);
 
   return (
     <main>

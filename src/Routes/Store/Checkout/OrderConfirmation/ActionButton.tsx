@@ -1,13 +1,13 @@
-import { useNavigate, useOutletContext } from 'react-router';
-import { UserContextType } from '../../../RouteWrappers/RootWrapper';
+import { useNavigate } from 'react-router';
+import { useIsLoggedIn } from '../../../../Hooks/useIsLoggedIn';
 
 export const ActionButton: React.FC = () => {
-  const { userDetails } = useOutletContext() as UserContextType;
+  const isLoggedIn = useIsLoggedIn();
   const navigate = useNavigate();
 
   return (
     <>
-      {!userDetails ? (
+      {!isLoggedIn ? (
         <div className="my-2">
           <h3 className="text-h3">Save your information for next time?</h3>
           <button className="btn btn-accent mt-2" onClick={() => navigate('/register')}>
