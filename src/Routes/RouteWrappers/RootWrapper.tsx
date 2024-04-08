@@ -4,11 +4,7 @@ import { Dispatch, SetStateAction, useState } from 'react';
 import { ScrollRestoration } from 'react-router-dom';
 import { Footer } from '../../Components/Footer';
 import { ProductOrder } from '../Store/Cart/AddProductToCart/createProductOrder';
-
-export interface UserType {
-  email: string;
-  username: string;
-}
+import { UserType } from '../../Types/types';
 
 export interface UserContextType {
   userDetails: UserType | null;
