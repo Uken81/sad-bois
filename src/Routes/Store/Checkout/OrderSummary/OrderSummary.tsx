@@ -1,24 +1,12 @@
-import { useEffect } from 'react';
 import { ShippingOptionsType } from '../Shipping/shippingOptions';
-import { useOutletContext } from 'react-router';
-import { useGetCart } from '../../../../Hooks/useGetCart';
-import { CartContextType } from '../../../RouteWrappers/RootWrapper';
 import { ProductImage } from './ProductImage';
 import { ProductInfo } from './ProductInfo';
 import { PurchaseInfo } from './PurchaseInfo';
+import { useBoundStore } from '../../../../Stores/boundStore';
 
 export const OrderSummary: React.FC<{ selectedShipping: ShippingOptionsType }> = ({ selectedShipping }) => {
-  const { cart, setCart } = useOutletContext() as CartContextType;
+  const cart = useBoundStore((state) => state.cart);
   const cartItems = cart?.items;
-  const getCart = useGetCart();
-
-  useEffect(() => {
-    if (!cart) {
-      const retrivedCart = getCart();
-      setCart(retrivedCart);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   if (!cart || !cart.items.length) {
     return (
