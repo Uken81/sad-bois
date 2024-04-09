@@ -4,9 +4,9 @@ import { useGetCart } from '../../../../Hooks/useGetCart';
 import { CartContextType } from '../../../RouteWrappers/RootWrapper';
 import { PopulatedCart } from './PopulatedCart';
 import { EmptyCart } from './EmptyCart';
+import { useBoundStore } from '../../../../Stores/boundStore';
 
 export const ViewCart: React.FC = () => {
-  const { cart, setCart } = useOutletContext() as CartContextType;
   const getCart = useGetCart();
 
   useEffect(() => {
