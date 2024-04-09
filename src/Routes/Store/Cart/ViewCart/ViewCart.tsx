@@ -5,5 +5,5 @@ import { useBoundStore } from '../../../../Stores/boundStore';
 export const ViewCart: React.FC = () => {
   const cart = useBoundStore((state) => state.cart);
 
-  return <>{cart?.items.length ? <PopulatedCart cart={cart} /> : <EmptyCart />}</>;
+  return <>{cart?.items.length ? <PopulatedCart /> : <EmptyCart />}</>;
 };

@@ -1,14 +1,14 @@
-import { useLoaderData, useOutletContext } from 'react-router';
+import { useLoaderData } from 'react-router';
 import { MerchandiseType } from '../../DataLoaders/productsLoader';
 import { FeaturedCarousel } from './Featured/FeaturedCarousel';
 import { Products } from './Products';
 import { NoData } from '../../Components/NoData';
-import { StoreCategoryContextType } from '../RouteWrappers/StoreWrapper';
 import { useEffect, useState } from 'react';
+import { useBoundStore } from '../../Stores/boundStore';
 
 export const Store: React.FC = () => {
   const loaderData = useLoaderData() as MerchandiseType;
-  const { selectedCategory } = useOutletContext() as StoreCategoryContextType;
+  const selectedCategory = useBoundStore((state) => state.selectedCategory);
   const [loadingCategory, setloadingCategory] = useState(false);
   const featuredProducts = loaderData.validatedFeaturedProducts;
   const regularProducts = loaderData.validatedRegularProducts;

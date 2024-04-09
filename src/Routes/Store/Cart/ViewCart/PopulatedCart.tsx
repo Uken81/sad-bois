@@ -1,18 +1,18 @@
-import { useNavigate, useOutletContext } from 'react-router';
-import { CartType } from '../../../RouteWrappers/RootWrapper';
+import { useNavigate } from 'react-router';
 import { ProceedToCheckout } from './ProceedToCheckout/ProceedToCheckout';
 import { Subtotal } from './Subtotal';
 import { OrderItemsSummary } from './OrderItemsSummary/OrderItemsSummary';
-import { StoreCategoryContextType } from '../../../RouteWrappers/StoreWrapper';
+import { useBoundStore } from '../../../../Stores/boundStore';
 
-export const PopulatedCart: React.FC<{ cart: CartType | null }> = ({ cart }) => {
-  const { selectedCategory } = useOutletContext() as StoreCategoryContextType;
+export const PopulatedCart: React.FC = () => {
+  const selectedCategory = useBoundStore((state) => state.selectedCategory);
   const navigate = useNavigate();
+
   return (
     <main className="flex flex-col items-center">
-      <OrderItemsSummary cart={cart} />
+      <OrderItemsSummary />
       <div className="text-center">
-        <Subtotal subtotal={cart?.subtotal} />
+        <Subtotal />
         <p>Taxes and shipping calculated at checkout</p>
       </div>
       <div className="mb-10 mt-8 flex flex-col items-center space-y-6">
