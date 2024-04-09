@@ -4,17 +4,17 @@ import { Outlet } from 'react-router';
 import { OrderSummary } from '../Store/Checkout/OrderSummary/OrderSummary';
 import { OrderSummaryCollapse } from '../Store/Checkout/OrderSummary/OrderSummaryCollapse';
 
-export interface CustomerType {
-  email: string;
-  firstName: string;
-  lastName: string;
-  country: string;
-  address: string;
-  apartment: string;
-  suburb: string;
-  state: string;
-  postcode: string;
-}
+// export interface CustomerType {
+//   email: string;
+//   firstName: string;
+//   lastName: string;
+//   country: string;
+//   address: string;
+//   apartment: string;
+//   suburb: string;
+//   state: string;
+//   postcode: string;
+// }
 
 export interface CustomerContextType {
   customer: CustomerType | null;

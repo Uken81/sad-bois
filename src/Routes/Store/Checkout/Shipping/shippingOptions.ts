@@ -1,8 +1,4 @@
-export interface ShippingOptionsType {
-  type: string;
-  name: string;
-  shippingPrice: number;
-}
+import { ShippingOptionsType } from '../../../../Types/types';
 
 export const shippingOptions: ShippingOptionsType[] = [
   {
