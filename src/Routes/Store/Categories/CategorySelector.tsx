@@ -2,8 +2,6 @@ import { Dispatch, SetStateAction } from 'react';
 import { Categories } from './Categories';
 import { CategoriesCollapse } from './CategoriesCollapse';
 
-export type ProductCategory = 'all' | 'clothing' | 'mugs' | 'stickers' | 'misc';
-
 export const CategorySelector: React.FC<{
   selectedCategory: ProductCategory;
   setSelectedCategory: Dispatch<SetStateAction<ProductCategory>>;

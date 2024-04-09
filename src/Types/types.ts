@@ -9,3 +9,5 @@ export interface CartType {
   items: ProductOrder[];
   subtotal: number | null | undefined;
 }
+
+export type ProductCategory = 'all' | 'clothing' | 'mugs' | 'stickers' | 'misc';
