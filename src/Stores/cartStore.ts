@@ -34,4 +34,4 @@ const cartState = persist<CartState>(
   }
 );
 
-export const useCartStore = create(devtools(cartState));
+export const useCartStore = create(cartState);
