@@ -1,25 +1,11 @@
-import { CartContextType } from '../../../../RouteWrappers/RootWrapper';
-import { useOutletContext } from 'react-router';
 import { ProductOrder } from '../../AddProductToCart/createProductOrder';
+import { useBoundStore } from '../../../../../Stores/boundStore';
 
 export const RemoveItem: React.FC<{ productOrder: ProductOrder }> = ({ productOrder }) => {
-  const { cart, setCart } = useOutletContext() as CartContextType;
-
-  const removeItem = (productOrder: ProductOrder) => {
-    const { orderId, cost } = productOrder;
-    const filteredArr = cart?.items?.filter((item) => item.orderId !== orderId) || [];
-
-    setCart((prev) => ({
-      ...prev,
-      items: filteredArr,
-      subtotal: prev?.subtotal ? prev!.subtotal - cost : null
-    }));
-  };
+  const removeItem = useBoundStore((state) => state.removeItem);
 
   return (
-    <p
-      className="mt-4 font-bold hover:cursor-pointer hover:text-gray-400"
-      onClick={() => removeItem(productOrder)}>
+    <p className="mt-4 font-bold hover:cursor-pointer hover:text-gray-400" onClick={() => removeItem(productOrder)}>
       Remove
     </p>
   );

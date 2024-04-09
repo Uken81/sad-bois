@@ -5,13 +5,10 @@ import * as Yup from 'yup';
 import { useState } from 'react';
 import { ErrorMessage } from '../../../../Components/ErrorMessages/ErrorMessage';
 import { useNavigate, useOutletContext } from 'react-router';
-import {
-  CustomerContextType,
-  SelectedShippingContextType
-} from '../../../RouteWrappers/CheckoutWrapper';
-import { CartContextType } from '../../../RouteWrappers/RootWrapper';
+import { CustomerContextType, SelectedShippingContextType } from '../../../RouteWrappers/CheckoutWrapper';
 import { serverUrl } from '../../../../Server/serverUrl';
 import { FormErrorType } from '../../../../Types/errorTypes';
+import { useBoundStore } from '../../../../Stores/boundStore';
 
 export interface CardDetailsFormType {
   cardNumber: string;
@@ -23,28 +20,22 @@ export interface CardDetailsFormType {
 export const PaymentDetails = () => {
   const outletContext = useOutletContext();
   const { customer, setCustomer } = outletContext as CustomerContextType;
-  const { cart, setCart } = outletContext as CartContextType;
+  const cart = useBoundStore((state) => state.cart);
+  const resetCart = useBoundStore((state) => state.resetCart);
   const { selectedShipping, setSelectedShipping } = outletContext as SelectedShippingContextType;
   const [error, setError] = useState<FormErrorType | null>(null);
   const navigate = useNavigate();
 
   const validationSchema = Yup.object().shape({
-    cardNumber: Yup.string()
-      .length(16, 'Card number must be 16 digits')
-      .required('Card number is required'),
+    cardNumber: Yup.string().length(16, 'Card number must be 16 digits').required('Card number is required'),
     nameOnCard: Yup.string().required('Name on card is required'),
     expirationDate: Yup.string()
       .matches(/^(0[1-9]|1[0-2])\/?([0-9]{2})$/, 'Invalid expiration date')
       .required('Expiration date is required'),
-    securityCode: Yup.string()
-      .length(3, 'Security code must be 3 digits')
-      .required('Security code is required')
+    securityCode: Yup.string().length(3, 'Security code must be 3 digits').required('Security code is required')
   });
 
-  const handleSubmit = async (
-    values: CardDetailsFormType,
-    setSubmitting: (isSubmitting: boolean) => void
-  ) => {
+  const handleSubmit = async (values: CardDetailsFormType, setSubmitting: (isSubmitting: boolean) => void) => {
     const requestOptions: RequestInit = {
       method: 'POST',
       body: JSON.stringify({ formValues: values, customer, cart, selectedShipping }),
@@ -64,7 +55,7 @@ export const PaymentDetails = () => {
       const data = await response.json();
       const { customerEmail, orderId } = data.orderSummary;
       setCustomer(null);
-      setCart(null);
+      resetCart();
       setSelectedShipping(null);
       setSubmitting(false);
       navigate(`/order-confirmation/${customerEmail}/${orderId}`);
@@ -103,12 +94,7 @@ export const PaymentDetails = () => {
       }}>
       {(formik) => (
         <Form className="px-4">
-          <ErrorMessage
-            display={isNetworkError || isServerError}
-            variant="error"
-            message={error?.message ?? null}
-            setError={setError}
-          />
+          <ErrorMessage display={isNetworkError || isServerError} variant="error" message={error?.message ?? null} setError={setError} />
           <CustomInput
             name="cardNumber"
             placeholder="Card Number"
@@ -116,12 +102,7 @@ export const PaymentDetails = () => {
             inputMode="numeric"
             error={isCardNumberError ? error.message : undefined}
           />
-          <CustomInput
-            name="nameOnCard"
-            placeholder="Name On Card"
-            type="text"
-            error={isNameOnCardError ? error.message : undefined}
-          />
+          <CustomInput name="nameOnCard" placeholder="Name On Card" type="text" error={isNameOnCardError ? error.message : undefined} />
           <CustomInput
             name="expirationDate"
             placeholder="Expiration Date (MM / YY)"
@@ -137,11 +118,7 @@ export const PaymentDetails = () => {
             error={isSecurityCodeError ? error.message : undefined}
           />
           <div className="py-4 text-center">
-            <SubmitButton
-              isSubmitting={formik.isSubmitting}
-              text="Pay Now"
-              loadingText="Processing"
-            />
+            <SubmitButton isSubmitting={formik.isSubmitting} text="Pay Now" loadingText="Processing" />
           </div>
         </Form>
       )}

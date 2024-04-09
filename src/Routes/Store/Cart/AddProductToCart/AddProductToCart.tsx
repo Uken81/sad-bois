@@ -1,19 +1,15 @@
-import { useLoaderData, useOutletContext } from 'react-router';
+import { useLoaderData } from 'react-router';
 import { useState } from 'react';
 import { SizeSelectors } from './SizeSelectors';
 import { Quantity } from '../../../../Components/AddToCart/Quantity';
-import { useEffectAfterMount } from '../../../../Hooks/useEffectAfterMount';
 import { ProductType } from '../../../../DataLoaders/productsLoader';
 import { ShareButton } from '../../../../Components/Share/ShareButton';
-import { CartContextType } from '../../../RouteWrappers/RootWrapper';
 import { ShareOptions } from '../../../../Components/Share/ShareOptions';
 import { AddToCart, ItemOrderData } from '../../../../Components/AddToCart/AddToCart';
-import { updateSessionStorage } from '../../../../Utils/saveOrUpdateSessionStorage';
 
 export const AddProductToCart: React.FC = () => {
   const product = useLoaderData() as ProductType;
   const { img, title, subtitle, price, category } = product;
-  const { cart } = useOutletContext() as CartContextType;
   const [size, setSize] = useState<string | null>(category === 'clothing' ? 'l' : null);
   const [quantity, setQuantity] = useState(1);
 
@@ -22,14 +18,6 @@ export const AddProductToCart: React.FC = () => {
     quantity,
     size
   };
-
-  //do i need this? if so can i move it to next screen??
-  //Also rename file name to match function name.
-  useEffectAfterMount(() => {
-    if (cart) {
-      updateSessionStorage('cart', cart);
-    }
-  }, [cart]);
 
   return (
     <div className="flex h-full flex-col items-center gap-4 md:mx-24 md:my-24 md:flex-row md:gap-0 xl:mx-64">
