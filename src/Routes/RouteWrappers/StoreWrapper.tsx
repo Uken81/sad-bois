@@ -13,7 +13,7 @@ export const StoreWrapper: React.FC = () => {
 
   return (
     <>
-      <CategorySelector selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
+      <CategorySelector />
       <div className="divider" />
       <CheckoutBreadcrumbs />
       <Outlet context={{ selectedCategory }} />

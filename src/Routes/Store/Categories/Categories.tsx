@@ -1,16 +1,15 @@
-import { Dispatch, SetStateAction } from 'react';
 import { useNavigate } from 'react-router';
 import { capitaliseWords } from '../../../Utils/Formatters/capitaliseWords';
-import { ProductCategory } from './CategorySelector';
+import { ProductCategory } from '../../../Types/types';
+import { useBoundStore } from '../../../Stores/boundStore';
 
-export const Categories: React.FC<{
-  selectedCategory: ProductCategory;
-  setSelectedCategory: Dispatch<SetStateAction<ProductCategory>>;
-}> = ({ selectedCategory, setSelectedCategory }) => {
+export const Categories: React.FC = () => {
+  const selectedCategory = useBoundStore((state) => state.selectedCategory);
+  const assignCategory = useBoundStore((state) => state.assignCategory);
   const navigate = useNavigate();
 
   const handleCategoryChange = (category: ProductCategory) => {
-    setSelectedCategory(category);
+    assignCategory(category);
     navigate(`/store/${category}`);
   };
 
