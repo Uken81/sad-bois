@@ -1,6 +1,5 @@
 import { Dispatch, SetStateAction, useState } from 'react';
-import { Outlet, useOutletContext } from 'react-router';
-import { CartContextType } from './RootWrapper';
+import { Outlet } from 'react-router';
 import { CheckoutBreadcrumbs } from '../Store/Checkout/BreadCrumbs/CheckoutBreadcrumbs';
 import { CategorySelector, ProductCategory } from '../Store/Categories/CategorySelector';
 
@@ -10,7 +9,6 @@ export interface StoreCategoryContextType {
 }
 
 export const StoreWrapper: React.FC = () => {
-  const { cart, setCart } = useOutletContext() as CartContextType;
   const [selectedCategory, setSelectedCategory] = useState<ProductCategory>('all');
 
   return (
@@ -18,7 +16,7 @@ export const StoreWrapper: React.FC = () => {
       <CategorySelector selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
       <div className="divider" />
       <CheckoutBreadcrumbs />
-      <Outlet context={{ selectedCategory, cart, setCart }} />
+      <Outlet context={{ selectedCategory }} />
     </>
   );
 };

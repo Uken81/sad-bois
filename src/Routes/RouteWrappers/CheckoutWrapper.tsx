@@ -1,8 +1,7 @@
 import { Dispatch, SetStateAction, useState } from 'react';
 import { ShippingOptionsType, shippingOptions } from '../Store/Checkout/Shipping/shippingOptions';
-import { Outlet, useOutletContext } from 'react-router';
+import { Outlet } from 'react-router';
 import { OrderSummary } from '../Store/Checkout/OrderSummary/OrderSummary';
-import { CartContextType } from './RootWrapper';
 import { OrderSummaryCollapse } from '../Store/Checkout/OrderSummary/OrderSummaryCollapse';
 
 export interface CustomerType {
@@ -28,7 +27,6 @@ export interface SelectedShippingContextType {
 }
 
 export const CheckoutWrapper = () => {
-  const { cart, setCart } = useOutletContext() as CartContextType;
   const [customer, setCustomer] = useState<CustomerType | null>(null);
   const [selectedShipping, setSelectedShipping] = useState<ShippingOptionsType>(shippingOptions[0]);
 
@@ -36,15 +34,13 @@ export const CheckoutWrapper = () => {
     selectedShipping,
     setSelectedShipping,
     customer,
-    setCustomer,
-    cart,
-    setCart
+    setCustomer
   };
 
   return (
     <div className="flex w-screen flex-col md:flex-row">
       <div className="mx-4 md:hidden ">
-        <OrderSummaryCollapse selectedShipping={selectedShipping} subtotal={cart?.subtotal ?? null} />
+        <OrderSummaryCollapse selectedShipping={selectedShipping} />
       </div>
       <div className="mt-5 md:w-1/2">
         <Outlet context={outletContextState} />
