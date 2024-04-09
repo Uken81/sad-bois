@@ -6,7 +6,7 @@ export const CartLink: React.FC = () => {
   const cart = useBoundStore((state) => state.cart);
   const navigate = useNavigate();
   const numberOfItems = cart?.items.length.toString();
-  const isCartEmpty = !!cart;
+  const isCartEmpty = !cart || !cart.items.length;
 
   if (isCartEmpty) {
     return null;
