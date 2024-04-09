@@ -1,19 +1,14 @@
 import { create } from 'zustand';
-import { UserSlice } from './userSlice';
-import { createUserSlice } from './userSlice';
+import { UserSliceType, createUserSlice } from './userSlice';
+import { createCartSlice } from './cartSlice';
 import { createJSONStorage, devtools, persist } from 'zustand/middleware';
+import { CartSliceType } from './cartSlice';
 
-// export const useBoundStore = create<UserSlice>()(
-//   persist(
-//     (...a) => ({
-//       ...createUserSlice(...a)
-//     }),
-//     { name: 'bound-store', storage: createJSONStorage(() => sessionStorage), partialize: (state) => state }
-//   )
-// );
-export const boundState = persist<UserSlice>(
+type CombinedSlicesType = UserSliceType & CartSliceType;
+export const boundState = persist<CombinedSlicesType>(
   (...a) => ({
-    ...createUserSlice(...a)
+    ...createUserSlice(...a),
+    ...createCartSlice(...a)
   }),
   { name: 'bound-store', storage: createJSONStorage(() => sessionStorage), partialize: (state) => state }
 );

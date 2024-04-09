@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { FixedErrorMessage } from '../ErrorMessages/FixedErrorMessage';
 import { createProductOrder } from '../../Routes/Store/Cart/AddProductToCart/createProductOrder';
 import { isEmptyObject } from '../../Utils/Validation/isEmptyObject';
-import { useCartStore } from '../../Stores/cartStore';
+import { useBoundStore } from '../../Stores/boundStore';
 
 export interface ItemOrderData {
   item: ProductType | TourType;
@@ -31,8 +31,8 @@ const ActionButton: React.FC<{ isAdded: boolean; handleClick: () => void }> = ({
 };
 
 export const AddToCart: React.FC<{ itemOrderData: ItemOrderData }> = ({ itemOrderData }) => {
-  const addItem = useCartStore((state) => state.addItem);
-  const cart = useCartStore((state) => state.cart);
+  const addItem = useBoundStore((state) => state.addItem);
+  const cart = useBoundStore((state) => state.cart);
   const [isAdded, setIsAdded] = useState(false);
   const [isError, setIsError] = useState(false);
   const productOrder = createProductOrder(itemOrderData);
