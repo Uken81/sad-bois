@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 import { useState } from 'react';
 import { ErrorMessage } from '../../../../Components/ErrorMessages/ErrorMessage';
 import { useNavigate, useOutletContext } from 'react-router';
-import { CustomerContextType, SelectedShippingContextType } from '../../../RouteWrappers/CheckoutWrapper';
+import { SelectedShippingContextType } from '../../../RouteWrappers/CheckoutWrapper';
 import { serverUrl } from '../../../../Server/serverUrl';
 import { FormErrorType } from '../../../../Types/errorTypes';
 import { useBoundStore } from '../../../../Stores/boundStore';
@@ -19,9 +19,10 @@ export interface CardDetailsFormType {
 
 export const PaymentDetails = () => {
   const outletContext = useOutletContext();
-  const { customer, setCustomer } = outletContext as CustomerContextType;
   const cart = useBoundStore((state) => state.cart);
   const resetCart = useBoundStore((state) => state.resetCart);
+  const customer = useBoundStore((state) => state.customer);
+  const resetCustomer = useBoundStore((state) => state.resetCustomer);
   const { selectedShipping, setSelectedShipping } = outletContext as SelectedShippingContextType;
   const [error, setError] = useState<FormErrorType | null>(null);
   const navigate = useNavigate();
@@ -54,7 +55,7 @@ export const PaymentDetails = () => {
       }
       const data = await response.json();
       const { customerEmail, orderId } = data.orderSummary;
-      setCustomer(null);
+      resetCustomer();
       resetCart();
       setSelectedShipping(null);
       setSubmitting(false);

@@ -16,7 +16,11 @@ export const useBoundStore = create<CombinedSlicesType>()(
         ...createCategorySlice(...a),
         ...createCustomerSlice(...a)
       }),
-      { name: 'state-storage', storage: createJSONStorage(() => sessionStorage), partialize: (state) => ({ user: state.user, cart: state.cart }) }
+      {
+        name: 'state-storage',
+        storage: createJSONStorage(() => sessionStorage),
+        partialize: (state) => ({ user: state.user, cart: state.cart, customer: state.customer })
+      }
     )
   )
 );

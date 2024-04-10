@@ -1,11 +1,16 @@
+import { useBoundStore } from '../../../../Stores/boundStore';
 import { ChangeDetails } from './ChangeDetails';
 
-export const AddressDetails: React.FC<{ address: string }> = ({ address }) => {
+export const AddressDetails: React.FC = () => {
+  const customer = useBoundStore((state) => state.customer);
+  const { address, suburb, state, postcode } = customer ?? {};
+  const combinedAddress = `${address}, ${suburb}, ${state}, ${postcode}`;
+
   return (
     <div className="flex flex-row">
       <div className="flex flex-col">
         <p className="font-bold">Ship To</p>
-        <p>{address}</p>
+        <p>{combinedAddress}</p>
       </div>
       <div className="ml-auto text-accent">
         <ChangeDetails />

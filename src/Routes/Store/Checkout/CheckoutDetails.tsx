@@ -1,12 +1,11 @@
 import { Formik, Form } from 'formik';
 import { CustomInput } from '../../../Components/FormComponents/Inputs/CustomInput';
 import { SubmitButton } from '../../../Components/FormComponents/SubmitButton';
-import { useNavigate, useOutletContext } from 'react-router';
-import { useEffect } from 'react';
+import { useNavigate } from 'react-router';
+
 import { updateSessionStorage } from '../../../Utils/saveOrUpdateSessionStorage';
 import * as Yup from 'yup';
-import { CustomerContextType } from '../../RouteWrappers/CheckoutWrapper';
-import { useGetSessionCustomer } from '../../../Hooks/useGetCustomer';
+import { useBoundStore } from '../../../Stores/boundStore';
 
 interface DetailsFormType {
   email: string;
@@ -21,22 +20,14 @@ interface DetailsFormType {
 }
 
 export const CheckoutDetails = () => {
-  const { customer, setCustomer } = useOutletContext() as CustomerContextType;
-  const getSessionCustomer = useGetSessionCustomer();
+  const customer = useBoundStore((state) => state.customer);
+  const updateCustomer = useBoundStore((state) => state.updateCustomer);
   const navigate = useNavigate();
   const countries = ['Australia'];
   const states = ['VIC', 'NSW', 'QLD', 'SA', 'WA', 'TAS', 'ACT', 'NT'];
 
-  useEffect(() => {
-    if (!customer) {
-      const retrievedCustomer = getSessionCustomer();
-      setCustomer(retrievedCustomer);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   const handleSubmit = async (values: DetailsFormType, setSubmitting: (isSubmitting: boolean) => void) => {
-    setCustomer(values);
+    updateCustomer(values);
     updateSessionStorage('customer', values);
     setSubmitting(false);
     navigate('/store/checkout/shipping');
