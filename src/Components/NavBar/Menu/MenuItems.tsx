@@ -1,14 +1,12 @@
 import { Link } from 'react-router-dom';
-import { Logout } from '../Links/Logout';
-import { Dispatch, ReactNode, SetStateAction } from 'react';
+import { ReactNode } from 'react';
 import { TiNews } from 'react-icons/ti';
 import { LiaMusicSolid } from 'react-icons/lia';
 import { PiShoppingCartBold } from 'react-icons/pi';
 import { Login } from '../Links/Login';
 import { HomeLink } from '../Links/HomeLink';
-import { UserDropdown } from './UserDropdown';
-import { Profile } from '../Links/Profile';
 import { useIsLoggedIn } from '../../../Hooks/useIsLoggedIn';
+import { UserOptions } from './UserOptions';
 
 interface LinkItemType {
   destination: string;
@@ -19,8 +17,7 @@ interface LinkItemType {
 export const MenuItems: React.FC<{
   toggleDrawer?: () => void;
   icons?: boolean;
-  setShowModal: Dispatch<SetStateAction<boolean>>;
-}> = ({ toggleDrawer, icons, setShowModal }) => {
+}> = ({ toggleDrawer, icons }) => {
   const isLoggedIn = useIsLoggedIn();
 
   const standardLinks: LinkItemType[] = [
@@ -49,17 +46,7 @@ export const MenuItems: React.FC<{
       })}
       <div onClick={toggleDrawer}>
         {isLoggedIn ? (
-          <>
-            <div className="mb-2 border-l-2 border-secondary pl-1 duration-500 hover:border-accent lg:hidden">
-              <Profile />
-            </div>
-            <div className="border-l-2 border-secondary pl-1 duration-500 hover:border-accent lg:hidden">
-              <Logout setShowModal={setShowModal} />
-            </div>
-            <div className="hidden border-l-2 border-secondary pl-1 duration-500 hover:border-accent lg:block">
-              <UserDropdown setShowModal={setShowModal} />
-            </div>
-          </>
+          <UserOptions />
         ) : (
           <div className="border-l-2 border-secondary pl-1 duration-500 hover:border-accent">
             <Login icons={icons} />
