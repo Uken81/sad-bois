@@ -1,11 +1,9 @@
-import { useOutletContext } from 'react-router';
-import { SelectedShippingContextType } from '../../../RouteWrappers/CheckoutWrapper';
 import { capitaliseWords } from '../../../../Utils/Formatters/capitaliseWords';
 import { formatCurrency } from '../../../../Utils/Formatters/currencyFormatter';
+import { useBoundStore } from '../../../../Stores/boundStore';
 
 export const ShippingMethodDetails: React.FC = () => {
-  const outletContext = useOutletContext();
-  const { selectedShipping } = outletContext as SelectedShippingContextType;
+  const selectedShipping = useBoundStore((state) => state.selectedShipping);
   const formattedShippingName = capitaliseWords(selectedShipping.name);
   const formattedShippingPrice = formatCurrency(selectedShipping.shippingPrice);
 

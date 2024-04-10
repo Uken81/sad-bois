@@ -8,6 +8,7 @@ export interface CustomerSliceType {
   resetCustomer: () => void;
   selectedShipping: ShippingOptionsType;
   updateShipping: (shippingOption: ShippingOptionsType) => void;
+  resetShipping: () => void;
 }
 
 export const createCustomerSlice: StateCreator<CustomerSliceType> = (set) => ({
@@ -15,5 +16,6 @@ export const createCustomerSlice: StateCreator<CustomerSliceType> = (set) => ({
   updateCustomer: (customer) => set({ customer: customer }),
   resetCustomer: () => set({ customer: null }),
   selectedShipping: shippingOptions[0],
-  updateShipping: (shippingOption) => set({ selectedShipping: shippingOption })
+  updateShipping: (shippingOption) => set({ selectedShipping: shippingOption }),
+  resetShipping: () => set({ selectedShipping: shippingOptions[0] })
 });

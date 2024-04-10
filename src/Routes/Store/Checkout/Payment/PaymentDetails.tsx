@@ -4,8 +4,7 @@ import { SubmitButton } from '../../../../Components/FormComponents/SubmitButton
 import * as Yup from 'yup';
 import { useState } from 'react';
 import { ErrorMessage } from '../../../../Components/ErrorMessages/ErrorMessage';
-import { useNavigate, useOutletContext } from 'react-router';
-import { SelectedShippingContextType } from '../../../RouteWrappers/CheckoutWrapper';
+import { useNavigate } from 'react-router';
 import { serverUrl } from '../../../../Server/serverUrl';
 import { FormErrorType } from '../../../../Types/errorTypes';
 import { useBoundStore } from '../../../../Stores/boundStore';
@@ -18,12 +17,12 @@ export interface CardDetailsFormType {
 }
 
 export const PaymentDetails = () => {
-  const outletContext = useOutletContext();
   const cart = useBoundStore((state) => state.cart);
   const resetCart = useBoundStore((state) => state.resetCart);
   const customer = useBoundStore((state) => state.customer);
   const resetCustomer = useBoundStore((state) => state.resetCustomer);
-  const { selectedShipping, setSelectedShipping } = outletContext as SelectedShippingContextType;
+  const selectedShipping = useBoundStore((state) => state.selectedShipping);
+  const resetShipping = useBoundStore((state) => state.resetShipping);
   const [error, setError] = useState<FormErrorType | null>(null);
   const navigate = useNavigate();
 
@@ -37,6 +36,12 @@ export const PaymentDetails = () => {
   });
 
   const handleSubmit = async (values: CardDetailsFormType, setSubmitting: (isSubmitting: boolean) => void) => {
+    const resetStoreStates = () => {
+      resetCustomer();
+      resetCart();
+      resetShipping();
+    };
+
     const requestOptions: RequestInit = {
       method: 'POST',
       body: JSON.stringify({ formValues: values, customer, cart, selectedShipping }),
@@ -55,9 +60,7 @@ export const PaymentDetails = () => {
       }
       const data = await response.json();
       const { customerEmail, orderId } = data.orderSummary;
-      resetCustomer();
-      resetCart();
-      setSelectedShipping(null);
+      resetStoreStates();
       setSubmitting(false);
       navigate(`/order-confirmation/${customerEmail}/${orderId}`);
     } catch (error) {
