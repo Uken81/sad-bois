@@ -1,10 +1,9 @@
-import { ShippingOptionsType } from '../Shipping/shippingOptions';
 import { ProductImage } from './ProductImage';
 import { ProductInfo } from './ProductInfo';
 import { PurchaseInfo } from './PurchaseInfo';
 import { useBoundStore } from '../../../../Stores/boundStore';
 
-export const OrderSummary: React.FC<{ selectedShipping: ShippingOptionsType }> = ({ selectedShipping }) => {
+export const OrderSummary: React.FC = () => {
   const cart = useBoundStore((state) => state.cart);
   const cartItems = cart?.items;
 
@@ -28,7 +27,7 @@ export const OrderSummary: React.FC<{ selectedShipping: ShippingOptionsType }> =
           </div>
         );
       })}
-      <PurchaseInfo cart={cart} selectedShipping={selectedShipping} />
+      <PurchaseInfo />
     </aside>
   );
 };

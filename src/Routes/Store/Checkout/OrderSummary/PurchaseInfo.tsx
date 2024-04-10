@@ -1,14 +1,12 @@
 import { useEffect, useState } from 'react';
-import { CartType } from '../../../RouteWrappers/RootWrapper';
-import { ShippingOptionsType } from '../Shipping/shippingOptions';
 import { calculateTax } from '../CostCalculators/calculateTax';
 import { calculateOrderTotal } from '../CostCalculators/CalculateOrderTotal';
 import { formatCurrency } from '../../../../Utils/Formatters/currencyFormatter';
+import { useBoundStore } from '../../../../Stores/boundStore';
 
-export const PurchaseInfo: React.FC<{
-  cart: CartType | null;
-  selectedShipping: ShippingOptionsType;
-}> = ({ cart, selectedShipping }) => {
+export const PurchaseInfo: React.FC = () => {
+  const cart = useBoundStore((state) => state.cart);
+  const selectedShipping = useBoundStore((state) => state.selectedShipping);
   const [orderTotal, setOrderTotal] = useState<string | null>(null);
   const [tax, setTax] = useState<number | null>(null);
 
