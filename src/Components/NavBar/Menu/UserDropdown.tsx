@@ -1,10 +1,10 @@
 import { CgProfile } from 'react-icons/cg';
 import { Link } from 'react-router-dom';
-import { Logout } from './Links/Logout';
+import { Logout } from '../Links/Logout';
 import { Dispatch, SetStateAction } from 'react';
-import { useBoundStore } from '../../Stores/boundStore';
+import { useBoundStore } from '../../../Stores/boundStore';
 
-export const UserOptions: React.FC<{
+export const UserDropdown: React.FC<{
   setShowModal: Dispatch<SetStateAction<boolean>>;
 }> = ({ setShowModal }) => {
   const user = useBoundStore((state) => state.user);

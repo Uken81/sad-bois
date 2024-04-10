@@ -1,7 +1,7 @@
 import { ReactNode, useState } from 'react';
-import { MenuItems } from './MenuItems';
+import { MenuItems } from './Menu/MenuItems';
 import { SideDrawer } from './SideDrawer';
-import { Menu } from './Menu';
+import { Menu } from './Menu/Menu';
 import { Modal } from '../Modal';
 
 export const Navbar: React.FC<{

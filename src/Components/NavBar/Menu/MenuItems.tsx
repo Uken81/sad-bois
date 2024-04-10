@@ -1,14 +1,14 @@
 import { Link } from 'react-router-dom';
-import { Logout } from './Links/Logout';
+import { Logout } from '../Links/Logout';
 import { Dispatch, ReactNode, SetStateAction } from 'react';
 import { TiNews } from 'react-icons/ti';
 import { LiaMusicSolid } from 'react-icons/lia';
 import { PiShoppingCartBold } from 'react-icons/pi';
-import { Login } from './Links/Login';
-import { HomeLink } from './Links/HomeLink';
-import { UserOptions } from './UserOptions';
-import { Profile } from './Links/Profile';
-import { useIsLoggedIn } from '../../Hooks/useIsLoggedIn';
+import { Login } from '../Links/Login';
+import { HomeLink } from '../Links/HomeLink';
+import { UserDropdown } from './UserDropdown';
+import { Profile } from '../Links/Profile';
+import { useIsLoggedIn } from '../../../Hooks/useIsLoggedIn';
 
 interface LinkItemType {
   destination: string;
@@ -57,7 +57,7 @@ export const MenuItems: React.FC<{
               <Logout setShowModal={setShowModal} />
             </div>
             <div className="hidden border-l-2 border-secondary pl-1 duration-500 hover:border-accent lg:block">
-              <UserOptions setShowModal={setShowModal} />
+              <UserDropdown setShowModal={setShowModal} />
             </div>
           </>
         ) : (
