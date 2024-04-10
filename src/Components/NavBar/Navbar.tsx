@@ -1,5 +1,5 @@
 import { ReactNode, useState } from 'react';
-import { MenuItems } from './Menu/MenuItems';
+import { MenuItems } from './Menu/MenuItems/MenuItems';
 import { SideDrawer } from './SideDrawer';
 import { Menu } from './Menu/Menu';
 

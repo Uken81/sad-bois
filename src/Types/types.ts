@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import { ProductOrder } from '../Routes/Store/Cart/AddProductToCart/createProductOrder';
 
 export interface UserType {
@@ -29,3 +30,9 @@ export interface ShippingOptionsType {
 }
 
 export type ProductCategory = 'all' | 'clothing' | 'mugs' | 'stickers' | 'misc';
+
+export interface LinkItemType {
+  destination: string;
+  text: string;
+  icon: ReactNode;
+}
