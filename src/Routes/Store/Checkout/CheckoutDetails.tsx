@@ -2,8 +2,6 @@ import { Formik, Form } from 'formik';
 import { CustomInput } from '../../../Components/FormComponents/Inputs/CustomInput';
 import { SubmitButton } from '../../../Components/FormComponents/SubmitButton';
 import { useNavigate } from 'react-router';
-
-import { updateSessionStorage } from '../../../Utils/saveOrUpdateSessionStorage';
 import * as Yup from 'yup';
 import { useBoundStore } from '../../../Stores/boundStore';
 
@@ -28,7 +26,6 @@ export const CheckoutDetails = () => {
 
   const handleSubmit = async (values: DetailsFormType, setSubmitting: (isSubmitting: boolean) => void) => {
     updateCustomer(values);
-    updateSessionStorage('customer', values);
     setSubmitting(false);
     navigate('/store/checkout/shipping');
   };
