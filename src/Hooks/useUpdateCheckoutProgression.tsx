@@ -1,6 +1,10 @@
 import { useGetLocationsCheckoutStage } from './useGetLocationsCheckoutStage';
 import { Dispatch, SetStateAction } from 'react';
 
+/**
+ * Will increment the checkout progression if the current locations designated checkout stage is greter than the current checkout progression level.
+ */
+
 export const useUpdateCheckoutProgression = () => {
   const locationStage = useGetLocationsCheckoutStage() ?? 1;
 
