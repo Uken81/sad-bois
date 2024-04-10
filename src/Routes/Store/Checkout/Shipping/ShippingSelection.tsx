@@ -1,12 +1,11 @@
-import { useOutletContext } from 'react-router';
 import { formatCurrency } from '../../../../Utils/Formatters/currencyFormatter';
 import { shippingOptions } from './shippingOptions';
-import { SelectedShippingContextType } from '../../../RouteWrappers/CheckoutWrapper';
 import { capitaliseWords } from '../../../../Utils/Formatters/capitaliseWords';
+import { useBoundStore } from '../../../../Stores/boundStore';
 
 export const ShippingSelection: React.FC = () => {
-  const { selectedShipping, setSelectedShipping } =
-    useOutletContext() as SelectedShippingContextType;
+  const selectedShipping = useBoundStore((state) => state.selectedShipping);
+  const updateShipping = useBoundStore((state) => state.updateShipping);
   return (
     <div className="flex flex-col">
       {shippingOptions.map((option) => {
@@ -17,13 +16,7 @@ export const ShippingSelection: React.FC = () => {
         return (
           <div key={option.type} className="my-5 flex justify-between">
             <div className="flex flex-row">
-              <input
-                type="radio"
-                name="radio-1"
-                className="radio"
-                checked={isChecked}
-                onChange={() => setSelectedShipping(option)}
-              />
+              <input type="radio" name="radio-1" className="radio" checked={isChecked} onChange={() => updateShipping(option)} />
               <p className="ml-2">{formattedName}</p>
             </div>
             <p className="font-bold">{formattedPrice}</p>
