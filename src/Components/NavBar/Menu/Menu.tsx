@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
-import { HamburgerIcon } from './Links/HamburgerIcon';
-import { CartLink } from './Links/CartLink';
-import { HomeLink } from './Links/HomeLink';
+import { HamburgerIcon } from '../Links/HamburgerIcon';
+import { CartLink } from '../Links/CartLink';
+import { HomeLink } from '../Links/HomeLink';
 
 export const Menu: React.FC<{
   children: ReactNode;
