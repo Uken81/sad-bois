@@ -7,9 +7,7 @@ import { camelizeKeys } from 'humps';
 import { isEmptyArray } from '../Utils/Validation/isEmptyArray';
 import { validateData } from './DataLoaderUtils/validateData';
 import { isValidCategory } from '../Utils/Validation/isValidCategory';
-import { ProductCategory } from '../Routes/Store/Categories/CategorySelector';
-
-// export type Category = 'all' | 'clothing' | 'sticker' | 'coffee-mug' | 'misc';
+import { ProductCategory } from '../Types/types';
 
 export interface ProductType {
   id: string;
