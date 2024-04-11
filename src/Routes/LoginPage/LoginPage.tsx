@@ -87,8 +87,8 @@ export const LoginPage: React.FC = () => {
         {(formik) => (
           <UserForm formik={formik}>
             <ErrorMessage display={isNetworkError} variant="error" message={error?.message ?? null} setError={setError} />
-            <CustomInput name="email" type="email" placeholder="Email" error={isEmailError ? error?.message : undefined} />
-            <CustomInput name="password" type="password" placeholder="Password" error={isPasswordError ? error.message : undefined} />
+            <CustomInput name="email" type="email" placeholder="Email" error={isEmailError ? error?.message : null} />
+            <CustomInput name="password" type="password" placeholder="Password" error={isPasswordError ? error.message : null} />
           </UserForm>
         )}
       </Formik>

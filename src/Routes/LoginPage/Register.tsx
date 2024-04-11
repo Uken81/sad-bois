@@ -21,24 +21,15 @@ export const Register: React.FC = () => {
 
   const validationSchema = Yup.object({
     email: Yup.string().email('Invalid email address').required('Required'),
-    username: Yup.string()
-      .min(2, 'Must be 2 characters or more')
-      .max(15, 'Must be 15 characters or less')
-      .required('Required'),
-    password: Yup.string()
-      .min(5, 'Must be at least 5 characters')
-      .max(200, 'Must be 200 characters or less')
-      .required('Required'),
+    username: Yup.string().min(2, 'Must be 2 characters or more').max(15, 'Must be 15 characters or less').required('Required'),
+    password: Yup.string().min(5, 'Must be at least 5 characters').max(200, 'Must be 200 characters or less').required('Required'),
     confirmedPassword: Yup.string()
       .oneOf([Yup.ref('password')], 'Passwords must match')
       .max(200, 'Must be 200 characters or less')
       .required('Required')
   });
 
-  const handleSubmit = async (
-    values: RegisterFormValues,
-    setSubmitting: (isSubmitting: boolean) => void
-  ) => {
+  const handleSubmit = async (values: RegisterFormValues, setSubmitting: (isSubmitting: boolean) => void) => {
     const requestOptions: RequestInit = {
       method: 'POST',
       body: JSON.stringify(values),
@@ -98,31 +89,11 @@ export const Register: React.FC = () => {
       }}>
       {(formik) => (
         <UserForm formik={formik}>
-          <ErrorMessage
-            display={isNetworkError}
-            variant="error"
-            message={error?.message ?? null}
-            setError={setError}
-          />
-          <CustomInput
-            name="email"
-            type="email"
-            placeholder="Email"
-            error={isEmailError ? error.message : undefined}
-          />
-          <CustomInput name="username" type="text" placeholder="Username" error={undefined} />
-          <CustomInput
-            name="password"
-            type="password"
-            placeholder="Password"
-            error={isPasswordError ? error.message : undefined}
-          />
-          <CustomInput
-            name="confirmedPassword"
-            type="password"
-            placeholder="Confirm Password"
-            error={isPasswordError ? error.message : undefined}
-          />
+          <ErrorMessage display={isNetworkError} variant="error" message={error?.message ?? null} setError={setError} />
+          <CustomInput name="email" type="email" placeholder="Email" error={isEmailError ? error.message : null} />
+          <CustomInput name="username" type="text" placeholder="Username" error={null} />
+          <CustomInput name="password" type="password" placeholder="Password" error={isPasswordError ? error.message : null} />
+          <CustomInput name="confirmedPassword" type="password" placeholder="Confirm Password" error={isPasswordError ? error.message : null} />
         </UserForm>
       )}
     </Formik>

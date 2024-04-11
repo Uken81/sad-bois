@@ -99,27 +99,21 @@ export const PaymentDetails = () => {
       {(formik) => (
         <Form className="px-4">
           <ErrorMessage display={isNetworkError || isServerError} variant="error" message={error?.message ?? null} setError={setError} />
-          <CustomInput
-            name="cardNumber"
-            placeholder="Card Number"
-            type="tel"
-            inputMode="numeric"
-            error={isCardNumberError ? error.message : undefined}
-          />
-          <CustomInput name="nameOnCard" placeholder="Name On Card" type="text" error={isNameOnCardError ? error.message : undefined} />
+          <CustomInput name="cardNumber" placeholder="Card Number" type="tel" inputMode="numeric" error={isCardNumberError ? error.message : null} />
+          <CustomInput name="nameOnCard" placeholder="Name On Card" type="text" error={isNameOnCardError ? error.message : null} />
           <CustomInput
             name="expirationDate"
             placeholder="Expiration Date (MM / YY)"
             type="text"
             inputMode="numeric"
-            error={isEpirationDateError ? error.message : undefined}
+            error={isEpirationDateError ? error.message : null}
           />
           <CustomInput
             name="securityCode"
             placeholder="Security Code"
             type="tel"
             inputMode="numeric"
-            error={isSecurityCodeError ? error.message : undefined}
+            error={isSecurityCodeError ? error.message : null}
           />
           <div className="py-4 text-center">
             <SubmitButton isSubmitting={formik.isSubmitting} text="Pay Now" loadingText="Processing" />
