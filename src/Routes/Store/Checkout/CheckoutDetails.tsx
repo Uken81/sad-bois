@@ -2,8 +2,8 @@ import { Formik, Form } from 'formik';
 import { CustomInput } from '../../../Components/FormComponents/Inputs/CustomInput';
 import { SubmitButton } from '../../../Components/FormComponents/SubmitButton';
 import { useNavigate } from 'react-router';
-import * as Yup from 'yup';
 import { useStore } from '../../../Store/useStore';
+import { customerValidationSchema } from '../../../Schemas/formSchemas';
 
 interface DetailsFormType {
   email: string;
@@ -30,24 +30,10 @@ export const CheckoutDetails = () => {
     navigate('/store/checkout/shipping');
   };
 
-  const detailsFormSchema = Yup.object().shape({
-    email: Yup.string().email('Invalid email address').required('Email is required'),
-    firstName: Yup.string().required('First Name is required'),
-    lastName: Yup.string().required('Last Name is required'),
-    country: Yup.string().required('Country is required'),
-    address: Yup.string().required('Address is required'),
-    apartment: Yup.string(),
-    suburb: Yup.string().required('Suburb is required'),
-    state: Yup.string().required('State is required'),
-    postcode: Yup.string()
-      .matches(/^[0-9]+$/, 'Must be only digits')
-      .required('Post Code is required')
-  });
-
   return (
     <main className="flex">
       <Formik
-        validationSchema={detailsFormSchema}
+        validationSchema={customerValidationSchema}
         initialValues={{
           email: customer?.email ?? 'test@testmail.com',
           country: customer?.country ?? 'Australia',

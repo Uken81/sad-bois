@@ -1,13 +1,13 @@
 import { Form, Formik } from 'formik';
 import { CustomInput } from '../../../../Components/FormComponents/Inputs/CustomInput';
 import { SubmitButton } from '../../../../Components/FormComponents/SubmitButton';
-import * as Yup from 'yup';
 import { useState } from 'react';
 import { ErrorMessage } from '../../../../Components/ErrorMessages/ErrorMessage';
 import { useNavigate } from 'react-router';
 import { serverUrl } from '../../../../Server/serverUrl';
 import { FormErrorType } from '../../../../Types/errorTypes';
 import { useStore } from '../../../../Store/useStore';
+import { paymentValidationSchema } from '../../../../Schemas/formSchemas';
 
 export interface CardDetailsFormType {
   cardNumber: string;
@@ -25,15 +25,6 @@ export const PaymentDetails = () => {
   const resetShipping = useStore((state) => state.customerState.resetShipping);
   const [error, setError] = useState<FormErrorType | null>(null);
   const navigate = useNavigate();
-
-  const validationSchema = Yup.object().shape({
-    cardNumber: Yup.string().length(16, 'Card number must be 16 digits').required('Card number is required'),
-    nameOnCard: Yup.string().required('Name on card is required'),
-    expirationDate: Yup.string()
-      .matches(/^(0[1-9]|1[0-2])\/?([0-9]{2})$/, 'Invalid expiration date')
-      .required('Expiration date is required'),
-    securityCode: Yup.string().length(3, 'Security code must be 3 digits').required('Security code is required')
-  });
 
   const handleSubmit = async (values: CardDetailsFormType, setSubmitting: (isSubmitting: boolean) => void) => {
     const resetStoreStates = () => {
@@ -86,7 +77,7 @@ export const PaymentDetails = () => {
 
   return (
     <Formik
-      validationSchema={validationSchema}
+      validationSchema={paymentValidationSchema}
       initialValues={{
         cardNumber: '5688276923105021',
         nameOnCard: 'Mr Test',

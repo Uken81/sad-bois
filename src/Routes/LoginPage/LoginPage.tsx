@@ -1,5 +1,4 @@
 import { useNavigate, useParams } from 'react-router';
-import * as Yup from 'yup';
 import { Formik } from 'formik';
 import { CustomInput } from '../../Components/FormComponents/Inputs/CustomInput';
 import { useState } from 'react';
@@ -9,6 +8,7 @@ import { serverUrl } from '../../Server/serverUrl';
 import { FormErrorType } from '../../Types/errorTypes';
 import { UserType } from '../../Types/types';
 import { useStore } from '../../Store/useStore';
+import { loginValidationSchema } from '../../Schemas/formSchemas';
 
 interface LoginFormValues {
   email: string;
@@ -22,11 +22,6 @@ export const LoginPage: React.FC = () => {
   const navigate = useNavigate();
 
   const initialValues = { email: registeredEmail || 'test@testmail.com', password: '12345' };
-
-  const validationSchema = Yup.object({
-    email: Yup.string().email('Invalid email address').required('Required'),
-    password: Yup.string().min(5, 'Must be at least 5 characters').max(200, 'Must be 200 characters or less').required('Required')
-  });
 
   const handleSubmit = async (values: LoginFormValues, setSubmitting: (isSubmitting: boolean) => void) => {
     const requestOptions: RequestInit = {
@@ -80,7 +75,7 @@ export const LoginPage: React.FC = () => {
     <>
       <Formik
         initialValues={initialValues}
-        validationSchema={validationSchema}
+        validationSchema={loginValidationSchema}
         onSubmit={(values, { setSubmitting }) => {
           handleSubmit(values, setSubmitting);
         }}>

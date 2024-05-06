@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router';
-import * as Yup from 'yup';
 import { Formik } from 'formik';
 import { CustomInput } from '../../Components/FormComponents/Inputs/CustomInput';
 import { useState } from 'react';
@@ -7,6 +6,7 @@ import { ErrorMessage } from '../../Components/ErrorMessages/ErrorMessage';
 import { UserForm } from './UserForm';
 import { serverUrl } from '../../Server/serverUrl';
 import { FormErrorType } from '../../Types/errorTypes';
+import { registrationValidationSchema } from '../../Schemas/formSchemas';
 
 interface RegisterFormValues {
   email: string;
@@ -18,16 +18,6 @@ interface RegisterFormValues {
 export const Register: React.FC = () => {
   const [error, setError] = useState<FormErrorType | null>(null);
   const navigate = useNavigate();
-
-  const validationSchema = Yup.object({
-    email: Yup.string().email('Invalid email address').required('Required'),
-    username: Yup.string().min(2, 'Must be 2 characters or more').max(15, 'Must be 15 characters or less').required('Required'),
-    password: Yup.string().min(5, 'Must be at least 5 characters').max(200, 'Must be 200 characters or less').required('Required'),
-    confirmedPassword: Yup.string()
-      .oneOf([Yup.ref('password')], 'Passwords must match')
-      .max(200, 'Must be 200 characters or less')
-      .required('Required')
-  });
 
   const handleSubmit = async (values: RegisterFormValues, setSubmitting: (isSubmitting: boolean) => void) => {
     const requestOptions: RequestInit = {
@@ -83,7 +73,7 @@ export const Register: React.FC = () => {
   return (
     <Formik
       initialValues={{ email: '', username: '', password: '', confirmedPassword: '' }}
-      validationSchema={validationSchema}
+      validationSchema={registrationValidationSchema}
       onSubmit={(values, { setSubmitting }) => {
         handleSubmit(values, setSubmitting);
       }}>
