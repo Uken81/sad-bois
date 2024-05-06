@@ -1,12 +1,12 @@
 import { useLoaderData } from 'react-router';
 import { Orders } from './Orders';
 import { OrderType } from '../../DataLoaders/ordersLoader';
-import { useBoundStore } from '../../Stores/useStore';
+import { useStore } from '../../Stores/useStore';
 
 export const ProfilePage: React.FC = () => {
   const userOrders = useLoaderData() as OrderType[] | null;
-  const email = useBoundStore((state) => state.user?.email);
-  const username = useBoundStore((state) => state.user?.username);
+  const email = useStore((state) => state.userState.user?.email);
+  const username = useStore((state) => state.userState.user?.username);
 
   return (
     <main>

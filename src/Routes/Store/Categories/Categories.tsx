@@ -1,11 +1,11 @@
 import { useNavigate } from 'react-router';
 import { capitaliseWords } from '../../../Utils/Formatters/capitaliseWords';
 import { ProductCategory } from '../../../Types/types';
-import { useBoundStore } from '../../../Stores/useStore';
+import { useStore } from '../../../Stores/useStore';
 
 export const Categories: React.FC = () => {
-  const selectedCategory = useBoundStore((state) => state.selectedCategory);
-  const assignCategory = useBoundStore((state) => state.assignCategory);
+  const selectedCategory = useStore((state) => state.categoryState.selectedCategory);
+  const assignCategory = useStore((state) => state.categoryState.assignCategory);
   const navigate = useNavigate();
 
   const handleCategoryChange = (category: ProductCategory) => {

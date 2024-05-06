@@ -3,10 +3,10 @@ import { ContactDetails } from '../CustomerDetails/ContactDetails';
 import { AddressDetails } from '../CustomerDetails/AdressDetails';
 import { ShippingMethodDetails } from '../CustomerDetails/ShippingMethodDetails';
 import { CardOptions } from './CardOptions/CardOptions';
-import { useBoundStore } from '../../../../Stores/useStore';
+import { useStore } from '../../../../Stores/useStore';
 
 export const Payment: React.FC = () => {
-  const customer = useBoundStore((state) => state.customer);
+  const customer = useStore((state) => state.customerState.customer);
 
   if (!customer) {
     return <div className="no-data">No customer data available</div>;

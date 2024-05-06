@@ -1,9 +1,9 @@
-import { useBoundStore } from '../../../../../Stores/useStore';
+import { useStore } from '../../../../../Stores/useStore';
 import { PriceDetails } from './PriceDetails';
 import { RemoveItem } from './RemoveItem';
 
 export const OrderItemsSummary: React.FC = () => {
-  const cart = useBoundStore((state) => state.cart);
+  const cart = useStore((state) => state.cartState.cart);
 
   return (
     <>

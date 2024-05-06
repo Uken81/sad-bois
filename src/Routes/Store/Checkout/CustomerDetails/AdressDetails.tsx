@@ -1,8 +1,8 @@
-import { useBoundStore } from '../../../../Stores/useStore';
+import { useStore } from '../../../../Stores/useStore';
 import { ChangeDetails } from './ChangeDetails';
 
 export const AddressDetails: React.FC = () => {
-  const customer = useBoundStore((state) => state.customer);
+  const customer = useStore((state) => state.customerState.customer);
   const { address, suburb, state, postcode } = customer ?? {};
   const combinedAddress = `${address}, ${suburb}, ${state}, ${postcode}`;
 

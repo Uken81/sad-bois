@@ -1,9 +1,9 @@
 import { PopulatedCart } from './PopulatedCart';
 import { EmptyCart } from './EmptyCart';
-import { useBoundStore } from '../../../../Stores/useStore';
+import { useStore } from '../../../../Stores/useStore';
 
 export const ViewCart: React.FC = () => {
-  const cart = useBoundStore((state) => state.cart);
+  const cart = useStore((state) => state.cartState.cart);
 
   return <>{cart?.items.length ? <PopulatedCart /> : <EmptyCart />}</>;
 };

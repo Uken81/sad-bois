@@ -1,8 +1,8 @@
-import { useBoundStore } from '../../../../Stores/useStore';
+import { useStore } from '../../../../Stores/useStore';
 import { formatCurrency } from '../../../../Utils/Formatters/currencyFormatter';
 
 export const Subtotal: React.FC = () => {
-  const cart = useBoundStore((state) => state.cart);
+  const cart = useStore((state) => state.cartState.cart);
   const formattedSubtotal = cart?.subtotal ? formatCurrency(cart?.subtotal) : null;
 
   return (

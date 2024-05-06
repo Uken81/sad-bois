@@ -2,12 +2,12 @@ import { CgProfile } from 'react-icons/cg';
 import { Link } from 'react-router-dom';
 import { Logout } from './Links/Logout';
 import { Dispatch, SetStateAction } from 'react';
-import { useBoundStore } from '../../Stores/useStore';
+import { useStore } from '../../Stores/useStore';
 
 export const UserOptions: React.FC<{
   setShowModal: Dispatch<SetStateAction<boolean>>;
 }> = ({ setShowModal }) => {
-  const user = useBoundStore((state) => state.user);
+  const user = useStore((state) => state.userState.user);
   return (
     <div className="dropdown dropdown-end dropdown-bottom">
       <div tabIndex={0} role="button" className="btn m-1 border-none bg-base-300 shadow-none">

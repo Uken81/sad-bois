@@ -1,10 +1,10 @@
 import { ProductImage } from './ProductImage';
 import { ProductInfo } from './ProductInfo';
 import { PurchaseInfo } from './PurchaseInfo';
-import { useBoundStore } from '../../../../Stores/useStore';
+import { useStore } from '../../../../Stores/useStore';
 
 export const OrderSummary: React.FC = () => {
-  const cart = useBoundStore((state) => state.cart);
+  const cart = useStore((state) => state.cartState.cart);
   const cartItems = cart?.items;
 
   if (!cart || !cart.items.length) {

@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router';
 
 import { updateSessionStorage } from '../../../Utils/saveOrUpdateSessionStorage';
 import * as Yup from 'yup';
-import { useBoundStore } from '../../../Stores/useStore';
+import { useStore } from '../../../Stores/useStore';
 
 interface DetailsFormType {
   email: string;
@@ -20,8 +20,8 @@ interface DetailsFormType {
 }
 
 export const CheckoutDetails = () => {
-  const customer = useBoundStore((state) => state.customer);
-  const updateCustomer = useBoundStore((state) => state.updateCustomer);
+  const customer = useStore((state) => state.customerState.customer);
+  const updateCustomer = useStore((state) => state.customerState.updateCustomer);
   const navigate = useNavigate();
   const countries = ['Australia'];
   const states = ['VIC', 'NSW', 'QLD', 'SA', 'WA', 'TAS', 'ACT', 'NT'];

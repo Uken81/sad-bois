@@ -20,21 +20,3 @@ export const useStore = create<Store>()(
     customerState: lens<CustomerState, Store>(customerState)
   })
 );
-// type CombinedSlicesType = UserSliceType & CartSliceType & CategorySliceType & CustomerSliceType;
-// export const useBoundStore = create<CombinedSlicesType>()(
-//   devtools(
-//     persist(
-//       (...a) => ({
-//         ...createUserSlice(...a),
-//         ...createCartSlice(...a),
-//         ...createCategorySlice(...a),
-//         ...createCustomerSlice(...a)
-//       }),
-//       {
-//         name: 'state-storage',
-//         storage: createJSONStorage(() => sessionStorage),
-//         partialize: (state) => ({ user: state.user, cart: state.cart, customer: state.customer })
-//       }
-//     )
-//   )
-// );

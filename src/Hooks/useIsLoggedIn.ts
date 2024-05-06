@@ -1,7 +1,7 @@
-import { useBoundStore } from '../Stores/useStore';
+import { useStore } from '../Stores/useStore';
 
 export const useIsLoggedIn = () => {
-  const user = useBoundStore((state) => state.user);
+  const user = useStore((state) => state.userState.user);
 
   return !!user;
 };
