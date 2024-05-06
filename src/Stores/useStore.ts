@@ -5,6 +5,7 @@ import { mountStoreDevtool } from 'simple-zustand-devtools';
 import { CartState, cartState } from './cartState';
 import { CategoryState, categoryState } from './categoryState';
 import { CustomerState, customerState } from './customerState';
+import { createJSONStorage, persist } from 'zustand/middleware';
 
 export type Store = {
   userState: UserState;
@@ -14,12 +15,18 @@ export type Store = {
 };
 
 export const useStore = create<Store>()(
-  withLenses({
-    userState: lens<UserState, Store>(userState),
-    cartState: lens<CartState, Store>(cartState),
-    categoryState: lens<CategoryState, Store>(categoryState),
-    customerState: lens<CustomerState, Store>(customerState)
-  })
+  persist(
+    withLenses({
+      userState: lens<UserState, Store>(userState),
+      cartState: lens<CartState, Store>(cartState),
+      categoryState: lens<CategoryState, Store>(categoryState),
+      customerState: lens<CustomerState, Store>(customerState)
+    }),
+    {
+      name: 'state-storage',
+      storage: createJSONStorage(() => sessionStorage)
+    }
+  )
 );
 
 mountStoreDevtool('Store', useStore);
