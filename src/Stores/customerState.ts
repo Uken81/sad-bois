@@ -1,17 +1,18 @@
-import { StateCreator } from 'zustand';
 import { CustomerType, ShippingOptionsType } from '../Types/types';
 import { shippingOptions } from '../Routes/Store/Checkout/Shipping/shippingOptions';
+import { Lens } from '@dhmk/zustand-lens';
+import { Store } from './useStore';
 
-export interface CustomerSliceType {
+export type CustomerState = {
   customer: CustomerType | null;
   updateCustomer: (customer: CustomerType) => void;
   resetCustomer: () => void;
   selectedShipping: ShippingOptionsType;
   updateShipping: (shippingOption: ShippingOptionsType) => void;
   resetShipping: () => void;
-}
+};
 
-export const createCustomerSlice: StateCreator<CustomerSliceType> = (set) => ({
+export const customerState: Lens<CustomerState, Store> = (set) => ({
   customer: null,
   updateCustomer: (customer) => set({ customer: customer }),
   resetCustomer: () => set({ customer: null }),
