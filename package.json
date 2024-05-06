@@ -11,6 +11,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@dhmk/zustand-lens": "^4.0.0",
     "@types/humps": "^2.0.6",
     "@types/react-router-dom": "^5.3.3",
     "cookie-parser": "^1.4.6",
@@ -24,6 +25,7 @@
     "react-router": "^6.15.0",
     "react-router-dom": "^6.15.0",
     "shortid": "^2.2.16",
+    "simple-zustand-devtools": "^1.1.0",
     "yup": "^1.2.0",
     "zustand": "^4.5.2"
   },

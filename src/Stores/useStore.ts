@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { UserState, userState } from './userState';
 import { lens, withLenses } from '@dhmk/zustand-lens';
+import { mountStoreDevtool } from 'simple-zustand-devtools';
 import { CartState, cartState } from './cartState';
 import { CategoryState, categoryState } from './categoryState';
 import { CustomerState, customerState } from './customerState';
@@ -20,3 +21,5 @@ export const useStore = create<Store>()(
     customerState: lens<CustomerState, Store>(customerState)
   })
 );
+
+mountStoreDevtool('Store', useStore);
