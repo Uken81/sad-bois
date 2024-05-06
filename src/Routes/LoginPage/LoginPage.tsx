@@ -8,7 +8,7 @@ import { UserForm } from './UserForm';
 import { serverUrl } from '../../Server/serverUrl';
 import { FormErrorType } from '../../Types/errorTypes';
 import { UserType } from '../../Types/types';
-import { useBoundStore } from '../../Stores/boundStore';
+import { useBoundStore } from '../../Stores/useStore';
 
 interface LoginFormValues {
   email: string;

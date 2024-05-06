@@ -1,6 +1,6 @@
 import { PiShoppingCartBold } from 'react-icons/pi';
 import { useNavigate } from 'react-router';
-import { useBoundStore } from '../../../Stores/boundStore';
+import { useBoundStore } from '../../../Stores/useStore';
 
 export const CartLink: React.FC = () => {
   const cart = useBoundStore((state) => state.cart);

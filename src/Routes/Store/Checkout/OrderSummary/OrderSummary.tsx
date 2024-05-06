@@ -1,7 +1,7 @@
 import { ProductImage } from './ProductImage';
 import { ProductInfo } from './ProductInfo';
 import { PurchaseInfo } from './PurchaseInfo';
-import { useBoundStore } from '../../../../Stores/boundStore';
+import { useBoundStore } from '../../../../Stores/useStore';
 
 export const OrderSummary: React.FC = () => {
   const cart = useBoundStore((state) => state.cart);

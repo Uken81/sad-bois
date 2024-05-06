@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router';
 import { ProceedToCheckout } from './ProceedToCheckout/ProceedToCheckout';
 import { Subtotal } from './Subtotal';
 import { OrderItemsSummary } from './OrderItemsSummary/OrderItemsSummary';
-import { useBoundStore } from '../../../../Stores/boundStore';
+import { useBoundStore } from '../../../../Stores/useStore';
 
 export const PopulatedCart: React.FC = () => {
   const selectedCategory = useBoundStore((state) => state.selectedCategory);

@@ -1,5 +1,5 @@
 import { ProductOrder } from '../../AddProductToCart/createProductOrder';
-import { useBoundStore } from '../../../../../Stores/boundStore';
+import { useBoundStore } from '../../../../../Stores/useStore';
 
 export const RemoveItem: React.FC<{ productOrder: ProductOrder }> = ({ productOrder }) => {
   const removeItem = useBoundStore((state) => state.removeItem);

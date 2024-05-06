@@ -1,4 +1,4 @@
-import { useBoundStore } from '../../../../../Stores/boundStore';
+import { useBoundStore } from '../../../../../Stores/useStore';
 import { PriceDetails } from './PriceDetails';
 import { RemoveItem } from './RemoveItem';
 

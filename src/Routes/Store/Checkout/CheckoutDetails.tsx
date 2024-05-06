@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router';
 
 import { updateSessionStorage } from '../../../Utils/saveOrUpdateSessionStorage';
 import * as Yup from 'yup';
-import { useBoundStore } from '../../../Stores/boundStore';
+import { useBoundStore } from '../../../Stores/useStore';
 
 interface DetailsFormType {
   email: string;

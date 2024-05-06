@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router';
 import { ContactDetails } from '../CustomerDetails/ContactDetails';
 import { AddressDetails } from '../CustomerDetails/AdressDetails';
 import { ShippingSelection } from './ShippingSelection';
-import { useBoundStore } from '../../../../Stores/boundStore';
+import { useBoundStore } from '../../../../Stores/useStore';
 
 export const Shipping: React.FC = () => {
   const customer = useBoundStore((state) => state.customer);

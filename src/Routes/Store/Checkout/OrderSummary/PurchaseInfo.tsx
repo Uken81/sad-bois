@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { calculateTax } from '../CostCalculators/calculateTax';
 import { calculateOrderTotal } from '../CostCalculators/CalculateOrderTotal';
 import { formatCurrency } from '../../../../Utils/Formatters/currencyFormatter';
-import { useBoundStore } from '../../../../Stores/boundStore';
+import { useBoundStore } from '../../../../Stores/useStore';
 
 export const PurchaseInfo: React.FC = () => {
   const cart = useBoundStore((state) => state.cart);

@@ -1,6 +1,6 @@
 import { MobileCollapse } from '../../../../Components/MobileCollapse';
 import { OrderSummary } from './OrderSummary';
-import { useBoundStore } from '../../../../Stores/boundStore';
+import { useBoundStore } from '../../../../Stores/useStore';
 import { formatCurrency } from '../../../../Utils/Formatters/currencyFormatter';
 
 export const OrderSummaryCollapse: React.FC = () => {

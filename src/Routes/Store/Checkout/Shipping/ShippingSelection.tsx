@@ -1,7 +1,7 @@
 import { formatCurrency } from '../../../../Utils/Formatters/currencyFormatter';
 import { shippingOptions } from './shippingOptions';
 import { capitaliseWords } from '../../../../Utils/Formatters/capitaliseWords';
-import { useBoundStore } from '../../../../Stores/boundStore';
+import { useBoundStore } from '../../../../Stores/useStore';
 
 export const ShippingSelection: React.FC = () => {
   const selectedShipping = useBoundStore((state) => state.selectedShipping);

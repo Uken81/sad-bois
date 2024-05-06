@@ -1,4 +1,4 @@
-import { useBoundStore } from '../../../../Stores/boundStore';
+import { useBoundStore } from '../../../../Stores/useStore';
 import { ChangeDetails } from './ChangeDetails';
 
 export const ContactDetails: React.FC = () => {

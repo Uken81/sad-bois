@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { FixedErrorMessage } from '../ErrorMessages/FixedErrorMessage';
 import { createProductOrder } from '../../Routes/Store/Cart/AddProductToCart/createProductOrder';
 import { isEmptyObject } from '../../Utils/Validation/isEmptyObject';
-import { useBoundStore } from '../../Stores/boundStore';
+import { useBoundStore } from '../../Stores/useStore';
 
 export interface ItemOrderData {
   item: ProductType | TourType;
