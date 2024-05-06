@@ -1,10 +1,10 @@
 import { MobileCollapse } from '../../../../Components/MobileCollapse';
 import { OrderSummary } from './OrderSummary';
-import { useBoundStore } from '../../../../Stores/boundStore';
+import { useStore } from '../../../../Store/useStore';
 import { formatCurrency } from '../../../../Utils/Formatters/currencyFormatter';
 
 export const OrderSummaryCollapse: React.FC = () => {
-  const cart = useBoundStore((state) => state.cart);
+  const cart = useStore((state) => state.cartState.cart);
   const subtotalString = cart?.subtotal ? formatCurrency(cart?.subtotal) : '';
 
   return (

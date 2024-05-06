@@ -4,11 +4,11 @@ import { FeaturedCarousel } from './Featured/FeaturedCarousel';
 import { Products } from './Products';
 import { NoData } from '../../Components/NoData';
 import { useEffect, useState } from 'react';
-import { useBoundStore } from '../../Stores/boundStore';
+import { useStore } from '../../Store/useStore';
 
 export const Store: React.FC = () => {
   const loaderData = useLoaderData() as MerchandiseType;
-  const selectedCategory = useBoundStore((state) => state.selectedCategory);
+  const selectedCategory = useStore((state) => state.categoryState.selectedCategory);
   const [loadingCategory, setloadingCategory] = useState(false);
   const featuredProducts = loaderData.validatedFeaturedProducts;
   const regularProducts = loaderData.validatedRegularProducts;

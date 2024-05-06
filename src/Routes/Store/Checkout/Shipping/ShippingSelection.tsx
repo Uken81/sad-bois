@@ -1,11 +1,11 @@
 import { formatCurrency } from '../../../../Utils/Formatters/currencyFormatter';
 import { shippingOptions } from './shippingOptions';
 import { capitaliseWords } from '../../../../Utils/Formatters/capitaliseWords';
-import { useBoundStore } from '../../../../Stores/boundStore';
+import { useStore } from '../../../../Store/useStore';
 
 export const ShippingSelection: React.FC = () => {
-  const selectedShipping = useBoundStore((state) => state.selectedShipping);
-  const updateShipping = useBoundStore((state) => state.updateShipping);
+  const selectedShipping = useStore((state) => state.customerState.selectedShipping);
+  const updateShipping = useStore((state) => state.customerState.updateShipping);
   return (
     <div className="flex flex-col">
       {shippingOptions.map((option) => {

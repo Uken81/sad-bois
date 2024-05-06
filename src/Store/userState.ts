@@ -1,13 +1,14 @@
-import { StateCreator } from 'zustand';
 import { UserType } from '../Types/types';
+import { Lens } from '@dhmk/zustand-lens';
+import { Store } from './useStore';
 
-export interface UserSliceType {
+export type UserState = {
   user: UserType | null;
   addUser: (user: UserType) => void;
   resetUser: () => void;
-}
+};
 
-export const createUserSlice: StateCreator<UserSliceType> = (set) => ({
+export const userState: Lens<UserState, Store> = (set) => ({
   user: null,
   addUser: (user) => set(() => ({ user: user })),
   resetUser: () => set(() => ({ user: null }))

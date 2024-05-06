@@ -1,12 +1,13 @@
-import { StateCreator } from 'zustand';
 import { ProductCategory } from '../Types/types';
+import { Lens } from '@dhmk/zustand-lens';
+import { Store } from './useStore';
 
-export interface CategorySliceType {
+export type CategoryState = {
   selectedCategory: ProductCategory;
   assignCategory: (category: ProductCategory) => void;
-}
+};
 
-export const createCategorySlice: StateCreator<CategorySliceType> = (set) => ({
+export const categoryState: Lens<CategoryState, Store> = (set) => ({
   selectedCategory: 'all',
   assignCategory: (category) => set(() => ({ selectedCategory: category }))
 });

@@ -1,9 +1,9 @@
 import { capitaliseWords } from '../../../../Utils/Formatters/capitaliseWords';
 import { formatCurrency } from '../../../../Utils/Formatters/currencyFormatter';
-import { useBoundStore } from '../../../../Stores/boundStore';
+import { useStore } from '../../../../Store/useStore';
 
 export const ShippingMethodDetails: React.FC = () => {
-  const selectedShipping = useBoundStore((state) => state.selectedShipping);
+  const selectedShipping = useStore((state) => state.customerState.selectedShipping);
   const formattedShippingName = capitaliseWords(selectedShipping.name);
   const formattedShippingPrice = formatCurrency(selectedShipping.shippingPrice);
 

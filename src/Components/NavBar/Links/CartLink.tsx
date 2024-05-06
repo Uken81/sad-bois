@@ -1,9 +1,9 @@
 import { PiShoppingCartBold } from 'react-icons/pi';
 import { useNavigate } from 'react-router';
-import { useBoundStore } from '../../../Stores/boundStore';
+import { useStore } from '../../../Store/useStore';
 
 export const CartLink: React.FC = () => {
-  const cart = useBoundStore((state) => state.cart);
+  const cart = useStore((state) => state.cartState.cart);
   const navigate = useNavigate();
   const numberOfItems = cart?.items.length.toString();
   const isCartEmpty = !cart || !cart.items.length;

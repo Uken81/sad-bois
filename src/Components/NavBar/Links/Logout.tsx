@@ -2,12 +2,12 @@ import { Dispatch, SetStateAction } from 'react';
 import { useNavigate } from 'react-router';
 import { RiLogoutCircleFill } from 'react-icons/ri';
 import { serverUrl } from '../../../Server/serverUrl';
-import { useBoundStore } from '../../../Stores/boundStore';
+import { useStore } from '../../../Store/useStore';
 
 export const Logout: React.FC<{
   setShowModal: Dispatch<SetStateAction<boolean>>;
 }> = ({ setShowModal }) => {
-  const resetUser = useBoundStore((state) => state.resetUser);
+  const resetUser = useStore((state) => state.userState.resetUser);
   const navigate = useNavigate();
 
   const handleClick = async () => {

@@ -8,7 +8,7 @@ import { UserForm } from './UserForm';
 import { serverUrl } from '../../Server/serverUrl';
 import { FormErrorType } from '../../Types/errorTypes';
 import { UserType } from '../../Types/types';
-import { useBoundStore } from '../../Stores/boundStore';
+import { useStore } from '../../Store/useStore';
 
 interface LoginFormValues {
   email: string;
@@ -17,7 +17,7 @@ interface LoginFormValues {
 
 export const LoginPage: React.FC = () => {
   const { registeredEmail } = useParams();
-  const addUser = useBoundStore((state) => state.addUser);
+  const addUser = useStore((state) => state.userState.addUser);
   const [error, setError] = useState<FormErrorType | null>(null);
   const navigate = useNavigate();
 

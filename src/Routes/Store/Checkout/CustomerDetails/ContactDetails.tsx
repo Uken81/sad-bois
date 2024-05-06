@@ -1,8 +1,8 @@
-import { useBoundStore } from '../../../../Stores/boundStore';
+import { useStore } from '../../../../Store/useStore';
 import { ChangeDetails } from './ChangeDetails';
 
 export const ContactDetails: React.FC = () => {
-  const email = useBoundStore((state) => state.customer?.email);
+  const email = useStore((state) => state.customerState.customer?.email);
 
   return (
     <div className="flex flex-row">

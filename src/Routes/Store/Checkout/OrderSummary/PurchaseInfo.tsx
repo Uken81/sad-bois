@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react';
 import { calculateTax } from '../CostCalculators/calculateTax';
 import { calculateOrderTotal } from '../CostCalculators/CalculateOrderTotal';
 import { formatCurrency } from '../../../../Utils/Formatters/currencyFormatter';
-import { useBoundStore } from '../../../../Stores/boundStore';
+import { useStore } from '../../../../Store/useStore';
 
 export const PurchaseInfo: React.FC = () => {
-  const cart = useBoundStore((state) => state.cart);
-  const selectedShipping = useBoundStore((state) => state.selectedShipping);
+  const cart = useStore((state) => state.cartState.cart);
+  const selectedShipping = useStore((state) => state.customerState.selectedShipping);
   const [orderTotal, setOrderTotal] = useState<string | null>(null);
   const [tax, setTax] = useState<number | null>(null);
 

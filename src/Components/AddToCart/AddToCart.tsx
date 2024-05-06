@@ -1,11 +1,11 @@
 import { useNavigate } from 'react-router';
 import { ProductType } from '../../DataLoaders/productsLoader';
 import { TourType } from '../../Routes/RouteWrappers/TourWrapper';
-import { useEffect, useState } from 'react';
 import { FixedErrorMessage } from '../ErrorMessages/FixedErrorMessage';
 import { createProductOrder } from '../../Routes/Store/Cart/AddProductToCart/createProductOrder';
 import { isEmptyObject } from '../../Utils/Validation/isEmptyObject';
-import { useBoundStore } from '../../Stores/boundStore';
+import { useStore } from '../../Store/useStore';
+import { useState } from 'react';
 
 export interface ItemOrderData {
   item: ProductType | TourType;
@@ -31,15 +31,11 @@ const ActionButton: React.FC<{ isAdded: boolean; handleClick: () => void }> = ({
 };
 
 export const AddToCart: React.FC<{ itemOrderData: ItemOrderData }> = ({ itemOrderData }) => {
-  const addItem = useBoundStore((state) => state.addItem);
-  const cart = useBoundStore((state) => state.cart);
+  const addItem = useStore((state) => state.cartState.addItem);
   const [isAdded, setIsAdded] = useState(false);
   const [isError, setIsError] = useState(false);
   const productOrder = createProductOrder(itemOrderData);
-  console.log('itemOrder', itemOrderData);
-  useEffect(() => {
-    console.log('cart', cart);
-  }, [cart]);
+
   if (!productOrder || isEmptyObject(productOrder)) {
     console.error('Failed to create product order');
     setIsError(true);

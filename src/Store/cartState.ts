@@ -1,15 +1,16 @@
-import { StateCreator } from 'zustand';
 import { CartType } from '../Types/types';
 import { ProductOrder } from '../Routes/Store/Cart/AddProductToCart/createProductOrder';
+import { Store } from './useStore';
+import { Lens } from '@dhmk/zustand-lens';
 
-export interface CartSliceType {
+export type CartState = {
   cart: CartType | null;
   addItem: (itemOrder: ProductOrder) => void;
   removeItem: (itemOrder: ProductOrder) => void;
   resetCart: () => void;
-}
+};
 
-export const createCartSlice: StateCreator<CartSliceType> = (set) => ({
+export const cartState: Lens<CartState, Store> = (set) => ({
   cart: null,
   addItem: (itemOrder: ProductOrder) =>
     set((state) => {

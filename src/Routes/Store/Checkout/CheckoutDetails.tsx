@@ -3,7 +3,7 @@ import { CustomInput } from '../../../Components/FormComponents/Inputs/CustomInp
 import { SubmitButton } from '../../../Components/FormComponents/SubmitButton';
 import { useNavigate } from 'react-router';
 import * as Yup from 'yup';
-import { useBoundStore } from '../../../Stores/boundStore';
+import { useStore } from '../../../Store/useStore';
 
 interface DetailsFormType {
   email: string;
@@ -18,8 +18,8 @@ interface DetailsFormType {
 }
 
 export const CheckoutDetails = () => {
-  const customer = useBoundStore((state) => state.customer);
-  const updateCustomer = useBoundStore((state) => state.updateCustomer);
+  const customer = useStore((state) => state.customerState.customer);
+  const updateCustomer = useStore((state) => state.customerState.updateCustomer);
   const navigate = useNavigate();
   const countries = ['Australia'];
   const states = ['VIC', 'NSW', 'QLD', 'SA', 'WA', 'TAS', 'ACT', 'NT'];

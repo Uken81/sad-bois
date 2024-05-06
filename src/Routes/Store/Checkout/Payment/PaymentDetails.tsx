@@ -7,7 +7,7 @@ import { ErrorMessage } from '../../../../Components/ErrorMessages/ErrorMessage'
 import { useNavigate } from 'react-router';
 import { serverUrl } from '../../../../Server/serverUrl';
 import { FormErrorType } from '../../../../Types/errorTypes';
-import { useBoundStore } from '../../../../Stores/boundStore';
+import { useStore } from '../../../../Store/useStore';
 
 export interface CardDetailsFormType {
   cardNumber: string;
@@ -17,12 +17,12 @@ export interface CardDetailsFormType {
 }
 
 export const PaymentDetails = () => {
-  const cart = useBoundStore((state) => state.cart);
-  const resetCart = useBoundStore((state) => state.resetCart);
-  const customer = useBoundStore((state) => state.customer);
-  const resetCustomer = useBoundStore((state) => state.resetCustomer);
-  const selectedShipping = useBoundStore((state) => state.selectedShipping);
-  const resetShipping = useBoundStore((state) => state.resetShipping);
+  const cart = useStore((state) => state.cartState.cart);
+  const resetCart = useStore((state) => state.cartState.resetCart);
+  const customer = useStore((state) => state.customerState.customer);
+  const resetCustomer = useStore((state) => state.customerState.resetCustomer);
+  const selectedShipping = useStore((state) => state.customerState.selectedShipping);
+  const resetShipping = useStore((state) => state.customerState.resetShipping);
   const [error, setError] = useState<FormErrorType | null>(null);
   const navigate = useNavigate();
 
