@@ -1,4 +1,4 @@
-import { useStore } from '../../../../Stores/useStore';
+import { useStore } from '../../../../Store/useStore';
 import { ChangeDetails } from './ChangeDetails';
 
 export const AddressDetails: React.FC = () => {

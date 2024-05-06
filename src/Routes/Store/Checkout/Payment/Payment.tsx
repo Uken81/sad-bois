@@ -3,7 +3,7 @@ import { ContactDetails } from '../CustomerDetails/ContactDetails';
 import { AddressDetails } from '../CustomerDetails/AdressDetails';
 import { ShippingMethodDetails } from '../CustomerDetails/ShippingMethodDetails';
 import { CardOptions } from './CardOptions/CardOptions';
-import { useStore } from '../../../../Stores/useStore';
+import { useStore } from '../../../../Store/useStore';
 
 export const Payment: React.FC = () => {
   const customer = useStore((state) => state.customerState.customer);

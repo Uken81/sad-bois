@@ -4,7 +4,7 @@ import { FeaturedCarousel } from './Featured/FeaturedCarousel';
 import { Products } from './Products';
 import { NoData } from '../../Components/NoData';
 import { useEffect, useState } from 'react';
-import { useStore } from '../../Stores/useStore';
+import { useStore } from '../../Store/useStore';
 
 export const Store: React.FC = () => {
   const loaderData = useLoaderData() as MerchandiseType;

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { calculateTax } from '../CostCalculators/calculateTax';
 import { calculateOrderTotal } from '../CostCalculators/CalculateOrderTotal';
 import { formatCurrency } from '../../../../Utils/Formatters/currencyFormatter';
-import { useStore } from '../../../../Stores/useStore';
+import { useStore } from '../../../../Store/useStore';
 
 export const PurchaseInfo: React.FC = () => {
   const cart = useStore((state) => state.cartState.cart);

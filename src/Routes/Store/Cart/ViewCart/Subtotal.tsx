@@ -1,4 +1,4 @@
-import { useStore } from '../../../../Stores/useStore';
+import { useStore } from '../../../../Store/useStore';
 import { formatCurrency } from '../../../../Utils/Formatters/currencyFormatter';
 
 export const Subtotal: React.FC = () => {

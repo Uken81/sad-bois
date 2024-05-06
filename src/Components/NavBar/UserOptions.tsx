@@ -2,7 +2,7 @@ import { CgProfile } from 'react-icons/cg';
 import { Link } from 'react-router-dom';
 import { Logout } from './Links/Logout';
 import { Dispatch, SetStateAction } from 'react';
-import { useStore } from '../../Stores/useStore';
+import { useStore } from '../../Store/useStore';
 
 export const UserOptions: React.FC<{
   setShowModal: Dispatch<SetStateAction<boolean>>;

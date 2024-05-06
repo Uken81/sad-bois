@@ -1,4 +1,4 @@
-import { useStore } from '../../../../../Stores/useStore';
+import { useStore } from '../../../../../Store/useStore';
 import { PriceDetails } from './PriceDetails';
 import { RemoveItem } from './RemoveItem';
 

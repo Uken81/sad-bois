@@ -2,7 +2,7 @@ import { Dispatch, SetStateAction } from 'react';
 import { useNavigate } from 'react-router';
 import { RiLogoutCircleFill } from 'react-icons/ri';
 import { serverUrl } from '../../../Server/serverUrl';
-import { useStore } from '../../../Stores/useStore';
+import { useStore } from '../../../Store/useStore';
 
 export const Logout: React.FC<{
   setShowModal: Dispatch<SetStateAction<boolean>>;

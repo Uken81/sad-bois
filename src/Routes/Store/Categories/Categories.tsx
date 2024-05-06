@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router';
 import { capitaliseWords } from '../../../Utils/Formatters/capitaliseWords';
 import { ProductCategory } from '../../../Types/types';
-import { useStore } from '../../../Stores/useStore';
+import { useStore } from '../../../Store/useStore';
 
 export const Categories: React.FC = () => {
   const selectedCategory = useStore((state) => state.categoryState.selectedCategory);

@@ -1,7 +1,7 @@
 import { ProductImage } from './ProductImage';
 import { ProductInfo } from './ProductInfo';
 import { PurchaseInfo } from './PurchaseInfo';
-import { useStore } from '../../../../Stores/useStore';
+import { useStore } from '../../../../Store/useStore';
 
 export const OrderSummary: React.FC = () => {
   const cart = useStore((state) => state.cartState.cart);

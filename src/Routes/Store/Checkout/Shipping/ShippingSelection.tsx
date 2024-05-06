@@ -1,7 +1,7 @@
 import { formatCurrency } from '../../../../Utils/Formatters/currencyFormatter';
 import { shippingOptions } from './shippingOptions';
 import { capitaliseWords } from '../../../../Utils/Formatters/capitaliseWords';
-import { useStore } from '../../../../Stores/useStore';
+import { useStore } from '../../../../Store/useStore';
 
 export const ShippingSelection: React.FC = () => {
   const selectedShipping = useStore((state) => state.customerState.selectedShipping);

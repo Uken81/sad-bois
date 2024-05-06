@@ -4,7 +4,7 @@ import { TourType } from '../../Routes/RouteWrappers/TourWrapper';
 import { FixedErrorMessage } from '../ErrorMessages/FixedErrorMessage';
 import { createProductOrder } from '../../Routes/Store/Cart/AddProductToCart/createProductOrder';
 import { isEmptyObject } from '../../Utils/Validation/isEmptyObject';
-import { useStore } from '../../Stores/useStore';
+import { useStore } from '../../Store/useStore';
 import { useState } from 'react';
 
 export interface ItemOrderData {

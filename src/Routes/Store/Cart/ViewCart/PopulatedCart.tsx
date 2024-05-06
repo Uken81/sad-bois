@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router';
 import { ProceedToCheckout } from './ProceedToCheckout/ProceedToCheckout';
 import { Subtotal } from './Subtotal';
 import { OrderItemsSummary } from './OrderItemsSummary/OrderItemsSummary';
-import { useStore } from '../../../../Stores/useStore';
+import { useStore } from '../../../../Store/useStore';
 
 export const PopulatedCart: React.FC = () => {
   const selectedCategory = useStore((state) => state.categoryState.selectedCategory);

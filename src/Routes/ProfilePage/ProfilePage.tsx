@@ -1,7 +1,7 @@
 import { useLoaderData } from 'react-router';
 import { Orders } from './Orders';
 import { OrderType } from '../../DataLoaders/ordersLoader';
-import { useStore } from '../../Stores/useStore';
+import { useStore } from '../../Store/useStore';
 
 export const ProfilePage: React.FC = () => {
   const userOrders = useLoaderData() as OrderType[] | null;

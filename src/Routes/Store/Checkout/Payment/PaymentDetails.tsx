@@ -7,7 +7,7 @@ import { ErrorMessage } from '../../../../Components/ErrorMessages/ErrorMessage'
 import { useNavigate } from 'react-router';
 import { serverUrl } from '../../../../Server/serverUrl';
 import { FormErrorType } from '../../../../Types/errorTypes';
-import { useStore } from '../../../../Stores/useStore';
+import { useStore } from '../../../../Store/useStore';
 
 export interface CardDetailsFormType {
   cardNumber: string;
