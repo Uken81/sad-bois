@@ -7,14 +7,5 @@ export interface DataError {
 }
 
 export interface FormErrorType extends GeneralErrorType {
-  type?:
-    | 'email'
-    | 'existing_email'
-    | 'password'
-    | 'network'
-    | 'server'
-    | 'cardNumber'
-    | 'nameOnCard'
-    | 'cardExpiration'
-    | 'cardSecurityCode';
+  type?: 'email' | 'existing_email' | 'password' | 'network' | 'cardNumber' | 'nameOnCard' | 'cardExpiration' | 'cardSecurityCode';
 }
