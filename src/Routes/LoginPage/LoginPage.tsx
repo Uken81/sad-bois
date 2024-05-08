@@ -10,10 +10,10 @@ import { UserType } from '../../Types/types';
 import { useStore } from '../../Store/useStore';
 import { loginValidationSchema } from '../../Schemas/formSchemas';
 
-interface LoginFormValues {
+type LoginFormValues = {
   email: string;
   password: string;
-}
+};
 
 export const LoginPage: React.FC = () => {
   const { registeredEmail } = useParams();
@@ -36,11 +36,10 @@ export const LoginPage: React.FC = () => {
     try {
       const response = await fetch(`${serverUrl}/auth/login`, requestOptions);
       if (!response.ok) {
-        const dataError: FormErrorType = await response.json();
-        setError({ type: dataError.type, message: dataError.message });
+        const data: FormErrorType = await response.json();
+        setError({ type: data.type, message: data.message });
         setSubmitting(false);
-
-        throw new Error(`Network response was not ok: ${dataError.message}`);
+        return;
       }
 
       const data = await response.json();
@@ -50,26 +49,18 @@ export const LoginPage: React.FC = () => {
       setSubmitting(false);
       navigate('/');
     } catch (error) {
-      if (error instanceof TypeError && error.message === 'Failed to fetch') {
-        setError({ type: 'network', message: `Network error: ${error}` });
-        setSubmitting(false);
-        return;
-      }
-
       if (error instanceof Error) {
         console.error(error);
         setSubmitting(false);
+        setError({ type: 'network', message: error.message });
         return;
       }
 
       console.error('An unexpected error occurred:', error);
+      setError({ type: 'network', message: 'Error connecting to server' });
       setSubmitting(false);
     }
   };
-
-  const isEmailError = error && error.type === 'email';
-  const isPasswordError = error && error.type === 'password';
-  const isNetworkError = (error && error.type === 'network') || false;
 
   return (
     <>
@@ -81,9 +72,9 @@ export const LoginPage: React.FC = () => {
         }}>
         {(formik) => (
           <UserForm formik={formik}>
-            <ErrorMessage display={isNetworkError} variant="error" message={error?.message ?? null} setError={setError} />
-            <CustomInput name="email" type="email" placeholder="Email" error={isEmailError ? error?.message : null} />
-            <CustomInput name="password" type="password" placeholder="Password" error={isPasswordError ? error.message : null} />
+            <ErrorMessage display={error?.type === 'network'} variant="error" message={error?.message ?? null} setError={setError} />
+            <CustomInput name="email" type="email" placeholder="Email" error={error?.type === 'email' ? error?.message : null} />
+            <CustomInput name="password" type="password" placeholder="Password" error={error?.type === 'password' ? error.message : null} />
           </UserForm>
         )}
       </Formik>

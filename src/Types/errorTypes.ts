@@ -1,11 +1,13 @@
-import { GeneralErrorType } from '../Components/ErrorMessages/ErrorMessage';
+export type GeneralErrorType = {
+  message: string;
+};
 
-export interface DataError {
+export type DataError = {
   message: string;
   details?: string;
   fatalError?: boolean;
-}
+};
 
-export interface FormErrorType extends GeneralErrorType {
+export type FormErrorType = GeneralErrorType & {
   type?: 'email' | 'existing_email' | 'password' | 'network' | 'cardNumber' | 'nameOnCard' | 'cardExpiration' | 'cardSecurityCode';
-}
+};

@@ -1,10 +1,6 @@
 import { Dispatch, SetStateAction } from 'react';
 import { capitaliseWords } from '../../Utils/Formatters/capitaliseWords';
-import { FormErrorType } from '../../Types/errorTypes';
-
-export interface GeneralErrorType {
-  message: string;
-}
+import { FormErrorType, GeneralErrorType } from '../../Types/errorTypes';
 
 type VariantType = 'error' | 'warning';
 
