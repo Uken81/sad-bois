@@ -8,6 +8,7 @@ import { serverUrl } from '../../../../Server/serverUrl';
 import { FormErrorType } from '../../../../Types/errorTypes';
 import { useStore } from '../../../../Store/useStore';
 import { paymentValidationSchema } from '../../../../Schemas/formSchemas';
+import { useResetStoreStates } from '../../../../Hooks/useResetStoreStates';
 
 export interface CardDetailsFormType {
   cardNumber: string;
@@ -18,21 +19,13 @@ export interface CardDetailsFormType {
 
 export const PaymentDetails = () => {
   const cart = useStore((state) => state.cartState.cart);
-  const resetCart = useStore((state) => state.cartState.resetCart);
   const customer = useStore((state) => state.customerState.customer);
-  const resetCustomer = useStore((state) => state.customerState.resetCustomer);
   const selectedShipping = useStore((state) => state.customerState.selectedShipping);
-  const resetShipping = useStore((state) => state.customerState.resetShipping);
+  const resetStoreStates = useResetStoreStates();
   const [error, setError] = useState<FormErrorType | null>(null);
   const navigate = useNavigate();
 
   const handleSubmit = async (values: CardDetailsFormType, setSubmitting: (isSubmitting: boolean) => void) => {
-    const resetStoreStates = () => {
-      resetCustomer();
-      resetCart();
-      resetShipping();
-    };
-
     const requestOptions: RequestInit = {
       method: 'POST',
       body: JSON.stringify({ formValues: values, customer, cart, selectedShipping }),
