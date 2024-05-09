@@ -8,12 +8,12 @@ import { serverUrl } from '../../Server/serverUrl';
 import { FormErrorType } from '../../Types/errorTypes';
 import { registrationValidationSchema } from '../../Schemas/formSchemas';
 
-interface RegisterFormValues {
+type RegisterFormValues = {
   email: string;
   username: string;
   password: string;
   confirmedPassword: string;
-}
+};
 
 export const Register: React.FC = () => {
   const [error, setError] = useState<FormErrorType | null>(null);
@@ -33,16 +33,15 @@ export const Register: React.FC = () => {
       const response = await fetch(`${serverUrl}/auth/register`, requestOptions);
 
       if (!response.ok) {
-        const dataError: FormErrorType = await response.json();
-        if (dataError.type === 'existing_email') {
+        const data: FormErrorType = await response.json();
+        if (data.type === 'existing_email') {
           const registeredEmail = values.email;
           navigate(`/login/${registeredEmail}`);
         }
-
-        setError({ type: dataError.type, message: dataError.message });
+        console.log('data', data);
+        setError({ type: data.type, message: data.message });
         setSubmitting(false);
-
-        throw new Error(`Network response was not ok: ${dataError.message}`);
+        return;
       }
       setSubmitting(false);
       navigate('/');
@@ -55,7 +54,7 @@ export const Register: React.FC = () => {
 
       if (error instanceof Error) {
         console.error(error);
-        setError({ type: 'network', message: `${error}` });
+        setError({ type: 'network', message: 'Error connecting to server' });
         setSubmitting(false);
         return;
       }
@@ -66,10 +65,6 @@ export const Register: React.FC = () => {
     }
   };
 
-  const isEmailError = error?.type === 'email';
-  const isPasswordError = error?.type === 'password';
-  const isNetworkError = error?.type === 'network' || false;
-
   return (
     <Formik
       initialValues={{ email: '', username: '', password: '', confirmedPassword: '' }}
@@ -79,11 +74,16 @@ export const Register: React.FC = () => {
       }}>
       {(formik) => (
         <UserForm formik={formik}>
-          <ErrorMessage display={isNetworkError} variant="error" message={error?.message ?? null} setError={setError} />
-          <CustomInput name="email" type="email" placeholder="Email" error={isEmailError ? error.message : null} />
+          <ErrorMessage display={error?.type === 'network'} variant="error" message={error?.message ?? null} setError={setError} />
+          <CustomInput name="email" type="email" placeholder="Email" error={error?.type === 'email' ? error.message : null} />
           <CustomInput name="username" type="text" placeholder="Username" error={null} />
-          <CustomInput name="password" type="password" placeholder="Password" error={isPasswordError ? error.message : null} />
-          <CustomInput name="confirmedPassword" type="password" placeholder="Confirm Password" error={isPasswordError ? error.message : null} />
+          <CustomInput name="password" type="password" placeholder="Password" error={error?.type === 'password' ? error.message : null} />
+          <CustomInput
+            name="confirmedPassword"
+            type="password"
+            placeholder="Confirm Password"
+            error={error?.type === 'password' ? error.message : null}
+          />
         </UserForm>
       )}
     </Formik>
