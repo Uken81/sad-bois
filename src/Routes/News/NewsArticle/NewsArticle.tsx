@@ -5,7 +5,7 @@ import { ArticleDate } from './ArticleDate';
 
 export const NewsArticle = () => {
   const loaderData = useLoaderData() as Article;
-  const { img, date, title, text } = loaderData;
+  const { imgUrl, date, title, text } = loaderData;
 
   return (
     <main className="md:mx-24 lg:mx-48 xl:mx-64">
@@ -16,7 +16,7 @@ export const NewsArticle = () => {
         <Share />
       </div>
       <figure className="flex justify-center">
-        <img className="my-4 h-96" src={`/Assets/News/${img}.png`} alt={title} />
+        <img className="my-4 h-96" src={imgUrl} alt={title} />
       </figure>
       <div className="my-4 px-8 font-mono text-lg leading-relaxed lg:text-2xl 2xl:mx-48">
         <div className="divider" />

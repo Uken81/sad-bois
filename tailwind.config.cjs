@@ -15,8 +15,8 @@ module.exports = {
         h3: '500'
       },
       backgroundImage: {
-        banner: 'url("/Assets/Banners/banner1.png")',
-        stadium: 'url("/Assets/Banners/stad3.jpeg")'
+        banner: 'url("https://res.cloudinary.com/dp8tnvemu/image/upload/v1716170429/sadbois_banner/banner1_gqynfe.png")',
+        stadium: 'url("https://res.cloudinary.com/dp8tnvemu/image/upload/v1716178967/sadbois_banner/stad3_ly7cui.jpg")'
       }
     }
   },

@@ -7,7 +7,7 @@ import { validateData } from './DataLoaderUtils/validateData';
 
 export interface Article {
   id: string;
-  img: string;
+  imgUrl: string;
   date: Date;
   title: string;
   text: string;
