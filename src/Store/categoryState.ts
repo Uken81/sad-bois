@@ -1,5 +1,5 @@
 import { ProductCategory } from '../Types/types';
-import { Lens } from '@dhmk/zustand-lens';
+import { Lens, persistOptions } from '@dhmk/zustand-lens';
 import { Store } from './useStore';
 
 export type CategoryState = {
@@ -9,5 +9,9 @@ export type CategoryState = {
 
 export const categoryState: Lens<CategoryState, Store> = (set) => ({
   selectedCategory: 'all',
-  assignCategory: (category) => set(() => ({ selectedCategory: category }))
+  assignCategory: (category) => set(() => ({ selectedCategory: category })),
+  ...persistOptions({
+    save: (state) => state,
+    load: (persistedState) => persistedState
+  })
 });

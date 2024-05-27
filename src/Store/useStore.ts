@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { UserState, userState } from './userState';
-import { lens, withLenses } from '@dhmk/zustand-lens';
+import { lens, withLenses, persistOptions } from '@dhmk/zustand-lens';
 import { mountStoreDevtool } from 'simple-zustand-devtools';
 import { CartState, cartState } from './cartState';
 import { CategoryState, categoryState } from './categoryState';
@@ -24,7 +24,8 @@ export const useStore = create<Store>()(
     }),
     {
       name: 'state-storage',
-      storage: createJSONStorage(() => sessionStorage)
+      storage: createJSONStorage(() => sessionStorage),
+      ...persistOptions
     }
   )
 );

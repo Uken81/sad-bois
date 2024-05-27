@@ -1,7 +1,7 @@
 import { CartType } from '../Types/types';
 import { ProductOrder } from '../Routes/Store/Cart/AddProductToCart/createProductOrder';
 import { Store } from './useStore';
-import { Lens } from '@dhmk/zustand-lens';
+import { Lens, persistOptions } from '@dhmk/zustand-lens';
 
 export type CartState = {
   cart: CartType | null;
@@ -41,5 +41,9 @@ export const cartState: Lens<CartState, Store> = (set) => ({
         }
       };
     }),
-  resetCart: () => set({ cart: null })
+  resetCart: () => set({ cart: null }),
+  ...persistOptions({
+    save: (state) => state,
+    load: (persistedState) => persistedState
+  })
 });

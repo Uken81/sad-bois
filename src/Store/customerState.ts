@@ -1,6 +1,6 @@
 import { CustomerType, ShippingOptionsType } from '../Types/types';
 import { shippingOptions } from '../Routes/Store/Checkout/Shipping/shippingOptions';
-import { Lens } from '@dhmk/zustand-lens';
+import { Lens, persistOptions } from '@dhmk/zustand-lens';
 import { Store } from './useStore';
 
 export type CustomerState = {
@@ -18,5 +18,9 @@ export const customerState: Lens<CustomerState, Store> = (set) => ({
   resetCustomer: () => set({ customer: null }),
   selectedShipping: shippingOptions[0],
   updateShipping: (shippingOption) => set({ selectedShipping: shippingOption }),
-  resetShipping: () => set({ selectedShipping: shippingOptions[0] })
+  resetShipping: () => set({ selectedShipping: shippingOptions[0] }),
+  ...persistOptions({
+    save: (state) => state,
+    load: (persistedState) => persistedState
+  })
 });
