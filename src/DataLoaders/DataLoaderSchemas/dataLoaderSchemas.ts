@@ -2,7 +2,7 @@ import * as yup from 'yup';
 
 export const articleTypeSchema = yup.object({
   id: yup.string().required(),
-  img: yup.string().required(),
+  imgUrl: yup.string().required(),
   date: yup.date().required(),
   title: yup.string().required(),
   text: yup.string().required()
